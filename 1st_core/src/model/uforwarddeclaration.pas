@@ -481,6 +481,7 @@ type
   TSQLBillingAccountRole = class of TSQLRecord;
   TSQLBillingAccountTerm = class of TSQLRecord;
   TSQLBillingAccountTermAttr = class of TSQLRecord;
+  TSQLCreditCard = class of TSQLRecord;
 
 implementation
 

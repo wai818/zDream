@@ -1797,7 +1797,42 @@ type
       fCardType: RawUTF8;
       fCardNumber: RawUTF8;
       fValidFromDate: TDateTime;
+      fExpireDate: TDateTime;
+      fIssueNumber: TDateTime;
+      fCompanyNameOnCard: RawUTF8;
+      fTitleOnCard: RawUTF8;
+      fFirstNameOnCard: RawUTF8;
+      fMiddleNameOnCard: RawUTF8;
+      fLastNameOnCard: RawUTF8;
+      fSuffixOnCard: RawUTF8;
+      fContactMech: TSQLContactMech;
+      fConsecutiveFailedAuths: Integer;
+      fLastFailedAuthDate: TDateTime;
+      fConsecutiveFailedNsf: Integer;
+      fLastFailedNsfDate: TDateTime;
+    published
+      property PaymentMethod: TSQLPaymentMethod read fPaymentMethod write fPaymentMethod;
+      property CardType: RawUTF8 read fCardType write fCardType;
+      property CardNumber: RawUTF8 read fCardNumber write fCardNumber;
+      property ValidFromDate: TDateTime read fValidFromDate write fValidFromDate;
+      property ExpireDate: TDateTime read fExpireDate write fExpireDate;
+      property IssueNumber: TDateTime read fIssueNumber write fIssueNumber;
+      property CompanyNameOnCard: RawUTF8 read fCompanyNameOnCard write fCompanyNameOnCard;
+      property TitleOnCard: RawUTF8 read fTitleOnCard write fTitleOnCard;
+      property FirstNameOnCard: RawUTF8 read fFirstNameOnCard write fFirstNameOnCard;
+      property MiddleNameOnCard: RawUTF8 read fMiddleNameOnCard write fMiddleNameOnCard;
+      property LastNameOnCard: RawUTF8 read fLastNameOnCard write fLastNameOnCard;
+      property SuffixOnCard: RawUTF8 read fSuffixOnCard write fSuffixOnCard;
+      property ContactMech: TSQLContactMech read fContactMech write fContactMech;
+      property ConsecutiveFailedAuths: Integer read fConsecutiveFailedAuths write fConsecutiveFailedAuths;
+      property LastFailedAuthDate: TDateTime read fLastFailedAuthDate write fLastFailedAuthDate;
+      property ConsecutiveFailedNsf: Integer read fConsecutiveFailedNsf write fConsecutiveFailedNsf;
+      property LastFailedNsfDate: TDateTime read fLastFailedNsfDate write fLastFailedNsfDate;
+  end;
 
+  // 105
+  TSQLCreditCardTypeGlAccount = class(TSQLRecord)
+    private
     published
       property  read  write ;
       property  read  write ;
@@ -1805,7 +1840,6 @@ type
       property  read  write ;
       property  read  write ;
   end;
-
 
 
 

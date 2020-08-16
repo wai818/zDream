@@ -168,7 +168,7 @@ begin
     TSQLGlJournal, TSQLGlReconciliation, TSQLGlReconciliationEntry, TSQLGlResourceType,
     TSQLGlXbrlClass, TSQLPartyAcctgPreference, TSQLProductAverageCost, TSQLProductAverageCostType,
     TSQLSettlementTerm, TSQLVarianceReasonGlAccount, TSQLBillingAccount, TSQLBillingAccountRole,
-    TSQLBillingAccountTerm, TSQLBillingAccountTermAttr
+    TSQLBillingAccountTerm, TSQLBillingAccountTermAttr, TSQLCreditCard
   ], ROOT_NAME_ACCOUNTING);
 end;
 

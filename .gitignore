@@ -85,6 +85,6 @@ __history
 *.map
 *.exe
 *.dll
-bin/*
-backup/*
-lib/*
+bin
+backup
+lib
