@@ -1,0 +1,96 @@
+object FormMain: TFormMain
+  Left = 348
+  Height = 530
+  Top = 177
+  Width = 962
+  Caption = 'FormMain'
+  ClientHeight = 510
+  ClientWidth = 962
+  Menu = mmMain
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '2.1.0.0'
+  object tbMain: TToolBar
+    Left = 0
+    Height = 26
+    Top = 0
+    Width = 962
+    Caption = 'tbMain'
+    ParentFont = False
+    ShowCaptions = True
+    TabOrder = 0
+    object ToolButton1: TToolButton
+      Left = 1
+      Top = 2
+      Action = aParty
+    end
+    object ToolButton2: TToolButton
+      Left = 57
+      Top = 2
+      Action = aProduct
+    end
+    object ToolButton3: TToolButton
+      Left = 113
+      Top = 2
+      Action = aOrder
+    end
+  end
+  object sbMain: TStatusBar
+    Left = 0
+    Height = 22
+    Top = 488
+    Width = 962
+    Panels = <>
+    ParentFont = False
+  end
+  object pMain: TPanel
+    Left = 0
+    Height = 462
+    Top = 26
+    Width = 962
+    Align = alClient
+    ParentFont = False
+    TabOrder = 2
+  end
+  object mmMain: TMainMenu
+    Images = ilMain
+    Left = 880
+    Top = 40
+    object miParty: TMenuItem
+      Action = aParty
+    end
+    object miProduct: TMenuItem
+      Action = aProduct
+    end
+    object miOrder: TMenuItem
+      Action = aOrder
+    end
+    object miSysAdmin: TMenuItem
+      Action = aSysAdmin
+    end
+  end
+  object alMain: TActionList
+    Images = ilMain
+    Left = 944
+    Top = 40
+    object aParty: TAction
+      Caption = '人与组织'
+      OnExecute = aPartyExecute
+    end
+    object aProduct: TAction
+      Caption = '商品管理'
+      OnExecute = aProductExecute
+    end
+    object aOrder: TAction
+      Caption = '订单管理'
+      OnExecute = aOrderExecute
+    end
+    object aSysAdmin: TAction
+      Caption = '系统管理'
+    end
+  end
+  object ilMain: TImageList
+    Left = 1008
+    Top = 40
+  end
+end

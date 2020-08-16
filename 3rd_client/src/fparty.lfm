@@ -1,0 +1,28 @@
+object FrameParty: TFrameParty
+  Left = 0
+  Height = 501
+  Top = 0
+  Width = 884
+  ClientHeight = 501
+  ClientWidth = 884
+  Color = clDefault
+  ParentColor = False
+  TabOrder = 0
+  DesignLeft = 396
+  DesignTop = 457
+  object Panel1: TPanel
+    Left = 0
+    Height = 501
+    Top = 0
+    Width = 170
+    Align = alLeft
+    Caption = 'Panel1'
+    TabOrder = 0
+  end
+  object Splitter1: TSplitter
+    Left = 170
+    Height = 501
+    Top = 0
+    Width = 5
+  end
+end

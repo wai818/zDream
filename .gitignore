@@ -67,3 +67,24 @@ __recovery/
 
 # Boss dependency manager vendor folder https://github.com/HashLoad/boss
 modules/
+
+*.ppu
+*.ppl
+*.o
+*.or
+*.lps
+*.res
+*.dbg
+*.compiled
+*.dcu
+*.~*~
+*.local
+*.identcache
+__history
+*.drc
+*.map
+*.exe
+*.dll
+bin/*
+backup/*
+lib/*

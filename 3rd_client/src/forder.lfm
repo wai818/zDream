@@ -1,0 +1,19 @@
+object FrameOrder: TFrameOrder
+  Left = 0
+  Height = 240
+  Top = 0
+  Width = 320
+  ClientHeight = 240
+  ClientWidth = 320
+  TabOrder = 0
+  DesignLeft = 521
+  DesignTop = 141
+  object BitBtn1: TBitBtn
+    Left = 134
+    Height = 30
+    Top = 97
+    Width = 75
+    Caption = 'BitBtn1'
+    TabOrder = 0
+  end
+end
