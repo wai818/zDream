@@ -482,6 +482,128 @@ type
   TSQLBillingAccountTerm = class of TSQLRecord;
   TSQLBillingAccountTermAttr = class of TSQLRecord;
   TSQLCreditCard = class of TSQLRecord;
+  TSQLCreditCardTypeGlAccount = class of TSQLRecord;
+  TSQLDeduction = class of TSQLRecord;
+  TSQLDeductionType = class of TSQLRecord;
+  TSQLEftAccount = class of TSQLRecord;
+  TSQLCheckAccount = class of TSQLRecord;
+  TSQLGiftCard = class of TSQLRecord;
+  TSQLGiftCardFulfillment = class of TSQLRecord;
+  TSQLPayment = class of TSQLRecord;
+  TSQLPaymentApplication = class of TSQLRecord;
+  TSQLPaymentAttribute = class of TSQLRecord;
+  TSQLPaymentBudgetAllocation = class of TSQLRecord;
+  TSQLPaymentContent = class of TSQLRecord;
+  TSQLPaymentContentType = class of TSQLRecord;
+  TSQLPaymentMethod = class of TSQLRecord;
+  TSQLPaymentMethodType = class of TSQLRecord;
+  TSQLPaymentMethodTypeGlAccount = class of TSQLRecord;
+  TSQLPaymentType = class of TSQLRecord;
+  TSQLPaymentTypeAttr = class of TSQLRecord;
+  TSQLPaymentGlAccountTypeMap = class of TSQLRecord;
+  TSQLPaymentGatewayConfigType = class of TSQLRecord;
+  TSQLPaymentGatewayConfig = class of TSQLRecord;
+  TSQLPaymentGatewaySagePay = class of TSQLRecord;
+  TSQLPaymentGatewayAuthorizeNet = class of TSQLRecord;
+  TSQLPaymentGatewayEway = class of TSQLRecord;
+  TSQLPaymentGatewayCyberSource = class of TSQLRecord;
+  TSQLPaymentGatewayPayflowPro = class of TSQLRecord;
+  TSQLPaymentGatewayPayPal = class of TSQLRecord;
+  TSQLPaymentGatewayClearCommerce = class of TSQLRecord;
+  TSQLPaymentGatewayWorldPay = class of TSQLRecord;
+  TSQLPaymentGatewayOrbital = class of TSQLRecord;
+  TSQLPaymentGatewaySecurePay = class of TSQLRecord;
+  TSQLPaymentGatewayiDEAL = class of TSQLRecord;
+  TSQLPaymentGatewayRespMsg = class of TSQLRecord;
+  TSQLPaymentGatewayResponse = class of TSQLRecord;
+  TSQLPaymentGroup = class of TSQLRecord;
+  TSQLPaymentGroupType = class of TSQLRecord;
+  TSQLPaymentGroupMember = class of TSQLRecord;
+  TSQLPayPalPaymentMethod = class of TSQLRecord;
+  TSQLValueLinkKey = class of TSQLRecord;
+  TSQLPartyTaxAuthInfo = class of TSQLRecord;
+  TSQLTaxAuthority = class of TSQLRecord;
+  TSQLTaxAuthorityAssoc = class of TSQLRecord;
+  TSQLTaxAuthorityAssocType = class of TSQLRecord;
+  TSQLTaxAuthorityCategory = class of TSQLRecord;
+  TSQLTaxAuthorityGlAccount = class of TSQLRecord;
+  TSQLTaxAuthorityRateProduct = class of TSQLRecord;
+  TSQLTaxAuthorityRateType = class of TSQLRecord;
+  TSQLZipSalesRuleLookup = class of TSQLRecord;
+  TSQLZipSalesTaxLookup = class of TSQLRecord;
+  TSQLPartyGlAccount = class of TSQLRecord;
+  TSQLRateType = class of TSQLRecord;
+  TSQLRateAmount = class of TSQLRecord;
+  TSQLPartyRate = class of TSQLRecord;
+  TSQLGlAccountCategory = class of TSQLRecord;
+  TSQLGlAccountCategoryMember = class of TSQLRecord;
+  TSQLGlAccountCategoryType = class of TSQLRecord;
+
+
+
+
+
+
+
+
+
+
+  TSQLTimeEntry = class of TSQLRecord;
+  TSQLTimesheet = class of TSQLRecord;
+  TSQLTimesheetRole = class of TSQLRecord;
+  TSQLApplicationSandbox = class of TSQLRecord;
+  TSQLCommunicationEventWorkEff = class of TSQLRecord;
+  TSQLDeliverable = class of TSQLRecord;
+  TSQLDeliverableType = class of TSQLRecord;
+  TSQLWorkEffort = class of TSQLRecord;
+  TSQLWorkEffortAssoc = class of TSQLRecord;
+  TSQLWorkEffortAssocAttribute = class of TSQLRecord;
+  TSQLWorkEffortAssocType = class of TSQLRecord;
+  TSQLWorkEffortAssocTypeAttr = class of TSQLRecord;
+  TSQLWorkEffortAttribute = class of TSQLRecord;
+  TSQLWorkEffortBilling = class of TSQLRecord;
+  TSQLWorkEffortContactMech = class of TSQLRecord;
+  TSQLWorkEffortContent = class of TSQLRecord;
+  TSQLWorkEffortContentType = class of TSQLRecord;
+  TSQLWorkEffortDeliverableProd = class of TSQLRecord;
+  TSQLWorkEffortEventReminder = class of TSQLRecord;
+  TSQLWorkEffortFixedAssetAssign = class of TSQLRecord;
+  TSQLWorkEffortFixedAssetStd = class of TSQLRecord;
+  TSQLWorkEffortGoodStandard = class of TSQLRecord;
+  TSQLWorkEffortGoodStandardType = class of TSQLRecord;
+  TSQLWorkEffortIcalData = class of TSQLRecord;
+  TSQLWorkEffortInventoryAssign = class of TSQLRecord;
+  TSQLWorkEffortInventoryProduced = class of TSQLRecord;
+  TSQLWorkEffortCostCalc = class of TSQLRecord;
+  TSQLWorkEffortKeyword = class of TSQLRecord;
+  TSQLWorkEffortNote = class of TSQLRecord;
+  TSQLWorkEffortPartyAssignment = class of TSQLRecord;
+  TSQLWorkEffortPurposeType = class of TSQLRecord;
+  TSQLWorkEffortReview = class of TSQLRecord;
+  TSQLWorkEffortSearchConstraint = class of TSQLRecord;
+  TSQLWorkEffortSearchResult = class of TSQLRecord;
+  TSQLWorkEffortSkillStandard = class of TSQLRecord;
+  TSQLWorkEffortStatus = class of TSQLRecord;
+  TSQLWorkEffortTransBox = class of TSQLRecord;
+  TSQLWorkEffortType = class of TSQLRecord;
+  TSQLWorkEffortTypeAttr = class of TSQLRecord;
+  TSQLWorkEffortSurveyAppl = class of TSQLRecord;
+
+
+
+
+
+
+
+
+
+
+  TSQLItemIssuance = class of TSQLRecord;
+  TSQLItemIssuanceRole = class of TSQLRecord;
+  TSQLPicklist = class of TSQLRecord;
+  TSQLPicklistBin = class of TSQLRecord;
+  TSQLPicklistItem = class of TSQLRecord;
+  TSQLPicklistRole = class of TSQLRecord;
 
 implementation
 

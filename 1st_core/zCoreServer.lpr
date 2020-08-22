@@ -14,7 +14,7 @@ uses
   mORMotSQLite3,
   mORMotHttpServer,
   mORMotHttpClient,
-  uModel, uForwardDeclaration, uAccounting;
+  uModel, uForwardDeclaration, uAccounting, uWorkEffort, uShipment;
 
 type
 

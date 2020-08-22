@@ -14,12 +14,16 @@ const
   ROOT_NAME_PRODUCT = 'product';
   ROOT_NAME_ORDER = 'order';
   ROOT_NAME_ACCOUNTING = 'accounting';
+  ROOT_NAME_WORKEFFORT = 'workeffort';
+  ROOT_NAME_SHIPMENT = 'shipment';
 
   //function CreateModel: TSQLModel;
   function CreatePartyModel: TSQLModel;
   function CreateProductModel: TSQLModel;
   function CreateOrderModel: TSQLModel;
   function CreateAccountingModel: TSQLModel;
+  function CreateWorkEffortModel: TSQLModel;
+  function CreateShipmentModel: TSQLModel;
 
 implementation
 
@@ -168,8 +172,48 @@ begin
     TSQLGlJournal, TSQLGlReconciliation, TSQLGlReconciliationEntry, TSQLGlResourceType,
     TSQLGlXbrlClass, TSQLPartyAcctgPreference, TSQLProductAverageCost, TSQLProductAverageCostType,
     TSQLSettlementTerm, TSQLVarianceReasonGlAccount, TSQLBillingAccount, TSQLBillingAccountRole,
-    TSQLBillingAccountTerm, TSQLBillingAccountTermAttr, TSQLCreditCard
+    TSQLBillingAccountTerm, TSQLBillingAccountTermAttr, TSQLCreditCard, TSQLCreditCardTypeGlAccount,
+    TSQLDeduction, TSQLDeductionType, TSQLEftAccount, TSQLCheckAccount, TSQLGiftCard,
+    TSQLGiftCardFulfillment, TSQLPayment, TSQLPaymentApplication, TSQLPaymentAttribute,
+    TSQLPaymentBudgetAllocation, TSQLPaymentContent, TSQLPaymentContentType, TSQLPaymentMethod,
+    TSQLPaymentMethodType, TSQLPaymentMethodTypeGlAccount, TSQLPaymentType, TSQLPaymentTypeAttr,
+    TSQLPaymentGlAccountTypeMap, TSQLPaymentGatewayConfigType, TSQLPaymentGatewayConfig,
+    TSQLPaymentGatewaySagePay, TSQLPaymentGatewayAuthorizeNet, TSQLPaymentGatewayEway,
+    TSQLPaymentGatewayCyberSource, TSQLPaymentGatewayPayflowPro, TSQLPaymentGatewayPayPal,
+    TSQLPaymentGatewayClearCommerce, TSQLPaymentGatewayWorldPay, TSQLPaymentGatewayOrbital,
+    TSQLPaymentGatewaySecurePay, TSQLPaymentGatewayiDEAL, TSQLPaymentGatewayRespMsg,
+    TSQLPaymentGatewayResponse, TSQLPaymentGroup, TSQLPaymentGroupType, TSQLPaymentGroupMember,
+    TSQLPayPalPaymentMethod, TSQLValueLinkKey, TSQLPartyTaxAuthInfo, TSQLTaxAuthority,
+    TSQLTaxAuthorityAssoc, TSQLTaxAuthorityAssocType, TSQLTaxAuthorityCategory, TSQLTaxAuthorityGlAccount,
+    TSQLTaxAuthorityRateProduct, TSQLTaxAuthorityRateType, TSQLZipSalesRuleLookup,
+    TSQLZipSalesTaxLookup, TSQLPartyGlAccount, TSQLRateType, TSQLRateAmount, TSQLPartyRate,
+    TSQLGlAccountCategory, TSQLGlAccountCategoryMember, TSQLGlAccountCategoryType
   ], ROOT_NAME_ACCOUNTING);
+end;
+
+function CreateWorkEffortModel: TSQLModel;
+begin
+  result := TSQLModel.Create([
+    TSQLTimeEntry, TSQLTimesheet, TSQLTimesheetRole, TSQLApplicationSandbox, TSQLCommunicationEventWorkEff,
+    TSQLDeliverable, TSQLDeliverableType, TSQLWorkEffort, TSQLWorkEffortAssoc， TSQLWorkEffortAssocAttribute,
+    TSQLWorkEffortAssocType, TSQLWorkEffortAssocTypeAttr, TSQLWorkEffortAttribute, TSQLWorkEffortBilling,
+    TSQLWorkEffortContactMech, TSQLWorkEffortContent, TSQLWorkEffortContentType, TSQLWorkEffortDeliverableProd,
+    TSQLWorkEffortEventReminder, TSQLWorkEffortFixedAssetAssign, TSQLWorkEffortFixedAssetStd,
+    TSQLWorkEffortGoodStandard, TSQLWorkEffortGoodStandardType, TSQLWorkEffortIcalData,
+    TSQLWorkEffortInventoryAssign, TSQLWorkEffortInventoryProduced, TSQLWorkEffortCostCalc,
+    TSQLWorkEffortKeyword, TSQLWorkEffortNote, TSQLWorkEffortPartyAssignment, TSQLWorkEffortPurposeType,
+    TSQLWorkEffortReview, TSQLWorkEffortSearchConstraint, TSQLWorkEffortSearchResult,
+    TSQLWorkEffortSkillStandard, TSQLWorkEffortStatus, TSQLWorkEffortTransBox, TSQLWorkEffortType,
+    TSQLWorkEffortTypeAttr, TSQLWorkEffortSurveyAppl
+  ], ROOT_NAME_WORKEFFORT);
+end;
+
+function CreateShipmentModel: TSQLModel;
+begin
+  result := TSQLModel.Create([
+    TSQLItemIssuance, TSQLItemIssuanceRole, TSQLPicklist, TSQLPicklistBin, TSQLPicklistItem,
+    TSQLPicklistRole
+  ], ROOT_NAME_SHIPMENT);
 end;
 
 end.
