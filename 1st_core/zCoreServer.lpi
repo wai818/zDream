@@ -25,7 +25,7 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <Units Count="9">
+    <Units Count="11">
       <Unit0>
         <Filename Value="zCoreServer.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -70,6 +70,16 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uShipment"/>
       </Unit8>
+      <Unit9>
+        <Filename Value="src\model\umarketing.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uMarketing"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="src\model\umanufacturing.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uManufacturing"/>
+      </Unit10>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

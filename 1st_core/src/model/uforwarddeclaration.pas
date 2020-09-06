@@ -604,6 +604,81 @@ type
   TSQLPicklistBin = class of TSQLRecord;
   TSQLPicklistItem = class of TSQLRecord;
   TSQLPicklistRole = class of TSQLRecord;
+  TSQLPicklistStatusHistory = class of TSQLRecord;
+  TSQLRejectionReason = class of TSQLRecord;
+  TSQLShipmentReceipt = class of TSQLRecord;
+  TSQLShipmentReceiptRole = class of TSQLRecord;
+  TSQLCarrierShipmentMethod = class of TSQLRecord;
+  TSQLCarrierShipmentBoxType = class of TSQLRecord;
+  TSQLDelivery = class of TSQLRecord;
+  TSQLShipment = class of TSQLRecord;
+  TSQLShipmentAttribute = class of TSQLRecord;
+  TSQLShipmentBoxType = class of TSQLRecord;
+  TSQLShipmentContactMech = class of TSQLRecord;
+  TSQLShipmentContactMechType = class of TSQLRecord;
+  TSQLShipmentCostEstimate = class of TSQLRecord;
+  TSQLShipmentGatewayConfigType = class of TSQLRecord;
+  TSQLShipmentGatewayConfig = class of TSQLRecord;
+  TSQLShipmentGatewayDhl = class of TSQLRecord;
+  TSQLShipmentGatewayFedex = class of TSQLRecord;
+  TSQLShipmentGatewayUps = class of TSQLRecord;
+  TSQLShipmentGatewayUsps = class of TSQLRecord;
+  TSQLShipmentItem = class of TSQLRecord;
+  TSQLShipmentItemBilling = class of TSQLRecord;
+  TSQLShipmentItemFeature = class of TSQLRecord;
+  TSQLShipmentMethodType = class of TSQLRecord;
+  TSQLShipmentPackage = class of TSQLRecord;
+  TSQLShipmentPackageContent = class of TSQLRecord;
+  TSQLShipmentPackageRouteSeg = class of TSQLRecord;
+  TSQLShipmentRouteSegment = class of TSQLRecord;
+  TSQLShipmentStatus = class of TSQLRecord;
+  TSQLShipmentType = class of TSQLRecord;
+  TSQLShipmentTypeAttr = class of TSQLRecord;
+  TSQLShippingDocument = class of TSQLRecord;
+
+
+
+  TSQLMarketingCampaign = class of TSQLRecord;
+  TSQLMarketingCampaignNote = class of TSQLRecord;
+  TSQLMarketingCampaignPrice = class of TSQLRecord;
+  TSQLMarketingCampaignPromo = class of TSQLRecord;
+  TSQLMarketingCampaignRole = class of TSQLRecord;
+  TSQLContactList = class of TSQLRecord;
+  TSQLWebSiteContactList = class of TSQLRecord;
+  TSQLContactListCommStatus = class of TSQLRecord;
+  TSQLContactListParty = class of TSQLRecord;
+  TSQLContactListPartyStatus = class of TSQLRecord;
+  TSQLContactListType = class of TSQLRecord;
+  TSQLSegmentGroup = class of TSQLRecord;
+  TSQLSegmentGroupClassification = class of TSQLRecord;
+  TSQLSegmentGroupGeo = class of TSQLRecord;
+  TSQLSegmentGroupRole = class of TSQLRecord;
+  TSQLSegmentGroupType = class of TSQLRecord;
+  TSQLTrackingCode = class of TSQLRecord;
+  TSQLTrackingCodeOrder = class of TSQLRecord;
+  TSQLTrackingCodeOrderReturn = class of TSQLRecord;
+  TSQLTrackingCodeType = class of TSQLRecord;
+  TSQLTrackingCodeVisit = class of TSQLRecord;
+  TSQLSalesOpportunity = class of TSQLRecord;
+  TSQLSalesOpportunityHistory = class of TSQLRecord;
+  TSQLSalesOpportunityRole = class of TSQLRecord;
+  TSQLSalesOpportunityStage = class of TSQLRecord;
+  TSQLSalesOpportunityWorkEffort = class of TSQLRecord;
+  TSQLSalesOpportunityQuote = class of TSQLRecord;
+  TSQLSalesForecast = class of TSQLRecord;
+  TSQLSalesForecastDetail = class of TSQLRecord;
+  TSQLSalesForecastHistory = class of TSQLRecord;
+  TSQLSalesOpportunityCompetitor = class of TSQLRecord;
+  TSQLSalesOpportunityTrckCode = class of TSQLRecord;
+
+
+
+
+
+
+
+
+  TSQLProductManufacturingRule = class of TSQLRecord;
 
 implementation
 

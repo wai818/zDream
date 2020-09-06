@@ -10,11 +10,8 @@ uses
   SynCrypto,
   SynSQLite3Static,
   //SynSQLite3,
-  mORMot,
-  mORMotSQLite3,
-  mORMotHttpServer,
-  mORMotHttpClient,
-  uModel, uForwardDeclaration, uAccounting, uWorkEffort, uShipment;
+  mORMot, mORMotSQLite3, mORMotHttpServer, mORMotHttpClient, uModel,
+  uForwardDeclaration, uAccounting, uWorkEffort, uShipment, uMarketing, uManufacturing;
 
 type
 

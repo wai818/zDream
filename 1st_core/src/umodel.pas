@@ -16,6 +16,8 @@ const
   ROOT_NAME_ACCOUNTING = 'accounting';
   ROOT_NAME_WORKEFFORT = 'workeffort';
   ROOT_NAME_SHIPMENT = 'shipment';
+  ROOT_NAME_MARKETING = 'marketing';
+  ROOT_NAME_MANUFACTURING = 'manufacturing';
 
   //function CreateModel: TSQLModel;
   function CreatePartyModel: TSQLModel;
@@ -24,6 +26,8 @@ const
   function CreateAccountingModel: TSQLModel;
   function CreateWorkEffortModel: TSQLModel;
   function CreateShipmentModel: TSQLModel;
+  function CreateMarketingModel: TSQLModel;
+  function CreateManufacturingModel: TSQLModel;
 
 implementation
 
@@ -212,9 +216,40 @@ function CreateShipmentModel: TSQLModel;
 begin
   result := TSQLModel.Create([
     TSQLItemIssuance, TSQLItemIssuanceRole, TSQLPicklist, TSQLPicklistBin, TSQLPicklistItem,
-    TSQLPicklistRole
+    TSQLPicklistRole, TSQLPicklistStatusHistory, TSQLRejectionReason, TSQLShipmentReceipt,
+    TSQLShipmentReceiptRole, TSQLCarrierShipmentMethod, TSQLCarrierShipmentBoxType,
+    TSQLDelivery, TSQLShipment, TSQLShipmentAttribute, TSQLShipmentBoxType, TSQLShipmentContactMech,
+    TSQLShipmentContactMechType, TSQLShipmentCostEstimate, TSQLShipmentGatewayConfigType,
+    TSQLShipmentGatewayConfig, TSQLShipmentGatewayDhl, TSQLShipmentGatewayFedex, TSQLShipmentGatewayUps,
+    TSQLShipmentGatewayUsps, TSQLShipmentItem, TSQLShipmentItemBilling, TSQLShipmentItemFeature,
+    TSQLShipmentMethodType, TSQLShipmentPackage, TSQLShipmentPackageContent, TSQLShipmentPackageRouteSeg,
+    TSQLShipmentRouteSegment, TSQLShipmentStatus, TSQLShipmentType, TSQLShipmentTypeAttr,
+    TSQLShippingDocument
   ], ROOT_NAME_SHIPMENT);
 end;
+
+function CreateMarketingModel: TSQLModel;
+begin
+  result := TSQLModel.Create([
+    TSQLMarketingCampaign, TSQLMarketingCampaignNote, TSQLMarketingCampaignPrice,
+    TSQLMarketingCampaignPromo, TSQLMarketingCampaignRole, TSQLContactList, TSQLWebSiteContactList,
+    TSQLContactListCommStatus, TSQLContactListParty, TSQLContactListPartyStatus, TSQLContactListType,
+    TSQLSegmentGroup, TSQLSegmentGroupClassification, TSQLSegmentGroupGeo, TSQLSegmentGroupRole,
+    TSQLSegmentGroupType, TSQLTrackingCode, TSQLTrackingCodeOrder, TSQLTrackingCodeOrderReturn,
+    TSQLTrackingCodeType, TSQLTrackingCodeVisit, TSQLSalesOpportunity, TSQLSalesOpportunityHistory,
+    TSQLSalesOpportunityRole, TSQLSalesOpportunityStage, TSQLSalesOpportunityWorkEffort,
+    TSQLSalesOpportunityQuote, TSQLSalesForecast, TSQLSalesForecastDetail, TSQLSalesForecastHistory,
+    TSQLSalesOpportunityCompetitor, TSQLSalesOpportunityTrckCode
+  ], ROOT_NAME_MARKETING);
+end;
+
+function CreateManufacturingModel: TSQLModel;
+begin
+  result := TSQLModel.Create([
+    TSQLProductManufacturingRule
+  ], ROOT_NAME_MANUFACTURING);
+end;
+
 
 end.
 
