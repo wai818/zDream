@@ -288,7 +288,7 @@ type
       property PartyTo: TSQLParty read fPartyTo write fPartyTo;
       property PartyFrom: TSQLParty read fPartyFrom write fPartyFrom;
       property AdditionalShippingCharge: Currency read fAdditionalShippingCharge write fAdditionalShippingCharge;
-      property AddtlShippingChargeDesc: RawUTF8; read fAddtlShippingChargeDesc write AddtlShippingChargeDescf;
+      property AddtlShippingChargeDesc: RawUTF8 read fAddtlShippingChargeDesc write fAddtlShippingChargeDesc;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
       property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
       property LastModifiedDate: TDateTime read fLastModifiedDate write fLastModifiedDate;
@@ -326,7 +326,7 @@ type
       property BoxWidth: Double read fBoxWidth write fBoxWidth;
       property BoxHeight: Double read fBoxHeight write fBoxHeight;
       property WeightUom: TSQLUom read fWeightUom write fWeightUom;
-      property BoxWeight: Double read fBoxWeight: Double write fBoxWeight: Double;
+      property BoxWeight: Double read fBoxWeight write fBoxWeight;
   end;
 
   // 17
@@ -665,11 +665,11 @@ type
       fShipmentRouteSegment: TSQLShipmentRouteSegment;
       fTrackingCode: RawUTF8;
       fBoxNumber: RawUTF8;
-      fLabelImage: TSQLBlob;
-      fLabelIntlSignImage: TSQLBlob;
-      fLabelHtml: TSQLBlob;
+      fLabelImage: TSQLRawBlob;
+      fLabelIntlSignImage: TSQLRawBlob;
+      fLabelHtml: TSQLRawBlob;
       fLabelPrinted: Boolean;
-      fInternationalInvoice: TSQLBlob;
+      fInternationalInvoice: TSQLRawBlob;
       fPackageTransportCost: Currency;
       fPackageServiceCost: Currency;
       fPackageOtherCost: Currency;
@@ -682,11 +682,11 @@ type
       property ShipmentRouteSegment: TSQLShipmentRouteSegment read fShipmentRouteSegment write fShipmentRouteSegment;
       property TrackingCode: RawUTF8 read fTrackingCode write fTrackingCode;
       property BoxNumber: RawUTF8 read fBoxNumber write fBoxNumber;
-      property LabelImage: TSQLBlob read fLabelImage write fLabelImage;
-      property LabelIntlSignImage: TSQLBlob read fLabelIntlSignImage write fLabelIntlSignImage;
-      property LabelHtml: TSQLBlob read fLabelHtml write fLabelHtml;
+      property LabelImage: TSQLRawBlob read fLabelImage write fLabelImage;
+      property LabelIntlSignImage: TSQLRawBlob read fLabelIntlSignImage write fLabelIntlSignImage;
+      property LabelHtml: TSQLRawBlob read fLabelHtml write fLabelHtml;
       property LabelPrinted: Boolean read fLabelPrinted write fLabelPrinted;
-      property InternationalInvoice: TSQLBlob read fInternationalInvoice write fInternationalInvoice;
+      property InternationalInvoice: TSQLRawBlob read fInternationalInvoice write fInternationalInvoice;
       property PackageTransportCost: Currency read fPackageTransportCost write fPackageTransportCost;
       property PackageServiceCost: Currency read fPackageServiceCost write fPackageServiceCost;
       property PackageOtherCost: Currency read fPackageOtherCost write fPackageOtherCost;
@@ -725,7 +725,7 @@ type
       fEstimatedStartDate: TDateTime;
       fEstimatedArrivalDate: TDateTime;
       fTrackingIdNumber: RawUTF8;
-      fTrackingDigest: TSQLBlob;
+      fTrackingDigest: TSQLRawBlob;
       fUpdatedByUserLogin: TSQLUserLogin;
       fLastUpdatedDate: TDateTime;
       fHomeDeliveryType: Integer;
@@ -733,7 +733,7 @@ type
       fThirdPartyAccountNumber: Integer;
       fThirdPartyPostalCode: Integer;
       fThirdPartyCountryGeoCode: Integer;
-      fUpsHighValueReport: TSQLBlob;
+      fUpsHighValueReport: TSQLRawBlob;
     published
       property Shipment: TSQLShipment read fShipment write fShipment;
       property ShipmentRouteSegment: Integer read fShipmentRouteSegment write fShipmentRouteSegment;
@@ -762,7 +762,7 @@ type
       property EstimatedStartDate: TDateTime read fEstimatedStartDate write fEstimatedStartDate;
       property EstimatedArrivalDate: TDateTime read fEstimatedArrivalDate write fEstimatedArrivalDate;
       property TrackingIdNumber: RawUTF8 read fTrackingIdNumber write fTrackingIdNumber;
-      property TrackingDigest: TSQLBlob read fTrackingDigest write fTrackingDigest;
+      property TrackingDigest: TSQLRawBlob read fTrackingDigest write fTrackingDigest;
       property UpdatedByUserLogin: TSQLUserLogin read fUpdatedByUserLogin write fUpdatedByUserLogin;
       property LastUpdatedDate: TDateTime read fLastUpdatedDate write fLastUpdatedDate;
       property HomeDeliveryType: Integer read fHomeDeliveryType write fHomeDeliveryType;
@@ -770,10 +770,10 @@ type
       property ThirdPartyAccountNumber: Integer read fThirdPartyAccountNumber write fThirdPartyAccountNumber;
       property ThirdPartyPostalCode: Integer read fThirdPartyPostalCode write fThirdPartyPostalCode;
       property ThirdPartyCountryGeoCode: Integer read fThirdPartyCountryGeoCode write fThirdPartyCountryGeoCode;
-      property UpsHighValueReport: TSQLBlob read fUpsHighValueReport write fUpsHighValueReport;
+      property UpsHighValueReport: TSQLRawBlob read fUpsHighValueReport write fUpsHighValueReport;
   end;
 
-  // 34
+{  // 34
   TSQL = class(TSQLRecord)
     private
     published
@@ -782,7 +782,7 @@ type
       property  read  write ;
       property  read  write ;
       property  read  write ;
-  end;
+  end;}
 
   // 35
   TSQLShipmentStatus = class(TSQLRecord)

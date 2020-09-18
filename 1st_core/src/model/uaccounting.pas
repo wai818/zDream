@@ -422,10 +422,6 @@ type
       property FinAccountTransType: TSQLFinAccountTransType read fFinAccountTransType write fFinAccountTransType;
       property AttrName: TSQLFinAccountTransAttribute read fAttrName write fAttrName;
       property Description: RawUTF8 read fDescription write fDescription;
-      property  read  write ;
-      property  read  write ;
-      property  read  write ;
-      property  read  write ;
   end;
 
   // 27
@@ -881,7 +877,7 @@ type
       property BillingAccount: TSQLBillingAccount read fBillingAccount write fBillingAccount;
       property ContactMech: TSQLContactMech read fContactMech write fContactMech;
       property InvoiceDate: TDateTime read fInvoiceDate write fInvoiceDate;
-      property DueDate: TDateTime read  write fDueDate;
+      property DueDate: TDateTime read fDueDate write fDueDate;
       property PaidDate: TDateTime read fPaidDate write fPaidDate;
       property InvoiceMessage: RawUTF8 read fInvoiceMessage write fInvoiceMessage;
       property ReferenceNumber: RawUTF8 read fReferenceNumber write fReferenceNumber;
@@ -1210,7 +1206,7 @@ type
       fTransactionDate: TDateTime;
       fIsPosted: Boolean;
       fPostedDate: TDateTime;
-      fScheduledPostingDate TDateTime;
+      fScheduledPostingDate: TDateTime;
       fGlJournal: TSQLGlJournal;
       fGlFiscalType: TSQLGlFiscalType;
       fVoucherRef: RawUTF8;
@@ -1238,7 +1234,7 @@ type
       property TransactionDate: TDateTime read fTransactionDate write fTransactionDate;
       property IsPosted: Boolean read fIsPosted write fIsPosted;
       property PostedDate: TDateTime read fPostedDate write fPostedDate;
-      property ScheduledPostingDate TDateTime read fScheduledPostingDate write fScheduledPostingDate;
+      property ScheduledPostingDate: TDateTime read fScheduledPostingDate write fScheduledPostingDate;
       property GlJournal: TSQLGlJournal read fGlJournal write fGlJournal;
       property GlFiscalType: TSQLGlFiscalType read fGlFiscalType write fGlFiscalType;
       property VoucherRef: RawUTF8 read fVoucherRef write fVoucherRef;
@@ -1563,7 +1559,7 @@ type
   // 91
   TSQLGlReconciliation = class(TSQLRecord)
     private
-      fglReconciliationName: RawUTF8;
+      fGlReconciliationName: RawUTF8;
       FDescription: RawUTF8;
       fCreatedDate: TDateTime;
       fCreatedByUserLogin: TSQLUserLogin;
@@ -1576,7 +1572,7 @@ type
       fOpeningBalance: Currency;
       fReconciledDate: TDateTime;
     published
-      property  read  write ;
+      property GlReconciliationName: RawUTF8 read fGlReconciliationName write fGlReconciliationName;
       property Description: RawUTF8 read FDescription write FDescription;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
       property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
@@ -1719,11 +1715,11 @@ type
     private
       fVarianceReason: TSQLVarianceReason;
       fOrganizationParty: TSQLParty;
-      fGlAccountL TSQLGlAccount;
+      fGlAccountL: TSQLGlAccount;
     published
       property VarianceReason: TSQLVarianceReason read fVarianceReason write fVarianceReason;
       property OrganizationParty: TSQLParty read fOrganizationParty write fOrganizationParty;
-      property GlAccountL TSQLGlAccount read fGlAccountL write fGlAccountL;
+      property GlAccountL: TSQLGlAccount read fGlAccountL write fGlAccountL;
   end;
 
   // 100
@@ -1785,7 +1781,7 @@ type
       fAttrName: TSQLTermTypeAttr;
       fAttrValue: RawUTF8;
     published
-      property  read  write ;
+      property BillingAccountTerm: TSQLBillingAccountTerm read fBillingAccountTerm write fBillingAccountTerm;
       property AttrName: TSQLTermTypeAttr read fAttrName write fAttrName;
       property AttrValue: RawUTF8 read fAttrValue write fAttrValue;
   end;
@@ -2188,7 +2184,7 @@ type
       fPaymentGatewayConfigType: TSQLPaymentGatewayConfigType;
       FDescription: RawUTF8;
     published
-      property PaymentGatewayConfigType: TSQLPaymentGatewayConfigTyp read fPaymentGatewayConfigType write fPaymentGatewayConfigType;
+      property PaymentGatewayConfigType: TSQLPaymentGatewayConfigType read fPaymentGatewayConfigType write fPaymentGatewayConfigType;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
 
@@ -2376,7 +2372,7 @@ type
       property EnableTransmit: RawUTF8 read fEnableTransmit write fEnableTransmit;
       property LogFileName: RawUTF8 read fLogFileName write fLogFileName;
       property LoggingLevel: Integer read fLoggingLevel write fLoggingLevel;
-      property MaxLogFileSize: Intege read fMaxLogFileSize write fMaxLogFileSize;
+      property MaxLogFileSize: Integer read fMaxLogFileSize write fMaxLogFileSize;
       property StackTraceOn: Boolean read fStackTraceOn write fStackTraceOn;
       property RedirectUrl: RawUTF8 read fRedirectUrl write fRedirectUrl;
       property CancelReturnUrl: RawUTF8 read fCancelReturnUrl write fCancelReturnUrl;
@@ -2685,12 +2681,12 @@ type
   TSQLValueLinkKey = class(TSQLRecord)
     private
       fMerchant: Integer;
-      fPublicKey: TSQLBlob;
-      fPrivateKey: TSQLBlob;
-      fExchangeKey: TSQLBlob;
-      fWorkingKey: TSQLBlob;
-      fWorkingKeyIndex: TSQLBlob;
-      fLastWorkingKey: TSQLBlob;
+      fPublicKey: TSQLRawBlob;
+      fPrivateKey: TSQLRawBlob;
+      fExchangeKey: TSQLRawBlob;
+      fWorkingKey: TSQLRawBlob;
+      fWorkingKeyIndex: TSQLRawBlob;
+      fLastWorkingKey: TSQLRawBlob;
       fCreatedDate: TDateTime;
       fCreatedByTerminal: Integer;
       fCreatedByUserLogin: Integer;
@@ -2699,12 +2695,12 @@ type
       fLastModifiedByUserLogin: Integer;
     published
       property Merchant: Integer read fMerchant write fMerchant;
-      property PublicKey: TSQLBlob read fPublicKey write fPublicKey;
-      property PrivateKey: TSQLBlob read fPrivateKey write fPrivateKey;
-      property ExchangeKey: TSQLBlob read fExchangeKey write fExchangeKey;
-      property WorkingKey: TSQLBlob read fWorkingKey write fWorkingKey;
-      property WorkingKeyIndex: TSQLBlob read fWorkingKeyIndex write fWorkingKeyIndex;
-      property LastWorkingKey: TSQLBlob read fLastWorkingKey write fLastWorkingKey;
+      property PublicKey: TSQLRawBlob read fPublicKey write fPublicKey;
+      property PrivateKey: TSQLRawBlob read fPrivateKey write fPrivateKey;
+      property ExchangeKey: TSQLRawBlob read fExchangeKey write fExchangeKey;
+      property WorkingKey: TSQLRawBlob read fWorkingKey write fWorkingKey;
+      property WorkingKeyIndex: TSQLRawBlob read fWorkingKeyIndex write fWorkingKeyIndex;
+      property LastWorkingKey: TSQLRawBlob read fLastWorkingKey write fLastWorkingKey;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
       property CreatedByTerminal: Integer read fCreatedByTerminal write fCreatedByTerminal;
       property CreatedByUserLogin: Integer read fCreatedByUserLogin write fCreatedByUserLogin;
@@ -2727,7 +2723,7 @@ type
     published
       property Party: TSQLParty read fParty write fParty;
       property TaxAuthGeoId: Integer read fTaxAuthPartyId write fTaxAuthPartyId;
-      property TaxAuthPartyId: Integer read  write ;
+      property TaxAuthPartyId: Integer read fTaxAuthPartyId write fTaxAuthPartyId;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property PartyTaxId: Integer read fPartyTaxId write fPartyTaxId;
@@ -2825,7 +2821,7 @@ type
       FDescription: RawUTF8;
       fIsTaxInShippingPrice: Boolean;
     published
-      property  read  write ;
+      property TaxAuthorityRateSeq: Integer read fTaxAuthorityRateSeq write fTaxAuthorityRateSeq;
       property TaxAuthGeo: TSQLGeo read fTaxAuthGeo write fTaxAuthGeo;
       property TaxAuthParty: TSQLParty read fTaxAuthParty write fTaxAuthParty;
       property TaxAuthorityRateType: TSQLTaxAuthorityRateType read fTaxAuthorityRateType write fTaxAuthorityRateType;

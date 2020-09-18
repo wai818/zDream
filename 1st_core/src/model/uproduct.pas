@@ -588,7 +588,7 @@ type
       property PerMilliSecond: Double read fPerMilliSecond write fPerMilliSecond;
       property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
       property CostCustomMethod: TSQLCustomMethod read fCostCustomMethod write fCostCustomMethod;
-      property Description: RawUTF8 read fDescription writefDescription ;
+      property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 32
@@ -737,7 +737,10 @@ type
       fRoleType: TSQLCarrierShipmentMethod;      //?
       fShipmentMethodType: TSQLShipmentMethodType;
     published
-      property  read  write ;
+      property Facility: TSQLFacility read fFacility write fFacility;
+      property Party: TSQLParty read fParty write fParty;
+      property RoleType: TSQLCarrierShipmentMethod read fRoleType write fRoleType;
+      property ShipmentMethodType: TSQLShipmentMethodType read fShipmentMethodType write fShipmentMethodType;
   end;
 
   // 41
@@ -853,7 +856,7 @@ type
       fSection: Integer;
       fLevel: Integer;
       fPosition: Integer;
-      fGeoPoint: YSQLGeoPoint;
+      fGeoPoint: TSQLGeoPoint;
     published
       property Facility: TSQLFacility read fFacility write fFacility;
       property LocationSeq: Integer read fLocationSeq write fLocationSeq;
@@ -863,7 +866,7 @@ type
       property Section: Integer read fSection write fSection;
       property Level: Integer read fLevel write fLevel;
       property Position: Integer read fPosition write fPosition;
-      property GeoPoint: YSQLGeoPoint read fGeoPoint write fGeoPoint;
+      property GeoPoint: TSQLGeoPoint read fGeoPoint write fGeoPoint;
   end;
 
   // 49
@@ -876,7 +879,7 @@ type
       fThruDate: TDateTime;
     published
       property Facility: TSQLFacility read fFacility write fFacility;
-      property LocationSeq: Integer read fLocationSeq write ffLocationSeq;
+      property LocationSeq: Integer read fLocationSeq write fLocationSeq;
       property GeoPoint: TSQLGeoPoint read fGeoPoint write fGeoPoint;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
@@ -930,11 +933,11 @@ type
   TSQLFacilityTypeAttr = class(TSQLRecord)
     private
       fFacilityType: TSQLFacilityType;
-      fAttrName: FacilityAttribute;
+      fAttrName: TSQLFacilityAttribute;
       fDescription: RawUTF8;
     published
       property FacilityType: TSQLFacilityType read fFacilityType write fFacilityType;
-      property AttrName: FacilityAttribute read fAttrName write fAttrName;
+      property AttrName: TSQLFacilityAttribute read fAttrName write fAttrName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
@@ -1331,7 +1334,7 @@ type
       property Status: TSQLStatusItem read fStatus write fStatus;
       property StatusDatetime: TDateTime read fStatusDatetime write fStatusDatetime;
       property StatusEndDatetime: TDateTime read fStatusEndDatetime write fStatusEndDatetime;
-      property ChangeByUserLoginId: TSQLUserLogin read ChangeByUserLoginId write fChangeByUserLoginId;
+      property ChangeByUserLoginId: TSQLUserLogin read fChangeByUserLoginId write fChangeByUserLoginId;
       property OwnerParty: Integer read fOwnerParty write fOwnerParty;
       property Product: Integer read fProduct write fProduct;
   end;
@@ -1371,11 +1374,11 @@ type
     private
       fInventoryItemType: TSQLInventoryItemType;
       fAttrName: TSQLInventoryItemAttribute;
-      fDescription: TawUTF8;
+      fDescription: RawUTF8;
     published
       property InventoryItemType: TSQLInventoryItemType read fInventoryItemType write fInventoryItemType;
       property AttrName: TSQLInventoryItemAttribute read fAttrName write fAttrName;
-      property Description: RawUTF8 read FDescription write FDescription;
+      property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 77
@@ -1599,7 +1602,7 @@ type
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property TSQLFacility read fFacility write fFacility;
+      property Facility: TSQLFacility read fFacility write fFacility;
       property RunDate: TDateTime read fRunDate write fRunDate;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
@@ -1937,7 +1940,7 @@ type
       property ScrapFactor: Double read fScrapFactor write fScrapFactor;
       property Instruction: RawUTF8 read fInstruction write fInstruction;
       property RoutingWorkEffort: TSQLWorkEffort read fRoutingWorkEffort write fRoutingWorkEffort;
-      property EstimateCalcMethod: TSQLCustomMethod read EstimateCalcMethod write EstimateCalcMethod;
+      property EstimateCalcMethod: TSQLCustomMethod read fEstimateCalcMethod write fEstimateCalcMethod;
       property RecurrenceInfo: TSQLRecurrenceInfo read fRecurrenceInfo write fRecurrenceInfo;
   end;
 

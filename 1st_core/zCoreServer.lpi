@@ -25,7 +25,7 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <Units Count="11">
+    <Units Count="13">
       <Unit0>
         <Filename Value="zCoreServer.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -80,6 +80,16 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uManufacturing"/>
       </Unit10>
+      <Unit11>
+        <Filename Value="src\model\uhumanres.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uHumanres"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="src\model\ucommon.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uCommon"/>
+      </Unit12>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

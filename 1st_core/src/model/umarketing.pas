@@ -393,7 +393,7 @@ type
     private
       fOpportunityName: RawUTF8;
       fDescription: RawUTF8;
-      fNextStep: TSQLBlob;
+      fNextStep: TSQLRawBlob;
       fNextStepDate: TDateTime;
       fEstimatedAmount: Currency;
       fEstimatedProbability: Double;
@@ -407,7 +407,7 @@ type
     published
       property OpportunityName: RawUTF8 read fOpportunityName write fOpportunityName;
       property Description: RawUTF8 read fDescription write fDescription;
-      property NextStep: TSQLBlob read fNextStep write fNextStep;
+      property NextStep: TSQLRawBlob read fNextStep write fNextStep;
       property NextStepDate: TDateTime read fNextStepDate write fNextStepDate;
       property EstimatedAmount: Currency read fEstimatedAmount write fEstimatedAmount;
       property EstimatedProbability: Double read fEstimatedProbability write fEstimatedProbability;
@@ -425,23 +425,23 @@ type
     private
       fSalesOpportunity: TSQLSalesOpportunity;
       fDescription: RawUTF8;
-      fNextStep: TSQLBlob;
+      fNextStep: TSQLRawBlob;
       fEstimatedAmount: Currency;
       fEstimatedProbability: Double;
       fCurrencyUom: TSQLUom;
       fEstimatedCloseDate: TDateTime;
       fOpportunityStage: TSQLSalesOpportunityStage;
-      fChangeNote: TSQLBlob;
+      fChangeNote: TSQLRawBlob;
     published
       property SalesOpportunity: TSQLSalesOpportunity read fSalesOpportunity write fSalesOpportunity;
       property Description: RawUTF8 read fDescription write fDescription;
-      property NextStep: TSQLBlob read fNextStep write fNextStep;
+      property NextStep: TSQLRawBlob read fNextStep write fNextStep;
       property EstimatedAmount: Currency read fEstimatedAmount write fEstimatedAmount;
       property EstimatedProbability: Double read fEstimatedProbability write fEstimatedProbability;
       property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
       property EstimatedCloseDate: TDateTime read fEstimatedCloseDate write fEstimatedCloseDate;
       property OpportunityStage: TSQLSalesOpportunityStage read fOpportunityStage write fOpportunityStage;
-      property ChangeNote: TSQLBlob read fChangeNote write fChangeNote;
+      property ChangeNote: TSQLRawBlob read fChangeNote write fChangeNote;
   end;
 
   // 24
@@ -557,7 +557,7 @@ type
       fClosedAmount: Currency;
       fPercentOfQuotaForecast: Double;
       fPercentOfQuotaClosed: Double;
-      fChangeNote: TSQLBlob;
+      fChangeNote: TSQLRawBlob;
     published
       property SalesForecast: TSQLSalesForecast read fSalesForecast write fSalesForecast;
       property ParentSalesForecast: TSQLSalesForecast read fParentSalesForecast write fParentSalesForecast;
@@ -571,7 +571,7 @@ type
       property ClosedAmount: Currency read fClosedAmount write fClosedAmount;
       property PercentOfQuotaForecast: Double read fPercentOfQuotaForecast write fPercentOfQuotaForecast;
       property PercentOfQuotaClosed: Double read fPercentOfQuotaClosed write fPercentOfQuotaClosed;
-      property ChangeNote: TSQLBlob read fChangeNote write fChangeNote;
+      property ChangeNote: TSQLRawBlob read fChangeNote write fChangeNote;
   end;
 
   // 31
@@ -580,14 +580,14 @@ type
       fSalesOpportunity: TSQLSalesOpportunity;
       fCompetitorParty: TSQLParty;
       fPositionEnum: Integer;
-      fStrengths: TSQLBlob;
-      fWeaknesses: TSQLBlob;
+      fStrengths: TSQLRawBlob;
+      fWeaknesses: TSQLRawBlob;
     published
       property SalesOpportunity: TSQLSalesOpportunity read fSalesOpportunity write fSalesOpportunity;
       property CompetitorParty: TSQLParty read fCompetitorParty write fCompetitorParty;
       property PositionEnum: Integer read fPositionEnum write fPositionEnum;
-      property Strengths: TSQLBlob read fStrengths write fStrengths;
-      property Weaknesses: TSQLBlob read fWeaknesses write fWeaknesses;
+      property Strengths: TSQLRawBlob read fStrengths write fStrengths;
+      property Weaknesses: TSQLRawBlob read fWeaknesses write fWeaknesses;
   end;
 
   // 32

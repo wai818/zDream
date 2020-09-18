@@ -1493,63 +1493,6 @@ type
       property ManifestPolicies: RawUTF8 read fManifestPolicies write fManifestPolicies;
   end;
 
-  // 81
-  TSQLCustomTimePeriod = class(TSQLRecord)
-    private
-    published
-  end;
-
-  // 82
-  TSQLNoteData = class(TSQLRecord)
-    private
-    published
-  end;
-
-  // 83
-  TSQLServerHit = class(TSQLRecord)
-    private
-    published
-  end;
-
-  // 84
-  TSQLServerHitBin = class(TSQLRecord)
-    private
-    published
-  end;
-
-  // 85
-  TSQLVisit = class(TSQLRecord)
-    private
-    published
-  end;
-
-  // 86
-  TSQLVisitor = class(TSQLRecord)
-    private
-    published
-  end;
-
-  // 87
-  TSQLUserLogin = class(TSQLRecord)
-    private
-    published
-  end;
-
-  // 88
-  TSQLUserLoginHistory = class(TSQLRecord)
-    private
-    published
-  end;
-
-
-{
-  //
-  TSQL = class(TSQLRecord)
-    private
-    published
-      property  read  write ;
-  end;
-}
 implementation
 
 uses

@@ -8,6 +8,24 @@ uses
    SynCommons, mORMot;//Classes, SysUtils;
 
 type
+  TSQLUserLogin = class of TSQLRecord;
+  TSQLContent = class of TSQLRecord;
+  TSQLRecurrenceInfo = class of TSQLRecord;
+  TSQLSurveyResponse = class of TSQLRecord;
+  TSQLDataResource = class of TSQLRecord;
+  TSQLSurvey = class of TSQLRecord;
+  TSQLSurveyApplType = class of TSQLRecord;
+  TSQLJobSandbox = class of TSQLRecord;
+  TSQLPaymentGatewayConfigTyp = class of TSQLRecord;
+  TSQLDocument = class of TSQLRecord;
+  TSQLRuntimeData = class of TSQLRecord;
+  TSQLTemporalExpression = class of TSQLRecord;
+  TSQLSecurityGroup = class of TSQLRecord;
+
+
+
+
+
   TSQLAddendum = class of TSQLRecord;
   TSQLAgreement = class of TSQLRecord;
   TSQLAgreementAttribute = class of TSQLRecord;
@@ -88,14 +106,6 @@ type
   TSQLRoleType = class of TSQLRecord;
   TSQLRoleTypeAttr = class of TSQLRecord;
   TSQLVendor = class of TSQLRecord;
-  TSQLCustomTimePeriod = class of TSQLRecord;
-  TSQLNoteData = class of TSQLRecord;
-  TSQLServerHit = class of TSQLRecord;
-  TSQLServerHitBin = class of TSQLRecord;
-  TSQLVisit = class of TSQLRecord;
-  TSQLVisitor = class of TSQLRecord;
-  TSQLUserLogin = class of TSQLRecord;
-  TSQLUserLoginHistory = class of TSQLRecord;
 
 
   TSQLProdCatalog = class of TSQLRecord;
@@ -679,6 +689,107 @@ type
 
 
   TSQLProductManufacturingRule = class of TSQLRecord;
+  TSQLTechDataCalendar = class of TSQLRecord;
+  TSQLTechDataCalendarExcDay = class of TSQLRecord;
+  TSQLTechDataCalendarExcWeek = class of TSQLRecord;
+  TSQLTechDataCalendarWeek = class of TSQLRecord;
+  TSQLMrpEventType = class of TSQLRecord;
+  TSQLMrpEvent = class of TSQLRecord;
+
+
+
+  TSQLPartyQual = class of TSQLRecord;
+  TSQLPartyQualType = class of TSQLRecord;
+  TSQLPartyResume = class of TSQLRecord;
+  TSQLPartySkill = class of TSQLRecord;
+  TSQLPerfRatingType = class of TSQLRecord;
+  TSQLPerfReview = class of TSQLRecord;
+  TSQLPerfReviewItem = class of TSQLRecord;
+  TSQLPerfReviewItemType = class of TSQLRecord;
+  TSQLPerformanceNote = class of TSQLRecord;
+  TSQLPersonTraining = class of TSQLRecord;
+  TSQLResponsibilityType = class of TSQLRecord;
+  TSQLSkillType = class of TSQLRecord;
+  TSQLTrainingClassType = class of TSQLRecord;
+  TSQLBenefitType = class of TSQLRecord;
+  TSQLEmployment = class of TSQLRecord;
+  TSQLEmploymentApp = class of TSQLRecord;
+  TSQLEmploymentAppSourceType = class of TSQLRecord;
+  TSQLEmplLeave = class of TSQLRecord;
+  TSQLEmplLeaveType = class of TSQLRecord;
+  TSQLPartyBenefit = class of TSQLRecord;
+  TSQLPayGrade = class of TSQLRecord;
+  TSQLPayHistory = class of TSQLRecord;
+  TSQLPayrollPreference = class of TSQLRecord;
+  TSQLSalaryStep = class of TSQLRecord;
+  TSQLTerminationReason = class of TSQLRecord;
+  TSQLTerminationType = class of TSQLRecord;
+  TSQLUnemploymentClaim = class of TSQLRecord;
+  TSQLEmplPosition = class of TSQLRecord;
+  TSQLEmplPositionClassType = class of TSQLRecord;
+  TSQLEmplPositionFulfillment = class of TSQLRecord;
+  TSQLEmplPositionReportingStruct = class of TSQLRecord;
+  TSQLEmplPositionResponsibility = class of TSQLRecord;
+  TSQLEmplPositionType = class of TSQLRecord;
+  TSQLEmplPositionTypeClass = class of TSQLRecord;
+  TSQLValidResponsibility = class of TSQLRecord;
+  TSQLEmplPositionTypeRate = class of TSQLRecord;
+  TSQLJobRequisition = class of TSQLRecord;
+  TSQLJobInterview = class of TSQLRecord;
+  TSQLJobInterviewType = class of TSQLRecord;
+  TSQLTrainingRequest = class of TSQLRecord;
+  TSQLEmplLeaveReasonType = class of TSQLRecord;
+
+
+
+
+
+
+
+
+
+  TSQLDataSource = class of TSQLRecord;
+  TSQLDataSourceType = class of TSQLRecord;
+  TSQLEmailTemplateSetting = class of TSQLRecord;
+  TSQLEnumeration = class of TSQLRecord;
+  TSQLEnumerationType = class of TSQLRecord;
+  TSQLCountryCapital = class of TSQLRecord;
+  TSQLCountryCode = class of TSQLRecord;
+  TSQLCountryTeleCode = class of TSQLRecord;
+  TSQLCountryAddressFormat = class of TSQLRecord;
+  TSQLGeo = class of TSQLRecord;
+  TSQLGeoAssoc = class of TSQLRecord;
+  TSQLGeoAssocType = class of TSQLRecord;
+  TSQLGeoPoint = class of TSQLRecord;
+  TSQLGeoType = class of TSQLRecord;
+  TSQLKeywordThesaurus = class of TSQLRecord;
+  TSQLStandardLanguage = class of TSQLRecord;
+  TSQLCustomMethod = class of TSQLRecord;
+  TSQLCustomMethodType = class of TSQLRecord;
+  TSQLNoteData = class of TSQLRecord;
+  TSQLCustomTimePeriod = class of TSQLRecord;
+  TSQLPeriodType = class of TSQLRecord;
+  TSQLStatusItem = class of TSQLRecord;
+  TSQLStatusType = class of TSQLRecord;
+  TSQLStatusValidChange = class of TSQLRecord;
+  TSQLUom = class of TSQLRecord;
+  TSQLUomConversion = class of TSQLRecord;
+  TSQLUomConversionDated = class of TSQLRecord;
+  TSQLUomGroup = class of TSQLRecord;
+  TSQLUomType = class of TSQLRecord;
+  TSQLUserPreference = class of TSQLRecord;
+  TSQLUserPrefGroupType = class of TSQLRecord;
+  TSQLVisualThemeSet = class of TSQLRecord;
+  TSQLVisualTheme = class of TSQLRecord;
+  TSQLVisualThemeResource = class of TSQLRecord;
+  TSQLPortalPortlet = class of TSQLRecord;
+  TSQLPortletCategory = class of TSQLRecord;
+  TSQLPortletPortletCategory = class of TSQLRecord;
+  TSQLPortalPage = class of TSQLRecord;
+  TSQLPortalPageColumn = class of TSQLRecord;
+  TSQLPortalPagePortlet = class of TSQLRecord;
+  TSQLPortletAttribute = class of TSQLRecord;
+  TSQLSystemProperty = class of TSQLRecord;
 
 implementation
 

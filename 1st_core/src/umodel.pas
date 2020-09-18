@@ -5,7 +5,8 @@ unit uModel;
 interface
 
 uses
-  mORMot, uOrder, uParty, uProduct;
+  mORMot, uParty, uProduct, uOrder, uAccounting, uShipment, uMarketing, uWorkEffort,
+  uManufacturing, uHumanres, uCommon;
   //Classes, SysUtils;
 
 const
@@ -18,6 +19,8 @@ const
   ROOT_NAME_SHIPMENT = 'shipment';
   ROOT_NAME_MARKETING = 'marketing';
   ROOT_NAME_MANUFACTURING = 'manufacturing';
+  ROOT_NAME_HUMANRES = 'humanres';
+  ROOT_NAME_COMMON = 'common';
 
   //function CreateModel: TSQLModel;
   function CreatePartyModel: TSQLModel;
@@ -28,6 +31,8 @@ const
   function CreateShipmentModel: TSQLModel;
   function CreateMarketingModel: TSQLModel;
   function CreateManufacturingModel: TSQLModel;
+  function CreateHumanresModel: TSQLModel;
+  function CreateCommonModel: TSQLModel;
 
 implementation
 
@@ -57,8 +62,7 @@ begin
     TSQLPartyInvitationRoleAssoc, TSQLPartyNameHistory, TSQLPartyNote, TSQLPartyProfileDefault,
     TSQLPartyRelationship, TSQLPartyRelationshipType, TSQLPartyRole, TSQLPartyStatus,
     TSQLPartyType, TSQLPartyTypeAttr, TSQLPerson, TSQLPriorityType, TSQLRoleType,
-    TSQLRoleTypeAttr, TSQLVendor, TSQLCustomTimePeriod, TSQLNoteData, TSQLServerHit,
-    TSQLServerHitBin, TSQLVisit, TSQLVisitor, TSQLUserLogin, TSQLUserLoginHistory
+    TSQLRoleTypeAttr, TSQLVendor, TSQLUserLogin
   ], ROOT_NAME_PARTY);
 end;
 
@@ -199,7 +203,7 @@ function CreateWorkEffortModel: TSQLModel;
 begin
   result := TSQLModel.Create([
     TSQLTimeEntry, TSQLTimesheet, TSQLTimesheetRole, TSQLApplicationSandbox, TSQLCommunicationEventWorkEff,
-    TSQLDeliverable, TSQLDeliverableType, TSQLWorkEffort, TSQLWorkEffortAssoc， TSQLWorkEffortAssocAttribute,
+    TSQLDeliverable, TSQLDeliverableType, TSQLWorkEffort, TSQLWorkEffortAssoc, TSQLWorkEffortAssocAttribute,
     TSQLWorkEffortAssocType, TSQLWorkEffortAssocTypeAttr, TSQLWorkEffortAttribute, TSQLWorkEffortBilling,
     TSQLWorkEffortContactMech, TSQLWorkEffortContent, TSQLWorkEffortContentType, TSQLWorkEffortDeliverableProd,
     TSQLWorkEffortEventReminder, TSQLWorkEffortFixedAssetAssign, TSQLWorkEffortFixedAssetStd,
@@ -246,10 +250,42 @@ end;
 function CreateManufacturingModel: TSQLModel;
 begin
   result := TSQLModel.Create([
-    TSQLProductManufacturingRule
+    TSQLProductManufacturingRule, TSQLTechDataCalendar, TSQLTechDataCalendarExcDay,
+    TSQLTechDataCalendarExcWeek, TSQLTechDataCalendarWeek, TSQLMrpEventType, TSQLMrpEvent
   ], ROOT_NAME_MANUFACTURING);
 end;
 
+function CreateHumanresModel: TSQLModel;
+begin
+  result := TSQLModel.Create([
+    TSQLPartyQual, TSQLPartyQualType, TSQLPartyResume, TSQLPartySkill, TSQLPerfRatingType,
+    TSQLPerfReview, TSQLPerfReviewItem, TSQLPerfReviewItemType, TSQLPerformanceNote, TSQLPersonTraining,
+    TSQLResponsibilityType, TSQLSkillType, TSQLTrainingClassType, TSQLBenefitType, TSQLEmployment,
+    TSQLEmploymentApp, TSQLEmploymentAppSourceType, TSQLEmplLeave, TSQLEmplLeaveType,
+    TSQLPartyBenefit, TSQLPayGrade, TSQLPayHistory, TSQLPayrollPreference, TSQLSalaryStep,
+    TSQLTerminationReason, TSQLTerminationType, TSQLUnemploymentClaim, TSQLEmplPosition,
+    TSQLEmplPositionClassType, TSQLEmplPositionFulfillment, TSQLEmplPositionReportingStruct,
+    TSQLEmplPositionResponsibility, TSQLEmplPositionType, TSQLEmplPositionTypeClass,
+    TSQLValidResponsibility, TSQLEmplPositionTypeRate, TSQLJobRequisition, TSQLJobInterview,
+    TSQLJobInterviewType, TSQLTrainingRequest, TSQLEmplLeaveReasonType
+  ], ROOT_NAME_HUMANRES);
+end;
+
+function CreateCommonModel: TSQLModel;
+begin
+  result := TSQLModel.Create([
+    TSQLDataSource, TSQLDataSourceType, TSQLEmailTemplateSetting, TSQLEnumeration,
+    TSQLEnumerationType, TSQLCountryCapital, TSQLCountryCode, TSQLCountryTeleCode,
+    TSQLCountryAddressFormat, TSQLGeo, TSQLGeoAssoc, TSQLGeoAssocType, TSQLGeoPoint,
+    TSQLGeoType, TSQLKeywordThesaurus, TSQLStandardLanguage, TSQLCustomMethod, TSQLCustomMethodType,
+    TSQLNoteData, TSQLCustomTimePeriod, TSQLPeriodType, TSQLStatusItem, TSQLStatusType,
+    TSQLStatusValidChange, TSQLUom, TSQLUomConversion, TSQLUomConversionDated, TSQLUomGroup,
+    TSQLUomType, TSQLUserPreference, TSQLUserPrefGroupType, TSQLVisualThemeSet, TSQLVisualTheme,
+    TSQLVisualThemeResource, TSQLPortalPortlet, TSQLPortletCategory, TSQLPortletPortletCategory,
+    TSQLPortalPage, TSQLPortalPageColumn, TSQLPortalPagePortlet, TSQLPortletAttribute,
+    TSQLSystemProperty
+  ], ROOT_NAME_COMMON);
+end;
 
 end.
 

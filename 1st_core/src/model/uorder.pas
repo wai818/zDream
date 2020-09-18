@@ -1171,7 +1171,7 @@ type
     private
       fOrderAdjustmentType: TSQLOrderAdjustmentType;
       fQuote: TSQLQuote;
-      fQuoteItemSeqId: Integer;
+      fQuoteItemSeq: Integer;
       fComments: RawUTF8;
       fDescription: RawUTF8;
       fAmount: Currency;
@@ -1196,7 +1196,7 @@ type
       fLastModifiedDate: TDateTime;
       fLastModifiedByUserLogin: TSQLUserLogin;
     published
-      property  read  write ;
+      property OrderAdjustmentType: TSQLOrderAdjustmentType read fOrderAdjustmentType write fOrderAdjustmentType;
       property Quote: TSQLQuote read fQuote write fQuote;
       property QuoteItemSeq: Integer read fQuoteItemSeq write fQuoteItemSeq;
       property Comments: RawUTF8 read fComments write fComments;

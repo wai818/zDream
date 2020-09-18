@@ -14,7 +14,7 @@ type
       fParty: TSQLParty;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fRateTypeL TSQLRateType;
+      fRateType: TSQLRateType;
       fWorkEffort: TSQLWorkEffort;
       fTimesheet: TSQLTimesheet;
       fInvoice: TSQLInvoice;
@@ -25,7 +25,7 @@ type
       property Party: TSQLParty read fParty write fParty;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property RateTypeL TSQLRateType read fRateTypeL write fRateTypeL;
+      property RateType: TSQLRateType read fRateType write fRateType;
       property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
       property Timesheet: TSQLTimesheet read fTimesheet write fTimesheet;
       property Invoice: TSQLInvoice read fInvoice write fInvoice;
@@ -212,7 +212,7 @@ type
       property QuantityRejected: Double read fQuantityRejected write fQuantityRejected;
       property ReservPersons: Double read fReservPersons write fReservPersons;
       property Reserv2ndPPPerc: Double read fReserv2ndPPPerc write fReserv2ndPPPerc;
-      property ReservNthPPPerc: Double read  write fReservNthPPPerc;
+      property ReservNthPPPerc: Double read fReservNthPPPerc write fReservNthPPPerc;
       property AccommodationMap: TSQLAccommodationMap read fAccommodationMap write fAccommodationMap;
       property AccommodationSpot: TSQLAccommodationSpot read fAccommodationSpot write fAccommodationSpot;
       property RevisionNumber: Integer read fRevisionNumber write fRevisionNumber;
@@ -474,10 +474,10 @@ type
   TSQLWorkEffortIcalData = class(TSQLRecord)
     private
       fWorkEffort: TSQLWorkEffort;
-      fIcalData: TSQLBlob;
+      fIcalData: TSQLRawBlob;
     published
       property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property IcalData: TSQLBlob read fIcalData write fIcalData;
+      property IcalData: TSQLRawBlob read fIcalData write fIcalData;
   end;
 
   // 25
@@ -599,7 +599,7 @@ type
       fStatus: TSQLStatusItem;
       fPostedAnonymous: Boolean;
       fRating: Double;
-      fReviewText: TSQLBolb;
+      fReviewText: TSQLRawBlob;
    published
       property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
       property UserLogin: TSQLUserLogin read fUserLogin write fUserLogin;
@@ -607,7 +607,7 @@ type
       property Status: TSQLStatusItem read fStatus write fStatus;
       property PostedAnonymous: Boolean read fPostedAnonymous write fPostedAnonymous;
       property Rating: Double read fRating write fRating;
-      property ReviewText: TSQLBolb read fReviewText write fReviewText;
+      property ReviewText: TSQLRawBlob read fReviewText write fReviewText;
   end;
 
   // 33

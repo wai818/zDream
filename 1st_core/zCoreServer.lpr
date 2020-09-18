@@ -11,7 +11,8 @@ uses
   SynSQLite3Static,
   //SynSQLite3,
   mORMot, mORMotSQLite3, mORMotHttpServer, mORMotHttpClient, uModel,
-  uForwardDeclaration, uAccounting, uWorkEffort, uShipment, uMarketing, uManufacturing;
+  uForwardDeclaration, uAccounting, uWorkEffort, uShipment, uMarketing,
+  uManufacturing, uHumanres, uCommon;
 
 type
 
