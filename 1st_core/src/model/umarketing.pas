@@ -11,14 +11,14 @@ type
   // 1
   TSQLMarketingCampaign = class(TSQLRecord)
     private
-      fParentCampaign: TSQLMarketingCampaign;
-      fStatus: TSQLStatusItem;
+      fParentCampaign: TSQLMarketingCampaignID;
+      fStatus: TSQLStatusItemID;
       fCampaignName: RawUTF8;
       fCampaignSummary: RawUTF8;
       fBudgetedCost: Currency;
       fActualCost: Currency;
       fEstimatedCost: Currency;
-      fCurrencyUom: TSQLUom;
+      fCurrencyUom: TSQLUomID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fIsActive: Boolean;
@@ -27,17 +27,17 @@ type
       fExpectedRevenue: Currency;
       fNumSent: Integer;
       fStartDate: TDateTime;
-      fCreatedByUserLogin: TSQLUserLogin;
-      fLastModifiedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
     published
-      property ParentCampaign: TSQLMarketingCampaign read fParentCampaign write fParentCampaign;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property ParentCampaign: TSQLMarketingCampaignID read fParentCampaign write fParentCampaign;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property CampaignName: RawUTF8 read fCampaignName write fCampaignName;
       property CampaignSummary: RawUTF8 read fCampaignSummary write fCampaignSummary;
       property BudgetedCost: Currency read fBudgetedCost write fBudgetedCost;
       property ActualCost: Currency read fActualCost write fActualCost;
       property EstimatedCost: Currency read fEstimatedCost write fEstimatedCost;
-      property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
+      property CurrencyUom: TSQLUomID read fCurrencyUom write fCurrencyUom;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property IsActive: Boolean read fIsActive write fIsActive;
@@ -46,30 +46,30 @@ type
       property ExpectedRevenue: Currency read fExpectedRevenue write fExpectedRevenue;
       property NumSent: Integer read fNumSent write fNumSent;
       property StartDate: TDateTime read fStartDate write fStartDate;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
-      property LastModifiedByUserLogin: TSQLUserLogin read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
   end;
 
   // 2
   TSQLMarketingCampaignNote = class(TSQLRecord)
     private
-      fMarketingCampaign: TSQLMarketingCampaign;
-      fNote: TSQLNoteData;
+      fMarketingCampaign: TSQLMarketingCampaignID;
+      fNote: TSQLNoteDataID;
     published
-      property MarketingCampaign: TSQLMarketingCampaign read fMarketingCampaign write fMarketingCampaign;
-      property Note: TSQLNoteData read fNote write fNote;
+      property MarketingCampaign: TSQLMarketingCampaignID read fMarketingCampaign write fMarketingCampaign;
+      property Note: TSQLNoteDataID read fNote write fNote;
   end;
 
   // 3
   TSQLMarketingCampaignPrice = class(TSQLRecord)
     private
-      fMarketingCampaign: TSQLMarketingCampaign;
-      fProductPriceRule: TSQLProductPriceRule;
+      fMarketingCampaign: TSQLMarketingCampaignID;
+      fProductPriceRule: TSQLProductPriceRuleID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property MarketingCampaign: TSQLMarketingCampaign read fMarketingCampaign write fMarketingCampaign;
-      property ProductPriceRule: TSQLProductPriceRule read fProductPriceRule write fProductPriceRule;
+      property MarketingCampaign: TSQLMarketingCampaignID read fMarketingCampaign write fMarketingCampaign;
+      property ProductPriceRule: TSQLProductPriceRuleID read fProductPriceRule write fProductPriceRule;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
  end;
@@ -77,13 +77,13 @@ type
   // 4
   TSQLMarketingCampaignPromo = class(TSQLRecord)
     private
-      fMarketingCampaign: TSQLMarketingCampaign;
-      fProductPromo: TSQLProductPromo;
+      fMarketingCampaign: TSQLMarketingCampaignID;
+      fProductPromo: TSQLProductPromoID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property MarketingCampaign: TSQLMarketingCampaign read fMarketingCampaign write fMarketingCampaign;
-      property ProductPromo: TSQLProductPromo read fProductPromo write fProductPromo;
+      property MarketingCampaign: TSQLMarketingCampaignID read fMarketingCampaign write fMarketingCampaign;
+      property ProductPromo: TSQLProductPromoID read fProductPromo write fProductPromo;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -91,15 +91,15 @@ type
   // 5
   TSQLMarketingCampaignRole = class(TSQLRecord)
     private
-      fMarketingCampaign: TSQLMarketingCampaign;
-      fParty: TSQLParty;
-      fRoleType: TSQLRoleType;
+      fMarketingCampaign: TSQLMarketingCampaignID;
+      fParty: TSQLPartyID;
+      fRoleType: TSQLRoleTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property MarketingCampaign: TSQLMarketingCampaign read fMarketingCampaign write fMarketingCampaign;
-      property Party: TSQLParty read fParty write fParty;
-      property RoleType: TSQLRoleType read fRoleType write fRoleType;
+      property MarketingCampaign: TSQLMarketingCampaignID read fMarketingCampaign write fMarketingCampaign;
+      property Party: TSQLPartyID read fParty write fParty;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -107,51 +107,51 @@ type
   // 6
   TSQLContactList = class(TSQLRecord)
     private
-      fContactListType: TSQLContactListType;
-      fContactMechType: TSQLContactMechType;
-      fMarketingCampaign: TSQLMarketingCampaign;
+      fContactListType: TSQLContactListTypeID;
+      fContactMechType: TSQLContactMechTypeID;
+      fMarketingCampaign: TSQLMarketingCampaignID;
       fContactListName: RawUTF8;
       fDescription: RawUTF8;
       fComments: RawUTF8;
       fIsPublic: Boolean;
       fSingleUse: Boolean;
-      fOwnerParty: TSQLParty;
+      fOwnerParty: TSQLPartyID;
       fVerifyEmailFrom: RawUTF8;
       fVerifyEmailScreen: RawUTF8;
       fVerifyEmailSubject: RawUTF8;
       fVerifyEmailWebSite: Integer;
       fOptOutScreen: RawUTF8;
-      fCreatedByUserLogin: TSQLUserLogin;
-      fLastModifiedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
     published
-      property ContactListType: TSQLContactListType read fContactListType write fContactListType;
-      property ContactMechType: TSQLContactMechType read fContactMechType write fContactMechType;
-      property MarketingCampaign: TSQLMarketingCampaign read fMarketingCampaign write fMarketingCampaign;
+      property ContactListType: TSQLContactListTypeID read fContactListType write fContactListType;
+      property ContactMechType: TSQLContactMechTypeID read fContactMechType write fContactMechType;
+      property MarketingCampaign: TSQLMarketingCampaignID read fMarketingCampaign write fMarketingCampaign;
       property ContactListName: RawUTF8 read fContactListName write fContactListName;
       property Description: RawUTF8 read fDescription write fDescription;
       property Comments: RawUTF8 read fComments write fComments;
       property IsPublic: Boolean read fIsPublic write fIsPublic;
       property SingleUse: Boolean read fSingleUse write fSingleUse;
-      property OwnerParty: TSQLParty read fOwnerParty write fOwnerParty;
+      property OwnerParty: TSQLPartyID read fOwnerParty write fOwnerParty;
       property VerifyEmailFrom: RawUTF8 read fVerifyEmailFrom write fVerifyEmailFrom;
       property VerifyEmailScreen: RawUTF8 read fVerifyEmailScreen write fVerifyEmailScreen;
       property VerifyEmailSubject: RawUTF8 read fVerifyEmailSubject write fVerifyEmailSubject;
       property VerifyEmailWebSite: Integer read fVerifyEmailWebSite write fVerifyEmailWebSite;
       property OptOutScreen: RawUTF8 read fOptOutScreen write fOptOutScreen;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
-      property LastModifiedByUserLogin: TSQLUserLogin read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
   end;
 
   // 7
   TSQLWebSiteContactList = class(TSQLRecord)
     private
-      fWebSite: TSQLWebSite;
-      fContactList: TSQLContactList;
+      fWebSite: TSQLWebSiteID;
+      fContactList: TSQLContactListID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property WebSite: TSQLWebSite read fWebSite write fWebSite;
-      property ContactList: TSQLContactList read fContactList write fContactList;
+      property WebSite: TSQLWebSiteID read fWebSite write fWebSite;
+      property ContactList: TSQLContactListID read fContactList write fContactList;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -159,58 +159,58 @@ type
   // 8
   TSQLContactListCommStatus = class(TSQLRecord)
     private
-      fContactList: TSQLContactList;
-      fCommunicationEvent: TSQLCommunicationEvent;
-      fContactMech: TSQLContactMech;
-      fParty: TSQLParty;
+      fContactList: TSQLContactListID;
+      fCommunicationEvent: TSQLCommunicationEventID;
+      fContactMech: TSQLContactMechID;
+      fParty: TSQLPartyID;
       fMessage: RawUTF8;
-      fStatus: TSQLStatusItem;
-      fChangeByUserLogin: TSQLUserLogin;
+      fStatus: TSQLStatusItemID;
+      fChangeByUserLogin: TSQLUserLoginID;
     published
-      property ContactList: TSQLContactList read fContactList write fContactList;
-      property CommunicationEvent: TSQLCommunicationEvent read fCommunicationEvent write fCommunicationEvent;
-      property ContactMech: TSQLContactMech read fContactMech write fContactMech;
-      property Party: TSQLParty read fParty write fParty;
+      property ContactList: TSQLContactListID read fContactList write fContactList;
+      property CommunicationEvent: TSQLCommunicationEventID read fCommunicationEvent write fCommunicationEvent;
+      property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
+      property Party: TSQLPartyID read fParty write fParty;
       property Message: RawUTF8 read fMessage write fMessage;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property ChangeByUserLogin: TSQLUserLogin read fChangeByUserLogin write fChangeByUserLogin;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property ChangeByUserLogin: TSQLUserLoginID read fChangeByUserLogin write fChangeByUserLogin;
   end;
 
   // 9
   TSQLContactListParty = class(TSQLRecord)
     private
-      fContactList: TSQLContactList;
-      fParty: TSQLParty;
+      fContactList: TSQLContactListID;
+      fParty: TSQLPartyID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fStatus: TSQLStatusItem;
-      fpreferredContactMech: TSQLContactMech;
+      fStatus: TSQLStatusItemID;
+      fpreferredContactMech: TSQLContactMechID;
     published
-      property ContactList: TSQLContactList read fContactList write fContactList;
-      property Party: TSQLParty read fParty write fParty;
+      property ContactList: TSQLContactListID read fContactList write fContactList;
+      property Party: TSQLPartyID read fParty write fParty;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property preferredContactMech: TSQLContactMech read fpreferredContactMech write fpreferredContactMech;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property preferredContactMech: TSQLContactMechID read fpreferredContactMech write fpreferredContactMech;
   end;
 
   // 10
   TSQLContactListPartyStatus = class(TSQLRecord)
     private
-      fContactList: TSQLContactList;
-      fParty: TSQLParty;
+      fContactList: TSQLContactListID;
+      fParty: TSQLPartyID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fStatus: TSQLStatusItem;
-      fSetByUserLogin: TSQLUserLogin;
+      fStatus: TSQLStatusItemID;
+      fSetByUserLogin: TSQLUserLoginID;
       fOptInVerifyCode: RawUTF8;
     published
-      property ContactList: TSQLContactList read fContactList write fContactList;
-      property Party: TSQLParty read fParty write fParty;
+      property ContactList: TSQLContactListID read fContactList write fContactList;
+      property Party: TSQLPartyID read fParty write fParty;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property SetByUserLogin: TSQLUserLogin read fSetByUserLogin write fSetByUserLogin;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property SetByUserLogin: TSQLUserLoginID read fSetByUserLogin write fSetByUserLogin;
       property OptInVerifyCode: RawUTF8 read fOptInVerifyCode write fOptInVerifyCode;
   end;
 
@@ -227,45 +227,45 @@ type
   // 12
   TSQLSegmentGroup = class(TSQLRecord)
     private
-      fSegmentGroupType: TSQLSegmentGroupType;
+      fSegmentGroupType: TSQLSegmentGroupTypeID;
       fDescription: RawUTF8;
-      fProductStore: TSQLProductStore;
+      fProductStore: TSQLProductStoreID;
     published
-      property SegmentGroupType: TSQLSegmentGroupType read fSegmentGroupType write fSegmentGroupType;
+      property SegmentGroupType: TSQLSegmentGroupTypeID read fSegmentGroupType write fSegmentGroupType;
       property Description: RawUTF8 read fDescription write fDescription;
-      property ProductStore: TSQLProductStore read fProductStore write fProductStore;
+      property ProductStore: TSQLProductStoreID read fProductStore write fProductStore;
   end;
 
   // 13
   TSQLSegmentGroupClassification = class(TSQLRecord)
     private
-      fSegmentGroup: TSQLSegmentGroup;
-      fPartyClassificationGroup: TSQLPartyClassificationGroup;
+      fSegmentGroup: TSQLSegmentGroupID;
+      fPartyClassificationGroup: TSQLPartyClassificationGroupID;
     published
-      property SegmentGroup: TSQLSegmentGroup read fSegmentGroup write fSegmentGroup;
-      property PartyClassificationGroup: TSQLPartyClassificationGroup read fPartyClassificationGroup write fPartyClassificationGroup;
+      property SegmentGroup: TSQLSegmentGroupID read fSegmentGroup write fSegmentGroup;
+      property PartyClassificationGroup: TSQLPartyClassificationGroupID read fPartyClassificationGroup write fPartyClassificationGroup;
   end;
 
   // 14
   TSQLSegmentGroupGeo = class(TSQLRecord)
     private
-      fSegmentGroup: TSQLSegmentGroup;
-      fGeo: TSQLGeo;
+      fSegmentGroup: TSQLSegmentGroupID;
+      fGeo: TSQLGeoID;
     published
-      property SegmentGroup: TSQLSegmentGroup read fSegmentGroup write fSegmentGroup;
-      property Geo: TSQLGeo read fGeo write fGeo;
+      property SegmentGroup: TSQLSegmentGroupID read fSegmentGroup write fSegmentGroup;
+      property Geo: TSQLGeoID read fGeo write fGeo;
   end;
 
   // 15
   TSQLSegmentGroupRole = class(TSQLRecord)
     private
-      fSegmentGroup: TSQLSegmentGroup;
-      fParty: TSQLParty;
-      fRoleType: TSQLRoleType;
+      fSegmentGroup: TSQLSegmentGroupID;
+      fParty: TSQLPartyID;
+      fRoleType: TSQLRoleTypeID;
     published
-      property SegmentGroup: TSQLSegmentGroup read fSegmentGroup write fSegmentGroup;
-      property Party: TSQLParty read fParty write fParty;
-      property RoleType: TSQLRoleType read fRoleType write fRoleType;
+      property SegmentGroup: TSQLSegmentGroupID read fSegmentGroup write fSegmentGroup;
+      property Party: TSQLPartyID read fParty write fParty;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
   end;
 
   // 16
@@ -281,8 +281,8 @@ type
   // 17
   TSQLTrackingCode = class(TSQLRecord)
     private
-      fTrackingCodeType: TSQLTrackingCodeType;
-      fMarketingCampaign: TSQLMarketingCampaign;
+      fTrackingCodeType: TSQLTrackingCodeTypeID;
+      fMarketingCampaign: TSQLMarketingCampaignID;
       fRedirectUrl: RawUTF8;
       fOverrideLogo: RawUTF8;
       fOverrideCss: RawUTF8;
@@ -296,12 +296,12 @@ type
       fGroupId: Integer;
       fSubgroupId: Integer;
       fCreatedDate: TDateTime;
-      fCreatedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
-      fLastModifiedByUserLogin: TSQLUserLogin;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
     published
-      property TrackingCodeType: TSQLTrackingCodeType read fTrackingCodeType write fTrackingCodeType;
-      property MarketingCampaign: TSQLMarketingCampaign read fMarketingCampaign write fMarketingCampaign;
+      property TrackingCodeType: TSQLTrackingCodeTypeID read fTrackingCodeType write fTrackingCodeType;
+      property MarketingCampaign: TSQLMarketingCampaignID read fMarketingCampaign write fMarketingCampaign;
       property RedirectUrl: RawUTF8 read fRedirectUrl write fRedirectUrl;
       property OverrideLogo: RawUTF8 read fOverrideLogo write fOverrideLogo;
       property OverrideCss: RawUTF8 read fOverrideCss write fOverrideCss;
@@ -315,25 +315,25 @@ type
       property GroupId: Integer read fGroupId write fGroupId;
       property SubgroupId: Integer read fSubgroupId write fSubgroupId;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
       property LastModifiedDate: TDateTime read fLastModifiedDate write fLastModifiedDate;
-      property LastModifiedByUserLogin: TSQLUserLogin read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
   end;
 
   // 18
   TSQLTrackingCodeOrder = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
-      fTrackingCodeType: TSQLTrackingCodeType;
-      fTrackingCode: TSQLTrackingCode;
+      fOrderId: TSQLOrderHeaderID;
+      fTrackingCodeType: TSQLTrackingCodeTypeID;
+      fTrackingCode: TSQLTrackingCodeID;
       fIsBillable: Boolean;
       fSiteId: RawUTF8;
       fHasExported: Boolean;
       fAffiliateReferredTimeStamp: TDateTime;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
-      property TrackingCodeType: TSQLTrackingCodeType read fTrackingCodeType write fTrackingCodeType;
-      property TrackingCode: TSQLTrackingCode read fTrackingCode write fTrackingCode;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
+      property TrackingCodeType: TSQLTrackingCodeTypeID read fTrackingCodeType write fTrackingCodeType;
+      property TrackingCode: TSQLTrackingCodeID read fTrackingCode write fTrackingCode;
       property IsBillable: Boolean read fIsBillable write fIsBillable;
       property SiteId: RawUTF8 read fSiteId write fSiteId;
       property HasExported: Boolean read fHasExported write fHasExported;
@@ -343,21 +343,21 @@ type
   // 19
   TSQLTrackingCodeOrderReturn = class(TSQLRecord)
     private
-      fReturnId: TSQLReturnHeader;
-      fOrderId: TSQLOrderHeader;
+      fReturnId: TSQLReturnHeaderID;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeqId: Integer;
-      fTrackingCodeType: TSQLTrackingCodeType;
-      fTrackingCode: TSQLTrackingCode;
+      fTrackingCodeType: TSQLTrackingCodeTypeID;
+      fTrackingCode: TSQLTrackingCodeID;
       fIsBillable: Boolean;
       fSiteId: RawUTF8;
       fHasExported: Boolean;
       fAffiliateReferredTimeStamp: TDateTime;
     published
-      property ReturnId: TSQLReturnHeader read fReturnId write fReturnId;
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property ReturnId: TSQLReturnHeaderID read fReturnId write fReturnId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeqId: Integer read fOrderItemSeqId write fOrderItemSeqId;
-      property TrackingCodeType: TSQLTrackingCodeType read fTrackingCodeType write fTrackingCodeType;
-      property TrackingCode: TSQLTrackingCode read fTrackingCode write fTrackingCode;
+      property TrackingCodeType: TSQLTrackingCodeTypeID read fTrackingCodeType write fTrackingCodeType;
+      property TrackingCode: TSQLTrackingCodeID read fTrackingCode write fTrackingCode;
       property IsBillable: Boolean read fIsBillable write fIsBillable;
       property SiteId: RawUTF8 read fSiteId write fSiteId;
       property HasExported: Boolean read fHasExported write fHasExported;
@@ -377,15 +377,15 @@ type
   // 21
   TSQLTrackingCodeVisit = class(TSQLRecord)
     private
-      fTrackingCode: TSQLTrackingCode;
+      fTrackingCode: TSQLTrackingCodeID;
       fVisitId: Integer;
       fFromDate: TDateTime;
-      fSourceEnum: TSQLEnumeration;
+      fSourceEnum: TSQLEnumerationID;
     published
-      property TrackingCode: TSQLTrackingCode read fTrackingCode write fTrackingCode;
+      property TrackingCode: TSQLTrackingCodeID read fTrackingCode write fTrackingCode;
       property VisitId: Integer read fVisitId write fVisitId;
       property FromDate: TDateTime read fFromDate write fFromDate;
-      property SourceEnum: TSQLEnumeration read fSourceEnum write fSourceEnum;
+      property SourceEnum: TSQLEnumerationID read fSourceEnum write fSourceEnum;
   end;
 
   // 22
@@ -397,13 +397,13 @@ type
       fNextStepDate: TDateTime;
       fEstimatedAmount: Currency;
       fEstimatedProbability: Double;
-      fCurrencyUom: TSQLUom;
-      fMarketingCampaign: TSQLMarketingCampaign;
+      fCurrencyUom: TSQLUomID;
+      fMarketingCampaign: TSQLMarketingCampaignID;
       fDataSourceId: Integer;
       fEstimatedCloseDate: TDateTime;
-      fOpportunityStage: TSQLSalesOpportunityStage;
-      fTypeEnum: TSQLEnumeration;
-      fCreatedByUserLogin: TSQLUserLogin;
+      fOpportunityStage: TSQLSalesOpportunityStageID;
+      fTypeEnum: TSQLEnumerationID;
+      fCreatedByUserLogin: TSQLUserLoginID;
     published
       property OpportunityName: RawUTF8 read fOpportunityName write fOpportunityName;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -411,51 +411,51 @@ type
       property NextStepDate: TDateTime read fNextStepDate write fNextStepDate;
       property EstimatedAmount: Currency read fEstimatedAmount write fEstimatedAmount;
       property EstimatedProbability: Double read fEstimatedProbability write fEstimatedProbability;
-      property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
-      property MarketingCampaign: TSQLMarketingCampaign read fMarketingCampaign write fMarketingCampaign;
+      property CurrencyUom: TSQLUomID read fCurrencyUom write fCurrencyUom;
+      property MarketingCampaign: TSQLMarketingCampaignID read fMarketingCampaign write fMarketingCampaign;
       property DataSourceId: Integer read fDataSourceId write fDataSourceId;
       property EstimatedCloseDate: TDateTime read fEstimatedCloseDate write fEstimatedCloseDate;
-      property OpportunityStage: TSQLSalesOpportunityStage read fOpportunityStage write fOpportunityStage;
-      property TypeEnum: TSQLEnumeration read fTypeEnum write fTypeEnum;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
+      property OpportunityStage: TSQLSalesOpportunityStageID read fOpportunityStage write fOpportunityStage;
+      property TypeEnum: TSQLEnumerationID read fTypeEnum write fTypeEnum;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
   end;
 
   // 23
   TSQLSalesOpportunityHistory = class(TSQLRecord)
     private
-      fSalesOpportunity: TSQLSalesOpportunity;
+      fSalesOpportunity: TSQLSalesOpportunityID;
       fDescription: RawUTF8;
       fNextStep: TSQLRawBlob;
       fEstimatedAmount: Currency;
       fEstimatedProbability: Double;
-      fCurrencyUom: TSQLUom;
+      fCurrencyUom: TSQLUomID;
       fEstimatedCloseDate: TDateTime;
-      fOpportunityStage: TSQLSalesOpportunityStage;
+      fOpportunityStage: TSQLSalesOpportunityStageID;
       fChangeNote: TSQLRawBlob;
     published
-      property SalesOpportunity: TSQLSalesOpportunity read fSalesOpportunity write fSalesOpportunity;
+      property SalesOpportunity: TSQLSalesOpportunityID read fSalesOpportunity write fSalesOpportunity;
       property Description: RawUTF8 read fDescription write fDescription;
       property NextStep: TSQLRawBlob read fNextStep write fNextStep;
       property EstimatedAmount: Currency read fEstimatedAmount write fEstimatedAmount;
       property EstimatedProbability: Double read fEstimatedProbability write fEstimatedProbability;
-      property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
+      property CurrencyUom: TSQLUomID read fCurrencyUom write fCurrencyUom;
       property EstimatedCloseDate: TDateTime read fEstimatedCloseDate write fEstimatedCloseDate;
-      property OpportunityStage: TSQLSalesOpportunityStage read fOpportunityStage write fOpportunityStage;
+      property OpportunityStage: TSQLSalesOpportunityStageID read fOpportunityStage write fOpportunityStage;
       property ChangeNote: TSQLRawBlob read fChangeNote write fChangeNote;
   end;
 
   // 24
   TSQLSalesOpportunityRole = class(TSQLRecord)
     private
-      fSalesOpportunity: TSQLSalesOpportunity;
-      //fParty: TSQLParty;
-      //fRoleType: TSQLRoleType;
-      fPartyRole: TSQLPartyRole;
+      fSalesOpportunity: TSQLSalesOpportunityID;
+      //fParty: TSQLPartyID;
+      //fRoleType: TSQLRoleTypeID;
+      fPartyRole: TSQLPartyRoleID;
     published
-      property SalesOpportunity: TSQLSalesOpportunity read fSalesOpportunity write fSalesOpportunity;
-      //property Party: TSQLParty read fParty write fParty;
-      //property RoleType: TSQLRoleType read fRoleType write fRoleType;
-      property PartyRole: TSQLPartyRole read fPartyRole write fPartyRole;
+      property SalesOpportunity: TSQLSalesOpportunityID read fSalesOpportunity write fSalesOpportunity;
+      //property Party: TSQLPartyID read fParty write fParty;
+      //property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
+      property PartyRole: TSQLPartyRoleID read fPartyRole write fPartyRole;
   end;
 
   // 25
@@ -473,31 +473,31 @@ type
   // 26
   TSQLSalesOpportunityWorkEffort = class(TSQLRecord)
     private
-      fSalesOpportunity: TSQLSalesOpportunity;
-      fWorkEffort: TSQLWorkEffort;
+      fSalesOpportunity: TSQLSalesOpportunityID;
+      fWorkEffort: TSQLWorkEffortID;
     published
-      property SalesOpportunity: TSQLSalesOpportunity read fSalesOpportunity write fSalesOpportunity;
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
+      property SalesOpportunity: TSQLSalesOpportunityID read fSalesOpportunity write fSalesOpportunity;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
   end;
 
   // 27
   TSQLSalesOpportunityQuote = class(TSQLRecord)
     private
-      fSalesOpportunity: TSQLSalesOpportunity;
-      fQuote: TSQLQuote;
+      fSalesOpportunity: TSQLSalesOpportunityID;
+      fQuote: TSQLQuoteID;
     published
-      property SalesOpportunity: TSQLSalesOpportunity read fSalesOpportunity write fSalesOpportunity;
-      property Quote: TSQLQuote read fQuote write fQuote;
+      property SalesOpportunity: TSQLSalesOpportunityID read fSalesOpportunity write fSalesOpportunity;
+      property Quote: TSQLQuoteID read fQuote write fQuote;
   end;
 
   // 28
   TSQLSalesForecast = class(TSQLRecord)
     private
-      fParentSalesForecast: TSQLSalesForecast;
-      fOrganizationParty: TSQLParty;
-      fInternalParty: TSQLParty;
-      fCustomTimePeriod: TSQLCustomTimePeriod;
-      fCurrencyUom: TSQLUom;
+      fParentSalesForecast: TSQLSalesForecastID;
+      fOrganizationParty: TSQLPartyID;
+      fInternalParty: TSQLPartyID;
+      fCustomTimePeriod: TSQLCustomTimePeriodID;
+      fCurrencyUom: TSQLUomID;
       fQuotaAmount: Currency;
       fForecastAmount: Currency;
       fBestCaseAmount: Currency;
@@ -505,14 +505,14 @@ type
       fPercentOfQuotaForecast: Double;
       fPercentOfQuotaClosed: Double;
       fPipelineAmount: Currency;
-      fCreatedByUserLogin: TSQLUserLogin;
-      fModifiedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
+      fModifiedByUserLogin: TSQLUserLoginID;
     published
-      property ParentSalesForecast: TSQLSalesForecast read fParentSalesForecast write fParentSalesForecast;
-      property OrganizationParty: TSQLParty read fOrganizationParty write fOrganizationParty;
-      property InternalParty: TSQLParty read fInternalParty write fInternalParty;
-      property CustomTimePeriod: TSQLCustomTimePeriod read fCustomTimePeriod write fCustomTimePeriod;
-      property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
+      property ParentSalesForecast: TSQLSalesForecastID read fParentSalesForecast write fParentSalesForecast;
+      property OrganizationParty: TSQLPartyID read fOrganizationParty write fOrganizationParty;
+      property InternalParty: TSQLPartyID read fInternalParty write fInternalParty;
+      property CustomTimePeriod: TSQLCustomTimePeriodID read fCustomTimePeriod write fCustomTimePeriod;
+      property CurrencyUom: TSQLUomID read fCurrencyUom write fCurrencyUom;
       property QuotaAmount: Currency read fQuotaAmount write fQuotaAmount;
       property ForecastAmount: Currency read fForecastAmount write fForecastAmount;
       property BestCaseAmount: Currency read fBestCaseAmount write fBestCaseAmount;
@@ -520,37 +520,37 @@ type
       property PercentOfQuotaForecast: Double read fPercentOfQuotaForecast write fPercentOfQuotaForecast;
       property PercentOfQuotaClosed: Double read fPercentOfQuotaClosed write fPercentOfQuotaClosed;
       property PipelineAmount: Currency read fPipelineAmount write fPipelineAmount;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
-      property ModifiedByUserLogin: TSQLUserLogin read fModifiedByUserLogin write fModifiedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
+      property ModifiedByUserLogin: TSQLUserLoginID read fModifiedByUserLogin write fModifiedByUserLogin;
   end;
 
   // 29
   TSQLSalesForecastDetail = class(TSQLRecord)
     private
-      fSalesForecast: TSQLSalesForecast;
+      fSalesForecast: TSQLSalesForecastID;
       fAmount: Currency;
-      fQuantityUom: TSQLUom;
+      fQuantityUom: TSQLUomID;
       fQuantity: Double;
-      fProduct: TSQLProduct;
-      fProductCategory: TSQLProductCategory;
+      fProduct: TSQLProductID;
+      fProductCategory: TSQLProductCategoryID;
     published
-      property SalesForecast: TSQLSalesForecast read fSalesForecast write fSalesForecast;
+      property SalesForecast: TSQLSalesForecastID read fSalesForecast write fSalesForecast;
       property Amount: Currency read fAmount write fAmount;
-      property QuantityUom: TSQLUom read fQuantityUom write fQuantityUom;
+      property QuantityUom: TSQLUomID read fQuantityUom write fQuantityUom;
       property Quantity: Double read fQuantity write fQuantity;
-      property Product: TSQLProduct read fProduct write fProduct;
-      property ProductCategory: TSQLProductCategory read fProductCategory write fProductCategory;
+      property Product: TSQLProductID read fProduct write fProduct;
+      property ProductCategory: TSQLProductCategoryID read fProductCategory write fProductCategory;
   end;
 
   // 30
   TSQLSalesForecastHistory = class(TSQLRecord)
     private
-      fSalesForecast: TSQLSalesForecast;
-      fParentSalesForecast: TSQLSalesForecast;
-      fOrganizationParty: TSQLParty;
-      fInternalParty: TSQLParty;
-      fCustomTimePeriod: TSQLCustomTimePeriod;
-      fCurrencyUom: TSQLUom;
+      fSalesForecast: TSQLSalesForecastID;
+      fParentSalesForecast: TSQLSalesForecastID;
+      fOrganizationParty: TSQLPartyID;
+      fInternalParty: TSQLPartyID;
+      fCustomTimePeriod: TSQLCustomTimePeriodID;
+      fCurrencyUom: TSQLUomID;
       fQuotaAmount: Currency;
       fForecastAmount: Currency;
       fBestCaseAmount: Currency;
@@ -559,12 +559,12 @@ type
       fPercentOfQuotaClosed: Double;
       fChangeNote: TSQLRawBlob;
     published
-      property SalesForecast: TSQLSalesForecast read fSalesForecast write fSalesForecast;
-      property ParentSalesForecast: TSQLSalesForecast read fParentSalesForecast write fParentSalesForecast;
-      property OrganizationParty: TSQLParty read fOrganizationParty write fOrganizationParty;
-      property InternalParty: TSQLParty read fInternalParty write fInternalParty;
-      property CustomTimePeriod: TSQLCustomTimePeriod read fCustomTimePeriod write fCustomTimePeriod;
-      property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
+      property SalesForecast: TSQLSalesForecastID read fSalesForecast write fSalesForecast;
+      property ParentSalesForecast: TSQLSalesForecastID read fParentSalesForecast write fParentSalesForecast;
+      property OrganizationParty: TSQLPartyID read fOrganizationParty write fOrganizationParty;
+      property InternalParty: TSQLPartyID read fInternalParty write fInternalParty;
+      property CustomTimePeriod: TSQLCustomTimePeriodID read fCustomTimePeriod write fCustomTimePeriod;
+      property CurrencyUom: TSQLUomID read fCurrencyUom write fCurrencyUom;
       property QuotaAmount: Currency read fQuotaAmount write fQuotaAmount;
       property ForecastAmount: Currency read fForecastAmount write fForecastAmount;
       property BestCaseAmount: Currency read fBestCaseAmount write fBestCaseAmount;
@@ -577,14 +577,14 @@ type
   // 31
   TSQLSalesOpportunityCompetitor = class(TSQLRecord)
     private
-      fSalesOpportunity: TSQLSalesOpportunity;
-      fCompetitorParty: TSQLParty;
+      fSalesOpportunity: TSQLSalesOpportunityID;
+      fCompetitorParty: TSQLPartyID;
       fPositionEnum: Integer;
       fStrengths: TSQLRawBlob;
       fWeaknesses: TSQLRawBlob;
     published
-      property SalesOpportunity: TSQLSalesOpportunity read fSalesOpportunity write fSalesOpportunity;
-      property CompetitorParty: TSQLParty read fCompetitorParty write fCompetitorParty;
+      property SalesOpportunity: TSQLSalesOpportunityID read fSalesOpportunity write fSalesOpportunity;
+      property CompetitorParty: TSQLPartyID read fCompetitorParty write fCompetitorParty;
       property PositionEnum: Integer read fPositionEnum write fPositionEnum;
       property Strengths: TSQLRawBlob read fStrengths write fStrengths;
       property Weaknesses: TSQLRawBlob read fWeaknesses write fWeaknesses;
@@ -593,10 +593,10 @@ type
   // 32
   TSQLSalesOpportunityTrckCode = class(TSQLRecord)
     private
-      fSalesOpportunity: TSQLSalesOpportunity;
+      fSalesOpportunity: TSQLSalesOpportunityID;
       fReceivedDate: TDateTime;
     published
-      property SalesOpportunity: TSQLSalesOpportunity read fSalesOpportunity write fSalesOpportunity;
+      property SalesOpportunity: TSQLSalesOpportunityID read fSalesOpportunity write fSalesOpportunity;
       property ReceivedDate: TDateTime read fReceivedDate write fReceivedDate;
   end;
 

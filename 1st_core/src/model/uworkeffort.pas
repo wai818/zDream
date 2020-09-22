@@ -11,24 +11,24 @@ type
   // 1
   TSQLTimeEntry = class(TSQLRecord)
     private
-      fParty: TSQLParty;
+      fParty: TSQLPartyID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fRateType: TSQLRateType;
-      fWorkEffort: TSQLWorkEffort;
-      fTimesheet: TSQLTimesheet;
-      fInvoice: TSQLInvoice;
+      fRateType: TSQLRateTypeID;
+      fWorkEffort: TSQLWorkEffortID;
+      fTimesheet: TSQLTimesheetID;
+      fInvoice: TSQLInvoiceID;
       fInvoiceItemSeq: Integer;
       fHours: Double;
       fComments: RawUTF8;
     published
-      property Party: TSQLParty read fParty write fParty;
+      property Party: TSQLPartyID read fParty write fParty;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property RateType: TSQLRateType read fRateType write fRateType;
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property Timesheet: TSQLTimesheet read fTimesheet write fTimesheet;
-      property Invoice: TSQLInvoice read fInvoice write fInvoice;
+      property RateType: TSQLRateTypeID read fRateType write fRateType;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property Timesheet: TSQLTimesheetID read fTimesheet write fTimesheet;
+      property Invoice: TSQLInvoiceID read fInvoice write fInvoice;
       property InvoiceItemSeq: Integer read fInvoiceItemSeq write fInvoiceItemSeq;
       property Hours: Double read fHours write fHours;
       property Comments: RawUTF8 read fComments write fComments;
@@ -37,33 +37,33 @@ type
   // 2
   TSQLTimesheet = class(TSQLRecord)
     private
-      fParty: TSQLParty;
-      fClientParty: TSQLParty;
+      fParty: TSQLPartyID;
+      fClientParty: TSQLPartyID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fStatus: TSQLStatusItem;
-      fApprovedByUserLogin: TSQLUserLogin;
+      fStatus: TSQLStatusItemID;
+      fApprovedByUserLogin: TSQLUserLoginID;
       fComments: RawUTF8;
     published
-      property Party: TSQLParty read fParty write fParty;
-      property ClientParty: TSQLParty read fClientParty write fClientParty;
+      property Party: TSQLPartyID read fParty write fParty;
+      property ClientParty: TSQLPartyID read fClientParty write fClientParty;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property ApprovedByUserLogin: TSQLUserLogin read fApprovedByUserLogin write fApprovedByUserLogin;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property ApprovedByUserLogin: TSQLUserLoginID read fApprovedByUserLogin write fApprovedByUserLogin;
       property Comments: RawUTF8 read fComments write fComments;
   end;
 
   // 3
   TSQLTimesheetRole = class(TSQLRecord)
     private
-      fTimesheet: TSQLTimesheet;
-      fParty: TSQLParty;
-      fRoleType: TSQLRoleType;
+      fTimesheet: TSQLTimesheetID;
+      fParty: TSQLPartyID;
+      fRoleType: TSQLRoleTypeID;
     published
-      property Timesheet: TSQLTimesheet read fTimesheet write fTimesheet;
-      property Party: TSQLParty read fParty write fParty;
-      property RoleType: TSQLRoleType read fRoleType write fRoleType;
+      property Timesheet: TSQLTimesheetID read fTimesheet write fTimesheet;
+      property Party: TSQLPartyID read fParty write fParty;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
   end;
 
   // 4
@@ -73,35 +73,35 @@ type
       fParty: Integer;
       fRoleType: Integer;
       fFromDate: TDateTime;
-      fRuntimeData: TSQLRuntimeData;
+      fRuntimeData: TSQLRuntimeDataID;
     published
       property WorkEffort: Integer read fWorkEffort write fWorkEffort;
       property Party: Integer read fParty write fParty;
       property RoleType: Integer read fRoleType write fRoleType;
       property FromDate: TDateTime read fFromDate write fFromDate;
-      property RuntimeData: TSQLRuntimeData read fRuntimeData write fRuntimeData;
+      property RuntimeData: TSQLRuntimeDataID read fRuntimeData write fRuntimeData;
   end;
 
   // 5
   TSQLCommunicationEventWorkEff = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fCommunicationEvent: TSQLCommunicationEvent;
+      fWorkEffort: TSQLWorkEffortID;
+      fCommunicationEvent: TSQLCommunicationEventID;
       fDescription: RawUTF8;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property CommunicationEvent: TSQLCommunicationEvent read fCommunicationEvent write fCommunicationEvent;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property CommunicationEvent: TSQLCommunicationEventID read fCommunicationEvent write fCommunicationEvent;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 6
   TSQLDeliverable = class(TSQLRecord)
     private
-      fDeliverableType: TSQLDeliverableType;
+      fDeliverableType: TSQLDeliverableTypeID;
       fDeliverableName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property DeliverableType: TSQLDeliverableType read fDeliverableType write fDeliverableType;
+      property DeliverableType: TSQLDeliverableTypeID read fDeliverableType write fDeliverableType;
       property DeliverableName: RawUTF8 read fDeliverableName write fDeliverableName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -119,12 +119,12 @@ type
   // 8
   TSQLWorkEffort = class(TSQLRecord)
     private
-      fWorkEffortType: TSQLWorkEffortType;
-      fCurrentStatus: TSQLStatusItem;
+      fWorkEffortType: TSQLWorkEffortTypeID;
+      fCurrentStatus: TSQLStatusItemID;
       fLastStatusUpdate: TDateTime;
-      fWorkEffortPurposeType: TSQLWorkEffortPurposeType;
-      fWorkEffortParent: TSQLWorkEffort;
-      fScopeEnum: TSQLEnumeration;
+      fWorkEffortPurposeType: TSQLWorkEffortPurposeTypeID;
+      fWorkEffortParent: TSQLWorkEffortID;
+      fScopeEnum: TSQLEnumerationID;
       fPriority: Integer;
       fPercentComplete: Integer;
       fWorkEffortName: RawUTF8;
@@ -138,23 +138,23 @@ type
       fActualCompletionDate: TDateTime;
       fEstimatedMilliSeconds: Double;
       fEstimatedSetupMillis: Double;
-      fEstimateCalcMethod: TSQLCustomMethod;
+      fEstimateCalcMethod: TSQLCustomMethodID;
       fActualMilliSeconds: Double;
       fActualSetupMillis: Double;
       fTotalMilliSecondsAllowed: Double;
       fTotalMoneyAllowed: Currency;
-      fMoneyUom: TSQLUom;
+      fMoneyUom: TSQLUomID;
       fSpecialTerms: RawUTF8;
       fTimeTransparency: Integer;
       fUniversal: RawUTF8;
       fSourceReference: Integer;
-      fFixedAsset: TSQLFixedAsset;
-      fFacility: TSQLFacility;
+      fFixedAsset: TSQLFixedAssetID;
+      fFacility: TSQLFacilityID;
       fInfoUrl: RawUTF8;
-      fRecurrenceInfo: TSQLRecurrenceInfo;
-      fTempExpr: TSQLTemporalExpression;
-      fRuntimeData: TSQLRuntimeData;
-      fNote: TSQLNoteData;
+      fRecurrenceInfo: TSQLRecurrenceInfoID;
+      fTempExpr: TSQLTemporalExpressionID;
+      fRuntimeData: TSQLRuntimeDataID;
+      fNote: TSQLNoteDataID;
       fServiceLoaderName: RawUTF8;
       fQuantityToProduce: Double;
       fQuantityProduced: Double;
@@ -162,20 +162,20 @@ type
       fReservPersons: Double;
       fReserv2ndPPPerc: Double;
       fReservNthPPPerc: Double;
-      fAccommodationMap: TSQLAccommodationMap;
-      fAccommodationSpot: TSQLAccommodationSpot;
+      fAccommodationMap: TSQLAccommodationMapID;
+      fAccommodationSpot: TSQLAccommodationSpotID;
       fRevisionNumber: Integer;
       fCreatedDate: TDateTime;
-      fCreatedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
-      fLastModifiedByUserLogin: TSQLUserLogin;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
     published
-      property WorkEffortType: TSQLWorkEffortType read fWorkEffortType write fWorkEffortType;
-      property CurrentStatus: TSQLStatusItem read fCurrentStatus write fCurrentStatus;
+      property WorkEffortType: TSQLWorkEffortTypeID read fWorkEffortType write fWorkEffortType;
+      property CurrentStatus: TSQLStatusItemID read fCurrentStatus write fCurrentStatus;
       property LastStatusUpdate: TDateTime read fLastStatusUpdate write fLastStatusUpdate;
-      property WorkEffortPurposeType: TSQLWorkEffortPurposeType read fWorkEffortPurposeType write fWorkEffortPurposeType;
-      property WorkEffortParent: TSQLWorkEffort read fWorkEffortParent write fWorkEffortParent;
-      property ScopeEnum: TSQLEnumeration read fScopeEnum write fScopeEnum;
+      property WorkEffortPurposeType: TSQLWorkEffortPurposeTypeID read fWorkEffortPurposeType write fWorkEffortPurposeType;
+      property WorkEffortParent: TSQLWorkEffortID read fWorkEffortParent write fWorkEffortParent;
+      property ScopeEnum: TSQLEnumerationID read fScopeEnum write fScopeEnum;
       property Priority: Integer read fPriority write fPriority;
       property PercentComplete: Integer read fPercentComplete write fPercentComplete;
       property WorkEffortName: RawUTF8 read fWorkEffortName write fWorkEffortName;
@@ -189,23 +189,23 @@ type
       property ActualCompletionDate: TDateTime read fActualCompletionDate write fActualCompletionDate;
       property EstimatedMilliSeconds: Double read fEstimatedMilliSeconds write fEstimatedMilliSeconds;
       property EstimatedSetupMillis: Double read fEstimatedSetupMillis write fEstimatedSetupMillis;
-      property EstimateCalcMethod: TSQLCustomMethod read fEstimateCalcMethod write fEstimateCalcMethod;
+      property EstimateCalcMethod: TSQLCustomMethodID read fEstimateCalcMethod write fEstimateCalcMethod;
       property ActualMilliSeconds: Double read fActualMilliSeconds write fActualMilliSeconds;
       property ActualSetupMillis: Double read fActualSetupMillis write fActualSetupMillis;
       property TotalMilliSecondsAllowed: Double read fTotalMilliSecondsAllowed write fTotalMilliSecondsAllowed;
       property TotalMoneyAllowed: Currency read fTotalMoneyAllowed write fTotalMoneyAllowed;
-      property MoneyUom: TSQLUom read fMoneyUom write fMoneyUom;
+      property MoneyUom: TSQLUomID read fMoneyUom write fMoneyUom;
       property SpecialTerms: RawUTF8 read fSpecialTerms write fSpecialTerms;
       property TimeTransparency: Integer read fTimeTransparency write fTimeTransparency;
       property Universal: RawUTF8 read fUniversal write fUniversal;
       property SourceReference: Integer read fSourceReference write fSourceReference;
-      property FixedAsset: TSQLFixedAsset read fFixedAsset write fFixedAsset;
-      property Facility: TSQLFacility read fFacility write fFacility;
+      property FixedAsset: TSQLFixedAssetID read fFixedAsset write fFixedAsset;
+      property Facility: TSQLFacilityID read fFacility write fFacility;
       property InfoUrl: RawUTF8 read fInfoUrl write fInfoUrl;
-      property RecurrenceInfo: TSQLRecurrenceInfo read fRecurrenceInfo write fRecurrenceInfo;
-      property TempExpr: TSQLTemporalExpression read fTempExpr write fTempExpr;
-      property RuntimeData: TSQLRuntimeData read fRuntimeData write fRuntimeData;
-      property Note: TSQLNoteData read fNote write fNote;
+      property RecurrenceInfo: TSQLRecurrenceInfoID read fRecurrenceInfo write fRecurrenceInfo;
+      property TempExpr: TSQLTemporalExpressionID read fTempExpr write fTempExpr;
+      property RuntimeData: TSQLRuntimeDataID read fRuntimeData write fRuntimeData;
+      property Note: TSQLNoteDataID read fNote write fNote;
       property ServiceLoaderName: RawUTF8 read fServiceLoaderName write fServiceLoaderName;
       property QuantityToProduce: Double read fQuantityToProduce write fQuantityToProduce;
       property QuantityProduced: Double read fQuantityProduced write fQuantityProduced;
@@ -213,28 +213,28 @@ type
       property ReservPersons: Double read fReservPersons write fReservPersons;
       property Reserv2ndPPPerc: Double read fReserv2ndPPPerc write fReserv2ndPPPerc;
       property ReservNthPPPerc: Double read fReservNthPPPerc write fReservNthPPPerc;
-      property AccommodationMap: TSQLAccommodationMap read fAccommodationMap write fAccommodationMap;
-      property AccommodationSpot: TSQLAccommodationSpot read fAccommodationSpot write fAccommodationSpot;
+      property AccommodationMap: TSQLAccommodationMapID read fAccommodationMap write fAccommodationMap;
+      property AccommodationSpot: TSQLAccommodationSpotID read fAccommodationSpot write fAccommodationSpot;
       property RevisionNumber: Integer read fRevisionNumber write fRevisionNumber;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
       property LastModifiedDate: TDateTime read fLastModifiedDate write fLastModifiedDate;
-      property LastModifiedByUserLogin: TSQLUserLogin read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
   end;
 
   // 9
   TSQLWorkEffortAssoc = class(TSQLRecord)
     private
-      fWorkEffortIdFrom: TSQLWorkEffort;
-      fWorkEffortIdTo: TSQLWorkEffort;
-      fWorkEffortAssocType: TSQLWorkEffortAssocType;
+      fWorkEffortIdFrom: TSQLWorkEffortID;
+      fWorkEffortIdTo: TSQLWorkEffortID;
+      fWorkEffortAssocType: TSQLWorkEffortAssocTypeID;
       fSequenceNum: Integer;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property WorkEffortIdFrom: TSQLWorkEffort read fWorkEffortIdFrom write fWorkEffortIdFrom;
-      property WorkEffortIdTo: TSQLWorkEffort read fWorkEffortIdTo write fWorkEffortIdTo;
-      property WorkEffortAssocType: TSQLWorkEffortAssocType read fWorkEffortAssocType write fWorkEffortAssocType;
+      property WorkEffortIdFrom: TSQLWorkEffortID read fWorkEffortIdFrom write fWorkEffortIdFrom;
+      property WorkEffortIdTo: TSQLWorkEffortID read fWorkEffortIdTo write fWorkEffortIdTo;
+      property WorkEffortAssocType: TSQLWorkEffortAssocTypeID read fWorkEffortAssocType write fWorkEffortAssocType;
       property SequenceNum: Integer read fSequenceNum write fSequenceNum;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
@@ -243,19 +243,19 @@ type
   // 10
   TSQLWorkEffortAssocAttribute = class(TSQLRecord)
     private
-      fWorkEffortIdFrom: TSQLWorkEffort;
-      fWorkEffortIdTo: TSQLWorkEffort;
-      fWorkEffortAssocType: TSQLWorkEffortAssocType;
+      fWorkEffortIdFrom: TSQLWorkEffortID;
+      fWorkEffortIdTo: TSQLWorkEffortID;
+      fWorkEffortAssocType: TSQLWorkEffortAssocTypeID;
       fFromDate: TDateTime;
-      fAttrName: TSQLInventoryItemTypeAttr;
+      fAttrName: TSQLInventoryItemTypeAttrID;
       fAttrValue: RawUTF8;
       fAttrDescription: RawUTF8;
     published
-      property WorkEffortIdFrom: TSQLWorkEffort read fWorkEffortIdFrom write fWorkEffortIdFrom;
-      property WorkEffortIdTo: TSQLWorkEffort read fWorkEffortIdTo write fWorkEffortIdTo;
-      property WorkEffortAssocType: TSQLWorkEffortAssocType read fWorkEffortAssocType write fWorkEffortAssocType;
+      property WorkEffortIdFrom: TSQLWorkEffortID read fWorkEffortIdFrom write fWorkEffortIdFrom;
+      property WorkEffortIdTo: TSQLWorkEffortID read fWorkEffortIdTo write fWorkEffortIdTo;
+      property WorkEffortAssocType: TSQLWorkEffortAssocTypeID read fWorkEffortAssocType write fWorkEffortAssocType;
       property FromDate: TDateTime read fFromDate write fFromDate;
-      property AttrName: TSQLInventoryItemTypeAttr read fAttrName write fAttrName;
+      property AttrName: TSQLInventoryItemTypeAttrID read fAttrName write fAttrName;
       property AttrValue: RawUTF8 read fAttrValue write fAttrValue;
       property AttrDescription: RawUTF8 read fAttrDescription write fAttrDescription;
   end;
@@ -263,12 +263,12 @@ type
   // 11
   TSQLWorkEffortAssocType = class(TSQLRecord)
     private
-      fParent: TSQLWorkEffortAssocType;
+      fParent: TSQLWorkEffortAssocTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLWorkEffortAssocType read fParent write fParent;
+      property Parent: TSQLWorkEffortAssocTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -277,25 +277,25 @@ type
   // 12
   TSQLWorkEffortAssocTypeAttr = class(TSQLRecord)
     private
-      fWorkEffortAssocType: TSQLWorkEffortAssocType;
-      fAttrName: TSQLInventoryItemTypeAttr;
+      fWorkEffortAssocType: TSQLWorkEffortAssocTypeID;
+      fAttrName: TSQLInventoryItemTypeAttrID;
       fDescription: RawUTF8;
     published
-      property WorkEffortAssocType: TSQLWorkEffortAssocType read fWorkEffortAssocType write fWorkEffortAssocType;
-      property AttrName: TSQLInventoryItemTypeAttr read fAttrName write fAttrName;
+      property WorkEffortAssocType: TSQLWorkEffortAssocTypeID read fWorkEffortAssocType write fWorkEffortAssocType;
+      property AttrName: TSQLInventoryItemTypeAttrID read fAttrName write fAttrName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 13
   TSQLWorkEffortAttribute = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fAttrName: TSQLInventoryItemTypeAttr;
+      fWorkEffort: TSQLWorkEffortID;
+      fAttrName: TSQLInventoryItemTypeAttrID;
       fAttrValue: RawUTF8;
       fAttrDescription: RawUTF8;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property AttrName: TSQLInventoryItemTypeAttr read fAttrName write fAttrName;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property AttrName: TSQLInventoryItemTypeAttrID read fAttrName write fAttrName;
       property AttrValue: RawUTF8 read fAttrValue write fAttrValue;
       property AttrDescription: RawUTF8 read fAttrDescription write fAttrDescription;
   end;
@@ -303,13 +303,13 @@ type
   // 14
   TSQLWorkEffortBilling = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fInvoice: TSQLInvoice;
+      fWorkEffort: TSQLWorkEffortID;
+      fInvoice: TSQLInvoiceID;
       fInvoiceItemSeq: Integer;
       fPercentage: Double;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property Invoice: TSQLInvoice read fInvoice write fInvoice;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property Invoice: TSQLInvoiceID read fInvoice write fInvoice;
       property InvoiceItemSeq: Integer read fInvoiceItemSeq write fInvoiceItemSeq;
       property Percentage: Double read fPercentage write fPercentage;
   end;
@@ -317,14 +317,14 @@ type
   // 15
   TSQLWorkEffortContactMech = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fContactMech: TSQLContactMech;
+      fWorkEffort: TSQLWorkEffortID;
+      fContactMech: TSQLContactMechID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fComments: RawUTF8;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property ContactMech: TSQLContactMech read fContactMech write fContactMech;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property Comments: RawUTF8 read fComments write fComments;
@@ -333,15 +333,15 @@ type
   // 16
   TSQLWorkEffortContent = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fContent: TSQLContent;
-      fWorkEffortContentType: TSQLWorkEffortContentType;
+      fWorkEffort: TSQLWorkEffortID;
+      fContent: TSQLContentID;
+      fWorkEffortContentType: TSQLWorkEffortContentTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property Content: TSQLContent read fContent write fContent;
-      property WorkEffortContentType: TSQLWorkEffortContentType read fWorkEffortContentType write fWorkEffortContentType;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property Content: TSQLContentID read fContent write fContent;
+      property WorkEffortContentType: TSQLWorkEffortContentTypeID read fWorkEffortContentType write fWorkEffortContentType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -349,11 +349,11 @@ type
   // 17
   TSQLWorkEffortContentType = class(TSQLRecord)
     private
-      fParent: TSQLWorkEffortContentType;
+      fParent: TSQLWorkEffortContentTypeID;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLWorkEffortContentType read fParent write fParent;
+      property Parent: TSQLWorkEffortContentTypeID read fParent write fParent;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -361,20 +361,20 @@ type
   // 18
   TSQLWorkEffortDeliverableProd = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fDeliverable: TSQLDeliverable;
+      fWorkEffort: TSQLWorkEffortID;
+      fDeliverable: TSQLDeliverableID;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property Deliverable: TSQLDeliverable read fDeliverable write fDeliverable;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property Deliverable: TSQLDeliverableID read fDeliverable write fDeliverable;
   end;
 
   // 19
   TSQLWorkEffortEventReminder = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
+      fWorkEffort: TSQLWorkEffortID;
       fSequence: Integer;
-      fContactMech: TSQLContactMech;
-      fParty: TSQLParty;
+      fContactMech: TSQLContactMechID;
+      fParty: TSQLPartyID;
       fReminderDateTime: TDateTime;
       fRepeatCount: Integer;
       fRepeatInterval: Integer;
@@ -383,10 +383,10 @@ type
       fLocale: Integer;
       fTimeZone: Integer;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
       property Sequence: Integer read fSequence write fSequence;
-      property ContactMech: TSQLContactMech read fContactMech write fContactMech;
-      property Party: TSQLParty read fParty write fParty;
+      property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
+      property Party: TSQLPartyID read fParty write fParty;
       property ReminderDateTime: TDateTime read fReminderDateTime write fReminderDateTime;
       property RepeatCount: Integer read fRepeatCount write fRepeatCount;
       property RepeatInterval: Integer read fRepeatInterval write fRepeatInterval;
@@ -399,21 +399,21 @@ type
   // 20
   TSQLWorkEffortFixedAssetAssign = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fFixedAsset: TSQLFixedAsset;
-      fStatus: TSQLStatusItem;
+      fWorkEffort: TSQLWorkEffortID;
+      fFixedAsset: TSQLFixedAssetID;
+      fStatus: TSQLStatusItemID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fAvailabilityStatus: TSQLStatusItem;
+      fAvailabilityStatus: TSQLStatusItemID;
       fAllocatedCost: Currency;
       fComments: RawUTF8;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property FixedAsset: TSQLFixedAsset read fFixedAsset write fFixedAsset;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property FixedAsset: TSQLFixedAssetID read fFixedAsset write fFixedAsset;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property AvailabilityStatus: TSQLStatusItem read fAvailabilityStatus write fAvailabilityStatus;
+      property AvailabilityStatus: TSQLStatusItemID read fAvailabilityStatus write fAvailabilityStatus;
       property AllocatedCost: Currency read fAllocatedCost write fAllocatedCost;
       property Comments: RawUTF8 read fComments write fComments;
   end;
@@ -421,14 +421,14 @@ type
   // 21
   TSQLWorkEffortFixedAssetStd = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fFixedAssetType: TSQLFixedAssetType;
+      fWorkEffort: TSQLWorkEffortID;
+      fFixedAssetType: TSQLFixedAssetTypeID;
       fEstimatedQuantity: Double;
       fEstimatedDuration: Double;
       fEstimatedCost: Currency;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property FixedAssetType: TSQLFixedAssetType read fFixedAssetType write fFixedAssetType;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property FixedAssetType: TSQLFixedAssetTypeID read fFixedAssetType write fFixedAssetType;
       property EstimatedQuantity: Double read fEstimatedQuantity write fEstimatedQuantity;
       property EstimatedDuration: Double read fEstimatedDuration write fEstimatedDuration;
       property EstimatedCost: Currency read fEstimatedCost write fEstimatedCost;
@@ -437,21 +437,21 @@ type
   // 22
   TSQLWorkEffortGoodStandard = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fProduct: TSQLProduct;
-      fWorkEffortGoodStdType: TSQLWorkEffortGoodStandardType;
+      fWorkEffort: TSQLWorkEffortID;
+      fProduct: TSQLProductID;
+      fWorkEffortGoodStdType: TSQLWorkEffortGoodStandardTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fStatus: TSQLStatusItem;
+      fStatus: TSQLStatusItemID;
       fEstimatedQuantity: Double;
       fEstimatedCost: Currency;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property Product: TSQLProduct read fProduct write fProduct;
-      property WorkEffortGoodStdType: TSQLWorkEffortGoodStandardType read fWorkEffortGoodStdType write fWorkEffortGoodStdType;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property Product: TSQLProductID read fProduct write fProduct;
+      property WorkEffortGoodStdType: TSQLWorkEffortGoodStandardTypeID read fWorkEffortGoodStdType write fWorkEffortGoodStdType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property EstimatedQuantity: Double read fEstimatedQuantity write fEstimatedQuantity;
       property EstimatedCost: Currency read fEstimatedCost write fEstimatedCost;
   end;
@@ -459,12 +459,12 @@ type
   // 23
   TSQLWorkEffortGoodStandardType = class(TSQLRecord)
     private
-      fParent: TSQLWorkEffortGoodStandardType;
+      fParent: TSQLWorkEffortGoodStandardTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLWorkEffortGoodStandardType read fParent write fParent;
+      property Parent: TSQLWorkEffortGoodStandardTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -473,49 +473,49 @@ type
   // 24
   TSQLWorkEffortIcalData = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
+      fWorkEffort: TSQLWorkEffortID;
       fIcalData: TSQLRawBlob;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
       property IcalData: TSQLRawBlob read fIcalData write fIcalData;
   end;
 
   // 25
   TSQLWorkEffortInventoryAssign = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fInventoryItem: TSQLInventoryItem;
-      fStatus: TSQLStatusItem;
+      fWorkEffort: TSQLWorkEffortID;
+      fInventoryItem: TSQLInventoryItemID;
+      fStatus: TSQLStatusItemID;
       fQuantity: Double;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property InventoryItem: TSQLInventoryItem read fInventoryItem write fInventoryItem;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property InventoryItem: TSQLInventoryItemID read fInventoryItem write fInventoryItem;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property Quantity: Double read fQuantity write fQuantity;
   end;
 
   // 26
   TSQLWorkEffortInventoryProduced = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fInventoryItem: TSQLInventoryItem;
+      fWorkEffort: TSQLWorkEffortID;
+      fInventoryItem: TSQLInventoryItemID;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property InventoryItem: TSQLInventoryItem read fInventoryItem write fInventoryItem;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property InventoryItem: TSQLInventoryItemID read fInventoryItem write fInventoryItem;
   end;
 
   // 27
   TSQLWorkEffortCostCalc = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fCostComponentType: TSQLCostComponentType;
-      fCostComponentCalc: TSQLCostComponentCalc;
+      fWorkEffort: TSQLWorkEffortID;
+      fCostComponentType: TSQLCostComponentTypeID;
+      fCostComponentCalc: TSQLCostComponentCalcID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property CostComponentType: TSQLCostComponentType read fCostComponentType write fCostComponentType;
-      property CostComponentCalc: TSQLCostComponentCalc read fCostComponentCalc write fCostComponentCalc;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property CostComponentType: TSQLCostComponentTypeID read fCostComponentType write fCostComponentType;
+      property CostComponentCalc: TSQLCostComponentCalcID read fCostComponentCalc write fCostComponentCalc;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -523,11 +523,11 @@ type
   // 28
   TSQLWorkEffortKeyword = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
+      fWorkEffort: TSQLWorkEffortID;
       fKeyword: RawUTF8;
       fRelevancyWeight: Integer;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
       property Keyword: RawUTF8 read fKeyword write fKeyword;
       property RelevancyWeight: Integer read fRelevancyWeight write fRelevancyWeight;
   end;
@@ -535,57 +535,57 @@ type
   // 29
   TSQLWorkEffortNote = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fNote: TSQLNoteData;
+      fWorkEffort: TSQLWorkEffortID;
+      fNote: TSQLNoteDataID;
       fInternalNote: Boolean;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property Note: TSQLNoteData read fNote write fNote;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property Note: TSQLNoteDataID read fNote write fNote;
       property InternalNote: Boolean read fInternalNote write fInternalNote;
   end;
 
   // 30
   TSQLWorkEffortPartyAssignment = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fParty: TSQLParty;
-      fRoleType: TSQLRoleType;
+      fWorkEffort: TSQLWorkEffortID;
+      fParty: TSQLPartyID;
+      fRoleType: TSQLRoleTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fAssignedByUserLogin: TSQLUserLogin;
-      fStatus: TSQLStatusItem;
+      fAssignedByUserLogin: TSQLUserLoginID;
+      fStatus: TSQLStatusItemID;
       fStatusDateTime: TDateTime;
-      fExpectationEnum: TSQLEnumeration;
-      fDelegateReasonEnum: TSQLEnumeration;
-      fFacility: TSQLFacility;
+      fExpectationEnum: TSQLEnumerationID;
+      fDelegateReasonEnum: TSQLEnumerationID;
+      fFacility: TSQLFacilityID;
       fComments: RawUTF8;
       fMustRsvp: Boolean;
-      fAvailabilityStatus: TSQLStatusItem;
+      fAvailabilityStatus: TSQLStatusItemID;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property Party: TSQLParty read fParty write fParty;
-      property RoleType: TSQLRoleType read fRoleType write fRoleType;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property Party: TSQLPartyID read fParty write fParty;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property AssignedByUserLogin: TSQLUserLogin read fAssignedByUserLogin write fAssignedByUserLogin;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property AssignedByUserLogin: TSQLUserLoginID read fAssignedByUserLogin write fAssignedByUserLogin;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property StatusDateTime: TDateTime read fStatusDateTime write fStatusDateTime;
-      property ExpectationEnum: TSQLEnumeration read fExpectationEnum write fExpectationEnum;
-      property DelegateReasonEnum: TSQLEnumeration read fDelegateReasonEnum write fDelegateReasonEnum;
-      property Facility: TSQLFacility read fFacility write fFacility;
+      property ExpectationEnum: TSQLEnumerationID read fExpectationEnum write fExpectationEnum;
+      property DelegateReasonEnum: TSQLEnumerationID read fDelegateReasonEnum write fDelegateReasonEnum;
+      property Facility: TSQLFacilityID read fFacility write fFacility;
       property Comments: RawUTF8 read fComments write fComments;
       property MustRsvp: Boolean read fMustRsvp write fMustRsvp;
-      property AvailabilityStatus: TSQLStatusItem read fAvailabilityStatus write fAvailabilityStatus;
+      property AvailabilityStatus: TSQLStatusItemID read fAvailabilityStatus write fAvailabilityStatus;
   end;
 
   // 31
   TSQLWorkEffortPurposeType = class(TSQLRecord)
     private
-      fParent: TSQLWorkEffortPurposeType;
+      fParent: TSQLWorkEffortPurposeTypeID;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLWorkEffortPurposeType read fParent write fParent;
+      property Parent: TSQLWorkEffortPurposeTypeID read fParent write fParent;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -593,18 +593,18 @@ type
   // 32
   TSQLWorkEffortReview = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fUserLogin: TSQLUserLogin;
+      fWorkEffort: TSQLWorkEffortID;
+      fUserLogin: TSQLUserLoginID;
       fReviewDate: TDateTime;
-      fStatus: TSQLStatusItem;
+      fStatus: TSQLStatusItemID;
       fPostedAnonymous: Boolean;
       fRating: Double;
       fReviewText: TSQLRawBlob;
    published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property UserLogin: TSQLUserLogin read fUserLogin write fUserLogin;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property UserLogin: TSQLUserLoginID read fUserLogin write fUserLogin;
       property ReviewDate: TDateTime read fReviewDate write fReviewDate;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property PostedAnonymous: Boolean read fPostedAnonymous write fPostedAnonymous;
       property Rating: Double read fRating write fRating;
       property ReviewText: TSQLRawBlob read fReviewText write fReviewText;
@@ -613,7 +613,7 @@ type
   // 33
   TSQLWorkEffortSearchConstraint = class(TSQLRecord)
     private
-      fWorkEffortSearchResult: TSQLWorkEffortSearchResult;
+      fWorkEffortSearchResult: TSQLWorkEffortSearchResultID;
       fConstraintSeq: Integer;
       fConstraintName: RawUTF8;
       fInfoString: RawUTF8;
@@ -625,7 +625,7 @@ type
       fLowValue: RawUTF8;
       fHighValue: RawUTF8;
     published
-      property WorkEffortSearchResult: TSQLWorkEffortSearchResult read fWorkEffortSearchResult write fWorkEffortSearchResult;
+      property WorkEffortSearchResult: TSQLWorkEffortSearchResultID read fWorkEffortSearchResult write fWorkEffortSearchResult;
       property ConstraintSeq: Integer read fConstraintSeq write fConstraintSeq;
       property ConstraintName: RawUTF8 read fConstraintName write fConstraintName;
       property InfoString: RawUTF8 read fInfoString write fInfoString;
@@ -659,14 +659,14 @@ type
   // 35
   TSQLWorkEffortSkillStandard = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fSkillType: TSQLSkillType;
+      fWorkEffort: TSQLWorkEffortID;
+      fSkillType: TSQLSkillTypeID;
       fEstimatedNumPeople: Double;
       fEstimatedDuration: Double;
       fEstimatedCost: Currency;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property SkillType: TSQLSkillType read fSkillType write fSkillType;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property SkillType: TSQLSkillTypeID read fSkillType write fSkillType;
       property EstimatedNumPeople: Double read fEstimatedNumPeople write fEstimatedNumPeople;
       property EstimatedDuration: Double read fEstimatedDuration write fEstimatedDuration;
       property EstimatedCost: Currency read fEstimatedCost write fEstimatedCost;
@@ -675,27 +675,27 @@ type
   // 36
   TSQLWorkEffortStatus = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fStatus: TSQLStatusItem;
+      fWorkEffort: TSQLWorkEffortID;
+      fStatus: TSQLStatusItemID;
       fStatusDatetime: TDateTime;
-      fSetByUserLogin: TSQLUserLogin;
+      fSetByUserLogin: TSQLUserLoginID;
       fReason: RawUTF8;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property StatusDatetime: TDateTime read fStatusDatetime write fStatusDatetime;
-      property SetByUserLogin: TSQLUserLogin read fSetByUserLogin write fSetByUserLogin;
+      property SetByUserLogin: TSQLUserLoginID read fSetByUserLogin write fSetByUserLogin;
       property Reason: RawUTF8 read fReason write fReason;
   end;
 
   // 37
   TSQLWorkEffortTransBox = class(TSQLRecord)
     private
-      fprocessWorkEffort: TSQLWorkEffort;
+      fprocessWorkEffort: TSQLWorkEffortID;
       fToActivity: Integer;
       fTransition: Integer;
     published
-      property processWorkEffort: TSQLWorkEffort read fprocessWorkEffort write fprocessWorkEffort;
+      property processWorkEffort: TSQLWorkEffortID read fprocessWorkEffort write fprocessWorkEffort;
       property ToActivity: Integer read fToActivity write fToActivity;
       property Transition: Integer read fTransition write fTransition;
   end;
@@ -703,12 +703,12 @@ type
   // 38
   TSQLWorkEffortType = class(TSQLRecord)
     private
-      fParent: TSQLWorkEffortType;
+      fParent: TSQLWorkEffortTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLWorkEffortType read fParent write fParent;
+      property Parent: TSQLWorkEffortTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -717,25 +717,25 @@ type
   // 39
   TSQLWorkEffortTypeAttr = class(TSQLRecord)
     private
-      fWorkEffortType: TSQLWorkEffortType;
-      fAttrName: TSQLWorkEffortAttribute;
+      fWorkEffortType: TSQLWorkEffortTypeID;
+      fAttrName: TSQLWorkEffortAttributeID;
       fDescription: RawUTF8;
     published
-      property WorkEffortType: TSQLWorkEffortType read fWorkEffortType write fWorkEffortType;
-      property AttrName: TSQLWorkEffortAttribute read fAttrName write fAttrName;
+      property WorkEffortType: TSQLWorkEffortTypeID read fWorkEffortType write fWorkEffortType;
+      property AttrName: TSQLWorkEffortAttributeID read fAttrName write fAttrName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 40
   TSQLWorkEffortSurveyAppl = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fSurvey: TSQLSurvey;
+      fWorkEffort: TSQLWorkEffortID;
+      fSurvey: TSQLSurveyID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property Survey: TSQLSurvey read fSurvey write fSurvey;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property Survey: TSQLSurveyID read fSurvey write fSurvey;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;

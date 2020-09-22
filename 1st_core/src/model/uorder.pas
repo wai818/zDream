@@ -11,8 +11,8 @@ type
   // 1 订单调整
   TSQLOrderAdjustment = class(TSQLRecord)
     private
-      fOrderAdjustmentType: TSQLOrderAdjustmentType;
-      fOrderId: TSQLOrderHeader;
+      fOrderAdjustmentType: TSQLOrderAdjustmentTypeID;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
       fShipGroupSeq: Integer;
       fComments: RawUTF8;
@@ -20,32 +20,32 @@ type
       fAmount: Currency;
       fRecurringAmount: Currency;
       fAmountAlreadyIncluded: Currency;
-      fProductPromo: TSQLProductPromo;
-      fProductPromoRule: TSQLProductPromoRule;
+      fProductPromo: TSQLProductPromoID;
+      fProductPromoRule: TSQLProductPromoRuleID;
       fProductPromoActionSeq: Integer;
       fProductFeature: Integer;
       fCorrespondingProduct: Integer;
-      fTaxAuthorityRateSeq: TSQLTaxAuthorityRateProduct;
+      fTaxAuthorityRateSeq: TSQLTaxAuthorityRateProductID;
       fSourceReference: Integer;
       fSourcePercentage: Double;
       fCustomerReference: Integer;
-      fPrimaryGeo: TSQLGeo;
-      fSecondaryGeo: TSQLGeo;
+      fPrimaryGeo: TSQLGeoID;
+      fSecondaryGeo: TSQLGeoID;
       fExemptAmount: Currency;
       fTaxAuthGeo: Integer;
       fTaxAuthParty: Integer;
-      fOverrideGlAccount: TSQLGlAccount;
+      fOverrideGlAccount: TSQLGlAccountID;
       fIncludeInTax: Boolean;
       fIncludeInShipping: Boolean;
       fIsManual: Boolean;
       fCreatedDate: TDateTime;
-      fCreatedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
-      fLastModifiedByUserLogin: TSQLUserLogin;
-      fOriginalAdjustment: TSQLOrderAdjustment;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
+      fOriginalAdjustment: TSQLOrderAdjustmentID;
     published
-      property OrderAdjustmentType: TSQLOrderAdjustmentType read fOrderAdjustmentType write fOrderAdjustmentType;
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderAdjustmentType: TSQLOrderAdjustmentTypeID read fOrderAdjustmentType write fOrderAdjustmentType;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
       property ShipGroupSeq: Integer read fShipGroupSeq write fShipGroupSeq;
       property Comments: RawUTF8 read fComments write fComments;
@@ -53,41 +53,41 @@ type
       property Amount: Currency read fAmount write fAmount;
       property RecurringAmount: Currency read fRecurringAmount write fRecurringAmount;
       property AmountAlreadyIncluded: Currency read fAmountAlreadyIncluded write fAmountAlreadyIncluded;
-      property ProductPromo: TSQLProductPromo read fProductPromo write fProductPromo;
-      property ProductPromoRule: TSQLProductPromoRule read fProductPromoRule write fProductPromoRule;
+      property ProductPromo: TSQLProductPromoID read fProductPromo write fProductPromo;
+      property ProductPromoRule: TSQLProductPromoRuleID read fProductPromoRule write fProductPromoRule;
       property ProductPromoActionSeq: Integer read fProductPromoActionSeq write fProductPromoActionSeq;
       property ProductFeature: Integer read fProductFeature write fProductFeature;
       property CorrespondingProduct: Integer read fCorrespondingProduct write fCorrespondingProduct;
-      property TaxAuthorityRateSeq: TSQLTaxAuthorityRateProduct read fTaxAuthorityRateSeq write fTaxAuthorityRateSeq;
+      property TaxAuthorityRateSeq: TSQLTaxAuthorityRateProductID read fTaxAuthorityRateSeq write fTaxAuthorityRateSeq;
       property SourceReference: Integer read fSourceReference write fSourceReference;
       property SourcePercentage: Double read fSourcePercentage write fSourcePercentage;
       property CustomerReference: Integer read fCustomerReference write fCustomerReference;
-      property PrimaryGeo: TSQLGeo read fPrimaryGeo write fPrimaryGeo;
-      property SecondaryGeo: TSQLGeo read fSecondaryGeo write fSecondaryGeo;
+      property PrimaryGeo: TSQLGeoID read fPrimaryGeo write fPrimaryGeo;
+      property SecondaryGeo: TSQLGeoID read fSecondaryGeo write fSecondaryGeo;
       property ExemptAmount: Currency read fExemptAmount write fExemptAmount;
       property TaxAuthGeo: Integer read fTaxAuthGeo write fTaxAuthGeo;
       property TaxAuthParty: Integer read fTaxAuthParty write fTaxAuthParty;
-      property OverrideGlAccount: TSQLGlAccount read fOverrideGlAccount write fOverrideGlAccount;
+      property OverrideGlAccount: TSQLGlAccountID read fOverrideGlAccount write fOverrideGlAccount;
       property IncludeInTax: Boolean read fIncludeInTax write fIncludeInTax;
       property IncludeInShipping: Boolean read fIncludeInShipping write fIncludeInShipping;
       property IsManual: Boolean read fIsManual write fIsManual;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
       property LastModifiedDate: TDateTime read fLastModifiedDate write fLastModifiedDate;
-      property LastModifiedByUserLogin: TSQLUserLogin read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
-      property OriginalAdjustment: TSQLOrderAdjustment read fOriginalAdjustment write fOriginalAdjustment;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property OriginalAdjustment: TSQLOrderAdjustmentID read fOriginalAdjustment write fOriginalAdjustment;
   end;
 
   // 2 订单调整属性
   TSQLOrderAdjustmentAttribute = class(TSQLRecord)
     private
-      fOrderAdjustment: TSQLOrderAdjustment;
-      fAttrName: TSQLOrderAdjustmentTypeAttr;
+      fOrderAdjustment: TSQLOrderAdjustmentID;
+      fAttrName: TSQLOrderAdjustmentTypeAttrID;
       fAttrValue: RawUTF8;
       fAttrDescription: RawUTF8;
     published
-      property OrderAdjustment: TSQLOrderAdjustment read fOrderAdjustment write fOrderAdjustment;
-      property AttrName: TSQLOrderAdjustmentTypeAttr read fAttrName write fAttrName;
+      property OrderAdjustment: TSQLOrderAdjustmentID read fOrderAdjustment write fOrderAdjustment;
+      property AttrName: TSQLOrderAdjustmentTypeAttrID read fAttrName write fAttrName;
       property AttrValue: RawUTF8 read fAttrValue write fAttrValue;
       property AttrDescription: RawUTF8 read fAttrDescription write fAttrDescription;
   end;
@@ -95,12 +95,12 @@ type
   // 3
   TSQLOrderAdjustmentType = class(TSQLRecord)
     private
-      fParent: TSQLOrderAdjustmentType;
+      fParent: TSQLOrderAdjustmentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLOrderAdjustmentType read fParent write fParent;
+      property Parent: TSQLOrderAdjustmentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -109,13 +109,13 @@ type
   // 4
   TSQLOrderAdjustmentBilling = class(TSQLRecord)
     private
-      fOrderAdjustment: TSQLOrderAdjustment;
-      fInvoice: TSQLInvoice;
+      fOrderAdjustment: TSQLOrderAdjustmentID;
+      fInvoice: TSQLInvoiceID;
       fInvoiceItemSeq: Integer;
       fAmount: Currency;
     published
-      property OrderAdjustment: TSQLOrderAdjustment read fOrderAdjustment write fOrderAdjustment;
-      property Invoice: TSQLInvoice read fInvoice write fInvoice;
+      property OrderAdjustment: TSQLOrderAdjustmentID read fOrderAdjustment write fOrderAdjustment;
+      property Invoice: TSQLInvoiceID read fInvoice write fInvoice;
       property InvoiceItemSeq: Integer read fInvoiceItemSeq write fInvoiceItemSeq;
       property Amount: Currency read fAmount write fAmount;
   end;
@@ -123,11 +123,11 @@ type
   // 5
   TSQLOrderAdjustmentTypeAttr = class(TSQLRecord)
     private
-      fOrderAdjustmentType: TSQLOrderAdjustmentType;
+      fOrderAdjustmentType: TSQLOrderAdjustmentTypeID;
       fAttrName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property OrderAdjustmentType: TSQLOrderAdjustmentType read fOrderAdjustmentType write fOrderAdjustmentType;
+      property OrderAdjustmentType: TSQLOrderAdjustmentTypeID read fOrderAdjustmentType write fOrderAdjustmentType;
       property AttrName: RawUTF8 read fAttrName write fAttrName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -135,12 +135,12 @@ type
   // 6
   TSQLOrderAttribute = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fAttrName: RawUTF8;
       fAttrValue: RawUTF8;
       fAttrDescription: RawUTF8;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property AttrName: RawUTF8 read fAttrName write fAttrName;
       property AttrValue: RawUTF8 read fAttrValue write fAttrValue;
       property AttrDescription: RawUTF8 read fAttrDescription write fAttrDescription;
@@ -150,10 +150,10 @@ type
   TSQLOrderBlacklist = class(TSQLRecord)
     private
       fBlacklistString: RawUTF8;
-      fOrderBlacklistType: TSQLOrderBlacklistType;
+      fOrderBlacklistType: TSQLOrderBlacklistTypeID;
     published
       property BlacklistString: RawUTF8 read fBlacklistString write fBlacklistString;
-      property OrderBlacklistType: TSQLOrderBlacklistType read fOrderBlacklistType write fOrderBlacklistType;
+      property OrderBlacklistType: TSQLOrderBlacklistTypeID read fOrderBlacklistType write fOrderBlacklistType;
   end;
 
   // 8
@@ -169,39 +169,39 @@ type
   // 9
   TSQLCommunicationEventOrder = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
-      fCommunicationEvent: TSQLCommunicationEvent;
+      fOrderId: TSQLOrderHeaderID;
+      fCommunicationEvent: TSQLCommunicationEventID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
-      property CommunicationEvent: TSQLCommunicationEvent read fCommunicationEvent write fCommunicationEvent;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
+      property CommunicationEvent: TSQLCommunicationEventID read fCommunicationEvent write fCommunicationEvent;
   end;
 
   // 10
   TSQLOrderContactMech = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
-      fContactMechPurposeType: TSQLContactMechPurposeType;
-      fContactMech: TSQLContactMech;
+      fOrderId: TSQLOrderHeaderID;
+      fContactMechPurposeType: TSQLContactMechPurposeTypeID;
+      fContactMech: TSQLContactMechID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
-      property ContactMechPurposeType: TSQLContactMechPurposeType read fContactMechPurposeType write fContactMechPurposeType;
-      property ContactMech: TSQLContactMech read fContactMech write fContactMech;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
+      property ContactMechPurposeType: TSQLContactMechPurposeTypeID read fContactMechPurposeType write fContactMechPurposeType;
+      property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
   end;
 
   // 11
   TSQLOrderContent = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fContent: TSQLContent;
-      fOrderContentType: TSQLOrderContentType;
+      fContent: TSQLContentID;
+      fOrderContentType: TSQLOrderContentTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property Content: TSQLContent read fContent write fContent;
-      property OrderContentType: TSQLOrderContentType read fOrderContentType write fOrderContentType;
+      property Content: TSQLContentID read fContent write fContent;
+      property OrderContentType: TSQLOrderContentTypeID read fOrderContentType write fOrderContentType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -209,12 +209,12 @@ type
   // 12
   TSQLOrderContentType = class(TSQLRecord)
     private
-      fParent: TSQLOrderContentType;
+      fParent: TSQLOrderContentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLOrderContentType read fParent write fParent;
+      property Parent: TSQLOrderContentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -223,55 +223,55 @@ type
   // 13
   TSQLOrderDeliverySchedule = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
       fEstimatedReadyDate: TDateTime;
       fCartons: Integer;
       fSkidsPallets: Integer;
       fUnitsPieces: Double;
       fTotalCubicSize: Double;
-      fTotalCubicUom: TSQLUom;
+      fTotalCubicUom: TSQLUomID;
       fTotalWeight: Double;
-      fTotalWeightUom: TSQLUom;
-      fStatus: TSQLStatusItem;
+      fTotalWeightUom: TSQLUomID;
+      fStatus: TSQLStatusItemID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
       property EstimatedReadyDate: TDateTime read fEstimatedReadyDate write fEstimatedReadyDate;
       property Cartons: Integer read fCartons write fCartons;
       property SkidsPallets: Integer read fSkidsPallets write fSkidsPallets;
       property UnitsPieces: Double read fUnitsPieces write fUnitsPieces;
       property TotalCubicSize: Double read fTotalCubicSize write fTotalCubicSize;
-      property TotalCubicUom: TSQLUom read fTotalCubicUom write fTotalCubicUom;
+      property TotalCubicUom: TSQLUomID read fTotalCubicUom write fTotalCubicUom;
       property TotalWeight: Double read fTotalWeight write fTotalWeight;
-      property TotalWeightUom: TSQLUom read fTotalWeightUom write fTotalWeightUom;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property TotalWeightUom: TSQLUomID read fTotalWeightUom write fTotalWeightUom;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
   end;
 
   // 14
   TSQLOrderHeader = class(TSQLRecord)
     private
-      fOrderType: TSQLOrderType;
+      fOrderType: TSQLOrderTypeID;
       fOrderName: RawUTF8;
       fExternalId: Integer;
-      fSalesChannelEnum: TSQLEnumeration;
+      fSalesChannelEnum: TSQLEnumerationID;
       fOrderDate: TDateTime;
       fPriority: Boolean;
       fEntryDate: TDateTime;
       fPickSheetPrintedDate: TDateTime;
       fVisit: Integer;
-      fStatus: TSQLStatusItem;
-      fCreatedBy: TSQLUserLogin;
+      fStatus: TSQLStatusItemID;
+      fCreatedBy: TSQLUserLoginID;
       fFirstAttemptOrder: Integer;
-      fCurrencyUom: TSQLUom;
-      fAyncStatus: TSQLStatusItem;
-      fBillingAccount: TSQLBillingAccount;
-      fOriginFacility: TSQLFacility;
-      fWebSite: TSQLWebSite;
-      fProductStore: TSQLProductStore;
+      fCurrencyUom: TSQLUomID;
+      fAyncStatus: TSQLStatusItemID;
+      fBillingAccount: TSQLBillingAccountID;
+      fOriginFacility: TSQLFacilityID;
+      fWebSite: TSQLWebSiteID;
+      fProductStore: TSQLProductStoreID;
       fTerminalId: RawUTF8;
       fTransactionId: Integer;
-      fAutoOrderShoppingList: TSQLShoppingList;
+      fAutoOrderShoppingList: TSQLShoppingListID;
       fNeedsInventoryIssuance: Boolean;
       fIsRushOrder: Boolean;
       fInternalCode: Integer;
@@ -280,27 +280,27 @@ type
       fIsViewed: Boolean;
       fInvoicePerShipment: Boolean;
     published
-      property OrderType: TSQLOrderType read fOrderType write fOrderType;
+      property OrderType: TSQLOrderTypeID read fOrderType write fOrderType;
       property OrderName: RawUTF8 read fOrderName write fOrderName;
       property ExternalId: Integer read fExternalId write fExternalId;
-      property SalesChannelEnum: TSQLEnumeration read fSalesChannelEnum write fSalesChannelEnum;
+      property SalesChannelEnum: TSQLEnumerationID read fSalesChannelEnum write fSalesChannelEnum;
       property OrderDate: TDateTime read fOrderDate write fOrderDate;
       property Priority: Boolean read fPriority write fPriority;
       property EntryDate: TDateTime read fEntryDate write fEntryDate;
       property PickSheetPrintedDate: TDateTime read fPickSheetPrintedDate write fPickSheetPrintedDate;
       property Visit: Integer read fVisit write fVisit;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property CreatedBy: TSQLUserLogin read fCreatedBy write fCreatedBy;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property CreatedBy: TSQLUserLoginID read fCreatedBy write fCreatedBy;
       property FirstAttemptOrder: Integer read fFirstAttemptOrder write fFirstAttemptOrder;
-      property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
-      property AyncStatus: TSQLStatusItem read fAyncStatus write fAyncStatus;
-      property BillingAccount: TSQLBillingAccount read fBillingAccount write fBillingAccount;
-      property OriginFacility: TSQLFacility read fOriginFacility write fOriginFacility;
-      property WebSite: TSQLWebSite read fWebSite write fWebSite;
-      property ProductStore: TSQLProductStore read fProductStore write fProductStore;
+      property CurrencyUom: TSQLUomID read fCurrencyUom write fCurrencyUom;
+      property AyncStatus: TSQLStatusItemID read fAyncStatus write fAyncStatus;
+      property BillingAccount: TSQLBillingAccountID read fBillingAccount write fBillingAccount;
+      property OriginFacility: TSQLFacilityID read fOriginFacility write fOriginFacility;
+      property WebSite: TSQLWebSiteID read fWebSite write fWebSite;
+      property ProductStore: TSQLProductStoreID read fProductStore write fProductStore;
       property TerminalId: RawUTF8 read fTerminalId write fTerminalId;
       property TransactionId: Integer read fTransactionId write fTransactionId;
-      property AutoOrderShoppingList: TSQLShoppingList read fAutoOrderShoppingList write fAutoOrderShoppingList;
+      property AutoOrderShoppingList: TSQLShoppingListID read fAutoOrderShoppingList write fAutoOrderShoppingList;
       property NeedsInventoryIssuance: Boolean read fNeedsInventoryIssuance write fNeedsInventoryIssuance;
       property IsRushOrder: Boolean read fIsRushOrder write fIsRushOrder;
       property InternalCode: Integer read fInternalCode write fInternalCode;
@@ -313,46 +313,46 @@ type
   // 15
   TSQLOrderHeaderNote = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
-      fNote: TSQLNoteData;
+      fOrderId: TSQLOrderHeaderID;
+      fNote: TSQLNoteDataID;
       fInternalNote: Boolean;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
-      property Note: TSQLNoteData read fNote write fNote;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
+      property Note: TSQLNoteDataID read fNote write fNote;
       property InternalNote: Boolean read fInternalNote write fInternalNote;
   end;
 
   // 16
   TSQLOrderHeaderWorkEffort = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
-      fWorkEffort: TSQLWorkEffort;
+      fOrderId: TSQLOrderHeaderID;
+      fWorkEffort: TSQLWorkEffortID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
   end;
 
   // 17
   TSQLOrderItem = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
       fExternalId: Integer;
-      fOrderItemType: TSQLOrderItemType;
+      fOrderItemType: TSQLOrderItemTypeID;
       fOrderItemGroupSeq: Integer;
       fIsItemGroupPrimary: Boolean;
-      fFromInventoryItem: TSQLInventoryItem;
+      fFromInventoryItem: TSQLInventoryItemID;
       fBudgetId: Integer;
       fBudgetItemSeq: Integer;
-      fProduct: TSQLProduct;
+      fProduct: TSQLProductID;
       fSupplierProduct: Integer;
       fProductFeature: Integer;
       fProdCatalog: Integer;
       fProductCategory: Integer;
       fIsPromo: Boolean;
-      fQuote: TSQLQuoteItem;
+      fQuote: TSQLQuoteItemID;
       fQuoteItemSeq: Integer;
-      fShoppingList: TSQLShoppingListItem;
+      fShoppingList: TSQLShoppingListItemID;
       fShoppingListItemSeq: Integer;
       fSubscription: Integer;
       fDeployment: Integer;
@@ -364,42 +364,42 @@ type
       fUnitAverageCost: Currency;
       fUnitRecurringPrice: Currency;
       fIsModifiedPrice: Boolean;
-      fRecurringFreqUom: TSQLUom;
+      fRecurringFreqUom: TSQLUomID;
       fItemDescription: RawUTF8;
       fComments: RawUTF8;
       fCorrespondingPo: Integer;
-      fStatus: TSQLStatusItem;
-      fSyncStatus: TSQLStatusItem;
+      fStatus: TSQLStatusItemID;
+      fSyncStatus: TSQLStatusItemID;
       fEstimatedShipDate: TDateTime;
       fEstimatedDeliveryDate: TDateTime;
       fAutoCancelDate: TDateTime;
       fDontCancelSetDate: TDateTime;
-      fDontCancelSetUserLogin: TSQLUserLogin;
+      fDontCancelSetUserLogin: TSQLUserLoginID;
       fShipBeforeDate: TDateTime;
       fShipAfterDate: TDateTime;
       fCancelBackOrderDate: TDateTime;
-      fOverrideGlAccount: TSQLGlAccount;
-      fSalesOpportunity: TSQLSalesOpportunity;
-      fChangeByUserLogin: TSQLUserLogin;
+      fOverrideGlAccount: TSQLGlAccountID;
+      fSalesOpportunity: TSQLSalesOpportunityID;
+      fChangeByUserLogin: TSQLUserLoginID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
       property ExternalId: Integer read fExternalId write fExternalId;
-      property OrderItemType: TSQLOrderItemType read fOrderItemType write fOrderItemType;
+      property OrderItemType: TSQLOrderItemTypeID read fOrderItemType write fOrderItemType;
       property OrderItemGroupSeq: Integer read fOrderItemGroupSeq write fOrderItemGroupSeq;
       property IsItemGroupPrimary: Boolean read fIsItemGroupPrimary write fIsItemGroupPrimary;
-      property FromInventoryItem: TSQLInventoryItem read fFromInventoryItem write fFromInventoryItem;
+      property FromInventoryItem: TSQLInventoryItemID read fFromInventoryItem write fFromInventoryItem;
       property BudgetId: Integer read fBudgetId write fBudgetId;
       property BudgetItemSeq: Integer read fBudgetItemSeq write fBudgetItemSeq;
-      property Product: TSQLProduct read fProduct write fProduct;
+      property Product: TSQLProductID read fProduct write fProduct;
       property SupplierProduct: Integer read fSupplierProduct write fSupplierProduct;
       property ProductFeature: Integer read fProductFeature write fProductFeature;
       property ProdCatalog: Integer read fProdCatalog write fProdCatalog;
       property ProductCategory: Integer read fProductCategory write fProductCategory;
       property IsPromo: Boolean read fIsPromo write fIsPromo;
-      property Quote: TSQLQuoteItem read fQuote write fQuote;
+      property Quote: TSQLQuoteItemID read fQuote write fQuote;
       property QuoteItemSeq: Integer read fQuoteItemSeq write fQuoteItemSeq;
-      property ShoppingList: TSQLShoppingListItem read fShoppingList write fShoppingList;
+      property ShoppingList: TSQLShoppingListItemID read fShoppingList write fShoppingList;
       property ShoppingListItemSeq: Integer read fShoppingListItemSeq write fShoppingListItemSeq;
       property Subscription: Integer read fSubscription write fSubscription;
       property Deployment: Integer read fDeployment write fDeployment;
@@ -411,56 +411,56 @@ type
       property UnitAverageCost: Currency read fUnitAverageCost write fUnitAverageCost;
       property UnitRecurringPrice: Currency read fUnitRecurringPrice write fUnitRecurringPrice;
       property IsModifiedPrice: Boolean read fIsModifiedPrice write fIsModifiedPrice;
-      property RecurringFreqUom: TSQLUom read fRecurringFreqUom write fRecurringFreqUom;
+      property RecurringFreqUom: TSQLUomID read fRecurringFreqUom write fRecurringFreqUom;
       property ItemDescription: RawUTF8 read fItemDescription write fItemDescription;
       property Comments: RawUTF8 read fComments write fComments;
       property CorrespondingPo: Integer read fCorrespondingPo write fCorrespondingPo;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property SyncStatus: TSQLStatusItem read fSyncStatus write fSyncStatus;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property SyncStatus: TSQLStatusItemID read fSyncStatus write fSyncStatus;
       property EstimatedShipDate: TDateTime read fEstimatedShipDate write fEstimatedShipDate;
       property EstimatedDeliveryDate: TDateTime read fEstimatedDeliveryDate write fEstimatedDeliveryDate;
       property AutoCancelDate: TDateTime read fAutoCancelDate write fAutoCancelDate;
       property DontCancelSetDate: TDateTime read fDontCancelSetDate write fDontCancelSetDate;
-      property DontCancelSetUserLogin: TSQLUserLogin read fDontCancelSetUserLogin write fDontCancelSetUserLogin;
+      property DontCancelSetUserLogin: TSQLUserLoginID read fDontCancelSetUserLogin write fDontCancelSetUserLogin;
       property ShipBeforeDate: TDateTime read fShipBeforeDate write fShipBeforeDate;
       property ShipAfterDate: TDateTime read fShipAfterDate write fShipAfterDate;
       property CancelBackOrderDate: TDateTime read fCancelBackOrderDate write fCancelBackOrderDate;
-      property OverrideGlAccount: TSQLGlAccount read fOverrideGlAccount write fOverrideGlAccount;
-      property SalesOpportunity: TSQLSalesOpportunity read fSalesOpportunity write fSalesOpportunity;
-      property ChangeByUserLogin: TSQLUserLogin read fChangeByUserLogin write fChangeByUserLogin;
+      property OverrideGlAccount: TSQLGlAccountID read fOverrideGlAccount write fOverrideGlAccount;
+      property SalesOpportunity: TSQLSalesOpportunityID read fSalesOpportunity write fSalesOpportunity;
+      property ChangeByUserLogin: TSQLUserLoginID read fChangeByUserLogin write fChangeByUserLogin;
   end;
 
   // 18
   TSQLOrderItemAssoc = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
       fShipGroupSeq: Integer;
-      fToOrder: TSQLOrderHeader;
+      fToOrder: TSQLOrderHeaderID;
       fToOrderItemSeq: Integer;
       fToShipGroupSeq: Integer;
-      fOrderItemAssocType: TSQLOrderItemAssocType;
+      fOrderItemAssocType: TSQLOrderItemAssocTypeID;
       fQuantity: Double;
    published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
       property ShipGroupSeq: Integer read fShipGroupSeq write fShipGroupSeq;
-      property ToOrder: TSQLOrderHeader read fToOrder write fToOrder;
+      property ToOrder: TSQLOrderHeaderID read fToOrder write fToOrder;
       property ToOrderItemSeq: Integer read fToOrderItemSeq write fToOrderItemSeq;
       property ToShipGroupSeq: Integer read fToShipGroupSeq write fToShipGroupSeq;
-      property OrderItemAssocType: TSQLOrderItemAssocType read fOrderItemAssocType write fOrderItemAssocType;
+      property OrderItemAssocType: TSQLOrderItemAssocTypeID read fOrderItemAssocType write fOrderItemAssocType;
       property Quantity: Double read fQuantity write fQuantity;
   end;
 
   // 19
   TSQLOrderItemAssocType = class(TSQLRecord)
     private
-      fParent: TSQLOrderItemAssocType;
+      fParent: TSQLOrderItemAssocTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLOrderItemAssocType read fParent write fParent;
+      property Parent: TSQLOrderItemAssocTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -469,13 +469,13 @@ type
   // 20
   TSQLOrderItemAttribute = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
       fAttrName: RawUTF8;
       fAttrValue: RawUTF8;
       fAttrDescription: RawUTF8;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
       property AttrName: RawUTF8 read fAttrName write fAttrName;
       property AttrValue: RawUTF8 read fAttrValue write fAttrValue;
@@ -485,21 +485,21 @@ type
   // 21
   TSQLOrderItemBilling = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fInvoice: TSQLInvoice;
+      fInvoice: TSQLInvoiceID;
       fInvoiceItemSeq: Integer;
-      fItemIssuance: TSQLItemIssuance;
-      fShipmentReceipt: TSQLShipmentReceipt;
+      fItemIssuance: TSQLItemIssuanceID;
+      fShipmentReceipt: TSQLShipmentReceiptID;
       fQuantity: Double;
       fAmount: Currency;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property Invoice: TSQLInvoice read fInvoice write fInvoice;
+      property Invoice: TSQLInvoiceID read fInvoice write fInvoice;
       property InvoiceItemSeq: Integer read fInvoiceItemSeq write fInvoiceItemSeq;
-      property ItemIssuance: TSQLItemIssuance read fItemIssuance write fItemIssuance;
-      property ShipmentReceipt: TSQLShipmentReceipt read fShipmentReceipt write fShipmentReceipt;
+      property ItemIssuance: TSQLItemIssuanceID read fItemIssuance write fItemIssuance;
+      property ShipmentReceipt: TSQLShipmentReceiptID read fShipmentReceipt write fShipmentReceipt;
       property Quantity: Double read fQuantity write fQuantity;
       property Amount: Currency read fAmount write fAmount;
   end;
@@ -507,83 +507,83 @@ type
   // 22
   TSQLOrderItemChange = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fChangeTypeEnum: TSQLEnumeration;
+      fChangeTypeEnum: TSQLEnumerationID;
       fChangeDatetime: TDateTime;
       fQuantity: Double;
       fCancelQuantity: Double;
       fUnitPrice: Currency;
       fItemDescription: RawUTF8;
-      fReasonEnum: TSQLEnumeration;
+      fReasonEnum: TSQLEnumerationID;
       fChangeComments: RawUTF8;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property ChangeTypeEnum: TSQLEnumeration read fChangeTypeEnum write fChangeTypeEnum;
+      property ChangeTypeEnum: TSQLEnumerationID read fChangeTypeEnum write fChangeTypeEnum;
       property ChangeDatetime: TDateTime read fChangeDatetime write fChangeDatetime;
       property Quantity: Double read fQuantity write fQuantity;
       property CancelQuantity: Double read fCancelQuantity write fCancelQuantity;
       property UnitPrice: Currency read fUnitPrice write fUnitPrice;
       property ItemDescription: RawUTF8 read fItemDescription write fItemDescription;
-      property ReasonEnum: TSQLEnumeration read fReasonEnum write fReasonEnum;
+      property ReasonEnum: TSQLEnumerationID read fReasonEnum write fReasonEnum;
       property ChangeComments: RawUTF8 read fChangeComments write fChangeComments;
   end;
 
   // 23
   TSQLOrderItemContactMech = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fContactMechPurposeType: TSQLContactMechPurposeType;
-      fContactMech: TSQLContactMech;
+      fContactMechPurposeType: TSQLContactMechPurposeTypeID;
+      fContactMech: TSQLContactMechID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property ContactMechPurposeType: TSQLContactMechPurposeType read fContactMechPurposeType write fContactMechPurposeType;
-      property ContactMech: TSQLContactMech read fContactMech write fContactMech;
+      property ContactMechPurposeType: TSQLContactMechPurposeTypeID read fContactMechPurposeType write fContactMechPurposeType;
+      property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
   end;
 
   // 24
   TSQLOrderItemGroup = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemGroupSeq: Integer;
-      fParentGroupSeq: TSQLOrderItemGroup;
+      fParentGroupSeq: TSQLOrderItemGroupID;
       fGroupName: RawUTF8;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemGroupSeq: Integer read fOrderItemGroupSeq write fOrderItemGroupSeq;
-      property ParentGroupSeq: TSQLOrderItemGroup read fParentGroupSeq write fParentGroupSeq;
+      property ParentGroupSeq: TSQLOrderItemGroupID read fParentGroupSeq write fParentGroupSeq;
       property GroupName: RawUTF8 read fGroupName write fGroupName;
   end;
 
   // 25
   TSQLOrderItemGroupOrder = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fGroupOrder: TSQLProductGroupOrder;
+      fGroupOrder: TSQLProductGroupOrderID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property GroupOrder: TSQLProductGroupOrder read fGroupOrder write fGroupOrder;
+      property GroupOrder: TSQLProductGroupOrderID read fGroupOrder write fGroupOrder;
   end;
 
   // 26
   TSQLOrderItemPriceInfo = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fProductPriceRule: TSQLProductPriceRule;
+      fProductPriceRule: TSQLProductPriceRuleID;
       fProductPriceActionSeq: Integer;
       fModifyAmount: Currency;
       fDescription: RawUTF8;
       fRateCode: RawUTF8;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property ProductPriceRule: TSQLProductPriceRule read fProductPriceRule write fProductPriceRule;
+      property ProductPriceRule: TSQLProductPriceRuleID read fProductPriceRule write fProductPriceRule;
       property ProductPriceActionSeq: Integer read fProductPriceActionSeq write fProductPriceActionSeq;
       property ModifyAmount: Currency read fModifyAmount write fModifyAmount;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -593,30 +593,30 @@ type
   // 27
   TSQLOrderItemRole = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fParty: TSQLParty;
-      fRoleType: TSQLRoleType;
+      fParty: TSQLPartyID;
+      fRoleType: TSQLRoleTypeID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property Party: TSQLParty read fParty write fParty;
-      property RoleType: TSQLRoleType read fRoleType write fRoleType;
+      property Party: TSQLPartyID read fParty write fParty;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
   end;
 
   // 28
   TSQLOrderItemShipGroup = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fShipGroupSeq: Integer;
-      fShipmentMethodType: TSQLShipmentMethodType;
-      fSupplierParty: TSQLParty;
-      fVendorParty: TSQLParty;
-      fCarrierParty: TSQLParty;
-      fCarrierRoleType: TSQLRoleType;
-      fFacility: TSQLFacility;
-      fContactMech: TSQLContactMech;
-      fTelecomContactMech: TSQLTelecomNumber;
+      fShipmentMethodType: TSQLShipmentMethodTypeID;
+      fSupplierParty: TSQLPartyID;
+      fVendorParty: TSQLPartyID;
+      fCarrierParty: TSQLPartyID;
+      fCarrierRoleType: TSQLRoleTypeID;
+      fFacility: TSQLFacilityID;
+      fContactMech: TSQLContactMechID;
+      fTelecomContactMech: TSQLTelecomNumberID;
       fTrackingNumber: RawUTF8;
       fShippingInstructions: RawUTF8;
       fMaySplit: Boolean;
@@ -627,16 +627,16 @@ type
       fEstimatedShipDate: TDateTime;
       fEstimatedDeliveryDate: TDateTime;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property ShipGroupSeq: Integer read fShipGroupSeq write fShipGroupSeq;
-      property ShipmentMethodType: TSQLShipmentMethodType read fShipmentMethodType write fShipmentMethodType;
-      property SupplierParty: TSQLParty read fSupplierParty write fSupplierParty;
-      property VendorParty: TSQLParty read fVendorParty write fVendorParty;
-      property CarrierParty: TSQLParty read fCarrierParty write fCarrierParty;
-      property CarrierRoleType: TSQLRoleType read fCarrierRoleType write fCarrierRoleType;
-      property Facility: TSQLFacility read fFacility write fFacility;
-      property ContactMech: TSQLContactMech read fContactMech write fContactMech;
-      property TelecomContactMech: TSQLTelecomNumber read fTelecomContactMech write fTelecomContactMech;
+      property ShipmentMethodType: TSQLShipmentMethodTypeID read fShipmentMethodType write fShipmentMethodType;
+      property SupplierParty: TSQLPartyID read fSupplierParty write fSupplierParty;
+      property VendorParty: TSQLPartyID read fVendorParty write fVendorParty;
+      property CarrierParty: TSQLPartyID read fCarrierParty write fCarrierParty;
+      property CarrierRoleType: TSQLRoleTypeID read fCarrierRoleType write fCarrierRoleType;
+      property Facility: TSQLFacilityID read fFacility write fFacility;
+      property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
+      property TelecomContactMech: TSQLTelecomNumberID read fTelecomContactMech write fTelecomContactMech;
       property TrackingNumber: RawUTF8 read fTrackingNumber write fTrackingNumber;
       property ShippingInstructions: RawUTF8 read fShippingInstructions write fShippingInstructions;
       property MaySplit: Boolean read fMaySplit write fMaySplit;
@@ -651,13 +651,13 @@ type
   // 29
   TSQLOrderItemShipGroupAssoc = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
       fShipGroupSeq: Integer;
       fQuantity: Double;
       fCancelQuantity: Double;
      published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
       property ShipGroupSeq: Integer read fShipGroupSeq write fShipGroupSeq;
       property Quantity: Double read fQuantity write fQuantity;
@@ -667,9 +667,9 @@ type
   // 30
   TSQLOrderItemShipGrpInvRes = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fShipGroupSeq: Integer;
-      fInventoryItem: TSQLInventoryItem;
+      fInventoryItem: TSQLInventoryItemID;
       fReserveOrderEnum: Integer;
       fQuantity: Double;
       fQuantityNotAvailable: Double;
@@ -681,9 +681,9 @@ type
       fSequence: Integer;
       fOldPickStartDate: TDateTime;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property ShipGroupSeq: Integer read fShipGroupSeq write fShipGroupSeq;
-      property InventoryItem: TSQLInventoryItem read fInventoryItem write fInventoryItem;
+      property InventoryItem: TSQLInventoryItemID read fInventoryItem write fInventoryItem;
       property ReserveOrderEnum: Integer read fReserveOrderEnum write fReserveOrderEnum;
       property Quantity: Double read fQuantity write fQuantity;
       property QuantityNotAvailable: Double read fQuantityNotAvailable write fQuantityNotAvailable;
@@ -699,12 +699,12 @@ type
   // 31
   TSQLOrderItemType = class(TSQLRecord)
     private
-      fParent: TSQLOrderItemType;
+      fParent: TSQLOrderItemTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLOrderItemType read fParent write fParent;
+      property Parent: TSQLOrderItemTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -713,11 +713,11 @@ type
   // 32
   TSQLOrderItemTypeAttr = class(TSQLRecord)
     private
-      fOrderItemType: TSQLOrderItemType;
+      fOrderItemType: TSQLOrderItemTypeID;
       fAttrName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property OrderItemType: TSQLOrderItemType read fOrderItemType write fOrderItemType;
+      property OrderItemType: TSQLOrderItemTypeID read fOrderItemType write fOrderItemType;
       property AttrName: RawUTF8 read fAttrName write fAttrName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -725,13 +725,13 @@ type
   // 33
   TSQLOrderNotification = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
-      fEmailType: TSQLEnumeration;
+      fOrderId: TSQLOrderHeaderID;
+      fEmailType: TSQLEnumerationID;
       fComments: RawUTF8;
       fNotificationDate: TDateTime;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
-      property EmailType: TSQLEnumeration read fEmailType write fEmailType;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
+      property EmailType: TSQLEnumerationID read fEmailType write fEmailType;
       property Comments: RawUTF8 read fComments write fComments;
       property NotificationDate: TDateTime read fNotificationDate write fNotificationDate;
   end;
@@ -739,13 +739,13 @@ type
   // 34
   TSQLOrderPaymentPreference = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
       fShipGroupSeq: Integer;
-      fProductPricePurpose: TSQLProductPricePurpose;
-      fPaymentMethodType: TSQLPaymentMethodType;
-      fPaymentMethod: TSQLPaymentMethod;
-      fFinAccount: TSQLFinAccount;
+      fProductPricePurpose: TSQLProductPricePurposeID;
+      fPaymentMethodType: TSQLPaymentMethodTypeID;
+      fPaymentMethod: TSQLPaymentMethodID;
+      fFinAccount: TSQLFinAccountID;
       fSecurityCode: RawUTF8;
       fTrack2: RawUTF8;
       fPresentFlag: Boolean;
@@ -756,20 +756,20 @@ type
       fBillingPostalCode: RawUTF8;
       fManualAuthCode: RawUTF8;
       fManualRefNum: RawUTF8;
-      fStatus: TSQLStatusItem;
+      fStatus: TSQLStatusItemID;
       fNeedsNsfRetry: Boolean;
       fCreatedDate: TDateTime;
-      fCreatedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
-      fLastModifiedByUserLogin: TSQLUserLogin;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
       property ShipGroupSeq: Integer read fShipGroupSeq write fShipGroupSeq;
-      property ProductPricePurpose: TSQLProductPricePurpose read fProductPricePurpose write fProductPricePurpose;
-      property PaymentMethodType: TSQLPaymentMethodType read fPaymentMethodType write fPaymentMethodType;
-      property PaymentMethod: TSQLPaymentMethod read fPaymentMethod write fPaymentMethod;
-      property FinAccount: TSQLFinAccount read fFinAccount write fFinAccount;
+      property ProductPricePurpose: TSQLProductPricePurposeID read fProductPricePurpose write fProductPricePurpose;
+      property PaymentMethodType: TSQLPaymentMethodTypeID read fPaymentMethodType write fPaymentMethodType;
+      property PaymentMethod: TSQLPaymentMethodID read fPaymentMethod write fPaymentMethod;
+      property FinAccount: TSQLFinAccountID read fFinAccount write fFinAccount;
       property SecurityCode: RawUTF8 read fSecurityCode write fSecurityCode;
       property Track2: RawUTF8 read fTrack2 write fTrack2;
       property PresentFlag: Boolean read fPresentFlag write fPresentFlag;
@@ -780,50 +780,50 @@ type
       property BillingPostalCode: RawUTF8 read fBillingPostalCode write fBillingPostalCode;
       property ManualAuthCode: RawUTF8 read fManualAuthCode write fManualAuthCode;
       property ManualRefNum: RawUTF8 read fManualRefNum write fManualRefNum;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property NeedsNsfRetry: Boolean read fNeedsNsfRetry write fNeedsNsfRetry;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
       property LastModifiedDate: TDateTime read fLastModifiedDate write fLastModifiedDate;
-      property LastModifiedByUserLogin: TSQLUserLogin read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
   end;
 
   // 35
   TSQLOrderProductPromoCode = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
-      fProductPromoCode: TSQLProductPromoCode;
+      fOrderId: TSQLOrderHeaderID;
+      fProductPromoCode: TSQLProductPromoCodeID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
-      property ProductPromoCode: TSQLProductPromoCode read fProductPromoCode write fProductPromoCode;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
+      property ProductPromoCode: TSQLProductPromoCodeID read fProductPromoCode write fProductPromoCode;
   end;
 
   // 36
   TSQLOrderRole = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
-      fParty: TSQLParty;
-      fRoleType: TSQLRoleType;
+      fOrderId: TSQLOrderHeaderID;
+      fParty: TSQLPartyID;
+      fRoleType: TSQLRoleTypeID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
-      property Party: TSQLParty read fParty write fParty;
-      property RoleType: TSQLRoleType read fRoleType write fRoleType;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
+      property Party: TSQLPartyID read fParty write fParty;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
   end;
 
   // 37
   TSQLOrderShipment = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
       fShipGroupSeq: Integer;
-      fShipment: TSQLShipment;
+      fShipment: TSQLShipmentID;
       fShipmentItemSeq: Integer;
       fQuantity: Double;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
       property ShipGroupSeq: Integer read fShipGroupSeq write fShipGroupSeq;
-      property Shipment: TSQLShipment read fShipment write fShipment;
+      property Shipment: TSQLShipmentID read fShipment write fShipment;
       property ShipmentItemSeq: Integer read fShipmentItemSeq write fShipmentItemSeq;
       property Quantity: Double read fQuantity write fQuantity;
   end;
@@ -831,20 +831,20 @@ type
   // 38
   TSQLOrderStatus = class(TSQLRecord)
     private
-      fStatus: TSQLStatusItem;
-      fOrderId: TSQLOrderHeader;
+      fStatus: TSQLStatusItemID;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fOrderPaymentPreference: TSQLOrderPaymentPreference;
+      fOrderPaymentPreference: TSQLOrderPaymentPreferenceID;
       fStatusDatetime: TDateTime;
-      fStatusUserLogin: TSQLUserLogin;
+      fStatusUserLogin: TSQLUserLoginID;
       fChangeReason: RawUTF8;
     published
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property OrderPaymentPreference: TSQLOrderPaymentPreference read fOrderPaymentPreference write fOrderPaymentPreference;
+      property OrderPaymentPreference: TSQLOrderPaymentPreferenceID read fOrderPaymentPreference write fOrderPaymentPreference;
       property StatusDatetime: TDateTime read fStatusDatetime write fStatusDatetime;
-      property StatusUserLogin: TSQLUserLogin read fStatusUserLogin write fStatusUserLogin;
+      property StatusUserLogin: TSQLUserLoginID read fStatusUserLogin write fStatusUserLogin;
       property ChangeReason: RawUTF8 read fChangeReason write fChangeReason;
   end;
 
@@ -852,15 +852,15 @@ type
   TSQLOrderSummaryEntry = class(TSQLRecord)
     private
       fEntryDate: TDateTime;
-      fProduct: TSQLProduct;
-      fFacility: TSQLFacility;
+      fProduct: TSQLProductID;
+      fFacility: TSQLFacilityID;
       fTotalQuantity: Double;
       fGrossSales: Currency;
       fProductCost: Currency;
     published
       property EntryDate: TDateTime read fEntryDate write fEntryDate;
-      property Product: TSQLProduct read fProduct write fProduct;
-      property Facility: TSQLFacility read fFacility write fFacility;
+      property Product: TSQLProductID read fProduct write fProduct;
+      property Facility: TSQLFacilityID read fFacility write fFacility;
       property TotalQuantity: Double read fTotalQuantity write fTotalQuantity;
       property GrossSales: Currency read fGrossSales write fGrossSales;
       property ProductCost: Currency read fProductCost write fProductCost;
@@ -869,37 +869,37 @@ type
   // 40
   TSQLOrderTerm = class(TSQLRecord)
     private
-      fTermType: TSQLTermType;
-      fOrderId: TSQLOrderHeader;
+      fTermType: TSQLTermTypeID;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
       fTermValue: Currency;
       fTermDays: Integer;
       fTextValue: RawUTF8;
       fDescription: RawUTF8;
-      fUom: TSQLUom;
+      fUom: TSQLUomID;
     published
-      property TermType: TSQLTermType read fTermType write fTermType;
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property TermType: TSQLTermTypeID read fTermType write fTermType;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
       property TermValue: Currency read fTermValue write fTermValue;
       property TermDays: Integer read fTermDays write fTermDays;
       property TextValue: RawUTF8 read fTextValue write fTextValue;
       property Description: RawUTF8 read fDescription write fDescription;
-      property Uom: TSQLUom read fUom write fUom;
+      property Uom: TSQLUomID read fUom write fUom;
   end;
 
   // 41
   TSQLOrderTermAttribute = class(TSQLRecord)
     private
       fTermType: Integer;
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
       fAttrName: RawUTF8;
       fAttrValue: RawUTF8;
       fAttrDescription: RawUTF8;
     published
       property TermType: Integer read fTermType write fTermType;
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
       property AttrName: RawUTF8 read fAttrName write fAttrName;
       property AttrValue: RawUTF8 read fAttrValue write fAttrValue;
@@ -909,12 +909,12 @@ type
   // 42
   TSQLOrderType = class(TSQLRecord)
     private
-      fParent: TSQLOrderType;
+      fParent: TSQLOrderTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLOrderType read fParent write fParent;
+      property Parent: TSQLOrderTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -923,11 +923,11 @@ type
   // 43
   TSQLOrderTypeAttr = class(TSQLRecord)
     private
-      fOrderType: TSQLOrderType;
+      fOrderType: TSQLOrderTypeID;
       fAttrName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property OrderType: TSQLOrderType read fOrderType write fOrderType;
+      property OrderType: TSQLOrderTypeID read fOrderType write fOrderType;
       property AttrName: RawUTF8 read fAttrName write fAttrName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -935,29 +935,29 @@ type
   // 44
   TSQLProductOrderItem = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fEngagementId: TSQLOrderHeader;
+      fEngagementId: TSQLOrderHeaderID;
       fEngagementItemSeq: Integer;
-      fProduct: TSQLProduct;
+      fProduct: TSQLProductID;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property EngagementId: TSQLOrderHeader read fEngagementId write fEngagementId;
+      property EngagementId: TSQLOrderHeaderID read fEngagementId write fEngagementId;
       property EngagementItemSeq: Integer read fEngagementItemSeq write fEngagementItemSeq;
-      property Product: TSQLProduct read fProduct write fProduct;
+      property Product: TSQLProductID read fProduct write fProduct;
   end;
 
   // 45
   TSQLWorkOrderItemFulfillment = class(TSQLRecord)
     private
-      fWorkEffort: TSQLWorkEffort;
-      fOrderId: TSQLOrderHeader;
+      fWorkEffort: TSQLWorkEffortID;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
       fShipGroupSeq: Integer;
     published
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
       property ShipGroupSeq: Integer read fShipGroupSeq write fShipGroupSeq;
   end;
@@ -965,25 +965,25 @@ type
   // 46
   TSQLQuote = class(TSQLRecord)
     private
-      fQuoteType: TSQLQuoteType;
-      fParty: TSQLParty;
+      fQuoteType: TSQLQuoteTypeID;
+      fParty: TSQLPartyID;
       fIssueDate: TDateTime;
-      fStatus: TSQLStatusItem;
-      fCurrencyUom: TSQLUom;
-      fProductStore: TSQLProductStore;
-      fSalesChannelEnum: TSQLEnumeration;
+      fStatus: TSQLStatusItemID;
+      fCurrencyUom: TSQLUomID;
+      fProductStore: TSQLProductStoreID;
+      fSalesChannelEnum: TSQLEnumerationID;
       fValidFromDate: TDateTime;
       fValidThruDate: TDateTime;
       fQuoteName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property QuoteType: TSQLQuoteType read fQuoteType write fQuoteType;
-      property Party: TSQLParty read fParty write fParty;
+      property QuoteType: TSQLQuoteTypeID read fQuoteType write fQuoteType;
+      property Party: TSQLPartyID read fParty write fParty;
       property IssueDate: TDateTime read fIssueDate write fIssueDate;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
-      property ProductStore: TSQLProductStore read fProductStore write fProductStore;
-      property SalesChannelEnum: TSQLEnumeration read fSalesChannelEnum write fSalesChannelEnum;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property CurrencyUom: TSQLUomID read fCurrencyUom write fCurrencyUom;
+      property ProductStore: TSQLProductStoreID read fProductStore write fProductStore;
+      property SalesChannelEnum: TSQLEnumerationID read fSalesChannelEnum write fSalesChannelEnum;
       property ValidFromDate: TDateTime read fValidFromDate write fValidFromDate;
       property ValidThruDate: TDateTime read fValidThruDate write fValidThruDate;
       property QuoteName: RawUTF8 read fQuoteName write fQuoteName;
@@ -993,12 +993,12 @@ type
   // 47
   TSQLQuoteAttribute = class(TSQLRecord)
     private
-      fQuote: TSQLQuote;
+      fQuote: TSQLQuoteID;
       fAttrName: RawUTF8;
       fAttrValue: RawUTF8;
       fAttrDescription: RawUTF8;
     published
-      property Quote: TSQLQuote read fQuote write fQuote;
+      property Quote: TSQLQuoteID read fQuote write fQuote;
       property AttrName: RawUTF8 read fAttrName write fAttrName;
       property AttrValue: RawUTF8 read fAttrValue write fAttrValue;
       property AttrDescription: RawUTF8 read fAttrDescription write fAttrDescription;
@@ -1007,11 +1007,11 @@ type
   // 48
   TSQLQuoteCoefficient = class(TSQLRecord)
     private
-      fQuote: TSQLQuote;
+      fQuote: TSQLQuoteID;
       fCoeffName: RawUTF8;
       fCoeffValue: Double;
     published
-      property Quote: TSQLQuote read fQuote write fQuote;
+      property Quote: TSQLQuoteID read fQuote write fQuote;
       property CoeffName: RawUTF8 read fCoeffName write fCoeffName;
       property CoeffValue: Double read fCoeffValue write fCoeffValue;
   end;
@@ -1019,15 +1019,15 @@ type
   // 49
   TSQLQuoteItem = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fProduct: TSQLProduct;
-      fProductFeature: TSQLProductFeature;
-      fDeliverableType: TSQLDeliverableType;
-      fSkillType: TSQLSkillType;
-      fUom: TSQLUom;
-      fWorkEffort: TSQLWorkEffort;
-      fCustRequest: TSQLCustRequest;
+      fProduct: TSQLProductID;
+      fProductFeature: TSQLProductFeatureID;
+      fDeliverableType: TSQLDeliverableTypeID;
+      fSkillType: TSQLSkillTypeID;
+      fUom: TSQLUomID;
+      fWorkEffort: TSQLWorkEffortID;
+      fCustRequest: TSQLCustRequestID;
       fCustRequestItemSeq: Integer;
       fQuantity: Double;
       fSelectedAmount: Double;
@@ -1041,15 +1041,15 @@ type
       fIsPromo: Boolean;
       fLeadTimeDays: Integer;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property Product: TSQLProduct read fProduct write fProduct;
-      property ProductFeature: TSQLProductFeature read fProductFeature write fProductFeature;
-      property DeliverableType: TSQLDeliverableType read fDeliverableType write fDeliverableType;
-      property SkillType: TSQLSkillType read fSkillType write fSkillType;
-      property Uom: TSQLUom read fUom write fUom;
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
+      property Product: TSQLProductID read fProduct write fProduct;
+      property ProductFeature: TSQLProductFeatureID read fProductFeature write fProductFeature;
+      property DeliverableType: TSQLDeliverableTypeID read fDeliverableType write fDeliverableType;
+      property SkillType: TSQLSkillTypeID read fSkillType write fSkillType;
+      property Uom: TSQLUomID read fUom write fUom;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
       property CustRequestItemSeq: Integer read fCustRequestItemSeq write fCustRequestItemSeq;
       property Quantity: Double read fQuantity write fQuantity;
       property SelectedAmount: Double read fSelectedAmount write fSelectedAmount;
@@ -1067,25 +1067,25 @@ type
   // 50
   TSQLQuoteNote = class(TSQLRecord)
     private
-      fQuote: TSQLQuote;
-      fNote: TSQLNoteData;
+      fQuote: TSQLQuoteID;
+      fNote: TSQLNoteDataID;
     published
-      property Quote: TSQLQuote read fQuote write fQuote;
-      property Note: TSQLNoteData read fNote write fNote;
+      property Quote: TSQLQuoteID read fQuote write fQuote;
+      property Note: TSQLNoteDataID read fNote write fNote;
   end;
 
   // 51
   TSQLQuoteRole = class(TSQLRecord)
     private
-      fQuote: TSQLQuote;
-      fParty: TSQLParty;
-      fRoleType: TSQLRoleType;
+      fQuote: TSQLQuoteID;
+      fParty: TSQLPartyID;
+      fRoleType: TSQLRoleTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property Quote: TSQLQuote read fQuote write fQuote;
-      property Party: TSQLParty read fParty write fParty;
-      property RoleType: TSQLRoleType read fRoleType write fRoleType;
+      property Quote: TSQLQuoteID read fQuote write fQuote;
+      property Party: TSQLPartyID read fParty write fParty;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -1093,8 +1093,8 @@ type
   // 52
   TSQLQuoteTerm = class(TSQLRecord)
     private
-      fTermType: TSQLTermType;
-      fQuote: TSQLQuote;
+      fTermType: TSQLTermTypeID;
+      fQuote: TSQLQuoteID;
       fQuoteItemSeq: Integer;
       fTermValue: Integer;
       fUom: Integer;
@@ -1102,8 +1102,8 @@ type
       fTextValue: RawUTF8;
       fDescription: RawUTF8;
     published
-      property TermType: TSQLTermType read fTermType write fTermType;
-      property Quote: TSQLQuote read fQuote write fQuote;
+      property TermType: TSQLTermTypeID read fTermType write fTermType;
+      property Quote: TSQLQuoteID read fQuote write fQuote;
       property QuoteItemSeq: Integer read fQuoteItemSeq write fQuoteItemSeq;
       property TermValue: Integer read fTermValue write fTermValue;
       property Uom: Integer read fUom write fUom;
@@ -1133,12 +1133,12 @@ type
   // 54
   TSQLQuoteType = class(TSQLRecord)
     private
-      fParent: TSQLQuoteType;
+      fParent: TSQLQuoteTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLQuoteType read fParent write fParent;
+      property Parent: TSQLQuoteTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -1147,11 +1147,11 @@ type
   // 55
   TSQLQuoteTypeAttr = class(TSQLRecord)
     private
-      fQuoteType: TSQLQuoteType;
+      fQuoteType: TSQLQuoteTypeID;
       fAttrName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property QuoteType: TSQLQuoteType read fQuoteType write fQuoteType;
+      property QuoteType: TSQLQuoteTypeID read fQuoteType write fQuoteType;
       property AttrName: RawUTF8 read fAttrName write fAttrName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -1159,130 +1159,130 @@ type
   // 56
   TSQLQuoteWorkEffort = class(TSQLRecord)
     private
-      fQuote: TSQLQuote;
-      fWorkEffort: TSQLWorkEffort;
+      fQuote: TSQLQuoteID;
+      fWorkEffort: TSQLWorkEffortID;
     published
-      property Quote: TSQLQuote read fQuote write fQuote;
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
+      property Quote: TSQLQuoteID read fQuote write fQuote;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
   end;
 
   // 57
   TSQLQuoteAdjustment = class(TSQLRecord)
     private
-      fOrderAdjustmentType: TSQLOrderAdjustmentType;
-      fQuote: TSQLQuote;
+      fOrderAdjustmentType: TSQLOrderAdjustmentTypeID;
+      fQuote: TSQLQuoteID;
       fQuoteItemSeq: Integer;
       fComments: RawUTF8;
       fDescription: RawUTF8;
       fAmount: Currency;
-      fProductPromo: TSQLProductPromo;
-      fProductPromoRule: TSQLProductPromoRule;
+      fProductPromo: TSQLProductPromoID;
+      fProductPromoRule: TSQLProductPromoRuleID;
       fProductPromoActionSeq: Integer;
       fProductFeature: Integer;
       fCorrespondingProduct: Integer;
       fSourceReference: Integer;
       fSourcePercentage: Double;
       fCustomerReference: Integer;
-      fPrimaryGeo: TSQLGeo;
-      fSecondaryGeo: TSQLGeo;
+      fPrimaryGeo: TSQLGeoID;
+      fSecondaryGeo: TSQLGeoID;
       fExemptAmount: Currency;
       fTaxAuthGeo: Integer;
       fTaxAuthParty: Integer;
-      fOverrideGlAccount: TSQLGlAccount;
+      fOverrideGlAccount: TSQLGlAccountID;
       fIncludeInTax: Boolean;
       fIncludeInShipping: Boolean;
       fCreatedDate: TDateTime;
-      fCreatedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
-      fLastModifiedByUserLogin: TSQLUserLogin;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
     published
-      property OrderAdjustmentType: TSQLOrderAdjustmentType read fOrderAdjustmentType write fOrderAdjustmentType;
-      property Quote: TSQLQuote read fQuote write fQuote;
+      property OrderAdjustmentType: TSQLOrderAdjustmentTypeID read fOrderAdjustmentType write fOrderAdjustmentType;
+      property Quote: TSQLQuoteID read fQuote write fQuote;
       property QuoteItemSeq: Integer read fQuoteItemSeq write fQuoteItemSeq;
       property Comments: RawUTF8 read fComments write fComments;
       property Description: RawUTF8 read fDescription write fDescription;
       property Amount: Currency read fAmount write fAmount;
-      property ProductPromo: TSQLProductPromo read fProductPromo write fProductPromo;
-      property ProductPromoRule: TSQLProductPromoRule read fProductPromoRule write fProductPromoRule;
+      property ProductPromo: TSQLProductPromoID read fProductPromo write fProductPromo;
+      property ProductPromoRule: TSQLProductPromoRuleID read fProductPromoRule write fProductPromoRule;
       property ProductPromoActionSeq: Integer read fProductPromoActionSeq write fProductPromoActionSeq;
       property ProductFeature: Integer read fProductFeature write fProductFeature;
       property CorrespondingProduct: Integer read fCorrespondingProduct write fCorrespondingProduct;
       property SourceReference: Integer read fSourceReference write fSourceReference;
       property SourcePercentage: Double read fSourcePercentage write fSourcePercentage;
       property CustomerReference: Integer read fCustomerReference write fCustomerReference;
-      property PrimaryGeo: TSQLGeo read fPrimaryGeo write fPrimaryGeo;
-      property SecondaryGeo: TSQLGeo read fSecondaryGeo write fSecondaryGeo;
+      property PrimaryGeo: TSQLGeoID read fPrimaryGeo write fPrimaryGeo;
+      property SecondaryGeo: TSQLGeoID read fSecondaryGeo write fSecondaryGeo;
       property ExemptAmount: Currency read fExemptAmount write fExemptAmount;
       property TaxAuthGeo: Integer read fTaxAuthGeo write fTaxAuthGeo;
       property TaxAuthParty: Integer read fTaxAuthParty write fTaxAuthParty;
-      property OverrideGlAccount: TSQLGlAccount read fOverrideGlAccount write fOverrideGlAccount;
+      property OverrideGlAccount: TSQLGlAccountID read fOverrideGlAccount write fOverrideGlAccount;
       property IncludeInTax: Boolean read fIncludeInTax write fIncludeInTax;
       property IncludeInShipping: Boolean read fIncludeInShipping write fIncludeInShipping;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
       property LastModifiedDate: TDateTime read fLastModifiedDate write fLastModifiedDate;
-      property LastModifiedByUserLogin: TSQLUserLogin read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
   end;
 
   // 58
   TSQLCustRequest = class(TSQLRecord)
     private
-      fCustRequestType: TSQLCustRequestType;
-      fCustRequestCategory: TSQLCustRequestCategory;
-      fStatus: TSQLStatusItem;
-      fFromParty: TSQLParty;
+      fCustRequestType: TSQLCustRequestTypeID;
+      fCustRequestCategory: TSQLCustRequestCategoryID;
+      fStatus: TSQLStatusItemID;
+      fFromParty: TSQLPartyID;
       fPriority: Integer;
       fCustRequestDate: TDateTime;
       fResponseRequiredDate: TDateTime;
       fCustRequestName: RawUTF8;
       fDescription: RawUTF8;
-      fMaximumAmountUom: TSQLUom;
-      fProductStore: TSQLProductStore;
-      fSalesChannelEnum: TSQLEnumeration;
-      fFulfillContactMech: TSQLContactMech;
-      fCurrencyUom: TSQLUom;
+      fMaximumAmountUom: TSQLUomID;
+      fProductStore: TSQLProductStoreID;
+      fSalesChannelEnum: TSQLEnumerationID;
+      fFulfillContactMech: TSQLContactMechID;
+      fCurrencyUom: TSQLUomID;
       fOpenDateTime: TDateTime;
       fClosedDateTime: TDateTime;
       fInternalComment: RawUTF8;
       fReason: RawUTF8;
       fCreatedDate: TDateTime;
-      fCreatedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
-      fLastModifiedByUserLogin: TSQLUserLogin;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
     published
-      property CustRequestType: TSQLCustRequestType read fCustRequestType write fCustRequestType;
-      property CustRequestCategory: TSQLCustRequestCategory read fCustRequestCategory write fCustRequestCategory;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property FromParty: TSQLParty read fFromParty write fFromParty;
+      property CustRequestType: TSQLCustRequestTypeID read fCustRequestType write fCustRequestType;
+      property CustRequestCategory: TSQLCustRequestCategoryID read fCustRequestCategory write fCustRequestCategory;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property FromParty: TSQLPartyID read fFromParty write fFromParty;
       property Priority: Integer read fPriority write fPriority;
       property CustRequestDate: TDateTime read fCustRequestDate write fCustRequestDate;
       property ResponseRequiredDate: TDateTime read fResponseRequiredDate write fResponseRequiredDate;
       property CustRequestName: RawUTF8 read fCustRequestName write fCustRequestName;
       property Description: RawUTF8 read fDescription write fDescription;
-      property MaximumAmountUom: TSQLUom read fMaximumAmountUom write fMaximumAmountUom;
-      property ProductStore: TSQLProductStore read fProductStore write fProductStore;
-      property SalesChannelEnum: TSQLEnumeration read fSalesChannelEnum write fSalesChannelEnum;
-      property FulfillContactMech: TSQLContactMech read fFulfillContactMech write fFulfillContactMech;
-      property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
+      property MaximumAmountUom: TSQLUomID read fMaximumAmountUom write fMaximumAmountUom;
+      property ProductStore: TSQLProductStoreID read fProductStore write fProductStore;
+      property SalesChannelEnum: TSQLEnumerationID read fSalesChannelEnum write fSalesChannelEnum;
+      property FulfillContactMech: TSQLContactMechID read fFulfillContactMech write fFulfillContactMech;
+      property CurrencyUom: TSQLUomID read fCurrencyUom write fCurrencyUom;
       property OpenDateTime: TDateTime read fOpenDateTime write fOpenDateTime;
       property ClosedDateTime: TDateTime read fClosedDateTime write fClosedDateTime;
       property InternalComment: RawUTF8 read fInternalComment write fInternalComment;
       property Reason: RawUTF8 read fReason write fReason;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
       property LastModifiedDate: TDateTime read fLastModifiedDate write fLastModifiedDate;
-      property LastModifiedByUserLogin: TSQLUserLogin read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
   end;
 
   // 59
   TSQLCustRequestAttribute = class(TSQLRecord)
     private
-      fCustRequest: TSQLCustRequest;
+      fCustRequest: TSQLCustRequestID;
       fAttrName: RawUTF8;
       fAttrValue: RawUTF8;
       fAttrDescription: RawUTF8;
     published
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
       property AttrName: RawUTF8 read fAttrName write fAttrName;
       property AttrValue: RawUTF8 read fAttrValue write fAttrValue;
       property AttrDescription: RawUTF8 read fAttrDescription write fAttrDescription;
@@ -1291,11 +1291,11 @@ type
   // 60
   TSQLCustRequestCategory = class(TSQLRecord)
     private
-      fCustRequestType: TSQLCustRequestType;
+      fCustRequestType: TSQLCustRequestTypeID;
       fName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property CustRequestType: TSQLCustRequestType read fCustRequestType write fCustRequestType;
+      property CustRequestType: TSQLCustRequestTypeID read fCustRequestType write fCustRequestType;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -1303,23 +1303,23 @@ type
   // 61
   TSQLCustRequestCommEvent = class(TSQLRecord)
     private
-      fCustRequest: TSQLCustRequest;
-      fCommunicationEvent: TSQLCommunicationEvent;
+      fCustRequest: TSQLCustRequestID;
+      fCommunicationEvent: TSQLCommunicationEventID;
     published
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
-      property CommunicationEvent: TSQLCommunicationEvent read fCommunicationEvent write fCommunicationEvent;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
+      property CommunicationEvent: TSQLCommunicationEventID read fCommunicationEvent write fCommunicationEvent;
   end;
 
   // 62
   TSQLCustRequestContent = class(TSQLRecord)
     private
-      fCustRequest: TSQLCustRequest;
-      fContent: TSQLContent;
+      fCustRequest: TSQLCustRequestID;
+      fContent: TSQLContentID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
-      property Content: TSQLContent read fContent write fContent;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
+      property Content: TSQLContentID read fContent write fContent;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -1327,14 +1327,14 @@ type
   // 63
   TSQLCustRequestItem = class(TSQLRecord)
     private
-      fCustRequest: TSQLCustRequest;
+      fCustRequest: TSQLCustRequestID;
       fCustRequestItemSeq: Integer;
-      fCustRequestResolution: TSQLCustRequestResolution;
-      fStatus: TSQLStatusItem;
+      fCustRequestResolution: TSQLCustRequestResolutionID;
+      fStatus: TSQLStatusItemID;
       fPriority: Integer;
       fSequenceNum: Integer;
       fRequiredByDate: TDateTime;
-      fProduct: TSQLProduct;
+      fProduct: TSQLProductID;
       fQuantity: Double;
       fSelectedAmount: Double;
       fMaximumAmount: Currency;
@@ -1345,14 +1345,14 @@ type
       fDescription: RawUTF8;
       fStory: RawUTF8;
     published
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
       property CustRequestItemSeq: Integer read fCustRequestItemSeq write fCustRequestItemSeq;
-      property CustRequestResolution: TSQLCustRequestResolution read fCustRequestResolution write fCustRequestResolution;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property CustRequestResolution: TSQLCustRequestResolutionID read fCustRequestResolution write fCustRequestResolution;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property Priority: Integer read fPriority write fPriority;
       property SequenceNum: Integer read fSequenceNum write fSequenceNum;
       property RequiredByDate: TDateTime read fRequiredByDate write fRequiredByDate;
-      property Product: TSQLProduct read fProduct write fProduct;
+      property Product: TSQLProductID read fProduct write fProduct;
       property Quantity: Double read fQuantity write fQuantity;
       property SelectedAmount: Double read fSelectedAmount write fSelectedAmount;
       property MaximumAmount: Currency read fMaximumAmount write fMaximumAmount;
@@ -1367,59 +1367,59 @@ type
   // 64
   TSQLCustRequestNote = class(TSQLRecord)
     private
-      fCustRequest: TSQLCustRequest;
-      fNote: TSQLNoteData;
+      fCustRequest: TSQLCustRequestID;
+      fNote: TSQLNoteDataID;
     published
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
-      property Note: TSQLNoteData read fNote write fNote;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
+      property Note: TSQLNoteDataID read fNote write fNote;
   end;
 
   // 65
   TSQLCustRequestItemNote = class(TSQLRecord)
     private
-      fCustRequest: TSQLCustRequest;
+      fCustRequest: TSQLCustRequestID;
       fCustRequestItemSeq: Integer;
-      fNote: TSQLNoteData;
+      fNote: TSQLNoteDataID;
     published
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
       property CustRequestItemSeq: Integer read fCustRequestItemSeq write fCustRequestItemSeq;
-      property Note: TSQLNoteData read fNote write fNote;
+      property Note: TSQLNoteDataID read fNote write fNote;
   end;
 
   // 66
   TSQLCustRequestItemWorkEffort = class(TSQLRecord)
     private
-      fCustRequest: TSQLCustRequest;
+      fCustRequest: TSQLCustRequestID;
       fCustRequestItemSeq: Integer;
-      fWorkEffort: TSQLWorkEffort;
+      fWorkEffort: TSQLWorkEffortID;
     published
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
       property CustRequestItemSeq: Integer read fCustRequestItemSeq write fCustRequestItemSeq;
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
   end;
 
   // 67
   TSQLCustRequestResolution = class(TSQLRecord)
     private
-      fCustRequestType: TSQLCustRequestType;
+      fCustRequestType: TSQLCustRequestTypeID;
       fDescription: RawUTF8;
     published
-      property CustRequestType: TSQLCustRequestType read fCustRequestType write fCustRequestType;
+      property CustRequestType: TSQLCustRequestTypeID read fCustRequestType write fCustRequestType;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 68
   TSQLCustRequestParty = class(TSQLRecord)
     private
-      fCustRequest: TSQLCustRequest;
-      fParty: TSQLParty;
-      fRoleType: TSQLRoleType;
+      fCustRequest: TSQLCustRequestID;
+      fParty: TSQLPartyID;
+      fRoleType: TSQLRoleTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
-      property Party: TSQLParty read fParty write fParty;
-      property RoleType: TSQLRoleType read fRoleType write fRoleType;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
+      property Party: TSQLPartyID read fParty write fParty;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -1427,29 +1427,29 @@ type
   // 69
   TSQLCustRequestStatus = class(TSQLRecord)
     private
-      fStatus: TSQLStatusItem;
-      fCustRequest: TSQLCustRequest;
+      fStatus: TSQLStatusItemID;
+      fCustRequest: TSQLCustRequestID;
       fCustRequestItemSeq: Integer;
       fStatusDate: TDateTime;
-      fChangeByUserLogin: TSQLUserLogin;
+      fChangeByUserLogin: TSQLUserLoginID;
     published
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
       property CustRequestItemSeq: Integer read fCustRequestItemSeq write fCustRequestItemSeq;
       property StatusDate: TDateTime read fStatusDate write fStatusDate;
-      property ChangeByUserLogin: TSQLUserLogin read fChangeByUserLogin write fChangeByUserLogin;
+      property ChangeByUserLogin: TSQLUserLoginID read fChangeByUserLogin write fChangeByUserLogin;
   end;
 
   // 70
   TSQLCustRequestType = class(TSQLRecord)
     private
-      fParent: TSQLCustRequestType;
+      fParent: TSQLCustRequestTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
       fParty: Integer;
     published
-      property Parent: TSQLCustRequestType read fParent write fParent;
+      property Parent: TSQLCustRequestTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -1459,11 +1459,11 @@ type
   // 71
   TSQLCustRequestTypeAttr = class(TSQLRecord)
     private
-      fCustRequestType: TSQLCustRequestType;
+      fCustRequestType: TSQLCustRequestTypeID;
       fAttrName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property CustRequestType: TSQLCustRequestType read fCustRequestType write fCustRequestType;
+      property CustRequestType: TSQLCustRequestTypeID read fCustRequestType write fCustRequestType;
       property AttrName: RawUTF8 read fAttrName write fAttrName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -1471,64 +1471,64 @@ type
   // 72
   TSQLCustRequestWorkEffort = class(TSQLRecord)
     private
-      fCustRequest: TSQLCustRequest;
-      fWorkEffort: TSQLWorkEffort;
+      fCustRequest: TSQLCustRequestID;
+      fWorkEffort: TSQLWorkEffortID;
     published
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
   end;
 
   // 73
   TSQLRespondingParty = class(TSQLRecord)
     private
       fRespondingPartySeq: Integer;
-      fCustRequest: TSQLCustRequest;
-      fParty: TSQLParty;
-      fContactMech: TSQLContactMech;
+      fCustRequest: TSQLCustRequestID;
+      fParty: TSQLPartyID;
+      fContactMech: TSQLContactMechID;
       fDateSent: TDateTime;
     published
       property RespondingPartySeq: Integer read fRespondingPartySeq write fRespondingPartySeq;
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
-      property Party: TSQLParty read fParty write fParty;
-      property ContactMech: TSQLContactMech read fContactMech write fContactMech;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
+      property Party: TSQLPartyID read fParty write fParty;
+      property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
       property DateSent: TDateTime read fDateSent write fDateSent;
   end;
 
   // 74
   TSQLDesiredFeature = class(TSQLRecord)
     private
-      fRequirement: TSQLRequirement;
-      fProductFeature: TSQLProductFeature;
+      fRequirement: TSQLRequirementID;
+      fProductFeature: TSQLProductFeatureID;
       fOptionalInd: Boolean;
     published
-      property Requirement: TSQLRequirement read fRequirement write fRequirement;
-      property ProductFeature: TSQLProductFeature read fProductFeature write fProductFeature;
+      property Requirement: TSQLRequirementID read fRequirement write fRequirement;
+      property ProductFeature: TSQLProductFeatureID read fProductFeature write fProductFeature;
       property OptionalInd: Boolean read fOptionalInd write fOptionalInd;
   end;
 
   // 75
   TSQLOrderRequirementCommitment = class(TSQLRecord)
     private
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fRequirement: TSQLRequirement;
+      fRequirement: TSQLRequirementID;
       fQuantity: Double;
     published
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property Requirement: TSQLRequirement read fRequirement write fRequirement;
+      property Requirement: TSQLRequirementID read fRequirement write fRequirement;
       property Quantity: Double read fQuantity write fQuantity;
   end;
 
   // 76
   TSQLRequirement = class(TSQLRecord)
     private
-      fRequirementType: TSQLRequirementType;
-      fFacility: TSQLFacility;
-      fDeliverable: TSQLDeliverable;
-      fFixedAsset: TSQLFixedAsset;
-      fProduct: TSQLProduct;
-      fStatus: TSQLStatusItem;
+      fRequirementType: TSQLRequirementTypeID;
+      fFacility: TSQLFacilityID;
+      fDeliverable: TSQLDeliverableID;
+      fFixedAsset: TSQLFixedAssetID;
+      fProduct: TSQLProductID;
+      fStatus: TSQLStatusItemID;
       fDescription: RawUTF8;
       fRequirementStartDate: TDateTime;
       fRequiredByDate: TDateTime;
@@ -1537,16 +1537,16 @@ type
       fUseCase: RawUTF8;
       fReason: RawUTF8;
       fCreatedDate: TDateTime;
-      fCreatedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
-      fLastModifiedByUserLogin: TSQLUserLogin;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
     published
-      property RequirementType: TSQLRequirementType read fRequirementType write fRequirementType;
-      property Facility: TSQLFacility read fFacility write fFacility;
-      property Deliverable: TSQLDeliverable read fDeliverable write fDeliverable;
-      property FixedAsset: TSQLFixedAsset read fFixedAsset write fFixedAsset;
-      property Product: TSQLProduct read fProduct write fProduct;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property RequirementType: TSQLRequirementTypeID read fRequirementType write fRequirementType;
+      property Facility: TSQLFacilityID read fFacility write fFacility;
+      property Deliverable: TSQLDeliverableID read fDeliverable write fDeliverable;
+      property FixedAsset: TSQLFixedAssetID read fFixedAsset write fFixedAsset;
+      property Product: TSQLProductID read fProduct write fProduct;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property Description: RawUTF8 read fDescription write fDescription;
       property RequirementStartDate: TDateTime read fRequirementStartDate write fRequirementStartDate;
       property RequiredByDate: TDateTime read fRequiredByDate write fRequiredByDate;
@@ -1555,21 +1555,21 @@ type
       property UseCase: RawUTF8 read fUseCase write fUseCase;
       property Reason: RawUTF8 read fReason write fReason;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
       property LastModifiedDate: TDateTime read fLastModifiedDate write fLastModifiedDate;
-      property LastModifiedByUserLogin: TSQLUserLogin read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
   end;
 
   // 77
   TSQLRequirementAttribute = class(TSQLRecord)
     private
-      fRequirement: TSQLRequirement;
-      fAttrName: TSQLOrderAdjustmentTypeAttr;
+      fRequirement: TSQLRequirementID;
+      fAttrName: TSQLOrderAdjustmentTypeAttrID;
       fAttrValue: RawUTF8;
       fAttrDescription: RawUTF8;
     published
-      property Requirement: TSQLRequirement read fRequirement write fRequirement;
-      property AttrName: TSQLOrderAdjustmentTypeAttr read fAttrName write fAttrName;
+      property Requirement: TSQLRequirementID read fRequirement write fRequirement;
+      property AttrName: TSQLOrderAdjustmentTypeAttrID read fAttrName write fAttrName;
       property AttrValue: RawUTF8 read fAttrValue write fAttrValue;
       property AttrDescription: RawUTF8 read fAttrDescription write fAttrDescription;
   end;
@@ -1577,40 +1577,40 @@ type
   // 78
   TSQLRequirementBudgetAllocation = class(TSQLRecord)
     private
-      fBudget: TSQLBudget;
+      fBudget: TSQLBudgetID;
       fBudgetItemSeq: Integer;
-      fRequirement: TSQLRequirement;
+      fRequirement: TSQLRequirementID;
       fAmount: Currency;
     published
-      property Budget: TSQLBudget read fBudget write fBudget;
+      property Budget: TSQLBudgetID read fBudget write fBudget;
       property BudgetItemSeq: Integer read fBudgetItemSeq write fBudgetItemSeq;
-      property Requirement: TSQLRequirement read fRequirement write fRequirement;
+      property Requirement: TSQLRequirementID read fRequirement write fRequirement;
       property Amount: Currency read fAmount write fAmount;
   end;
 
   // 79
   TSQLRequirementCustRequest = class(TSQLRecord)
     private
-      fCustRequest: TSQLCustRequest;
+      fCustRequest: TSQLCustRequestID;
       fCustRequestItemSeq: Integer;
-      fRequirement: TSQLRequirement;
+      fRequirement: TSQLRequirementID;
     published
-      property CustRequest: TSQLCustRequest read fCustRequest write fCustRequest;
+      property CustRequest: TSQLCustRequestID read fCustRequest write fCustRequest;
       property CustRequestItemSeq: Integer read fCustRequestItemSeq write fCustRequestItemSeq;
-      property Requirement: TSQLRequirement read fRequirement write fRequirement;
+      property Requirement: TSQLRequirementID read fRequirement write fRequirement;
   end;
 
   // 80
   TSQLRequirementRole = class(TSQLRecord)
     private
-      fRequirement: TSQLRequirement;
-      fParty: TSQLParty;
+      fRequirement: TSQLRequirementID;
+      fParty: TSQLPartyID;
       fRoleType: Integer;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property Requirement: TSQLRequirement read fRequirement write fRequirement;
-      property Party: TSQLParty read fParty write fParty;
+      property Requirement: TSQLRequirementID read fRequirement write fRequirement;
+      property Party: TSQLPartyID read fParty write fParty;
       property RoleType: Integer read fRoleType write fRoleType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
@@ -1619,26 +1619,26 @@ type
   // 81
   TSQLRequirementStatus = class(TSQLRecord)
     private
-      fRequirement: TSQLRequirement;
-      fStatus: TSQLStatusItem;
+      fRequirement: TSQLRequirementID;
+      fStatus: TSQLStatusItemID;
       fStatusDate: TDateTime;
-      fChangeByUserLogin: TSQLUserLogin;
+      fChangeByUserLogin: TSQLUserLoginID;
     published
-      property Requirement: TSQLRequirement read fRequirement write fRequirement;
-      property Status: TSQLStatusItem read fStatus write fStatus;
+      property Requirement: TSQLRequirementID read fRequirement write fRequirement;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property StatusDate: TDateTime read fStatusDate write fStatusDate;
-      property ChangeByUserLogin: TSQLUserLogin read fChangeByUserLogin write fChangeByUserLogin;
+      property ChangeByUserLogin: TSQLUserLoginID read fChangeByUserLogin write fChangeByUserLogin;
   end;
 
   // 82
   TSQLRequirementType = class(TSQLRecord)
     private
-      fParent: TSQLRequirementType;
+      fParent: TSQLRequirementTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property Parent: TSQLRequirementType read fParent write fParent;
+      property Parent: TSQLRequirementTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -1647,11 +1647,11 @@ type
   // 83
   TSQLRequirementTypeAttr = class(TSQLRecord)
     private
-      fRequirementType: TSQLRequirementType;
+      fRequirementType: TSQLRequirementTypeID;
       fAttrName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property RequirementType: TSQLRequirementType read fRequirementType write fRequirementType;
+      property RequirementType: TSQLRequirementTypeID read fRequirementType write fRequirementType;
       property AttrName: RawUTF8 read fAttrName write fAttrName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -1669,29 +1669,29 @@ type
   // 85
   TSQLWorkRequirementFulfillment = class(TSQLRecord)
     private
-      fRequirement: TSQLRequirement;
-      fWorkEffort: TSQLWorkEffort;
-      fWorkReqFulfType: TSQLWorkReqFulfType;
+      fRequirement: TSQLRequirementID;
+      fWorkEffort: TSQLWorkEffortID;
+      fWorkReqFulfType: TSQLWorkReqFulfTypeID;
     published
-      property Requirement: TSQLRequirement read fRequirement write fRequirement;
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
-      property WorkReqFulfType: TSQLWorkReqFulfType read fWorkReqFulfType write fWorkReqFulfType;
+      property Requirement: TSQLRequirementID read fRequirement write fRequirement;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property WorkReqFulfType: TSQLWorkReqFulfTypeID read fWorkReqFulfType write fWorkReqFulfType;
   end;
 
   // 86
   TSQLReturnAdjustment = class(TSQLRecord)
     private
-      fReturnAdjustmentType: TSQLReturnAdjustmentType;
-      fReturn: TSQLReturnHeader;
+      fReturnAdjustmentType: TSQLReturnAdjustmentTypeID;
+      fReturn: TSQLReturnHeaderID;
       fReturnItemSeq: Integer;
       fShipGroupSeq: Integer;
       fComments: RawUTF8;
       fDescription: RawUTF8;
-      fReturnType: TSQLReturnType;
-      fOrderAdjustment: TSQLOrderAdjustment;
+      fReturnType: TSQLReturnTypeID;
+      fOrderAdjustment: TSQLOrderAdjustmentID;
       fAmount: Currency;
-      fProductPromo: TSQLProductPromo;
-      fProductPromoRule: TSQLProductPromoRule;
+      fProductPromo: TSQLProductPromoID;
+      fProductPromoRule: TSQLProductPromoRuleID;
       fProductPromoActionSeq: Integer;
       fProductFeature: Integer;
       fCorrespondingProduct: Integer;
@@ -1699,30 +1699,30 @@ type
       fSourceReference: Integer;
       fSourcePercentage: Double;
       fCustomerReference: Integer;
-      fPrimaryGeo: TSQLGeo;
-      fSecondaryGeo: TSQLGeo;
+      fPrimaryGeo: TSQLGeoID;
+      fSecondaryGeo: TSQLGeoID;
       fExemptAmount: Currency;
-      fTaxAuthGeo: TSQLGeo;
+      fTaxAuthGeo: TSQLGeoID;
       fTaxAuthParty: Integer;
-      fOverrideGlAccount: TSQLGlAccount;
+      fOverrideGlAccount: TSQLGlAccountID;
       fIncludeInTax: Boolean;
       fIncludeInShipping: Boolean;
       fCreatedDate: TDateTime;
-      fCreatedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
-      fLastModifiedByUserLogin: TSQLUserLogin;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
     published
-      property ReturnAdjustmentType: TSQLReturnAdjustmentType read fReturnAdjustmentType write fReturnAdjustmentType;
-      property Return: TSQLReturnHeader read fReturn write fReturn;
+      property ReturnAdjustmentType: TSQLReturnAdjustmentTypeID read fReturnAdjustmentType write fReturnAdjustmentType;
+      property Return: TSQLReturnHeaderID read fReturn write fReturn;
       property ReturnItemSeq: Integer read fReturnItemSeq write fReturnItemSeq;
       property ShipGroupSeq: Integer read fShipGroupSeq write fShipGroupSeq;
       property Comments: RawUTF8 read fComments write fComments;
       property Description: RawUTF8 read fDescription write fDescription;
-      property ReturnType: TSQLReturnType read fReturnType write fReturnType;
-      property OrderAdjustment: TSQLOrderAdjustment read fOrderAdjustment write fOrderAdjustment;
+      property ReturnType: TSQLReturnTypeID read fReturnType write fReturnType;
+      property OrderAdjustment: TSQLOrderAdjustmentID read fOrderAdjustment write fOrderAdjustment;
       property Amount: Currency read fAmount write fAmount;
-      property ProductPromo: TSQLProductPromo read fProductPromo write fProductPromo;
-      property ProductPromoRule: TSQLProductPromoRule read fProductPromoRule write fProductPromoRule;
+      property ProductPromo: TSQLProductPromoID read fProductPromo write fProductPromo;
+      property ProductPromoRule: TSQLProductPromoRuleID read fProductPromoRule write fProductPromoRule;
       property ProductPromoActionSeq: Integer read fProductPromoActionSeq write fProductPromoActionSeq;
       property ProductFeature: Integer read fProductFeature write fProductFeature;
       property CorrespondingProduct: Integer read fCorrespondingProduct write fCorrespondingProduct;
@@ -1730,29 +1730,29 @@ type
       property SourceReference: Integer read fSourceReference write fSourceReference;
       property SourcePercentage: Double read fSourcePercentage write fSourcePercentage;
       property CustomerReference: Integer read fCustomerReference write fCustomerReference;
-      property PrimaryGeo: TSQLGeo read fPrimaryGeo write fPrimaryGeo;
-      property SecondaryGeo: TSQLGeo read fSecondaryGeo write fSecondaryGeo;
+      property PrimaryGeo: TSQLGeoID read fPrimaryGeo write fPrimaryGeo;
+      property SecondaryGeo: TSQLGeoID read fSecondaryGeo write fSecondaryGeo;
       property ExemptAmount: Currency read fExemptAmount write fExemptAmount;
-      property TaxAuthGeo: TSQLGeo read fTaxAuthGeo write fTaxAuthGeo;
+      property TaxAuthGeo: TSQLGeoID read fTaxAuthGeo write fTaxAuthGeo;
       property TaxAuthParty: Integer read fTaxAuthParty write fTaxAuthParty;
-      property OverrideGlAccount: TSQLGlAccount read fOverrideGlAccount write fOverrideGlAccount;
+      property OverrideGlAccount: TSQLGlAccountID read fOverrideGlAccount write fOverrideGlAccount;
       property IncludeInTax: Boolean read fIncludeInTax write fIncludeInTax;
       property IncludeInShipping: Boolean read fIncludeInShipping write fIncludeInShipping;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
       property LastModifiedDate: TDateTime read fLastModifiedDate write fLastModifiedDate;
-      property LastModifiedByUserLogin: TSQLUserLogin read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
   end;
 
   // 87
   TSQLReturnAdjustmentType = class(TSQLRecord)
     private
-      fParent: TSQLReturnAdjustmentType;
+      fParent: TSQLReturnAdjustmentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property Parent: TSQLReturnAdjustmentType read fParent write fParent;
+      property Parent: TSQLReturnAdjustmentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -1762,46 +1762,46 @@ type
   // 88
   TSQLReturnHeader = class(TSQLRecord)
     private
-      fReturnHeaderType: TSQLReturnHeaderType;
-      fStatus: TSQLStatusItem;
-      fCreatedBy: TSQLUserLogin;
-      fFromParty: TSQLParty;
-      fToParty: TSQLParty;
-      fPaymentMethod: TSQLPaymentMethod;
-      fFinAccount: TSQLFinAccount;
-      fBillingAccount: TSQLBillingAccount;
+      fReturnHeaderType: TSQLReturnHeaderTypeID;
+      fStatus: TSQLStatusItemID;
+      fCreatedBy: TSQLUserLoginID;
+      fFromParty: TSQLPartyID;
+      fToParty: TSQLPartyID;
+      fPaymentMethod: TSQLPaymentMethodID;
+      fFinAccount: TSQLFinAccountID;
+      fBillingAccount: TSQLBillingAccountID;
       fEntryDate: TDateTime;
-      fOriginContactMech: TSQLContactMech;
-      fDestinationFacility: TSQLFacility;
+      fOriginContactMech: TSQLContactMechID;
+      fDestinationFacility: TSQLFacilityID;
       fNeedsInventoryReceive: Boolean;
-      fCurrencyUom: TSQLUom;
+      fCurrencyUom: TSQLUomID;
       fSupplierRma: Integer;
     published
-      property ReturnHeaderType: TSQLReturnHeaderType read fReturnHeaderType write fReturnHeaderType;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property CreatedBy: TSQLUserLogin read fCreatedBy write fCreatedBy;
-      property FromParty: TSQLParty read fFromParty write fFromParty;
-      property ToParty: TSQLParty read fToParty write fToParty;
-      property PaymentMethod: TSQLPaymentMethod read fPaymentMethod write fPaymentMethod;
-      property FinAccount: TSQLFinAccount read fFinAccount write fFinAccount;
-      property BillingAccount: TSQLBillingAccount read fBillingAccount write fBillingAccount;
+      property ReturnHeaderType: TSQLReturnHeaderTypeID read fReturnHeaderType write fReturnHeaderType;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property CreatedBy: TSQLUserLoginID read fCreatedBy write fCreatedBy;
+      property FromParty: TSQLPartyID read fFromParty write fFromParty;
+      property ToParty: TSQLPartyID read fToParty write fToParty;
+      property PaymentMethod: TSQLPaymentMethodID read fPaymentMethod write fPaymentMethod;
+      property FinAccount: TSQLFinAccountID read fFinAccount write fFinAccount;
+      property BillingAccount: TSQLBillingAccountID read fBillingAccount write fBillingAccount;
       property EntryDate: TDateTime read fEntryDate write fEntryDate;
-      property OriginContactMech: TSQLContactMech read fOriginContactMech write fOriginContactMech;
-      property DestinationFacility: TSQLFacility read fDestinationFacility write fDestinationFacility;
+      property OriginContactMech: TSQLContactMechID read fOriginContactMech write fOriginContactMech;
+      property DestinationFacility: TSQLFacilityID read fDestinationFacility write fDestinationFacility;
       property NeedsInventoryReceive: Boolean read fNeedsInventoryReceive write fNeedsInventoryReceive;
-      property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
+      property CurrencyUom: TSQLUomID read fCurrencyUom write fCurrencyUom;
       property SupplierRma: Integer read fSupplierRma write fSupplierRma;
   end;
 
   // 89
   TSQLReturnHeaderType = class(TSQLRecord)
     private
-      fParent: TSQLReturnHeaderType;
+      fParent: TSQLReturnHeaderTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property Parent: TSQLReturnHeaderType read fParent write fParent;
+      property Parent: TSQLReturnHeaderTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -1810,55 +1810,55 @@ type
   // 90
   TSQLReturnItem = class(TSQLRecord)
     private
-      fReturn: TSQLReturnHeader;
+      fReturn: TSQLReturnHeaderID;
       fFeturnItemSeq: Integer;
-      fReturnReason: TSQLReturnReason;
-      fReturnType: TSQLReturnType;
-      fReturnItemType: TSQLReturnItemType;
-      fProduct: TSQLProduct;
+      fReturnReason: TSQLReturnReasonID;
+      fReturnType: TSQLReturnTypeID;
+      fReturnItemType: TSQLReturnItemTypeID;
+      fProduct: TSQLProductID;
       fDescription: RawUTF8;
-      fOrderId: TSQLOrderHeader;
+      fOrderId: TSQLOrderHeaderID;
       fOrderItemSeq: Integer;
-      fStatus: TSQLStatusItem;
-      fExpectedItemStatus: TSQLStatusItem;
+      fStatus: TSQLStatusItemID;
+      fExpectedItemStatus: TSQLStatusItemID;
       fReturnQuantity: Double;
       fReceivedQuantity: Double;
       fReturnPrice: Currency;
-      fReturnItemResponse: TSQLReturnItemResponse;
+      fReturnItemResponse: TSQLReturnItemResponseID;
     published
-      property Return: TSQLReturnHeader read fReturn write fReturn;
+      property Return: TSQLReturnHeaderID read fReturn write fReturn;
       property FeturnItemSeq: Integer read fFeturnItemSeq write fFeturnItemSeq;
-      property ReturnReason: TSQLReturnReason read fReturnReason write fReturnReason;
-      property ReturnType: TSQLReturnType read fReturnType write fReturnType;
-      property ReturnItemType: TSQLReturnItemType read fReturnItemType write fReturnItemType;
-      property Product: TSQLProduct read fProduct write fProduct;
+      property ReturnReason: TSQLReturnReasonID read fReturnReason write fReturnReason;
+      property ReturnType: TSQLReturnTypeID read fReturnType write fReturnType;
+      property ReturnItemType: TSQLReturnItemTypeID read fReturnItemType write fReturnItemType;
+      property Product: TSQLProductID read fProduct write fProduct;
       property Description: RawUTF8 read fDescription write fDescription;
-      property OrderId: TSQLOrderHeader read fOrderId write fOrderId;
+      property OrderId: TSQLOrderHeaderID read fOrderId write fOrderId;
       property OrderItemSeq: Integer read fOrderItemSeq write fOrderItemSeq;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property ExpectedItemStatus: TSQLStatusItem read fExpectedItemStatus write fExpectedItemStatus;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property ExpectedItemStatus: TSQLStatusItemID read fExpectedItemStatus write fExpectedItemStatus;
       property ReturnQuantity: Double read fReturnQuantity write fReturnQuantity;
       property ReceivedQuantity: Double read fReceivedQuantity write fReceivedQuantity;
       property ReturnPrice: Currency read fReturnPrice write fReturnPrice;
-      property ReturnItemResponse: TSQLReturnItemResponse read fReturnItemResponse write fReturnItemResponse;
+      property ReturnItemResponse: TSQLReturnItemResponseID read fReturnItemResponse write fReturnItemResponse;
   end;
 
   // 91
   TSQLReturnItemResponse = class(TSQLRecord)
     private
-      fOrderPaymentPreference: TSQLOrderPaymentPreference;
-      fReplacementOrder: TSQLOrderHeader;
-      fPayment: TSQLPayment;
-      fBillingAccount: TSQLBillingAccount;
-      fFinAccountTrans: TSQLFinAccountTrans;
+      fOrderPaymentPreference: TSQLOrderPaymentPreferenceID;
+      fReplacementOrder: TSQLOrderHeaderID;
+      fPayment: TSQLPaymentID;
+      fBillingAccount: TSQLBillingAccountID;
+      fFinAccountTrans: TSQLFinAccountTransID;
       fResponseAmount: Currency;
       fResponseDate: TDateTime;
     published
-      property OrderPaymentPreference: TSQLOrderPaymentPreference read fOrderPaymentPreference write fOrderPaymentPreference;
-      property ReplacementOrder: TSQLOrderHeader read fReplacementOrder write fReplacementOrder;
-      property Payment: TSQLPayment read fPayment write fPayment;
-      property BillingAccount: TSQLBillingAccount read fBillingAccount write fBillingAccount;
-      property FinAccountTrans: TSQLFinAccountTrans read fFinAccountTrans write fFinAccountTrans;
+      property OrderPaymentPreference: TSQLOrderPaymentPreferenceID read fOrderPaymentPreference write fOrderPaymentPreference;
+      property ReplacementOrder: TSQLOrderHeaderID read fReplacementOrder write fReplacementOrder;
+      property Payment: TSQLPaymentID read fPayment write fPayment;
+      property BillingAccount: TSQLBillingAccountID read fBillingAccount write fBillingAccount;
+      property FinAccountTrans: TSQLFinAccountTransID read fFinAccountTrans write fFinAccountTrans;
       property ResponseAmount: Currency read fResponseAmount write fResponseAmount;
       property ResponseDate: TDateTime read fResponseDate write fResponseDate;
   end;
@@ -1866,12 +1866,12 @@ type
   // 92
   TSQLReturnItemType = class(TSQLRecord)
     private
-      fParent: TSQLReturnItemType;
+      fParent: TSQLReturnItemTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property Parent: TSQLReturnItemType read fParent write fParent;
+      property Parent: TSQLReturnItemTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -1881,12 +1881,12 @@ type
   TSQLReturnItemTypeMap = class(TSQLRecord)
     private
       fReturnItemMapKey: Integer;
-      fReturnHeaderType: TSQLReturnHeaderType;
-      fReturnItemType: TSQLReturnAdjustmentType;
+      fReturnHeaderType: TSQLReturnHeaderTypeID;
+      fReturnItemType: TSQLReturnAdjustmentTypeID;
     published
       property ReturnItemMapKey: Integer read fReturnItemMapKey write fReturnItemMapKey;
-      property ReturnHeaderType: TSQLReturnHeaderType read fReturnHeaderType write fReturnHeaderType;
-      property ReturnItemType: TSQLReturnAdjustmentType read fReturnItemType write fReturnItemType;
+      property ReturnHeaderType: TSQLReturnHeaderTypeID read fReturnHeaderType write fReturnHeaderType;
+      property ReturnItemType: TSQLReturnAdjustmentTypeID read fReturnItemType write fReturnItemType;
   end;
 
   // 94
@@ -1902,16 +1902,16 @@ type
   // 95
   TSQLReturnStatus = class(TSQLRecord)
     private
-      fStatus: TSQLStatusItem;
-      fReturn: TSQLReturnHeader;
+      fStatus: TSQLStatusItemID;
+      fReturn: TSQLReturnHeaderID;
       fReturnItemSeq: Integer;
-      fChangeByUserLogin: TSQLUserLogin;
+      fChangeByUserLogin: TSQLUserLoginID;
       fStatusDatetime: TDateTime;
     published
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property Return: TSQLReturnHeader read fReturn write fReturn;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property Return: TSQLReturnHeaderID read fReturn write fReturn;
       property ReturnItemSeq: Integer read fReturnItemSeq write fReturnItemSeq;
-      property ChangeByUserLogin: TSQLUserLogin read fChangeByUserLogin write fChangeByUserLogin;
+      property ChangeByUserLogin: TSQLUserLoginID read fChangeByUserLogin write fChangeByUserLogin;
       property StatusDatetime: TDateTime read fStatusDatetime write fStatusDatetime;
   end;
 
@@ -1930,19 +1930,19 @@ type
   // 97
   TSQLReturnItemBilling = class(TSQLRecord)
     private
-      fReturn: TSQLReturnHeader;
+      fReturn: TSQLReturnHeaderID;
       fReturnItemSeq: Integer;
-      fInvoice: TSQLInvoice;
+      fInvoice: TSQLInvoiceID;
       fInvoiceItemSeq: Integer;
-      fShipmentReceipt: TSQLShipmentReceipt;
+      fShipmentReceipt: TSQLShipmentReceiptID;
       fQuantity: Double;
       fAmount: Currency;
     published
-      property Return: TSQLReturnHeader read fReturn write fReturn;
+      property Return: TSQLReturnHeaderID read fReturn write fReturn;
       property ReturnItemSeq: Integer read fReturnItemSeq write fReturnItemSeq;
-      property Invoice: TSQLInvoice read fInvoice write fInvoice;
+      property Invoice: TSQLInvoiceID read fInvoice write fInvoice;
       property InvoiceItemSeq: Integer read fInvoiceItemSeq write fInvoiceItemSeq;
-      property ShipmentReceipt: TSQLShipmentReceipt read fShipmentReceipt write fShipmentReceipt;
+      property ShipmentReceipt: TSQLShipmentReceiptID read fShipmentReceipt write fShipmentReceipt;
       property Quantity: Double read fQuantity write fQuantity;
       property Amount: Currency read fAmount write fAmount;
   end;
@@ -1950,15 +1950,15 @@ type
   // 98
   TSQLReturnItemShipment = class(TSQLRecord)
     private
-      fReturn: TSQLReturnHeader;
+      fReturn: TSQLReturnHeaderID;
       fReturnItemSeq: Integer;
-      fShipment: TSQLShipment;
+      fShipment: TSQLShipmentID;
       fShipmentItemSeq: Integer;
       fQuantity: Double;
     published
-      property Return: TSQLReturnHeader read fReturn write fReturn;
+      property Return: TSQLReturnHeaderID read fReturn write fReturn;
       property ReturnItemSeq: Integer read fReturnItemSeq write fReturnItemSeq;
-      property Shipment: TSQLShipment read fShipment write fShipment;
+      property Shipment: TSQLShipmentID read fShipment write fShipment;
       property ShipmentItemSeq: Integer read fShipmentItemSeq write fShipmentItemSeq;
       property Quantity: Double read fQuantity write fQuantity;
   end;
@@ -1966,13 +1966,13 @@ type
   // 99
   TSQLReturnContactMech = class(TSQLRecord)
     private
-      fReturn: TSQLReturnHeader;
-      fContactMechPurposeType: TSQLContactMechPurposeType;
-      fContactMech: TSQLContactMech;
+      fReturn: TSQLReturnHeaderID;
+      fContactMechPurposeType: TSQLContactMechPurposeTypeID;
+      fContactMech: TSQLContactMechID;
     published
-      property Return: TSQLReturnHeader read fReturn write fReturn;
-      property ContactMechPurposeType: TSQLContactMechPurposeType read fContactMechPurposeType write fContactMechPurposeType;
-      property ContactMech: TSQLContactMech read fContactMech write fContactMech;
+      property Return: TSQLReturnHeaderID read fReturn write fReturn;
+      property ContactMechPurposeType: TSQLContactMechPurposeTypeID read fContactMechPurposeType write fContactMechPurposeType;
+      property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
   end;
 
   // 100
@@ -1980,8 +1980,8 @@ type
     private
       fVisit: Integer;
       fCartAbandonedLineSeq: Integer;
-      fProduct: TSQLProduct;
-      fProdCatalog: TSQLProdCatalog;
+      fProduct: TSQLProductID;
+      fProdCatalog: TSQLProdCatalogID;
       fQuantity: Double;
       fReservStart: TDateTime;
       fReservLength: Double;
@@ -1995,8 +1995,8 @@ type
     published
       property Visit: Integer read fVisit write fVisit;
       property CartAbandonedLineSeq: Integer read fCartAbandonedLineSeq write fCartAbandonedLineSeq;
-      property Product: TSQLProduct read fProduct write fProduct;
-      property ProdCatalog: TSQLProdCatalog read fProdCatalog write fProdCatalog;
+      property Product: TSQLProductID read fProduct write fProduct;
+      property ProdCatalog: TSQLProdCatalogID read fProdCatalog write fProdCatalog;
       property Quantity: Double read fQuantity write fQuantity;
       property ReservStart: TDateTime read fReservStart write fReservStart;
       property ReservLength: Double read fReservLength write fReservLength;
@@ -2012,53 +2012,53 @@ type
   // 101
   TSQLShoppingList = class(TSQLRecord)
     private
-      fShoppingListType: TSQLShoppingListType;
-      fParentShoppingList: TSQLShoppingList;
-      fProductStore: TSQLProductStore;
+      fShoppingListType: TSQLShoppingListTypeID;
+      fParentShoppingList: TSQLShoppingListID;
+      fProductStore: TSQLProductStoreID;
       fVisitorId: Integer;
-      fParty: TSQLParty;
+      fParty: TSQLPartyID;
       fListName: RawUTF8;
       fDescription: RawUTF8;
       fIsPublic: Boolean;
       fIsActive: Boolean;
-      fCurrencyUom: TSQLUom;
+      fCurrencyUom: TSQLUomID;
       fShipmentMethodType: Integer;
       fCarrierParty: Integer;
       fCarrierRoleType: Integer;
-      fContactMech: TSQLContactMech;
-      fPaymentMethod: TSQLPaymentMethod;
-      fRecurrenceInfo: TSQLRecurrenceInfo;
+      fContactMech: TSQLContactMechID;
+      fPaymentMethod: TSQLPaymentMethodID;
+      fRecurrenceInfo: TSQLRecurrenceInfoID;
       fLastOrderedDate: TDateTime;
       fLastAdminModified: TDateTime;
-      fProductPromoCode: TSQLProductPromoCode;
+      fProductPromoCode: TSQLProductPromoCodeID;
     published
-      property ShoppingListType: TSQLShoppingListType read fShoppingListType write fShoppingListType;
-      property ParentShoppingList: TSQLShoppingList read fParentShoppingList write fParentShoppingList;
-      property ProductStore: TSQLProductStore read fProductStore write fProductStore;
+      property ShoppingListType: TSQLShoppingListTypeID read fShoppingListType write fShoppingListType;
+      property ParentShoppingList: TSQLShoppingListID read fParentShoppingList write fParentShoppingList;
+      property ProductStore: TSQLProductStoreID read fProductStore write fProductStore;
       property VisitorId: Integer read fVisitorId write fVisitorId;
-      property Party: TSQLParty read fParty write fParty;
+      property Party: TSQLPartyID read fParty write fParty;
       property ListName: RawUTF8 read fListName write fListName;
       property Description: RawUTF8 read fDescription write fDescription;
       property IsPublic: Boolean read fIsPublic write fIsPublic;
       property IsActive: Boolean read fIsActive write fIsActive;
-      property CurrencyUom: TSQLUom read fCurrencyUom write fCurrencyUom;
+      property CurrencyUom: TSQLUomID read fCurrencyUom write fCurrencyUom;
       property ShipmentMethodType: Integer read fShipmentMethodType write fShipmentMethodType;
       property CarrierParty: Integer read fCarrierParty write fCarrierParty;
       property CarrierRoleType: Integer read fCarrierRoleType write fCarrierRoleType;
-      property ContactMech: TSQLContactMech read fContactMech write fContactMech;
-      property PaymentMethod: TSQLPaymentMethod read fPaymentMethod write fPaymentMethod;
-      property RecurrenceInfo: TSQLRecurrenceInfo read fRecurrenceInfo write fRecurrenceInfo;
+      property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
+      property PaymentMethod: TSQLPaymentMethodID read fPaymentMethod write fPaymentMethod;
+      property RecurrenceInfo: TSQLRecurrenceInfoID read fRecurrenceInfo write fRecurrenceInfo;
       property LastOrderedDate: TDateTime read fLastOrderedDate write fLastOrderedDate;
       property LastAdminModified: TDateTime read fLastAdminModified write fLastAdminModified;
-      property ProductPromoCode: TSQLProductPromoCode read fProductPromoCode write fProductPromoCode;
+      property ProductPromoCode: TSQLProductPromoCodeID read fProductPromoCode write fProductPromoCode;
   end;
 
   // 102
   TSQLShoppingListItem = class(TSQLRecord)
     private
-      fShoppingList: TSQLShoppingList;
+      fShoppingList: TSQLShoppingListID;
       fShoppingListItemSeq: Integer;
-      fProduct: TSQLProduct;
+      fProduct: TSQLProductID;
       fQuantity: Double;
       fModifiedPrice: Currency;
       fReservStart: TDateTime;
@@ -2067,9 +2067,9 @@ type
       fQuantityPurchased: Double;
       fConfigId: Integer;
     published
-      property ShoppingList: TSQLShoppingList read fShoppingList write fShoppingList;
+      property ShoppingList: TSQLShoppingListID read fShoppingList write fShoppingList;
       property ShoppingListItemSeq: Integer read fShoppingListItemSeq write fShoppingListItemSeq;
-      property Product: TSQLProduct read fProduct write fProduct;
+      property Product: TSQLProductID read fProduct write fProduct;
       property Quantity: Double read fQuantity write fQuantity;
       property ModifiedPrice: Currency read fModifiedPrice write fModifiedPrice;
       property ReservStart: TDateTime read fReservStart write fReservStart;
@@ -2082,13 +2082,13 @@ type
   // 103
   TSQLShoppingListItemSurvey = class(TSQLRecord)
     private
-      fShoppingList: TSQLShoppingList;
+      fShoppingList: TSQLShoppingListID;
       fShoppingListItemSeq: Integer;
-      fSurveyResponse: TSQLSurveyResponse;
+      fSurveyResponse: TSQLSurveyResponseID;
     published
-      property ShoppingList: TSQLShoppingList read fShoppingList write fShoppingList;
+      property ShoppingList: TSQLShoppingListID read fShoppingList write fShoppingList;
       property ShoppingListItemSeq: Integer read fShoppingListItemSeq write fShoppingListItemSeq;
-      property SurveyResponse: TSQLSurveyResponse read fSurveyResponse write fSurveyResponse;
+      property SurveyResponse: TSQLSurveyResponseID read fSurveyResponse write fSurveyResponse;
   end;
 
   // 104
@@ -2104,11 +2104,11 @@ type
   // 105
   TSQLShoppingListWorkEffort = class(TSQLRecord)
     private
-      fShoppingList: TSQLShoppingList;
-      fWorkEffort: TSQLWorkEffort;
+      fShoppingList: TSQLShoppingListID;
+      fWorkEffort: TSQLWorkEffortID;
     published
-      property ShoppingList: TSQLShoppingList read fShoppingList write fShoppingList;
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
+      property ShoppingList: TSQLShoppingListID read fShoppingList write fShoppingList;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
   end;
 
 implementation

@@ -67,10 +67,10 @@ type
   // 1
   TSQLDataSource = class(TSQLRecord)
     private
-      fDataSourceType: TSQLDataSourceType;
+      fDataSourceType: TSQLDataSourceTypeID;
       fDescription: RawUTF8;
     published
-      property DataSourceType: TSQLDataSourceType read fDataSourceType write fDataSourceType;
+      property DataSourceType: TSQLDataSourceTypeID read fDataSourceType write fDataSourceType;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
@@ -87,7 +87,7 @@ type
   // 3
   TSQLEmailTemplateSetting = class(TSQLRecord)
     private
-      fEmailType: TSQLEnumeration;
+      fEmailType: TSQLEnumerationID;
       fDescription: RawUTF8;
       fBodyScreenLocation: RawUTF8;
       fXslfoAttachScreenLocation: RawUTF8;
@@ -97,7 +97,7 @@ type
       fSubject: RawUTF8;
       fContentType: RawUTF8;
     published
-      property EmailType: TSQLEnumeration read fEmailType write fEmailType;
+      property EmailType: TSQLEnumerationID read fEmailType write fEmailType;
       property Description: RawUTF8 read FDescription write FDescription;
       property BodyScreenLocation: RawUTF8 read fBodyScreenLocation write fBodyScreenLocation;
       property XslfoAttachScreenLocation: RawUTF8 read fXslfoAttachScreenLocation write fXslfoAttachScreenLocation;
@@ -111,12 +111,12 @@ type
   // 4
   TSQLEnumeration = class(TSQLRecord)
     private
-      fEnumType: TSQLEnumerationType;
+      fEnumType: TSQLEnumerationTypeID;
       fEnumCode: RawUTF8;
       fSequence: Integer;
       FDescription: RawUTF8;
     published
-      property EnumType: TSQLEnumerationType read fEnumType write fEnumType;
+      property EnumType: TSQLEnumerationTypeID read fEnumType write fEnumType;
       property EnumCode: RawUTF8 read fEnumCode write fEnumCode;
       property Sequence: Integer read fSequence write fSequence;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -125,12 +125,12 @@ type
   // 5
   TSQLEnumerationType = class(TSQLRecord)
     private
-      fParent: TSQLEnumerationType;
+      fParent: TSQLEnumerationTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLEnumerationType read fParent write fParent;
+      property Parent: TSQLEnumerationTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -163,18 +163,18 @@ type
   // 8
   TSQLCountryTeleCode = class(TSQLRecord)
     private
-      fCountryCode: TSQLCountryCode;
+      fCountryCode: TSQLCountryCodeID;
       fTeleCode: RawUTF8;
     published
-      property CountryCode: TSQLCountryCode read fCountryCode write fCountryCode;
+      property CountryCode: TSQLCountryCodeID read fCountryCode write fCountryCode;
       property TeleCode: RawUTF8 read fTeleCode write fTeleCode;
   end;
 
   // 9
   TSQLCountryAddressFormat = class(TSQLRecord)
     private
-      fGeo: TSQLGeo;
-      fGeoAssocType: TSQLGeoAssocType;
+      fGeo: TSQLGeoID;
+      fGeoAssocType: TSQLGeoAssocTypeID;
       fRequireStateProvince: Integer;
       fRequirePostalCode: Boolean;
       fPostalCodeRegex: RawUTF8;
@@ -182,8 +182,8 @@ type
       fRequirePostalCodeExt: Boolean;
       fAddressFormat: RawUTF8;
     published
-      property Geo: TSQLGeo read fGeo write fGeo;
-      property GeoAssocType: TSQLGeoAssocType read fGeoAssocType write fGeoAssocType;
+      property Geo: TSQLGeoID read fGeo write fGeo;
+      property GeoAssocType: TSQLGeoAssocTypeID read fGeoAssocType write fGeoAssocType;
       property RequireStateProvince: Integer read fRequireStateProvince write fRequireStateProvince;
       property RequirePostalCode: Boolean read fRequirePostalCode write fRequirePostalCode;
       property PostalCodeRegex: RawUTF8 read fPostalCodeRegex write fPostalCodeRegex;
@@ -195,14 +195,14 @@ type
   // 10
   TSQLGeo = class(TSQLRecord)
     private
-      fGeoType: TSQLGeoType;
+      fGeoType: TSQLGeoTypeID;
       fGeoName: RawUTF8;
       fGeoCode: RawUTF8;
       fGeoSecCode: RawUTF8;
       fAbbreviation: RawUTF8;
       fWellKnownText: RawUTF8;
     published
-      property GeoType: TSQLGeoType read fGeoType write fGeoType;
+      property GeoType: TSQLGeoTypeID read fGeoType write fGeoType;
       property GeoName: RawUTF8 read fGeoName write fGeoName;
       property GeoCode: RawUTF8 read fGeoCode write fGeoCode;
       property GeoSecCode: RawUTF8 read fGeoSecCode write fGeoSecCode;
@@ -213,13 +213,13 @@ type
   // 11
   TSQLGeoAssoc = class(TSQLRecord)
     private
-      fGeo: TSQLGeo;
-      fGeoTo: TSQLGeo;
-      fGeoAssocType: TSQLGeoAssocType;
+      fGeo: TSQLGeoID;
+      fGeoTo: TSQLGeoID;
+      fGeoAssocType: TSQLGeoAssocTypeID;
     published
-      property Geo: TSQLGeo read fGeo write fGeo;
-      property GeoTo: TSQLGeo read fGeoTo write fGeoTo;
-      property GeoAssocType: TSQLGeoAssocType read fGeoAssocType write fGeoAssocType;
+      property Geo: TSQLGeoID read fGeo write fGeo;
+      property GeoTo: TSQLGeoID read fGeoTo write fGeoTo;
+      property GeoAssocType: TSQLGeoAssocTypeID read fGeoAssocType write fGeoAssocType;
   end;
 
   // 12
@@ -235,34 +235,34 @@ type
   // 13
   TSQLGeoPoint = class(TSQLRecord)
     private
-      fGeoPointTypeEnum: TSQLEnumeration;
+      fGeoPointTypeEnum: TSQLEnumerationID;
       fDescription: RawUTF8;
-      fDataSource: TSQLDataSource;
+      fDataSource: TSQLDataSourceID;
       fLatitude: RawUTF8;
       fLongitude: RawUTF8;
       fElevation: Double;
-      fElevationUom: TSQLUom;
+      fElevationUom: TSQLUomID;
       fInformation: RawUTF8;
     published
-      property GeoPointTypeEnum: TSQLEnumeration read fGeoPointTypeEnum write fGeoPointTypeEnum;
+      property GeoPointTypeEnum: TSQLEnumerationID read fGeoPointTypeEnum write fGeoPointTypeEnum;
       property Description: RawUTF8 read fDescription write fDescription;
-      property DataSource: TSQLDataSource read fDataSource write fDataSource;
+      property DataSource: TSQLDataSourceID read fDataSource write fDataSource;
       property Latitude: RawUTF8 read fLatitude write fLatitude;
       property Longitude: RawUTF8 read fLongitude write fLongitude;
       property Elevation: Double read fElevation write fElevation;
-      property ElevationUom: TSQLUom read fElevationUom write fElevationUom;
+      property ElevationUom: TSQLUomID read fElevationUom write fElevationUom;
       property Information: RawUTF8 read fInformation write fInformation;
   end;
 
   // 14
   TSQLGeoType = class(TSQLRecord)
     private
-      fParent: TSQLGeoType;
+      fParent: TSQLGeoTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLGeoType read fParent write fParent;
+      property Parent: TSQLGeoTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -273,11 +273,11 @@ type
     private
       fEnteredKeyword: RawUTF8;
       fAlternateKeyword: RawUTF8;
-      fRelationshipEnum: TSQLEnumeration;
+      fRelationshipEnum: TSQLEnumerationID;
     published
       property EnteredKeyword: RawUTF8 read fEnteredKeyword write fEnteredKeyword;
       property AlternateKeyword: RawUTF8 read fAlternateKeyword write fAlternateKeyword;
-      property RelationshipEnum: TSQLEnumeration read fRelationshipEnum write fRelationshipEnum;
+      property RelationshipEnum: TSQLEnumerationID read fRelationshipEnum write fRelationshipEnum;
   end;
 
   // 16
@@ -301,11 +301,11 @@ type
   // 17
   TSQLCustomMethod = class(TSQLRecord)
     private
-      fCustomMethodType: TSQLCustomMethodType;
+      fCustomMethodType: TSQLCustomMethodTypeID;
       fCustomMethodName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property CustomMethodType: TSQLCustomMethodType read fCustomMethodType write fCustomMethodType;
+      property CustomMethodType: TSQLCustomMethodTypeID read fCustomMethodType write fCustomMethodType;
       property CustomMethodName: RawUTF8 read fCustomMethodName write fCustomMethodName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -313,12 +313,12 @@ type
   // 18
   TSQLCustomMethodType = class(TSQLRecord)
     private
-      fParent: TSQLCustomMethodType;
+      fParent: TSQLCustomMethodTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLCustomMethodType read fParent write fParent;
+      property Parent: TSQLCustomMethodTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -339,16 +339,16 @@ type
   // 20
   TSQLCustomTimePeriod = class(TSQLRecord)
     private
-      fParentPeriod: TSQLCustomTimePeriod;
-      fPeriodType: TSQLPeriodType;
+      fParentPeriod: TSQLCustomTimePeriodID;
+      fPeriodType: TSQLPeriodTypeID;
       fPeriodNum: Integer;
       fPeriodName: RawUTF8;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fIsClosed: Boolean;
     published
-      property ParentPeriod: TSQLCustomTimePeriod read fParentPeriod write fParentPeriod;
-      property PeriodType: TSQLPeriodType read fPeriodType write fPeriodType;
+      property ParentPeriod: TSQLCustomTimePeriodID read fParentPeriod write fParentPeriod;
+      property PeriodType: TSQLPeriodTypeID read fPeriodType write fPeriodType;
       property PeriodNum: Integer read fPeriodNum write fPeriodNum;
       property PeriodName: RawUTF8 read fPeriodName write fPeriodName;
       property FromDate: TDateTime read fFromDate write fFromDate;
@@ -362,23 +362,23 @@ type
       fName: RawUTF8;
       fDescription: RawUTF8;
       fPeriodLength: Integer;
-      fUom: TSQLUom;
+      fUom: TSQLUomID;
     published
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
       property PeriodLength: Integer read fPeriodLength write fPeriodLength;
-      property Uom: TSQLUom read fUom write fUom;
+      property Uom: TSQLUomID read fUom write fUom;
   end;
 
   // 22
   TSQLStatusItem = class(TSQLRecord)
     private
-      fStatusType: TSQLStatusType;
+      fStatusType: TSQLStatusTypeID;
       fStatusCode: RawUTF8;
       fSequenceId: Integer;
       fDescription: RawUTF8;
     published
-      property StatusType: TSQLStatusType read fStatusType write fStatusType;
+      property StatusType: TSQLStatusTypeID read fStatusType write fStatusType;
       property StatusCode: RawUTF8 read fStatusCode write fStatusCode;
       property SequenceId: Integer read fSequenceId write fSequenceId;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -387,12 +387,12 @@ type
   // 23
   TSQLStatusType = class(TSQLRecord)
     private
-      fParent: TSQLStatusType;
+      fParent: TSQLStatusTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       fDescription: RawUTF8;
     published
-      property Parent: TSQLStatusType read fParent write fParent;
+      property Parent: TSQLStatusTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -401,13 +401,13 @@ type
   // 24
   TSQLStatusValidChange = class(TSQLRecord)
     private
-      fStatus: TSQLStatusItem;
-      fStatusTo: TSQLStatusItem;
+      fStatus: TSQLStatusItemID;
+      fStatusTo: TSQLStatusItemID;
       fConditionExpression: RawUTF8;
       fTransitionName: RawUTF8;
     published
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property StatusTo: TSQLStatusItem read fStatusTo write fStatusTo;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property StatusTo: TSQLStatusItemID read fStatusTo write fStatusTo;
       property ConditionExpression: RawUTF8 read fConditionExpression write fConditionExpression;
       property TransitionName: RawUTF8 read fTransitionName write fTransitionName;
   end;
@@ -415,12 +415,12 @@ type
   // 25
   TSQLUom = class(TSQLRecord)
     private
-      fUomType: TSQLUomType;
+      fUomType: TSQLUomTypeID;
       fAbbreviation: RawUTF8;
       fNumericCode: Integer;
       fDescription: RawUTF8;
     published
-      property UomType: TSQLUomType read fUomType write fUomType;
+      property UomType: TSQLUomTypeID read fUomType write fUomType;
       property Abbreviation: RawUTF8 read fAbbreviation write fAbbreviation;
       property NumericCode: Integer read fNumericCode write fNumericCode;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -429,17 +429,17 @@ type
   // 26
   TSQLUomConversion = class(TSQLRecord)
     private
-      fUom: TSQLUom;
-      fUomTo: TSQLUom;
+      fUom: TSQLUomID;
+      fUomTo: TSQLUomID;
       fConversionFactor: Double;
-      fCustomMethod: TSQLCustomMethod;
+      fCustomMethod: TSQLCustomMethodID;
       fDecimalScale: Integer;
       fRoundingMode: Integer;
     published
-      property Uom: TSQLUom read fUom write fUom;
-      property UomTo: TSQLUom read fUomTo write fUomTo;
+      property Uom: TSQLUomID read fUom write fUom;
+      property UomTo: TSQLUomID read fUomTo write fUomTo;
       property ConversionFactor: Double read fConversionFactor write fConversionFactor;
-      property CustomMethod: TSQLCustomMethod read fCustomMethod write fCustomMethod;
+      property CustomMethod: TSQLCustomMethodID read fCustomMethod write fCustomMethod;
       property DecimalScale: Integer read fDecimalScale write fDecimalScale;
       property RoundingMode: Integer read fRoundingMode write fRoundingMode;
   end;
@@ -447,44 +447,44 @@ type
   // 27
   TSQLUomConversionDated = class(TSQLRecord)
     private
-      fUom: TSQLUom;
-      fUomTo: TSQLUom;
+      fUom: TSQLUomID;
+      fUomTo: TSQLUomID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fConversionFactor: Double;
-      fCustomMethod: TSQLCustomMethod;
+      fCustomMethod: TSQLCustomMethodID;
       fDecimalScale: Integer;
       fRoundingMode: Integer;
-      fPurposeEnum: TSQLEnumeration;
+      fPurposeEnum: TSQLEnumerationID;
     published
-      property Uom: TSQLUom read fUom write fUom;
-      property UomTo: TSQLUom read fUomTo write fUomTo;
+      property Uom: TSQLUomID read fUom write fUom;
+      property UomTo: TSQLUomID read fUomTo write fUomTo;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property ConversionFactor: Double read fConversionFactor write fConversionFactor;
-      property CustomMethod: TSQLCustomMethod read fCustomMethod write fCustomMethod;
+      property CustomMethod: TSQLCustomMethodID read fCustomMethod write fCustomMethod;
       property DecimalScale: Integer read fDecimalScale write fDecimalScale;
       property RoundingMode: Integer read fRoundingMode write fRoundingMode;
-      property PurposeEnum: TSQLEnumeration read fPurposeEnum write fPurposeEnum;
+      property PurposeEnum: TSQLEnumerationID read fPurposeEnum write fPurposeEnum;
   end;
 
   // 28
   TSQLUomGroup = class(TSQLRecord)
     private
-      fUom: TSQLUom;
+      fUom: TSQLUomID;
     published
-      property Uom: TSQLUom read fUom write fUom;
+      property Uom: TSQLUomID read fUom write fUom;
   end;
 
   // 29
   TSQLUomType = class(TSQLRecord)
     private
-      fParent: TSQLUomType;
+      fParent: TSQLUomTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLUomType read fParent write fParent;
+      property Parent: TSQLUomTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -493,15 +493,15 @@ type
   // 30
   TSQLUserPreference = class(TSQLRecord)
     private
-      fUserLogin: TSQLUserLogin;
+      fUserLogin: TSQLUserLoginID;
       fUserPrefTypeId: Integer;
-      fUserPrefGroupType: TSQLUserPrefGroupType;
+      fUserPrefGroupType: TSQLUserPrefGroupTypeID;
       fUserPrefValue: RawUTF8;
       fUserPrefDataType: Integer;
     published
-      property UserLogin: TSQLUserLogin read fUserLogin write fUserLogin;
+      property UserLogin: TSQLUserLoginID read fUserLogin write fUserLogin;
       property UserPrefTypeId: Integer read fUserPrefTypeId write fUserPrefTypeId;
-      property UserPrefGroupType: TSQLUserPrefGroupType read fUserPrefGroupType write fUserPrefGroupType;
+      property UserPrefGroupType: TSQLUserPrefGroupTypeID read fUserPrefGroupType write fUserPrefGroupType;
       property UserPrefValue: RawUTF8 read fUserPrefValue write fUserPrefValue;
       property UserPrefDataType: Integer read fUserPrefDataType write fUserPrefDataType;
   end;
@@ -529,23 +529,23 @@ type
   // 33
   TSQLVisualTheme = class(TSQLRecord)
     private
-      fVisualThemeSet: TSQLVisualThemeSet;
+      fVisualThemeSet: TSQLVisualThemeSetID;
       fDescription: RawUTF8;
     published
-      property VisualThemeSet: TSQLVisualThemeSet read fVisualThemeSet write fVisualThemeSet;
+      property VisualThemeSet: TSQLVisualThemeSetID read fVisualThemeSet write fVisualThemeSet;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 34
   TSQLVisualThemeResource = class(TSQLRecord)
     private
-      fVisualTheme: TSQLVisualTheme;
-      fResourceTypeEnum: TSQLEnumeration;
+      fVisualTheme: TSQLVisualThemeID;
+      fResourceTypeEnum: TSQLEnumerationID;
       fSequenceId: Integer;
       fResourceValue: RawUTF8;
     published
-      property VisualTheme: TSQLVisualTheme read fVisualTheme write fVisualTheme;
-      property ResourceTypeEnum: TSQLEnumeration read fResourceTypeEnum write fResourceTypeEnum;
+      property VisualTheme: TSQLVisualThemeID read fVisualTheme write fVisualTheme;
+      property ResourceTypeEnum: TSQLEnumerationID read fResourceTypeEnum write fResourceTypeEnum;
       property SequenceId: Integer read fSequenceId write fSequenceId;
       property ResourceValue: RawUTF8 read fResourceValue write fResourceValue;
   end;
@@ -587,11 +587,11 @@ type
   // 37
   TSQLPortletPortletCategory = class(TSQLRecord)
     private
-      fPortalPortlet: TSQLPortalPortlet;
-      fPortletCategory: TSQLPortletCategory;
+      fPortalPortlet: TSQLPortalPortletID;
+      fPortletCategory: TSQLPortletCategoryID;
     published
-      property PortalPortlet: TSQLPortalPortlet read fPortalPortlet write fPortalPortlet;
-      property PortletCategory: TSQLPortletCategory read fPortletCategory write fPortletCategory;
+      property PortalPortlet: TSQLPortalPortletID read fPortalPortlet write fPortalPortlet;
+      property PortletCategory: TSQLPortletCategoryID read fPortletCategory write fPortletCategory;
   end;
 
   // 38
@@ -601,28 +601,28 @@ type
       fDescription: RawUTF8;
       fOwnerUserLoginId: Integer;
       fOriginalPortalPageId: Integer;
-      fParentPortalPage: TSQLPortalPage;
+      fParentPortalPage: TSQLPortalPageID;
       fSequenceNum: Integer;
-      fSecurityGroup: TSQLSecurityGroup;
+      fSecurityGroup: TSQLSecurityGroupID;
     published
       property PortalPageName: RawUTF8 read fPortalPageName write fPortalPageName;
       property Description: RawUTF8 read fDescription write fDescription;
       property OwnerUserLoginId: Integer read fOwnerUserLoginId write fOwnerUserLoginId;
       property OriginalPortalPageId: Integer read fOriginalPortalPageId write fOriginalPortalPageId;
-      property ParentPortalPage: TSQLPortalPage read fParentPortalPage write fParentPortalPage;
+      property ParentPortalPage: TSQLPortalPageID read fParentPortalPage write fParentPortalPage;
       property SequenceNum: Integer read fSequenceNum write fSequenceNum;
-      property SecurityGroup: TSQLSecurityGroup read fSecurityGroup write fSecurityGroup;
+      property SecurityGroup: TSQLSecurityGroupID read fSecurityGroup write fSecurityGroup;
   end;
 
   // 39
   TSQLPortalPageColumn = class(TSQLRecord)
     private
-      fPortalPage: TSQLPortalPage;
+      fPortalPage: TSQLPortalPageID;
       fColumnSeqId: Integer;
       fColumnWidthPixels: Integer;
       fColumnWidthPercentage: Integer;
     published
-      property PortalPage: TSQLPortalPage read fPortalPage write fPortalPage;
+      property PortalPage: TSQLPortalPageID read fPortalPage write fPortalPage;
       property ColumnSeqId: Integer read fColumnSeqId write fColumnSeqId;
       property ColumnWidthPixels: Integer read fColumnWidthPixels write fColumnWidthPixels;
       property ColumnWidthPercentage: Integer read fColumnWidthPercentage write fColumnWidthPercentage;
@@ -631,13 +631,13 @@ type
   // 40
   TSQLPortalPagePortlet = class(TSQLRecord)
     private
-      fPortalPage: TSQLPortalPageColumn;      //portalPageId, columnSeqId
-      fPortalPortlet: TSQLPortalPortlet;
+      fPortalPage: TSQLPortalPageColumnID;      //portalPageId, columnSeqId
+      fPortalPortlet: TSQLPortalPortletID;
       fPortletSeqId: Integer;
       fSequenceNum: Integer;
     published
-      property PortalPage: TSQLPortalPageColumn read fPortalPage write fPortalPage;
-      property PortalPortlet: TSQLPortalPortlet read fPortalPortlet write fPortalPortlet;
+      property PortalPage: TSQLPortalPageColumnID read fPortalPage write fPortalPage;
+      property PortalPortlet: TSQLPortalPortletID read fPortalPortlet write fPortalPortlet;
       property PortletSeqId: Integer read fPortletSeqId write fPortletSeqId;
       property SequenceNum: Integer read fSequenceNum write fSequenceNum;
   end;

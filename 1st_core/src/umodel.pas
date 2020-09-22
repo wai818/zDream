@@ -10,7 +10,6 @@ uses
   //Classes, SysUtils;
 
 const
-  //ROOT_NAME = 'core';
   ROOT_NAME_PARTY = 'party';
   ROOT_NAME_PRODUCT = 'product';
   ROOT_NAME_ORDER = 'order';
@@ -22,7 +21,6 @@ const
   ROOT_NAME_HUMANRES = 'humanres';
   ROOT_NAME_COMMON = 'common';
 
-  //function CreateModel: TSQLModel;
   function CreatePartyModel: TSQLModel;
   function CreateProductModel: TSQLModel;
   function CreateOrderModel: TSQLModel;
@@ -35,7 +33,6 @@ const
   function CreateCommonModel: TSQLModel;
 
 implementation
-
 
 function CreatePartyModel: TSQLModel;
 begin

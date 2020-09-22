@@ -11,21 +11,21 @@ type
   // 1
   TSQLPartyQual = class(TSQLRecord)
     private
-      fParty: TSQLParty;
-      fPartyQualType: TSQLPartyQualType;
+      fParty: TSQLPartyID;
+      fPartyQualType: TSQLPartyQualTypeID;
       fQualificationDesc: RawUTF8;
       fTitle: RawUTF8;
-      fStatus: TSQLStatusItem;
-      fVerifStatus: TSQLStatusItem;
+      fStatus: TSQLStatusItemID;
+      fVerifStatus: TSQLStatusItemID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property Party: TSQLParty read fParty write fParty;
-      property PartyQualType: TSQLPartyQualType read fPartyQualType write fPartyQualType;
+      property Party: TSQLPartyID read fParty write fParty;
+      property PartyQualType: TSQLPartyQualTypeID read fPartyQualType write fPartyQualType;
       property QualificationDesc: RawUTF8 read fQualificationDesc write fQualificationDesc;
       property Title: RawUTF8 read fTitle write fTitle;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property VerifStatus: TSQLStatusItem read fVerifStatus write fVerifStatus;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property VerifStatus: TSQLStatusItemID read fVerifStatus write fVerifStatus;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -33,12 +33,12 @@ type
   // 2
   TSQLPartyQualType = class(TSQLRecord)
     private
-      fParent: TSQLPartyQualType;
+      fParent: TSQLPartyQualTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLPartyQualType read fParent write fParent;
+      property Parent: TSQLPartyQualTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -47,13 +47,13 @@ type
   // 3
   TSQLPartyResume = class(TSQLRecord)
     private
-      fParty: TSQLParty;
-      fContent: TSQLContent;
+      fParty: TSQLPartyID;
+      fContent: TSQLContentID;
       fResumeDate: TDateTime;
       fResumeText: RawUTF8;
     published
-      property Party: TSQLParty read fParty write fParty;
-      property Content: TSQLContent read fContent write fContent;
+      property Party: TSQLPartyID read fParty write fParty;
+      property Content: TSQLContentID read fContent write fContent;
       property ResumeDate: TDateTime read fResumeDate write fResumeDate;
       property ResumeText: RawUTF8 read fResumeText write fResumeText;
   end;
@@ -61,15 +61,15 @@ type
   // 4
   TSQLPartySkill = class(TSQLRecord)
     private
-      fParty: TSQLParty;
-      fSkillType: TSQLSkillType;
+      fParty: TSQLPartyID;
+      fSkillType: TSQLSkillTypeID;
       fYearsExperience: Integer;
       fRating: Integer;
       fSkillLevel: Integer;
       fStartedUsingDate: TDateTime;
     published
-      property Party: TSQLParty read fParty write fParty;
-      property SkillType: TSQLSkillType read fSkillType write fSkillType;
+      property Party: TSQLPartyID read fParty write fParty;
+      property SkillType: TSQLSkillTypeID read fSkillType write fSkillType;
       property YearsExperience: Integer read fYearsExperience write fYearsExperience;
       property Rating: Integer read fRating write fRating;
       property SkillLevel: Integer read fSkillLevel write fSkillLevel;
@@ -79,12 +79,12 @@ type
   // 5
   TSQLPerfRatingType = class(TSQLRecord)
     private
-      fParent: TSQLPerfRatingType;
+      fParent: TSQLPerfRatingTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLPerfRatingType read fParent write fParent;
+      property Parent: TSQLPerfRatingTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -93,20 +93,20 @@ type
   // 6
   TSQLPerfReview = class(TSQLRecord)
     private
-      fEmployeeParty: TSQLPartyRole;
-      //fEmployeeRoleType: TSQLPartyRole;
-      fManagerParty: TSQLPartyRole;
-      //fManagerRoleType: TSQLPartyRole;
-      fPayment: TSQLPayment;
-      fEmplPosition: TSQLEmplPosition;
+      fEmployeeParty: TSQLPartyRoleID;
+      //fEmployeeRoleType: TSQLPartyRoleID;
+      fManagerParty: TSQLPartyRoleID;
+      //fManagerRoleType: TSQLPartyRoleID;
+      fPayment: TSQLPaymentID;
+      fEmplPosition: TSQLEmplPositionID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fComments: RawUTF8;
     published
-      property EmployeeParty: TSQLPartyRole read fEmployeeParty write fEmployeeParty;
-      property ManagerParty: TSQLPartyRole read fManagerParty write fManagerParty;
-      property Payment: TSQLPayment read fPayment write fPayment;
-      property EmplPosition: TSQLEmplPosition read fEmplPosition write fEmplPosition;
+      property EmployeeParty: TSQLPartyRoleID read fEmployeeParty write fEmployeeParty;
+      property ManagerParty: TSQLPartyRoleID read fManagerParty write fManagerParty;
+      property Payment: TSQLPaymentID read fPayment write fPayment;
+      property EmplPosition: TSQLEmplPositionID read fEmplPosition write fEmplPosition;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property Comments: RawUTF8 read fComments write fComments;
@@ -115,28 +115,28 @@ type
   // 7
   TSQLPerfReviewItem = class(TSQLRecord)
     private
-      fPerfReview: TSQLPerfReview;      //employeeParty, employeeRoleType, perfReview
+      fPerfReview: TSQLPerfReviewID;      //employeeParty, employeeRoleType, perfReview
       fPerfReviewItemSeq: Integer;
-      fPerfReviewItemType: TSQLPerfReviewItemType;
-      fPerfRatingType: TSQLPerfRatingType;
+      fPerfReviewItemType: TSQLPerfReviewItemTypeID;
+      fPerfRatingType: TSQLPerfRatingTypeID;
       fComments: RawUTF8;
     published
-      property PerfReview: TSQLPerfReview read fPerfReview write fPerfReview;
+      property PerfReview: TSQLPerfReviewID read fPerfReview write fPerfReview;
       property PerfReviewItemSeq: Integer read fPerfReviewItemSeq write fPerfReviewItemSeq;
-      property PerfReviewItemType: TSQLPerfReviewItemType read fPerfReviewItemType write fPerfReviewItemType;
-      property PerfRatingType: TSQLPerfRatingType read fPerfRatingType write fPerfRatingType;
+      property PerfReviewItemType: TSQLPerfReviewItemTypeID read fPerfReviewItemType write fPerfReviewItemType;
+      property PerfRatingType: TSQLPerfRatingTypeID read fPerfRatingType write fPerfRatingType;
       property Comments: RawUTF8 read fComments write fComments;
   end;
 
   // 8
   TSQLPerfReviewItemType = class(TSQLRecord)
     private
-      fParent: TSQLPerfReviewItemType;
+      fParent: TSQLPerfReviewItemTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLPerfReviewItemType read fParent write fParent;
+      property Parent: TSQLPerfReviewItemTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -145,13 +145,13 @@ type
   // 9
   TSQLPerformanceNote = class(TSQLRecord)
     private
-      fParty: TSQLPartyRole;         //partyId, roleTypeId
+      fParty: TSQLPartyRoleID;         //partyId, roleTypeId
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fCommunicationDate: TDateTime;
       fComments: RawUTF8;
     published
-      property Party: TSQLPartyRole read fParty write fParty;
+      property Party: TSQLPartyRoleID read fParty write fParty;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property CommunicationDate: TDateTime read fCommunicationDate write fCommunicationDate;
@@ -161,23 +161,23 @@ type
   // 10
   TSQLPersonTraining = class(TSQLRecord)
     private
-      fParty: TSQLParty;
-      fTrainingRequest: TSQLTrainingRequest;
-      fTrainingClassType: TSQLTrainingClassType;
-      fWorkEffort: TSQLWorkEffort;
+      fParty: TSQLPartyID;
+      fTrainingRequest: TSQLTrainingRequestID;
+      fTrainingClassType: TSQLTrainingClassTypeID;
+      fWorkEffort: TSQLWorkEffortID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fApprover: TSQLPerson;
+      fApprover: TSQLPersonID;
       fApprovalStatus: RawUTF8;
       fReason: RawUTF8;
     published
-      property Party: TSQLParty read fParty write fParty;
-      property TrainingRequest: TSQLTrainingRequest read fTrainingRequest write fTrainingRequest;
-      property TrainingClassType: TSQLTrainingClassType read fTrainingClassType write fTrainingClassType;
-      property WorkEffort: TSQLWorkEffort read fWorkEffort write fWorkEffort;
+      property Party: TSQLPartyID read fParty write fParty;
+      property TrainingRequest: TSQLTrainingRequestID read fTrainingRequest write fTrainingRequest;
+      property TrainingClassType: TSQLTrainingClassTypeID read fTrainingClassType write fTrainingClassType;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property Approver: TSQLPerson read fApprover write fApprover;
+      property Approver: TSQLPersonID read fApprover write fApprover;
       property ApprovalStatus: RawUTF8 read fApprovalStatus write fApprovalStatus;
       property Reason: RawUTF8 read fReason write fReason;
   end;
@@ -185,12 +185,12 @@ type
   // 11
   TSQLResponsibilityType = class(TSQLRecord)
     private
-      fParent: TSQLResponsibilityType;
+      fParent: TSQLResponsibilityTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLResponsibilityType read fParent write fParent;
+      property Parent: TSQLResponsibilityTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -199,12 +199,12 @@ type
   // 12
   TSQLSkillType = class(TSQLRecord)
     private
-      fParent: TSQLSkillType;
+      fParent: TSQLSkillTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLSkillType read fParent write fParent;
+      property Parent: TSQLSkillTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -213,12 +213,12 @@ type
   // 13
   TSQLTrainingClassType = class(TSQLRecord)
     private
-      fParent: TSQLTrainingClassType;
+      fParent: TSQLTrainingClassTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLTrainingClassType read fParent write fParent;
+      property Parent: TSQLTrainingClassTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -227,13 +227,13 @@ type
   // 14
   TSQLBenefitType = class(TSQLRecord)
     private
-      fParent: TSQLBenefitType;
+      fParent: TSQLBenefitTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
       fEmployerPaidPercentage: Double;
     published
-      property Parent: TSQLBenefitType read fParent write fParent;
+      property Parent: TSQLBenefitTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -243,52 +243,52 @@ type
   // 15
   TSQLEmployment = class(TSQLRecord)
     private
-      fPartyFrom: TSQLPartyRole;       //partyIdFrom, roleTypeIdFrom
-      fPartyTo: TSQLPartyRole;       //partyIdTo, roleTypeIdTo
+      fPartyFrom: TSQLPartyRoleID;       //partyIdFrom, roleTypeIdFrom
+      fPartyTo: TSQLPartyRoleID;       //partyIdTo, roleTypeIdTo
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fTerminationReason: TSQLTerminationReason;
-      fTerminationType: TSQLTerminationType;
+      fTerminationReason: TSQLTerminationReasonID;
+      fTerminationType: TSQLTerminationTypeID;
     published
-      property PartyFrom: TSQLPartyRole read fPartyFrom write fPartyFrom;
-      property PartyTo: TSQLPartyRole read fPartyTo write fPartyTo;
+      property PartyFrom: TSQLPartyRoleID read fPartyFrom write fPartyFrom;
+      property PartyTo: TSQLPartyRoleID read fPartyTo write fPartyTo;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property TerminationReason: TSQLTerminationReason read fTerminationReason write fTerminationReason;
-      property TerminationType: TSQLTerminationType read fTerminationType write fTerminationType;
+      property TerminationReason: TSQLTerminationReasonID read fTerminationReason write fTerminationReason;
+      property TerminationType: TSQLTerminationTypeID read fTerminationType write fTerminationType;
   end;
 
   // 16
   TSQLEmploymentApp = class(TSQLRecord)
     private
-      fEmplPosition: TSQLEmplPosition;
-      fStatus: TSQLStatusItem;
-      fEmploymentAppSourceType: TSQLEmploymentAppSourceType;
-      fApplyingParty: TSQLParty;
-      fReferredByParty: TSQLParty;
+      fEmplPosition: TSQLEmplPositionID;
+      fStatus: TSQLStatusItemID;
+      fEmploymentAppSourceType: TSQLEmploymentAppSourceTypeID;
+      fApplyingParty: TSQLPartyID;
+      fReferredByParty: TSQLPartyID;
       fApplicationDate: TDateTime;
-      fApproverParty: TSQLParty;
-      fJobRequisition: TSQLJobRequisition;
+      fApproverParty: TSQLPartyID;
+      fJobRequisition: TSQLJobRequisitionID;
     published
-      property EmplPosition: TSQLEmplPosition read fEmplPosition write fEmplPosition;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property EmploymentAppSourceType: TSQLEmploymentAppSourceType read fEmploymentAppSourceType write fEmploymentAppSourceType;
-      property ApplyingParty: TSQLParty read fApplyingParty write fApplyingParty;
-      property ReferredByParty: TSQLParty read fReferredByParty write fReferredByParty;
+      property EmplPosition: TSQLEmplPositionID read fEmplPosition write fEmplPosition;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property EmploymentAppSourceType: TSQLEmploymentAppSourceTypeID read fEmploymentAppSourceType write fEmploymentAppSourceType;
+      property ApplyingParty: TSQLPartyID read fApplyingParty write fApplyingParty;
+      property ReferredByParty: TSQLPartyID read fReferredByParty write fReferredByParty;
       property ApplicationDate: TDateTime read fApplicationDate write fApplicationDate;
-      property ApproverParty: TSQLParty read fApproverParty write fApproverParty;
-      property JobRequisition: TSQLJobRequisition read fJobRequisition write fJobRequisition;
+      property ApproverParty: TSQLPartyID read fApproverParty write fApproverParty;
+      property JobRequisition: TSQLJobRequisitionID read fJobRequisition write fJobRequisition;
   end;
 
   // 17
   TSQLEmploymentAppSourceType = class(TSQLRecord)
     private
-      fParent: TSQLEmploymentAppSourceType;
+      fParent: TSQLEmploymentAppSourceTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLEmploymentAppSourceType read fParent write fParent;
+      property Parent: TSQLEmploymentAppSourceTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -297,34 +297,34 @@ type
   // 18
   TSQLEmplLeave = class(TSQLRecord)
     private
-      fParty: TSQLParty;
-      fLeaveType: TSQLEmplLeaveType;
-      fEmplLeaveReasonType: TSQLEmplLeaveReasonType;
+      fParty: TSQLPartyID;
+      fLeaveType: TSQLEmplLeaveTypeID;
+      fEmplLeaveReasonType: TSQLEmplLeaveReasonTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fApproverParty: TSQLParty;
-      fLeaveStatus: TSQLStatusItem;
+      fApproverParty: TSQLPartyID;
+      fLeaveStatus: TSQLStatusItemID;
       fDescription: RawUTF8;
     published
-      property Party: TSQLParty read fParty write fParty;
-      property LeaveType: TSQLEmplLeaveType read fLeaveType write fLeaveType;
-      property EmplLeaveReasonType: TSQLEmplLeaveReasonType read fEmplLeaveReasonType write fEmplLeaveReasonType;
+      property Party: TSQLPartyID read fParty write fParty;
+      property LeaveType: TSQLEmplLeaveTypeID read fLeaveType write fLeaveType;
+      property EmplLeaveReasonType: TSQLEmplLeaveReasonTypeID read fEmplLeaveReasonType write fEmplLeaveReasonType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property ApproverParty: TSQLParty read fApproverParty write fApproverParty;
-      property LeaveStatus: TSQLStatusItem read fLeaveStatus write fLeaveStatus;
+      property ApproverParty: TSQLPartyID read fApproverParty write fApproverParty;
+      property LeaveStatus: TSQLStatusItemID read fLeaveStatus write fLeaveStatus;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 19
   TSQLEmplLeaveType = class(TSQLRecord)
     private
-      fParent: TSQLEmplLeaveType;
+      fParent: TSQLEmplLeaveTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLEmplLeaveType read fParent write fParent;
+      property Parent: TSQLEmplLeaveTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -333,22 +333,22 @@ type
   // 20
   TSQLPartyBenefit = class(TSQLRecord)
     private
-      fPartyFrom: TSQLPartyRole;       //partyIdFrom, roleTypeIdFrom
-      fPartyTo: TSQLPartyRole;       //partyIdTo, roleTypeIdTo
-      fBenefitType: TSQLBenefitType;
+      fPartyFrom: TSQLPartyRoleID;       //partyIdFrom, roleTypeIdFrom
+      fPartyTo: TSQLPartyRoleID;       //partyIdTo, roleTypeIdTo
+      fBenefitType: TSQLBenefitTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fPeriodType: TSQLPeriodType;
+      fPeriodType: TSQLPeriodTypeID;
       fCost: Currency;
       fActualEmployerPaidPercent: Double;
       fAvailableTime: Integer;
     published
-      property PartyFrom: TSQLPartyRole read fPartyFrom write fPartyFrom;
-      property PartyTo: TSQLPartyRole read fPartyTo write fPartyTo;
-      property BenefitType: TSQLBenefitType read fBenefitType write fBenefitType;
+      property PartyFrom: TSQLPartyRoleID read fPartyFrom write fPartyFrom;
+      property PartyTo: TSQLPartyRoleID read fPartyTo write fPartyTo;
+      property BenefitType: TSQLBenefitTypeID read fBenefitType write fBenefitType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property PeriodType: TSQLPeriodType read fPeriodType write fPeriodType;
+      property PeriodType: TSQLPeriodTypeID read fPeriodType write fPeriodType;
       property Cost: Currency read fCost write fCost;
       property ActualEmployerPaidPercent: Double read fActualEmployerPaidPercent write fActualEmployerPaidPercent;
       property AvailableTime: Integer read fAvailableTime write fAvailableTime;
@@ -367,19 +367,19 @@ type
   // 22
   TSQLPayHistory = class(TSQLRecord)
     private
-      fEmployment: TSQLEmployment;    //roleTypeIdFrom, roleTypeIdTo, partyIdFrom, partyIdTo, emplFromDate
+      fEmployment: TSQLEmploymentID;    //roleTypeIdFrom, roleTypeIdTo, partyIdFrom, partyIdTo, emplFromDate
       fFromDate: TDateTime;
       fThruDate: TDateTime;
-      fSalaryStep: TSQLSalaryStep;    //salaryStepSeqId, payGradeId
-      fPeriodType: TSQLPeriodType;
+      fSalaryStep: TSQLSalaryStepID;    //salaryStepSeqId, payGradeId
+      fPeriodType: TSQLPeriodTypeID;
       fAmount: Currency;
       fComments: RawUTF8;
     published
-      property Employment: TSQLEmployment read fEmployment write fEmployment;
+      property Employment: TSQLEmploymentID read fEmployment write fEmployment;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      property SalaryStep: TSQLSalaryStep read fSalaryStep write fSalaryStep;
-      property PeriodType: TSQLPeriodType read fPeriodType write fPeriodType;
+      property SalaryStep: TSQLSalaryStepID read fSalaryStep write fSalaryStep;
+      property PeriodType: TSQLPeriodTypeID read fPeriodType write fPeriodType;
       property Amount: Currency read fAmount write fAmount;
       property Comments: RawUTF8 read fComments write fComments;
   end;
@@ -387,10 +387,10 @@ type
   // 23
   TSQLPayrollPreference = class(TSQLRecord)
     private
-      fParty: TSQLPartyRole;               //partyId, roleTypeId
-      fDeductionType: TSQLDeductionType;
-      fPaymentMethodType: TSQLPaymentMethodType;
-      fPeriodType: TSQLPeriodType;
+      fParty: TSQLPartyRoleID;               //partyId, roleTypeId
+      fDeductionType: TSQLDeductionTypeID;
+      fPaymentMethodType: TSQLPaymentMethodTypeID;
+      fPeriodType: TSQLPeriodTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fPercentage: Double;
@@ -399,10 +399,10 @@ type
       fAccountNumber: RawUTF8;
       fBankName: RawUTF8;
     published
-      property Party: TSQLPartyRole read fParty write fParty;
-      property DeductionType: TSQLDeductionType read fDeductionType write fDeductionType;
-      property PaymentMethodType: TSQLPaymentMethodType read fPaymentMethodType write fPaymentMethodType;
-      property PeriodType: TSQLPeriodType read fPeriodType write fPeriodType;
+      property Party: TSQLPartyRoleID read fParty write fParty;
+      property DeductionType: TSQLDeductionTypeID read fDeductionType write fDeductionType;
+      property PaymentMethodType: TSQLPaymentMethodTypeID read fPaymentMethodType write fPaymentMethodType;
+      property PeriodType: TSQLPeriodTypeID read fPeriodType write fPeriodType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property Percentage: Double read fPercentage write fPercentage;
@@ -415,21 +415,21 @@ type
   // 24
   TSQLSalaryStep = class(TSQLRecord)
     private
-      fPayGrade: TSQLPayGrade;
+      fPayGrade: TSQLPayGradeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fDateModified: TDateTime;
       fAmount: Currency;
-      fCreatedByUserLogin: TSQLUserLogin;
-      fLastModifiedByUserLogin: TSQLUserLogin;
+      fCreatedByUserLogin: TSQLUserLoginID;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
     published
-      property PayGrade: TSQLPayGrade read fPayGrade write fPayGrade;
+      property PayGrade: TSQLPayGradeID read fPayGrade write fPayGrade;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property DateModified: TDateTime read fDateModified write fDateModified;
       property Amount: Currency read fAmount write fAmount;
-      property CreatedByUserLogin: TSQLUserLogin read fCreatedByUserLogin write fCreatedByUserLogin;
-      property LastModifiedByUserLogin: TSQLUserLogin read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
   end;
 
   // 25
@@ -445,12 +445,12 @@ type
   // 26
   TSQLTerminationType = class(TSQLRecord)
     private
-      fParent: TSQLTerminationType;
+      fParent: TSQLTerminationTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLTerminationType read fParent write fParent;
+      property Parent: TSQLTerminationTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -461,24 +461,24 @@ type
     private
       fUnemploymentClaimDate: TDateTime;
       fDescription: RawUTF8;
-      fStatus: TSQLStatusItem;
-      fEmployment: TSQLEmployment;      //roleTypeIdFrom, roleTypeIdTo, partyIdFrom, partyIdTo, fromDate
+      fStatus: TSQLStatusItemID;
+      fEmployment: TSQLEmploymentID;      //roleTypeIdFrom, roleTypeIdTo, partyIdFrom, partyIdTo, fromDate
       fThruDate: TDateTime;
     published
       property UnemploymentClaimDate: TDateTime read fUnemploymentClaimDate write fUnemploymentClaimDate;
       property Description: RawUTF8 read FDescription write FDescription;
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property Employment: TSQLEmployment read fEmployment write fEmployment;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property Employment: TSQLEmploymentID read fEmployment write fEmployment;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
 
   // 28
   TSQLEmplPosition = class(TSQLRecord)
     private
-      fStatus: TSQLStatusItem;
-      fParty: TSQLParty;
-      fBudget: TSQLBudgetItem;        //budgetId, budgetItemSeqId
-      fEmplPositionType: TSQLEmplPositionType;
+      fStatus: TSQLStatusItemID;
+      fParty: TSQLPartyID;
+      fBudget: TSQLBudgetItemID;        //budgetId, budgetItemSeqId
+      fEmplPositionType: TSQLEmplPositionTypeID;
       fEstimatedFromDate: TDateTime;
       fEstimatedThruDate: TDateTime;
       fSalaryFlag: Boolean;
@@ -488,10 +488,10 @@ type
       fActualFromDate: TDateTime;
       fActualThruDate: TDateTime;
     published
-      property Status: TSQLStatusItem read fStatus write fStatus;
-      property Party: TSQLParty read fParty write fParty;
-      property Budget: TSQLBudgetItem read fBudget write fBudget;
-      property EmplPositionType: TSQLEmplPositionType read fEmplPositionType write fEmplPositionType;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
+      property Party: TSQLPartyID read fParty write fParty;
+      property Budget: TSQLBudgetItemID read fBudget write fBudget;
+      property EmplPositionType: TSQLEmplPositionTypeID read fEmplPositionType write fEmplPositionType;
       property EstimatedFromDate: TDateTime read fEstimatedFromDate write fEstimatedFromDate;
       property EstimatedThruDate: TDateTime read fEstimatedThruDate write fEstimatedThruDate;
       property SalaryFlag: Boolean read fSalaryFlag write fSalaryFlag;
@@ -505,12 +505,12 @@ type
   // 29
   TSQLEmplPositionClassType = class(TSQLRecord)
     private
-      fParent: TSQLEmplPositionClassType;
+      fParent: TSQLEmplPositionClassTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLEmplPositionClassType read fParent write fParent;
+      property Parent: TSQLEmplPositionClassTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -519,14 +519,14 @@ type
   // 30
   TSQLEmplPositionFulfillment = class(TSQLRecord)
     private
-      fEmplPosition: TSQLEmplPosition;
-      fParty: TSQLParty;
+      fEmplPosition: TSQLEmplPositionID;
+      fParty: TSQLPartyID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fComments: RawUTF8;
     published
-      property EmplPosition: TSQLEmplPosition read fEmplPosition write fEmplPosition;
-      property Party: TSQLParty read fParty write fParty;
+      property EmplPosition: TSQLEmplPositionID read fEmplPosition write fEmplPosition;
+      property Party: TSQLPartyID read fParty write fParty;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property Comments: RawUTF8 read fComments write fComments;
@@ -535,15 +535,15 @@ type
   // 31
   TSQLEmplPositionReportingStruct = class(TSQLRecord)
     private
-      fEmplPositionIdReportingTo: TSQLEmplPosition;
-      fEmplPositionIdManagedBy: TSQLEmplPosition;
+      fEmplPositionIdReportingTo: TSQLEmplPositionID;
+      fEmplPositionIdManagedBy: TSQLEmplPositionID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fComments: RawUTF8;
       fPrimaryFlag: Boolean;
     published
-      property EmplPositionIdReportingTo: TSQLEmplPosition read fEmplPositionIdReportingTo write fEmplPositionIdReportingTo;
-      property EmplPositionIdManagedBy: TSQLEmplPosition read fEmplPositionIdManagedBy write fEmplPositionIdManagedBy;
+      property EmplPositionIdReportingTo: TSQLEmplPositionID read fEmplPositionIdReportingTo write fEmplPositionIdReportingTo;
+      property EmplPositionIdManagedBy: TSQLEmplPositionID read fEmplPositionIdManagedBy write fEmplPositionIdManagedBy;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property Comments: RawUTF8 read fComments write fComments;
@@ -553,14 +553,14 @@ type
   // 32
   TSQLEmplPositionResponsibility = class(TSQLRecord)
     private
-      fEmplPosition: TSQLEmplPosition;
-      fResponsibilityType: TSQLResponsibilityType;
+      fEmplPosition: TSQLEmplPositionID;
+      fResponsibilityType: TSQLResponsibilityTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fComments: RawUTF8;
     published
-      property EmplPosition: TSQLEmplPosition read fEmplPosition write fEmplPosition;
-      property ResponsibilityType: TSQLResponsibilityType read fResponsibilityType write fResponsibilityType;
+      property EmplPosition: TSQLEmplPositionID read fEmplPosition write fEmplPosition;
+      property ResponsibilityType: TSQLResponsibilityTypeID read fResponsibilityType write fResponsibilityType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property Comments: RawUTF8 read fComments write fComments;
@@ -569,12 +569,12 @@ type
   // 33
   TSQLEmplPositionType = class(TSQLRecord)
     private
-      fParent: TSQLEmplPositionType;
+      fParent: TSQLEmplPositionTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLEmplPositionType read fParent write fParent;
+      property Parent: TSQLEmplPositionTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -583,14 +583,14 @@ type
   // 34
   TSQLEmplPositionTypeClass = class(TSQLRecord)
     private
-      fEmplPositionType: TSQLEmplPositionType;
-      fEmplPositionClassType: TSQLEmplPositionClassType;
+      fEmplPositionType: TSQLEmplPositionTypeID;
+      fEmplPositionClassType: TSQLEmplPositionClassTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fStandardHoursPerWeek: Double;
     published
-      property EmplPositionType: TSQLEmplPositionType read fEmplPositionType write fEmplPositionType;
-      property EmplPositionClassType: TSQLEmplPositionClassType read fEmplPositionClassType write fEmplPositionClassType;
+      property EmplPositionType: TSQLEmplPositionTypeID read fEmplPositionType write fEmplPositionType;
+      property EmplPositionClassType: TSQLEmplPositionClassTypeID read fEmplPositionClassType write fEmplPositionClassType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property StandardHoursPerWeek: Double read fStandardHoursPerWeek write fStandardHoursPerWeek;
@@ -599,14 +599,14 @@ type
   // 35
   TSQLValidResponsibility = class(TSQLRecord)
     private
-      fEmplPositionType: TSQLEmplPositionType;
-      fResponsibilityType: TSQLResponsibilityType;
+      fEmplPositionType: TSQLEmplPositionTypeID;
+      fResponsibilityType: TSQLResponsibilityTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fComments: RawUTF8;
     published
-      property EmplPositionType: TSQLEmplPositionType read fEmplPositionType write fEmplPositionType;
-      property ResponsibilityType: TSQLResponsibilityType read fResponsibilityType write fResponsibilityType;
+      property EmplPositionType: TSQLEmplPositionTypeID read fEmplPositionType write fEmplPositionType;
+      property ResponsibilityType: TSQLResponsibilityTypeID read fResponsibilityType write fResponsibilityType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
       property Comments: RawUTF8 read fComments write fComments;
@@ -615,14 +615,14 @@ type
   // 36
   TSQLEmplPositionTypeRate = class(TSQLRecord)
     private
-      fEmplPositionType: TSQLEmplPositionType;
-      fRateType: TSQLRateType;
-      fSalaryStep: TSQLSalaryStep;            //payGradeId, salaryStepSeqId, fromDate
+      fEmplPositionType: TSQLEmplPositionTypeID;
+      fRateType: TSQLRateTypeID;
+      fSalaryStep: TSQLSalaryStepID;            //payGradeId, salaryStepSeqId, fromDate
       fThruDate: TDateTime;
     published
-      property EmplPositionType: TSQLEmplPositionType read fEmplPositionType write fEmplPositionType;
-      property RateType: TSQLRateType read fRateType write fRateType;
-      property SalaryStep: TSQLSalaryStep read fSalaryStep write fSalaryStep;
+      property EmplPositionType: TSQLEmplPositionTypeID read fEmplPositionType write fEmplPositionType;
+      property RateType: TSQLRateTypeID read fRateType write fRateType;
+      property SalaryStep: TSQLSalaryStepID read fSalaryStep write fSalaryStep;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
 
@@ -636,11 +636,11 @@ type
       fExperienceYears: Integer;
       fQualification: Integer;
       fJobLocation: Integer;
-      fSkillType: TSQLSkillType;
+      fSkillType: TSQLSkillTypeID;
       fNoOfResources: Integer;
-      fJobPostingTypeEnum: TSQLEnumeration;
+      fJobPostingTypeEnum: TSQLEnumerationID;
       fJobRequisitionDate: TDateTime;
-      fExamTypeEnum: TSQLEnumeration;
+      fExamTypeEnum: TSQLEnumerationID;
       fRequiredOnDate: TDateTime;
     published
       property DurationMonths: Integer read fDurationMonths write fDurationMonths;
@@ -650,30 +650,30 @@ type
       property ExperienceYears: Integer read fExperienceYears write fExperienceYears;
       property Qualification: Integer read fQualification write fQualification;
       property JobLocation: Integer read fJobLocation write fJobLocation;
-      property SkillType: TSQLSkillType read fSkillType write fSkillType;
+      property SkillType: TSQLSkillTypeID read fSkillType write fSkillType;
       property NoOfResources: Integer read fNoOfResources write fNoOfResources;
-      property JobPostingTypeEnum: TSQLEnumeration read fJobPostingTypeEnum write fJobPostingTypeEnum;
+      property JobPostingTypeEnum: TSQLEnumerationID read fJobPostingTypeEnum write fJobPostingTypeEnum;
       property JobRequisitionDate: TDateTime read fJobRequisitionDate write fJobRequisitionDate;
-      property ExamTypeEnum: TSQLEnumeration read fExamTypeEnum write fExamTypeEnum;
+      property ExamTypeEnum: TSQLEnumerationID read fExamTypeEnum write fExamTypeEnum;
       property RequiredOnDate: TDateTime read fRequiredOnDate write fRequiredOnDate;
   end;
 
   // 38
   TSQLJobInterview = class(TSQLRecord)
     private
-      fJobIntervieweeParty: TSQLParty;
-      fJobRequisition: TSQLJobRequisition;
-      fJobInterviewerParty: TSQLParty;
-      fJobInterviewType: TSQLJobInterviewType;
-      fGradeSecuredEnum: TSQLEnumeration;
+      fJobIntervieweeParty: TSQLPartyID;
+      fJobRequisition: TSQLJobRequisitionID;
+      fJobInterviewerParty: TSQLPartyID;
+      fJobInterviewType: TSQLJobInterviewTypeID;
+      fGradeSecuredEnum: TSQLEnumerationID;
       fJobInterviewResult: RawUTF8;
       fJobInterviewDate: TDateTime;
     published
-      property JobIntervieweeParty: TSQLParty read fJobIntervieweeParty write fJobIntervieweeParty;
-      property JobRequisition: TSQLJobRequisition read fJobRequisition write fJobRequisition;
-      property JobInterviewerParty: TSQLParty read fJobInterviewerParty write fJobInterviewerParty;
-      property JobInterviewType: TSQLJobInterviewType read fJobInterviewType write fJobInterviewType;
-      property GradeSecuredEnum: TSQLEnumeration read fGradeSecuredEnum write fGradeSecuredEnum;
+      property JobIntervieweeParty: TSQLPartyID read fJobIntervieweeParty write fJobIntervieweeParty;
+      property JobRequisition: TSQLJobRequisitionID read fJobRequisition write fJobRequisition;
+      property JobInterviewerParty: TSQLPartyID read fJobInterviewerParty write fJobInterviewerParty;
+      property JobInterviewType: TSQLJobInterviewTypeID read fJobInterviewType write fJobInterviewType;
+      property GradeSecuredEnum: TSQLEnumerationID read fGradeSecuredEnum write fGradeSecuredEnum;
       property JobInterviewResult: RawUTF8 read fJobInterviewResult write fJobInterviewResult;
       property JobInterviewDate: TDateTime read fJobInterviewDate write fJobInterviewDate;
   end;
@@ -701,12 +701,12 @@ type
   // 41
   TSQLEmplLeaveReasonType = class(TSQLRecord)
     private
-      fParent: TSQLEmplLeaveReasonType;
+      fParent: TSQLEmplLeaveReasonTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
     published
-      property Parent: TSQLEmplLeaveReasonType read fParent write fParent;
+      property Parent: TSQLEmplLeaveReasonTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;

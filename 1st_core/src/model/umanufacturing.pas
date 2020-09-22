@@ -11,24 +11,24 @@ type
   // 1
   TSQLProductManufacturingRule = class(TSQLRecord)
     private
-      fProduct: TSQLProduct;
-      fProductIdFor: TSQLProduct;
-      fProductIdIn: TSQLProduct;
+      fProduct: TSQLProductID;
+      fProductIdFor: TSQLProductID;
+      fProductIdIn: TSQLProductID;
       fRuleSeqId: Integer;
-      fProductIdInSubst: TSQLProduct;
-      fProductFeature: TSQLProductFeature;
+      fProductIdInSubst: TSQLProductID;
+      fProductFeature: TSQLProductFeatureID;
       fRuleOperator: Integer;
       fQuantity: Double;
       fDescription: RawUTF8;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
     published
-      property Product: TSQLProduct read fProduct write fProduct;
-      property ProductIdFor: TSQLProduct read fProductIdFor write fProductIdFor;
-      property ProductIdIn: TSQLProduct read fProductIdIn write fProductIdIn;
+      property Product: TSQLProductID read fProduct write fProduct;
+      property ProductIdFor: TSQLProductID read fProductIdFor write fProductIdFor;
+      property ProductIdIn: TSQLProductID read fProductIdIn write fProductIdIn;
       property RuleSeqId: Integer read fRuleSeqId write fRuleSeqId;
-      property ProductIdInSubst: TSQLProduct read fProductIdInSubst write fProductIdInSubst;
-      property ProductFeature: TSQLProductFeature read fProductFeature write fProductFeature;
+      property ProductIdInSubst: TSQLProductID read fProductIdInSubst write fProductIdInSubst;
+      property ProductFeature: TSQLProductFeatureID read fProductFeature write fProductFeature;
       property RuleOperator: Integer read fRuleOperator write fRuleOperator;
       property Quantity: Double read fQuantity write fQuantity;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -39,25 +39,25 @@ type
   // 2
   TSQLTechDataCalendar = class(TSQLRecord)
     private
-      fCalendar: TSQLTechDataCalendar;
+      fCalendar: TSQLTechDataCalendarID;
       fDescription: RawUTF8;
-      fCalendarWeek: TSQLTechDataCalendarWeek;
+      fCalendarWeek: TSQLTechDataCalendarWeekID;
     published
-      property Calendar: TSQLTechDataCalendar read fCalendar write fCalendar;
+      property Calendar: TSQLTechDataCalendarID read fCalendar write fCalendar;
       property Description: RawUTF8 read fDescription write fDescription;
-      property CalendarWeek: TSQLTechDataCalendarWeek read fCalendarWeek write fCalendarWeek;
+      property CalendarWeek: TSQLTechDataCalendarWeekID read fCalendarWeek write fCalendarWeek;
   end;
 
   // 3
   TSQLTechDataCalendarExcDay = class(TSQLRecord)
     private
-      fCalendar: TSQLTechDataCalendar;
+      fCalendar: TSQLTechDataCalendarID;
       fExceptionDateStartTime: TDateTime;
       fExceptionCapacity: Double;
       fUsedCapacity: Double;
       fDescription: RawUTF8;
     published
-      property Calendar: TSQLTechDataCalendar read fCalendar write fCalendar;
+      property Calendar: TSQLTechDataCalendarID read fCalendar write fCalendar;
       property ExceptionDateStartTime: TDateTime read fExceptionDateStartTime write fExceptionDateStartTime;
       property ExceptionCapacity: Double read fExceptionCapacity write fExceptionCapacity;
       property UsedCapacity: Double read fUsedCapacity write fUsedCapacity;
@@ -67,14 +67,14 @@ type
   // 4
   TSQLTechDataCalendarExcWeek = class(TSQLRecord)
     private
-      fCalendar: TSQLTechDataCalendar;
+      fCalendar: TSQLTechDataCalendarID;
       fExceptionDateStart: TDateTime;
-      fCalendarWeek: TSQLTechDataCalendarWeek;
+      fCalendarWeek: TSQLTechDataCalendarWeekID;
       fDescription: RawUTF8;
     published
-      property Calendar: TSQLTechDataCalendar read fCalendar write fCalendar;
+      property Calendar: TSQLTechDataCalendarID read fCalendar write fCalendar;
       property ExceptionDateStart: TDateTime read fExceptionDateStart write fExceptionDateStart;
-      property CalendarWeek: TSQLTechDataCalendarWeek read fCalendarWeek write fCalendarWeek;
+      property CalendarWeek: TSQLTechDataCalendarWeekID read fCalendarWeek write fCalendarWeek;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
@@ -127,18 +127,18 @@ type
   // 7
   TSQLMrpEvent = class(TSQLRecord)
     private
-      fProduct: TSQLProduct;
+      fProduct: TSQLProductID;
       fEventDate: TDateTime;
-      fMrpEventType: TSQLMrpEventType;
-      fFacility: TSQLFacility;
+      fMrpEventType: TSQLMrpEventTypeID;
+      fFacility: TSQLFacilityID;
       fQuantity: Double;
       fEventName: RawUTF8;
       fIsLate: Boolean;
     published
-      property Product: TSQLProduct read fProduct write fProduct;
+      property Product: TSQLProductID read fProduct write fProduct;
       property EventDate: TDateTime read fEventDate write fEventDate;
-      property MrpEventType: TSQLMrpEventType read fMrpEventType write fMrpEventType;
-      property Facility: TSQLFacility read fFacility write fFacility;
+      property MrpEventType: TSQLMrpEventTypeID read fMrpEventType write fMrpEventType;
+      property Facility: TSQLFacilityID read fFacility write fFacility;
       property Quantity: Double read fQuantity write fQuantity;
       property EventName: RawUTF8 read fEventName write fEventName;
       property IsLate: Boolean read fIsLate write fIsLate;
