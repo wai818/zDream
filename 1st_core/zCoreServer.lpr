@@ -2,6 +2,8 @@ program zCoreServer;
 
 {$I Synopse.inc}
 
+{$define MAX_SQLFIELDS_128}     //不起作用
+
 uses
   {$I SynDprUses.inc}
   Classes, SysUtils, CustApp,
@@ -14,8 +16,11 @@ uses
   uForwardDeclaration, uAccounting, uWorkEffort, uShipment, uMarketing,
   uManufacturing, uHumanres, uCommon, uContent, uSecurity, uService;
 
-type
+const
+  MAX_SQLFIELDS = 128;
+  //MAX_SQLTABLES = 256;
 
+type
   { TCoreServer }
 
   TCoreServer = class(TCustomApplication)

@@ -1830,14 +1830,14 @@ type
       fReservNthPPPerc: Double;
       //配置标识
       fConfig: Integer;
-      {fCreatedDate: TDateTime;
+      fCreatedDate: TDateTime;
       fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
       fLastModifiedByUserLogin: TSQLUserLoginID;
       fInShippingBox: Boolean;
       fDefaultShipmentBoxType: TSQLShipmentBoxTypeID;
       fLotIdFilledIn: TSQLRawBlob;
-      fOrderDecimalQuantity: Boolean;}
+      fOrderDecimalQuantity: Boolean;
     published
       property ProductType: TSQLProductTypeID read fProductType write fProductType;
       property PrimaryProductCategory: TSQLProductCategoryID read fPrimaryProductCategory write fPrimaryProductCategory;
@@ -1900,14 +1900,14 @@ type
       property Reserv2ndPPPerc: Double read fReserv2ndPPPerc write fReserv2ndPPPerc;
       property ReservNthPPPerc: Double read fReservNthPPPerc write fReservNthPPPerc;
       property Config: Integer read fConfig write fConfig;
-      {property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
+      property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
       property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
       property LastModifiedDate: TDateTime read fLastModifiedDate write fLastModifiedDate;
       property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
       property InShippingBox: Boolean read fInShippingBox write fInShippingBox;
       property DefaultShipmentBoxType: TSQLShipmentBoxTypeID read fDefaultShipmentBoxType write fDefaultShipmentBoxType;
       property LotIdFilledIn: TSQLRawBlob read fLotIdFilledIn write fLotIdFilledIn;
-      property OrderDecimalQuantity: Boolean read fOrderDecimalQuantity write fOrderDecimalQuantity;}
+      property OrderDecimalQuantity: Boolean read fOrderDecimalQuantity write fOrderDecimalQuantity;
   end;
 
   // 101 产品关联

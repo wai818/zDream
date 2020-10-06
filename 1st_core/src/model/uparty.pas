@@ -109,7 +109,7 @@ type
       //协议项类型
       fAgreementItemType: TSQLAgreementItemTypeID;
       //币种
-      //fCurrencyUom: TSQLCurrencyUomID;
+      fCurrencyUom: TSQLUomID;
       //协议项序号
       fAgreementItemSeq: Integer;
       //协议文本
@@ -119,7 +119,7 @@ type
     published
       property Agreement: TSQLAgreementID read fAgreement write fAgreement;
       property AgreementItemType: TSQLAgreementItemTypeID read fAgreementItemType write fAgreementItemType;
-      //property CurrencyUom: TSQLCurrencyUomID read fCurrencyUom write fCurrencyUom;
+      property CurrencyUom: TSQLUomID read fCurrencyUom write fCurrencyUom;
       property AgreementItemSeq: Integer read fAgreementItemSeq write fAgreementItemSeq;
       property AgreementText: RawUTF8 read fAgreementText write fAgreementText;
       property AgreementImage: TSQLRawBlob read fAgreementImage write fAgreementImage;
@@ -185,7 +185,7 @@ type
       //协议内容类型
       fAgreementContentType: TSQLAgreementContentTypeID;
       //内容
-      //fContent: TSQLContentID;
+      fContent: TSQLContentID;
       //起始日期
       fFromDate: TDateTime;
       //结束日期
@@ -194,7 +194,7 @@ type
       property Agreement: TSQLAgreementID read fAgreement write fAgreement;
       property AgreementItemSeq: Integer read fAgreementItemSeq write fAgreementItemSeq;
       property AgreementContentType: TSQLAgreementContentTypeID read fAgreementContentType write fAgreementContentType;
-      //property Content: TSQLContentID read fContent write fContent;
+      property Content: TSQLContentID read fContent write fContent;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -391,11 +391,11 @@ type
       //协议项序号
       fAgreementItemSeq: Integer;
       //工作计划
-      //fWorkEffort: TSQLWorkEffortID;
+      fWorkEffort: TSQLWorkEffortID;
     published
       property Agreement: TSQLAgreementID read fAgreement write fAgreement;
       property AgreementItemSeq: Integer read fAgreementItemSeq write fAgreementItemSeq;
-      //property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
+      property WorkEffort: TSQLWorkEffortID read fWorkEffort write fWorkEffort;
   end;
 
   // 21 条款类型
@@ -431,8 +431,8 @@ type
       fAgreementItemSeq: Integer;
       fPartyFrom: TSQLPartyID;
       fPartyTo: TSQLPartyID;
-      //fRoleTypeFrom: TSQLRoleTypeID;
-      //fRoleTypeTo: TSQLRoleTypeID;
+      fRoleTypeFrom: TSQLRoleTypeID;
+      fRoleTypeTo: TSQLRoleTypeID;
       fAgreementDate: TDateTime;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
@@ -441,8 +441,8 @@ type
       property AgreementItemSeq: Integer read fAgreementItemSeq write fAgreementItemSeq;
       property PartyFrom: TSQLPartyID read fPartyFrom write fPartyFrom;
       property PartyTo: TSQLPartyID read fPartyTo write fPartyTo;
-      //property RoleTypeFrom: TSQLRoleTypeID read fRoleTypeFrom write fRoleTypeFrom;
-      //property RoleTypeTo: TSQLRoleTypeID read fRoleTypeTo write fRoleTypeTo;
+      property RoleTypeFrom: TSQLRoleTypeID read fRoleTypeFrom write fRoleTypeFrom;
+      property RoleTypeTo: TSQLRoleTypeID read fRoleTypeTo write fRoleTypeTo;
       property AgreementDate: TDateTime read fAgreementDate write fAgreementDate;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
@@ -461,14 +461,14 @@ type
   // 25
   TSQLCommEventContentAssoc = class(TSQLRecord)
     private
-      //fContent: TSQLContentID;
+      fContent: TSQLContentID;
       fCommunicationEvent: TSQLCommunicationEventID;
       fCommContentAssocType: TSQLCommContentAssocTypeID;
       fFromDate: TDateTime;
       fThruDate: TDateTime;
       fSequenceNum: Integer;
     published
-      //property Content: TSQLContentID read fContent write fContent;
+      property Content: TSQLContentID read fContent write fContent;
       property CommunicationEvent: TSQLCommunicationEventID read fCommunicationEvent write fCommunicationEvent;
       property CommContentAssocType: TSQLCommContentAssocTypeID read fCommContentAssocType write fCommContentAssocType;
       property FromDate: TDateTime read fFromDate write fFromDate;
@@ -482,23 +482,23 @@ type
       fCommunicationEventType: TSQLCommunicationEventTypeID;
       fOrigCommEvent: Integer;
       fParentCommEvent: Integer;
-      //fStatusItem: TSQLStatusItemID;
+      fStatusItem: TSQLStatusItemID;
       fContactMechType: TSQLContactMechTypeID;
       fContactMechFrom: TSQLContactMechID;
       fContactMechTo: TSQLContactMechID;
-      //fRoleTypeFrom: TSQLRoleTypeID;
-      //fRoleTypeTo: TSQLRoleTypeID;
+      fRoleTypeFrom: TSQLRoleTypeID;
+      fRoleTypeTo: TSQLRoleTypeID;
       fPartyFrom: TSQLPartyID;
       fPartyTo: TSQLPartyID;
       fEntryDate: TDateTime;
       fDatetimeStarted: TDateTime;
       fDatetimeEnded: TDateTime;
       fSubject: RawUTF8;
-      //fContentMimeType: TSQLMimeTypeID;
+      fContentMimeType: TSQLMimeTypeID;
       fContent: RawUTF8;
       fNote: RawUTF8;
-      //fReasonEnum: TSQLEnumerationID;
-      //fContactList: TSQLContactListID;
+      fReasonEnum: TSQLEnumerationID;
+      fContactList: TSQLContactListID;
       fHeaderString: RawUTF8;
       fFromString: RawUTF8;
       fToString: RawUTF8;
@@ -509,23 +509,23 @@ type
       property CommunicationEventType: TSQLCommunicationEventTypeID read fCommunicationEventType write fCommunicationEventType;
       property OrigCommEvent: Integer read fOrigCommEvent write fOrigCommEvent;
       property ParentCommEvent: Integer read fParentCommEvent write fParentCommEvent;
-      //property StatusItem: TSQLStatusItemID read fStatusItem write fStatusItem;
+      property StatusItem: TSQLStatusItemID read fStatusItem write fStatusItem;
       property ContactMechType: TSQLContactMechTypeID read fContactMechType write fContactMechType;
       property ContactMechFrom: TSQLContactMechID read fContactMechFrom write fContactMechFrom;
       property ContactMechTo: TSQLContactMechID read fContactMechTo write fContactMechTo;
-      //property RoleTypeFrom: TSQLRoleTypeID read fRoleTypeFrom write fRoleTypeFrom;
-      //property RoleTypeTo: TSQLRoleTypeID read fRoleTypeTo write fRoleTypeTo;
+      property RoleTypeFrom: TSQLRoleTypeID read fRoleTypeFrom write fRoleTypeFrom;
+      property RoleTypeTo: TSQLRoleTypeID read fRoleTypeTo write fRoleTypeTo;
       property RPartyFrom: TSQLPartyID read fPartyFrom write fPartyFrom;
       property PartyTo: TSQLPartyID read fPartyTo write fPartyTo;
       property EntryDate: TDateTime read fEntryDate write fEntryDate;
       property DatetimeStarted: TDateTime read fDatetimeStarted write fDatetimeStarted;
       property DatetimeEnded: TDateTime read fDatetimeEnded write fDatetimeEnded;
       property Subject: RawUTF8 read fSubject write fSubject;
-      //property ContentMimeType: TSQLMimeTypeID read fContentMimeType write fContentMimeType;
+      property ContentMimeType: TSQLMimeTypeID read fContentMimeType write fContentMimeType;
       property Content: RawUTF8 read fContent write fContent;
       property Note: RawUTF8 read fNote write fNote;
-      //property ReasonEnum: TSQLEnumerationID read fReasonEnum write fReasonEnum;
-      //property ContactList: TSQLContactListID read fContactList write fContactList;
+      property ReasonEnum: TSQLEnumerationID read fReasonEnum write fReasonEnum;
+      property ContactList: TSQLContactListID read fContactList write fContactList;
       property HeaderString: RawUTF8 read fHeaderString write fHeaderString;
       property FromString: RawUTF8 read fContent write fContent;
       property ToString: RawUTF8 read fFromString write fFromString;
@@ -537,10 +537,10 @@ type
   // 27
   TSQLCommunicationEventProduct = class(TSQLRecord)
     private
-     //fProduct: TSQLProductID;
+     fProduct: TSQLProductID;
      fCommunicationEvent: TSQLCommunicationEventID;
     published
-      //property Product: TSQLProductID read fProduct write fProduct;
+      property Product: TSQLProductID read fProduct write fProduct;
       property CommunicationEvent: TSQLCommunicationEventID read fCommunicationEvent write fCommunicationEvent;
   end;
 
@@ -573,17 +573,17 @@ type
   // 30
   TSQLCommunicationEventRole = class(TSQLRecord)
     private
-     fCommunicationEvent: TSQLCommunicationEventID;
-     fParty: TSQLPartyID;
-     //fRoleType: TSQLRoleTypeID;
-     fContactMech: TSQLContactMechID;
-     //fStatusItem: TSQLStatusItemID;
+      fCommunicationEvent: TSQLCommunicationEventID;
+      fParty: TSQLPartyID;
+      fRoleType: TSQLRoleTypeID;
+      fContactMech: TSQLContactMechID;
+      fStatusItem: TSQLStatusItemID;
     published
       property CommunicationEvent: TSQLCommunicationEventID read fCommunicationEvent write fCommunicationEvent;
       property Party: TSQLPartyID read fParty write fParty;
-      //property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
       property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
-      //property StatusItem: TSQLStatusItemID read fStatusItem write fStatusItem;
+      property StatusItem: TSQLStatusItemID read fStatusItem write fStatusItem;
   end;
 
   // 31
@@ -706,7 +706,7 @@ type
       //结束日期
       fThruDate: TDateTime;
       //角色类型
-      //fRoleType: TSQLPartyRoleID;
+      fRoleType: TSQLPartyRoleID;
       //同意请求
       fAllowSolicitation: Boolean;
       //补充
@@ -724,7 +724,7 @@ type
       property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      //property RoleType: TSQLPartyRoleID read fRoleType write fRoleType;
+      property RoleType: TSQLPartyRoleID read fRoleType write fRoleType;
       property AllowSolicitation: Boolean read fAllowSolicitation write fAllowSolicitation;
       property Extension: RawUTF8 read fExtension write fExtension;
       property Verified: Boolean read fVerified write fVerified;
@@ -767,15 +767,15 @@ type
       fHouseNumberExt: RawUTF8;
       fDirections: RawUTF8;
       fCity: RawUTF8;
-      //fCityGeo: TSQLGeoID;
+      fCityGeo: TSQLGeoID;
       fPostalCode: RawUTF8;
       fPostalCodeExt: RawUTF8;
-      //fCountryGeo: TSQLGeoID;
-      //fStateProvinceGeo: TSQLGeoID;
-      //fCountyGeo: TSQLGeoID;
-      //fMunicipalityGeo: TSQLGeoID;
-      //fPostalCodeGeo: TSQLGeoID;
-      //fGeoPoint: TSQLGeoPointID;
+      fCountryGeo: TSQLGeoID;
+      fStateProvinceGeo: TSQLGeoID;
+      fCountyGeo: TSQLGeoID;
+      fMunicipalityGeo: TSQLGeoID;
+      fPostalCodeGeo: TSQLGeoID;
+      fGeoPoint: TSQLGeoPointID;
     published
       property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
       property ToName: RawUTF8 read fToName write fToName;
@@ -786,25 +786,25 @@ type
       property HouseNumberExt: RawUTF8 read fHouseNumberExt write fHouseNumberExt;
       property Directions: RawUTF8 read fDirections write fDirections;
       property City: RawUTF8 read fCity write fCity;
-      //property CityGeo: TSQLGeoID read fCityGeo write fCityGeo;
+      property CityGeo: TSQLGeoID read fCityGeo write fCityGeo;
       property PostalCode: RawUTF8 read fPostalCode write fPostalCode;
       property PostalCodeExt: RawUTF8 read fPostalCodeExt write fPostalCodeExt;
-      //property CountryGeo: TSQLGeoID read fCountryGeo write fCountryGeo;
-      //property StateProvinceGeo: TSQLGeoID read fStateProvinceGeo write fStateProvinceGeo;
-      //property CountyGeo: TSQLGeoID read fCountyGeo write fCountyGeo;
-      //property MunicipalityGeo: TSQLGeoID read fMunicipalityGeo write fMunicipalityGeo;
-      //property PostalCodeGeo: TSQLGeoID read fPostalCodeGeo write fPostalCodeGeo;
-      //property GeoPoint: TSQLGeoPointID read fGeoPoint write fGeoPoint;
+      property CountryGeo: TSQLGeoID read fCountryGeo write fCountryGeo;
+      property StateProvinceGeo: TSQLGeoID read fStateProvinceGeo write fStateProvinceGeo;
+      property CountyGeo: TSQLGeoID read fCountyGeo write fCountyGeo;
+      property MunicipalityGeo: TSQLGeoID read fMunicipalityGeo write fMunicipalityGeo;
+      property PostalCodeGeo: TSQLGeoID read fPostalCodeGeo write fPostalCodeGeo;
+      property GeoPoint: TSQLGeoPointID read fGeoPoint write fGeoPoint;
   end;
 
   // 43 邮政地址范围
   TSQLPostalAddressBoundary = class(TSQLRecord)
     private
       fContactMech: TSQLPostalAddressID;
-      //fGeo: TSQLGeoID;
+      fGeo: TSQLGeoID;
     published
       property ContactMech: TSQLPostalAddressID read fContactMech write fContactMech;
-      //property Geo: TSQLGeoID read fGeo write fGeo;
+      property Geo: TSQLGeoID read fGeo write fGeo;
   end;
 
   // 44
@@ -827,10 +827,10 @@ type
   // 45 有效联系机制角色
   TSQLValidContactMechRole = class(TSQLRecord)
     private
-      //fRoleType: TSQLRoleTypeID;
+      fRoleType: TSQLRoleTypeID;
       fContactMechType: TSQLContactMechTypeID;
     published
-      //property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
       property ContactMechType: TSQLContactMechTypeID read fContactMechType write fContactMechType;
   end;
 
@@ -848,23 +848,23 @@ type
   TSQLPartyNeed = class(TSQLRecord)
     private
       fParty: TSQLPartyID;
-      //fRoleType: TSQLRoleTypeID;
+      fRoleType: TSQLRoleTypeID;
       fPartyType: TSQLPartyTypeID;
       fNeedType: TSQLNeedTypeID;
       fCommunicationEvent: TSQLCommunicationEventID;
-      //fProduct: TSQLProductID;
-      //fProductCategory: TSQLProductCategoryID;
+      fProduct: TSQLProductID;
+      fProductCategory: TSQLProductCategoryID;
       fVisit: Integer;
       fDatetimeRecorded: TDateTime;
       fDescription: RawUTF8;
     published
       property Party: TSQLPartyID read fParty write fParty;
-      //property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
       property PartyType: TSQLPartyTypeID read fPartyType write fPartyType;
       property NeedType: TSQLNeedTypeID read fNeedType write fNeedType;
       property CommunicationEvent: TSQLCommunicationEventID read fCommunicationEvent write fCommunicationEvent;
-      //property Product: TSQLProductID read fProduct write fProduct;
-      //property ProductCategory: TSQLProductCategoryID read fProductCategory write fProductCategory;
+      property Product: TSQLProductID read fProduct write fProduct;
+      property ProductCategory: TSQLProductCategoryID read fProductCategory write fProductCategory;
       property Visit: Integer read fVisit write fVisit;
       property DatetimeRecorded: TDateTime read fDatetimeRecorded write fDatetimeRecorded;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -924,28 +924,28 @@ type
       //外部标识
       fExternal: Integer;
       //优先使用币种
-      //fPreferredCurrencyUom: TSQLUomID;
+      fPreferredCurrencyUom: TSQLUomID;
       fDescription: RawUTF8;
-      //fStatus: TSQLStatusItemID;
+      fStatus: TSQLStatusItemID;
       fCreatedDate: TDateTime;
-      //fCreatedByUserLogin: TSQLUserLoginID;
+      fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
-      //fLastModifiedByUserLogin: TSQLUserLoginID;
+      fLastModifiedByUserLogin: TSQLUserLoginID;
       //数据源
-      //fDataSource: TSQLDataSourceID;
+      fDataSource: TSQLDataSourceID;
       //是否没有人看的
       fIsUnread: Boolean;
     published
       property PartyType: TSQLPartyTypeID read fPartyType write fPartyType;
       property External: Integer read fExternal write fExternal;
-      //property PreferredCurrencyUom: TSQLUomID read fPreferredCurrencyUom write fPreferredCurrencyUom;
+      property PreferredCurrencyUom: TSQLUomID read fPreferredCurrencyUom write fPreferredCurrencyUom;
       property Description: RawUTF8 read fDescription write fDescription;
-      //property Status: TSQLStatusItemID read fStatus write fStatus;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property CreatedDate: TDateTime read fCreatedDate write fCreatedDate;
-      //property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
+      property CreatedByUserLogin: TSQLUserLoginID read fCreatedByUserLogin write fCreatedByUserLogin;
       property LastModifiedDate: TDateTime read fLastModifiedDate write fLastModifiedDate;
-      //property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
-      //property DataSource: TSQLDataSourceID read fDataSource write fDataSource;
+      property LastModifiedByUserLogin: TSQLUserLoginID read fLastModifiedByUserLogin write fLastModifiedByUserLogin;
+      property DataSource: TSQLDataSourceID read fDataSource write fDataSource;
       property IsUnread: Boolean read fIsUnread write fIsUnread;
   end;
 
@@ -979,14 +979,14 @@ type
   TSQLPartyGeoPoint = class(TSQLRecord)
     private
       fParty: TSQLPartyID;
-      //fGeoPoint: TSQLGeoPointID;
+      fGeoPoint: TSQLGeoPointID;
       //开始日期
       fFromDate: TDateTime;
       //结束日期
       fThruDate: TDateTime;
     published
       property Party: TSQLPartyID read fParty write fParty;
-      //property GeoPoint: TSQLGeoPointID read fGeoPoint write fGeoPoint;
+      property GeoPoint: TSQLGeoPointID read fGeoPoint write fGeoPoint;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
   end;
@@ -995,12 +995,12 @@ type
   TSQLPartyAttribute = class(TSQLRecord)
     private
       fParty: TSQLPartyID;
-      //fAttrName: TSQLPartyTypeAttrID;
+      fAttrName: TSQLPartyTypeAttrID;
       fAttrValue: RawUTF8;
       fAttrDescription: RawUTF8;
     published
       property Party: TSQLPartyID read fParty write fParty;
-      //property AttrName: TSQLPartyTypeAttrID read fAttrName write fAttrName;
+      property AttrName: TSQLPartyTypeAttrID read fAttrName write fAttrName;
       property AttrValue: RawUTF8 read fAttrValue write fAttrValue;
       property AttrDescription: RawUTF8 read fAttrDescription write fAttrDescription;
   end;
@@ -1071,7 +1071,7 @@ type
   TSQLPartyContent = class(TSQLRecord)
     private
       fParty: TSQLPartyID;
-      //fContent: TSQLContentID;
+      fContent: TSQLContentID;
       fPartyContentType: TSQLPartyContentTypeID;
       //开始日期
       fFromDate: TDateTime;
@@ -1079,7 +1079,7 @@ type
       fThruDate: TDateTime;
     published
       property Party: TSQLPartyID read fParty write fParty;
-      //property Content: TSQLContentID read fContent write fContent;
+      property Content: TSQLContentID read fContent write fContent;
       property PartyContentType: TSQLPartyContentTypeID read fPartyContentType write fPartyContentType;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
@@ -1103,7 +1103,7 @@ type
   TSQLPartyDataSource = class(TSQLRecord)
     private
       fParty: TSQLPartyID;
-      //fDataSource: TSQLDataSourceID;
+      fDataSource: TSQLDataSourceID;
       fFromDate: TDateTime;
       //访问标识
       fVisit: RawUTF8;
@@ -1112,7 +1112,7 @@ type
       fIsCreate: Boolean;
     published
       property Party: TSQLPartyID read fParty write fParty;
-      //property DataSource: TSQLDataSourceID read fDataSource write fDataSource;
+      property DataSource: TSQLDataSourceID read fDataSource write fDataSource;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property Visit: RawUTF8 read fVisit write fVisit;
       property Comments: RawUTF8 read fcomments write fcomments;
@@ -1165,7 +1165,7 @@ type
       fPartyFrom: TSQLPartyID;
       fToName: RawUTF8;
       fEmailAddress: RawUTF8;
-      //fStatus: TSQLStatusItemID;
+      fStatus: TSQLStatusItemID;
       //最后邀请日期
       fLastInviteDate: TDateTime;
     published
@@ -1173,7 +1173,7 @@ type
       property PartyFrom: TSQLPartyID read fPartyFrom write fPartyFrom;
       property ToName: RawUTF8 read fToName write fToName;
       property EmailAddress: RawUTF8 read fEmailAddress write fEmailAddress;
-      //property Status: TSQLStatusItemID read fStatus write fStatus;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property LastInviteDate: TDateTime read fLastInviteDate write fLastInviteDate;
   end;
 
@@ -1193,10 +1193,10 @@ type
     private
       fPartyInvitation: TSQLPartyInvitationID;
       //角色类型
-      //fRoleType: TSQLRoleTypeID;
+      fRoleType: TSQLRoleTypeID;
     published
       property PartyInvitation: TSQLPartyInvitationID read fPartyInvitation write fPartyInvitation;
-      //property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
+      property RoleType: TSQLRoleTypeID read fRoleType write fRoleType;
   end;
 
   // 67 当事人名称历史
@@ -1225,10 +1225,10 @@ type
   TSQLPartyNote = class(TSQLRecord)
     private
       fParty: TSQLPartyID;
-      //fNote: TSQLNoteDataID;
+      fNote: TSQLNoteDataID;
     published
       property Party: TSQLPartyID read fParty write fParty;
-      //property Note: TSQLNoteDataID read fNote write fNote;
+      property Note: TSQLNoteDataID read fNote write fNote;
   end;
 
   // 69 当事人默认概况表
@@ -1236,7 +1236,7 @@ type
     private
       fParty: TSQLPartyID;
       //产品店铺
-      //fProductStore: TSQLProductStoreID;
+      fProductStore: TSQLProductStoreID;
       //缺省送货地址
       fDefaultShipAddr: RawUTF8;
       //缺省账单地址
@@ -1247,7 +1247,7 @@ type
       fDefaultShipMeth: RawUTF8;
     published
       property Party: TSQLPartyID read fParty write fParty;
-      //property ProductStore: TSQLProductStoreID read fProductStore write fProductStore;
+      property ProductStore: TSQLProductStoreID read fProductStore write fProductStore;
       property DefaultShipAddr: RawUTF8 read fDefaultShipAddr write fDefaultShipAddr;
       property DefaultBillAddr: RawUTF8 read fDefaultBillAddr write fDefaultBillAddr;
       property DefaultPayMeth: RawUTF8 read fDefaultPayMeth write fDefaultPayMeth;
@@ -1259,19 +1259,19 @@ type
     private
       fPartyFrom: TSQLPartyID;
       fPartyTo: TSQLPartyID;
-      //fRoleTypeFrom: TSQLRoleTypeID;
-      //fRoleTypeTo: TSQLRoleTypeID;
+      fRoleTypeFrom: TSQLRoleTypeID;
+      fRoleTypeTo: TSQLRoleTypeID;
       //开始日期
       fFromDate: TDateTime;
       //结束日期
       fThruDate: TDateTime;
-      //fStatus: TSQLStatusItemID;
+      fStatus: TSQLStatusItemID;
       //当事人关系名称
       fRelationshipName: RawUTF8;
       //安全组
-      //fSecurityGroup: TSQLSecurityGroupID;
+      fSecurityGroup: TSQLSecurityGroupID;
       //优先类型
-      //fPriorityType: TSQLPriorityTypeID;
+      fPriorityType: TSQLPriorityTypeID;
       fPartyRelationshipType: TSQLPartyRelationshipTypeID;
       //权限枚举
       fPermissionsEnum: RawUTF8;
@@ -1281,14 +1281,14 @@ type
     published
       property PartyFrom: TSQLPartyID read fPartyFrom write fPartyFrom;
       property PartyTo: TSQLPartyID read fPartyTo write fPartyTo;
-      //property RoleTypeFrom: TSQLRoleTypeID read fRoleTypeFrom write fRoleTypeFrom;
-      //property RoleTypeTo: TSQLRoleTypeID read fRoleTypeTo write fRoleTypeTo;
+      property RoleTypeFrom: TSQLRoleTypeID read fRoleTypeFrom write fRoleTypeFrom;
+      property RoleTypeTo: TSQLRoleTypeID read fRoleTypeTo write fRoleTypeTo;
       property FromDate: TDateTime read fFromDate write fFromDate;
       property ThruDate: TDateTime read fThruDate write fThruDate;
-      //property Status: TSQLStatusItemID read fStatus write fStatus;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property RelationshipName: RawUTF8 read fRelationshipName write fRelationshipName;
-      //property SecurityGroup: TSQLSecurityGroupID read fSecurityGroup write fSecurityGroup;
-      //property PriorityType: TSQLPriorityTypeID read fPriorityType write fPriorityType;
+      property SecurityGroup: TSQLSecurityGroupID read fSecurityGroup write fSecurityGroup;
+      property PriorityType: TSQLPriorityTypeID read fPriorityType write fPriorityType;
       property PartyRelationshipType: TSQLPartyRelationshipTypeID read fPartyRelationshipType write fPartyRelationshipType;
       property PermissionsEnum: RawUTF8 read fPermissionsEnum write fPermissionsEnum;
       property PositionTitle: RawUTF8 read fPositionTitle write fPositionTitle;
@@ -1302,15 +1302,15 @@ type
       fHasTable: Boolean;
       fPartyRelationshipName: RawUTF8;
       fDescription: RawUTF8;
-      //fRoleTypeIdValidFrom: TSQLRoleTypeID;
-      //fRoleTypeIdValidTo: TSQLRoleTypeID;
+      fRoleTypeIdValidFrom: TSQLRoleTypeID;
+      fRoleTypeIdValidTo: TSQLRoleTypeID;
     published
       property ParentType: TSQLPartyRelationshipTypeID read fParentType write fParentType;
       property HasTable: Boolean read fHasTable write fHasTable;
       property PartyRelationshipName: RawUTF8 read fPartyRelationshipName write fPartyRelationshipName;
       property Description: RawUTF8 read fDescription write fDescription;
-      //property RoleTypeIdValidFrom: TSQLRoleTypeID read fRoleTypeIdValidFrom write fRoleTypeIdValidFrom;
-      //property RoleTypeIdValidTo: TSQLRoleTypeID read fRoleTypeIdValidTo write fRoleTypeIdValidTo;
+      property RoleTypeIdValidFrom: TSQLRoleTypeID read fRoleTypeIdValidFrom write fRoleTypeIdValidFrom;
+      property RoleTypeIdValidTo: TSQLRoleTypeID read fRoleTypeIdValidTo write fRoleTypeIdValidTo;
   end;
 
   // 72 当事人角色
@@ -1326,12 +1326,12 @@ type
   // 73 当事人状态
   TSQLPartyStatus = class(TSQLRecord)
     private
-      //fStatus: TSQLStatusItemID;
+      fStatus: TSQLStatusItemID;
       fParty: TSQLPartyID;
       fStatusDate: TDateTime;
       fChangeByUserLogin: TSQLUserLoginID;
     published
-      //property Status: TSQLStatusItemID read fStatus write fStatus;
+      property Status: TSQLStatusItemID read fStatus write fStatus;
       property Party: TSQLPartyID read fParty write fParty;
       property StatusDate: TDateTime read fStatusDate write fStatusDate;
       property ChangeByUserLogin: TSQLUserLoginID read fChangeByUserLogin write fChangeByUserLogin;
@@ -1393,9 +1393,9 @@ type
       fTotalYearsWorkExperience: Double;
       fComments: RawUTF8;
       //雇用状态枚举标识
-      //fEmploymentStatusEnum: TSQLEnumerationID;
+      fEmploymentStatusEnum: TSQLEnumerationID;
       //居住状态枚举
-      //fResidenceStatusEnum: TSQLEnumerationID;
+      fResidenceStatusEnum: TSQLEnumerationID;
       fOccupation: RawUTF8;
       //雇用年数
       fYearsWithEmployer: Double;
@@ -1428,8 +1428,8 @@ type
       property PassportExpireDate: TDateTime read fPassportExpireDate write fPassportExpireDate;
       property TotalYearsWorkExperience: Double read fTotalYearsWorkExperience write fTotalYearsWorkExperience;
       property Comments: RawUTF8 read fComments write fComments;
-      //property EmploymentStatusEnum: TSQLEnumerationID read fEmploymentStatusEnum write fEmploymentStatusEnum;
-      //property ResidenceStatusEnum: TSQLEnumerationID read fResidenceStatusEnum write fResidenceStatusEnum;
+      property EmploymentStatusEnum: TSQLEnumerationID read fEmploymentStatusEnum write fEmploymentStatusEnum;
+      property ResidenceStatusEnum: TSQLEnumerationID read fResidenceStatusEnum write fResidenceStatusEnum;
       property Occupation: RawUTF8 read fOccupation write fOccupation;
       property YearsWithEmployer: Double read fYearsWithEmployer write fYearsWithEmployer;
       property MonthsWithEmployer: Double read fMonthsWithEmployer write fMonthsWithEmployer;
