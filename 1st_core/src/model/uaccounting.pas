@@ -1295,7 +1295,7 @@ type
       fOrigCurrencyUom: TSQLUomID;
       fDebitCreditFlag: Boolean;
       fDueDate: TDateTime;
-      fGroup: Integer;
+      fGroupId: Integer;
       fTax: Integer;
       fReconcileStatus: TSQLStatusItemID;
       fSettlementTerm: TSQLSettlementTermID;
@@ -1321,7 +1321,7 @@ type
       property OrigCurrencyUom: TSQLUomID read fOrigCurrencyUom write fOrigCurrencyUom;
       property DebitCreditFlag: Boolean read fDebitCreditFlag write fDebitCreditFlag;
       property DueDate: TDateTime read fDueDate write fDueDate;
-      property Group: Integer read fGroup write fGroup;
+      property GroupId: Integer read fGroupId write fGroupId;
       property Tax: Integer read fTax write fTax;
       property ReconcileStatus: TSQLStatusItemID read fReconcileStatus write fReconcileStatus;
       property SettlementTerm: TSQLSettlementTermID read fSettlementTerm write fSettlementTerm;
@@ -2419,7 +2419,7 @@ type
     private
       fPaymentGatewayConfig: TSQLPaymentGatewayConfigID;
       fSource: RawUTF8;
-      fGroup: RawUTF8;
+      fGroupId: RawUTF8;
       fClient: RawUTF8;
       fUsername: RawUTF8;
       fPwd: RawUTF8;
@@ -2431,7 +2431,7 @@ type
     published
       property PaymentGatewayConfig: TSQLPaymentGatewayConfigID read fPaymentGatewayConfig write fPaymentGatewayConfig;
       property Source: RawUTF8 read fSource write fSource;
-      property Group: RawUTF8 read fGroup write fGroup;
+      property GroupId: RawUTF8 read fGroupId write fGroupId;
       property Client: RawUTF8 read fClient write fClient;
       property Username: RawUTF8 read fUsername write fUsername;
       property Pwd: RawUTF8 read fPwd write fPwd;
@@ -2656,7 +2656,7 @@ type
   // 142
   TSQLPayPalPaymentMethod = class(TSQLRecord)
     private
-      fPaymentMethod: TSQLPaymentMethodID;
+      {fPaymentMethod: TSQLPaymentMethodID;
       fPayer: Integer;
       fExpressCheckoutToken: RawUTF8;
       fPayerStatus: RawUTF8;
@@ -2674,7 +2674,7 @@ type
       property AvsZip: Boolean read fAvsZip write fAvsZip;
       property Correlation: Integer read fCorrelation write fCorrelation;
       property ContactMech: TSQLContactMechID read fContactMech write fContactMech;
-      property Transaction: Integer read fTransaction write fTransaction;
+      property Transaction: Integer read fTransaction write fTransaction;}
   end;
 
   // 143

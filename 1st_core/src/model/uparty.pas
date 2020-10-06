@@ -7,11 +7,6 @@ interface
 uses
   SynCommons, mORMot, uForwardDeclaration;
 
-{
-查找 (: TSQL[[A-Za-z]*)\b
-替换 \1ID
-}
-
 type
   // 1 附录
   TSQLAddendum = class(TSQLRecord)
@@ -1096,12 +1091,12 @@ type
       fParent: TSQLPartyContentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
-      FDescription: RawUTF8;
+      fDescription: RawUTF8;
     published
       property Parent: TSQLPartyContentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
-      property Description: RawUTF8 read FDescription write FDescription;
+      property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 61 当事人数据源

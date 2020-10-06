@@ -12,7 +12,7 @@ uses
   //SynSQLite3,
   mORMot, mORMotSQLite3, mORMotHttpServer, mORMotHttpClient, uModel,
   uForwardDeclaration, uAccounting, uWorkEffort, uShipment, uMarketing,
-  uManufacturing, uHumanres, uCommon;
+  uManufacturing, uHumanres, uCommon, uContent, uSecurity, uService;
 
 type
 
@@ -25,7 +25,6 @@ type
     PartyModel: TSQLModel;
     PartyServer: TSQLRestServer;
     PartyHTTPServer: TSQLHttpServer;
-
 
     ProductModel: TSQLModel;
     ProductServer: TSQLRestServer;
@@ -62,6 +61,18 @@ type
     CommonModel: TSQLModel;
     CommonServer: TSQLRestServer;
     CommonHTTPServer: TSQLHttpServer;
+
+    ContentModel: TSQLModel;
+    ContentServer: TSQLRestServer;
+    ContentHTTPServer: TSQLHttpServer;
+
+    SecurityModel: TSQLModel;
+    SecurityServer: TSQLRestServer;
+    SecurityHTTPServer: TSQLHttpServer;
+
+    ServiceModel: TSQLModel;
+    ServiceServer: TSQLRestServer;
+    ServiceHTTPServer: TSQLHttpServer;
 
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -102,13 +113,16 @@ begin
   PartyModel := CreatePartyModel;
   ProductModel := CreateProductModel;
   OrderModel := CreateOrderModel;
-  AccountingModel := CreatePartyModel;
-  WorkEffortModel := CreateProductModel;
-  ShipmentModel := CreateOrderModel;
-  MarketingModel := CreatePartyModel;
-  ManufacturingModel := CreateProductModel;
-  HumanresModel := CreateOrderModel;
-  CommonModel := CreateOrderModel;
+  AccountingModel := CreateAccountingModel;
+  WorkEffortModel := CreateWorkEffortModel;
+  ShipmentModel := CreateShipmentModel;
+  MarketingModel := CreateMarketingModel;
+  ManufacturingModel := CreateManufacturingModel;
+  HumanresModel := CreateHumanresModel;
+  CommonModel := CreateCommonModel;
+  ContentModel := CreateContentModel;
+  SecurityModel := CreateSecurityModel;
+  ServiceModel := CreateServiceModel;
   try
     //PartyServer := TSQLRestServerFullMemory.Create(PartyModel,'test.json',False,True);
     PartyServer := TSQLRestServerDB.Create(PartyModel,ChangeFileExt(paramstr(0),'Party.db3'), True);
@@ -121,6 +135,9 @@ begin
     ManufacturingServer := TSQLRestServerDB.Create(ManufacturingModel,ChangeFileExt(paramstr(0),'Manufacturing.db3'), True);
     HumanresServer := TSQLRestServerDB.Create(HumanresModel,ChangeFileExt(paramstr(0),'Humanres.db3'), True);
     CommonServer := TSQLRestServerDB.Create(CommonModel,ChangeFileExt(paramstr(0),'Common.db3'), True);
+    ContentServer := TSQLRestServerDB.Create(ContentModel,ChangeFileExt(paramstr(0),'Content.db3'), True);
+    SecurityServer := TSQLRestServerDB.Create(SecurityModel,ChangeFileExt(paramstr(0),'Security.db3'), True);
+    ServiceServer := TSQLRestServerDB.Create(ServiceModel,ChangeFileExt(paramstr(0),'Service.db3'), True);
     try
       //PartyServer.DB.Synchronous := smNormal;
       //PartyServer.DB.LockingMode := lmExclusive;
@@ -134,6 +151,9 @@ begin
       ManufacturingServer.CreateMissingTables;
       HumanresServer.CreateMissingTables;
       CommonServer.CreateMissingTables;
+      ContentServer.CreateMissingTables;
+      SecurityServer.CreateMissingTables;
+      ServiceServer.CreateMissingTables;
       //PartyServer.ServiceDefine(TServiceCalculator,[ICalculator],sicShared);
       {$ifndef ONLYUSEHTTPSOCKET}
         PartyHTTPServer := TSQLHttpServer.Create('3618',[PartyServer],'+',useHttpApiRegisteringURI);
@@ -146,6 +166,9 @@ begin
         ManufacturingHTTPServer := TSQLHttpServer.Create('3618',[ManufacturingServer],'+',useHttpApiRegisteringURI);
         HumanresHTTPServer := TSQLHttpServer.Create('3618',[HumanresServer],'+',useHttpApiRegisteringURI);
         CommonHTTPServer := TSQLHttpServer.Create('3618',[CommonServer],'+',useHttpApiRegisteringURI);
+        ContentHTTPServer := TSQLHttpServer.Create('3618',[ContentServer],'+',useHttpApiRegisteringURI);
+        SecurityHTTPServer := TSQLHttpServer.Create('3618',[SecurityServer],'+',useHttpApiRegisteringURI);
+        ServiceHTTPServer := TSQLHttpServer.Create('3618',[ServiceServer],'+',useHttpApiRegisteringURI);
       {$else}
         PartyHTTPServer := TSQLHttpServer.Create('3618',[PartyServer],'+',useHttpSocket);
         ProductHTTPServer := TSQLHttpServer.Create('3618',[ProductServer],'+',useHttpSocket);
@@ -157,6 +180,9 @@ begin
         ManufacturingHTTPServer := TSQLHttpServer.Create('3618',[ManufacturingServer],'+',useHttpSocket);
         HumanresHTTPServer := TSQLHttpServer.Create('3618',[HumanresServer],'+',useHttpSocket);
         CommonHTTPServer := TSQLHttpServer.Create('3618',[CommonServer],'+',useHttpSocket);
+        ContentHTTPServer := TSQLHttpServer.Create('3618',[ContentServer],'+',useHttpSocket);
+        SecurityHTTPServer := TSQLHttpServer.Create('3618',[SecurityServer],'+',useHttpSocket);
+        ServiceHTTPServer := TSQLHttpServer.Create('3618',[ServiceServer],'+',useHttpSocket);
       {$endif}
       //PartyHTTPServer := TSQLHttpServer.Create('3618',[PartyServer],'+',useHttpSocket);
       try
@@ -170,6 +196,9 @@ begin
         ManufacturingHTTPServer.AccessControlAllowOrigin := '*';
         HumanresHTTPServer.AccessControlAllowOrigin := '*';
         CommonHTTPServer.AccessControlAllowOrigin := '*';
+        ContentHTTPServer.AccessControlAllowOrigin := '*';
+        SecurityHTTPServer.AccessControlAllowOrigin := '*';
+        ServiceHTTPServer.AccessControlAllowOrigin := '*';
         writeln(#10'Background server is running.'#10);
         writeln('Press [Enter] to close the server.'#10);
         readln;
@@ -184,6 +213,9 @@ begin
         ManufacturingHTTPServer.Free;
         HumanresHTTPServer.Free;
         CommonHTTPServer.Free;
+        ContentHTTPServer.Free;
+        SecurityHTTPServer.Free;
+        ServiceHTTPServer.Free;
       end;
     finally
       PartyServer.Free;
@@ -196,6 +228,9 @@ begin
       ManufacturingServer.Free;
       HumanresServer.Free;
       CommonServer.Free;
+      ContentServer.Free;
+      SecurityServer.Free;
+      ServiceServer.Free;
     end;
   finally
     PartyModel.Free;
@@ -208,6 +243,9 @@ begin
     ManufacturingModel.Free;
     HumanresModel.Free;
     CommonModel.Free;
+    ContentModel.Free;
+    SecurityModel.Free;
+    ServiceModel.Free;
   end;
 
   // stop program loop

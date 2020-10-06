@@ -4,68 +4,15 @@ unit uForwardDeclaration;
 
 interface
 
+{
+查找 (: TSQL[[A-Za-z]*)\b
+替换 \1ID
+}
+
 uses
    SynCommons, mORMot;//Classes, SysUtils;
 
 type
-  TSQLUserLogin = class of TSQLRecord;
-  TSQLUserLoginID = type TID;
-  TSQLUserLoginToBeDeletedID = type TID;
-
-  TSQLContent = class of TSQLRecord;
-  TSQLContentID = type TID;
-  TSQLContentToBeDeletedID = type TID;
-
-  TSQLRecurrenceInfo = class of TSQLRecord;
-  TSQLRecurrenceInfoID = type TID;
-  TSQLRecurrenceInfoToBeDeletedID = type TID;
-
-  TSQLSurveyResponse = class of TSQLRecord;
-  TSQLSurveyResponseID = type TID;
-  TSQLSurveyResponseToBeDeletedID = type TID;
-
-  TSQLDataResource = class of TSQLRecord;
-  TSQLDataResourceID = type TID;
-  TSQLDataResourceToBeDeletedID = type TID;
-
-  TSQLSurvey = class of TSQLRecord;
-  TSQLSurveyID = type TID;
-  TSQLSurveyToBeDeletedID = type TID;
-
-  TSQLSurveyApplType = class of TSQLRecord;
-  TSQLSurveyApplTypeID = type TID;
-  TSQLSurveyApplTypeToBeDeletedID = type TID;
-
-  TSQLJobSandbox = class of TSQLRecord;
-  TSQLJobSandboxID = type TID;
-  TSQLJobSandboxToBeDeletedID = type TID;
-
-  TSQLPaymentGatewayConfigTyp = class of TSQLRecord;
-  TSQLPaymentGatewayConfigTypID = type TID;
-  TSQLPaymentGatewayConfigTypToBeDeletedID = type TID;
-
-  TSQLDocument = class of TSQLRecord;
-  TSQLDocumentID = type TID;
-  TSQLDocumentToBeDeletedID = type TID;
-
-  TSQLRuntimeData = class of TSQLRecord;
-  TSQLRuntimeDataID = type TID;
-  TSQLRuntimeDataToBeDeletedID = type TID;
-
-  TSQLTemporalExpression = class of TSQLRecord;
-  TSQLTemporalExpressionID = type TID;
-  TSQLTemporalExpressionToBeDeletedID = type TID;
-
-  TSQLSecurityGroup = class of TSQLRecord;
-  TSQLSecurityGroupID = type TID;
-  TSQLSecurityGroupToBeDeletedID = type TID;
-
-
-
-
-
-
-
   // apache-ofbiz\applications\datamodel\entitydef\party-entitymodel.xml
   TSQLAddendum = class of TSQLRecord;
   TSQLAddendumID = type TID;
@@ -2122,15 +2069,6 @@ type
   TSQLGlAccountCategoryTypeID = type TID;
   TSQLGlAccountCategoryTypeToBeDeletedID = type TID;
 
-
-
-
-
-
-
-
-
-
   // apache-ofbiz\applications\datamodel\entitydef\workeffort-entitymodel.xml
   TSQLTimeEntry = class of TSQLRecord;
   TSQLTimeEntryID = type TID;
@@ -2292,15 +2230,6 @@ type
   TSQLWorkEffortSurveyApplID = type TID;
   TSQLWorkEffortSurveyApplToBeDeletedID = type TID;
 
-
-
-
-
-
-
-
-
-
   // apache-ofbiz\applications\datamodel\entitydef\shipment-entitymodel.xml
   TSQLItemIssuance = class of TSQLRecord;
   TSQLItemIssuanceID = type TID;
@@ -2450,9 +2379,6 @@ type
   TSQLShippingDocumentID = type TID;
   TSQLShippingDocumentToBeDeletedID = type TID;
 
-
-
-
   // apache-ofbiz\applications\datamodel\entitydef\marketing-entitymodel.xml
   TSQLMarketingCampaign = class of TSQLRecord;
   TSQLMarketingCampaignID = type TID;
@@ -2581,14 +2507,6 @@ type
   TSQLSalesOpportunityTrckCode = class of TSQLRecord;
   TSQLSalesOpportunityTrckCodeID = type TID;
   TSQLSalesOpportunityTrckCodeToBeDeletedID = type TID;
-
-
-
-
-
-
-
-
 
   // apache-ofbiz\applications\datamodel\entitydef\manufacturing-entitymodel.xml
   TSQLProductManufacturingRule = class of TSQLRecord;
@@ -2787,15 +2705,262 @@ type
   TSQLEmplLeaveReasonTypeID = type TID;
   TSQLEmplLeaveReasonTypeToBeDeletedID = type TID;
 
-
-
-
   // apache-ofbiz\applications\datamodel\entitydef\content-entitymodel.xml
+  TSQLContent = class of TSQLRecord;
+  TSQLContentID = type TID;
+  TSQLContentToBeDeletedID = type TID;
 
+  TSQLContentApproval = class of TSQLRecord;
+  TSQLContentApprovalID = type TID;
+  TSQLContentApprovalToBeDeletedID = type TID;
 
+  TSQLContentAssoc = class of TSQLRecord;
+  TSQLContentAssocID = type TID;
+  TSQLContentAssocToBeDeletedID = type TID;
 
+  TSQLContentAssocPredicate = class of TSQLRecord;
+  TSQLContentAssocPredicateID = type TID;
+  TSQLContentAssocPredicateToBeDeletedID = type TID;
 
+  TSQLContentAssocType = class of TSQLRecord;
+  TSQLContentAssocTypeID = type TID;
+  TSQLContentAssocTypeToBeDeletedID = type TID;
 
+  TSQLContentAttribute = class of TSQLRecord;
+  TSQLContentAttributeID = type TID;
+  TSQLContentAttributeToBeDeletedID = type TID;
+
+  TSQLContentMetaData = class of TSQLRecord;
+  TSQLContentMetaDataID = type TID;
+  TSQLContentMetaDataToBeDeletedID = type TID;
+
+  TSQLContentOperation = class of TSQLRecord;
+  TSQLContentOperationID = type TID;
+  TSQLContentOperationToBeDeletedID = type TID;
+
+  TSQLContentPurpose = class of TSQLRecord;
+  TSQLContentPurposeID = type TID;
+  TSQLContentPurposeToBeDeletedID = type TID;
+
+  TSQLContentPurposeOperation = class of TSQLRecord;
+  TSQLContentPurposeOperationID = type TID;
+  TSQLContentPurposeOperationToBeDeletedID = type TID;
+
+  TSQLContentPurposeType = class of TSQLRecord;
+  TSQLContentPurposeTypeID = type TID;
+  TSQLContentPurposeTypeToBeDeletedID = type TID;
+
+  TSQLContentRevision = class of TSQLRecord;
+  TSQLContentRevisionID = type TID;
+  TSQLContentRevisionToBeDeletedID = type TID;
+
+  TSQLContentRevisionItem = class of TSQLRecord;
+  TSQLContentRevisionItemID = type TID;
+  TSQLContentRevisionItemToBeDeletedID = type TID;
+
+  TSQLContentRole = class of TSQLRecord;
+  TSQLContentRoleID = type TID;
+  TSQLContentRoleToBeDeletedID = type TID;
+
+  TSQLContentType = class of TSQLRecord;
+  TSQLContentTypeID = type TID;
+  TSQLContentTypeToBeDeletedID = type TID;
+
+  TSQLContentTypeAttr = class of TSQLRecord;
+  TSQLContentTypeAttrID = type TID;
+  TSQLContentTypeAttrToBeDeletedID = type TID;
+
+  TSQLAudioDataResource = class of TSQLRecord;
+  TSQLAudioDataResourceID = type TID;
+  TSQLAudioDataResourceToBeDeletedID = type TID;
+
+  TSQLCharacterSet = class of TSQLRecord;
+  TSQLCharacterSetID = type TID;
+  TSQLCharacterSetToBeDeletedID = type TID;
+
+  TSQLDataCategory = class of TSQLRecord;
+  TSQLDataCategoryID = type TID;
+  TSQLDataCategoryToBeDeletedID = type TID;
+
+  TSQLDataResource = class of TSQLRecord;
+  TSQLDataResourceID = type TID;
+  TSQLDataResourceToBeDeletedID = type TID;
+
+  TSQLDataResourceAttribute = class of TSQLRecord;
+  TSQLDataResourceAttributeID = type TID;
+  TSQLDataResourceAttributeToBeDeletedID = type TID;
+
+  TSQLDataResourceMetaData = class of TSQLRecord;
+  TSQLDataResourceMetaDataID = type TID;
+  TSQLDataResourceMetaDataToBeDeletedID = type TID;
+
+  TSQLDataResourcePurpose = class of TSQLRecord;
+  TSQLDataResourcePurposeID = type TID;
+  TSQLDataResourcePurposeToBeDeletedID = type TID;
+
+  TSQLDataResourceRole = class of TSQLRecord;
+  TSQLDataResourceRoleID = type TID;
+  TSQLDataResourceRoleToBeDeletedID = type TID;
+
+  TSQLDataResourceType = class of TSQLRecord;
+  TSQLDataResourceTypeID = type TID;
+  TSQLDataResourceTypeToBeDeletedID = type TID;
+
+  TSQLDataResourceTypeAttr = class of TSQLRecord;
+  TSQLDataResourceTypeAttrID = type TID;
+  TSQLDataResourceTypeAttrToBeDeletedID = type TID;
+
+  TSQLDataTemplateType = class of TSQLRecord;
+  TSQLDataTemplateTypeID = type TID;
+  TSQLDataTemplateTypeToBeDeletedID = type TID;
+
+  TSQLElectronicText = class of TSQLRecord;
+  TSQLElectronicTextID = type TID;
+  TSQLElectronicTextToBeDeletedID = type TID;
+
+  TSQLFileExtension = class of TSQLRecord;
+  TSQLFileExtensionID = type TID;
+  TSQLFileExtensionToBeDeletedID = type TID;
+
+  TSQLImageDataResource = class of TSQLRecord;
+  TSQLImageDataResourceID = type TID;
+  TSQLImageDataResourceToBeDeletedID = type TID;
+
+  TSQLMetaDataPredicate = class of TSQLRecord;
+  TSQLMetaDataPredicateID = type TID;
+  TSQLMetaDataPredicateToBeDeletedID = type TID;
+
+  TSQLMimeType = class of TSQLRecord;
+  TSQLMimeTypeID = type TID;
+  TSQLMimeTypeToBeDeletedID = type TID;
+
+  TSQLMimeTypeHtmlTemplate = class of TSQLRecord;
+  TSQLMimeTypeHtmlTemplateID = type TID;
+  TSQLMimeTypeHtmlTemplateToBeDeletedID = type TID;
+
+  TSQLOtherDataResource = class of TSQLRecord;
+  TSQLOtherDataResourceID = type TID;
+  TSQLOtherDataResourceToBeDeletedID = type TID;
+
+  TSQLVideoDataResource = class of TSQLRecord;
+  TSQLVideoDataResourceID = type TID;
+  TSQLVideoDataResourceToBeDeletedID = type TID;
+
+  TSQLDocument = class of TSQLRecord;
+  TSQLDocumentID = type TID;
+  TSQLDocumentToBeDeletedID = type TID;
+
+  TSQLDocumentAttribute = class of TSQLRecord;
+  TSQLDocumentAttributeID = type TID;
+  TSQLDocumentAttributeToBeDeletedID = type TID;
+
+  TSQLDocumentType = class of TSQLRecord;
+  TSQLDocumentTypeID = type TID;
+  TSQLDocumentTypeToBeDeletedID = type TID;
+
+  TSQLDocumentTypeAttr = class of TSQLRecord;
+  TSQLDocumentTypeAttrID = type TID;
+  TSQLDocumentTypeAttrToBeDeletedID = type TID;
+
+  TSQLWebPreferenceType = class of TSQLRecord;
+  TSQLWebPreferenceTypeID = type TID;
+  TSQLWebPreferenceTypeToBeDeletedID = type TID;
+
+  TSQLWebUserPreference = class of TSQLRecord;
+  TSQLWebUserPreferenceID = type TID;
+  TSQLWebUserPreferenceToBeDeletedID = type TID;
+
+  TSQLSurvey = class of TSQLRecord;
+  TSQLSurveyID = type TID;
+  TSQLSurveyToBeDeletedID = type TID;
+
+  TSQLSurveyApplType = class of TSQLRecord;
+  TSQLSurveyApplTypeID = type TID;
+  TSQLSurveyApplTypeToBeDeletedID = type TID;
+
+  TSQLSurveyMultiResp = class of TSQLRecord;
+  TSQLSurveyMultiRespID = type TID;
+  TSQLSurveyMultiRespToBeDeletedID = type TID;
+
+  TSQLSurveyMultiRespColumn = class of TSQLRecord;
+  TSQLSurveyMultiRespColumnID = type TID;
+  TSQLSurveyMultiRespColumnToBeDeletedID = type TID;
+
+  TSQLSurveyPage = class of TSQLRecord;
+  TSQLSurveyPageID = type TID;
+  TSQLSurveyPageToBeDeletedID = type TID;
+
+  TSQLSurveyQuestion = class of TSQLRecord;
+  TSQLSurveyQuestionID = type TID;
+  TSQLSurveyQuestionToBeDeletedID = type TID;
+
+  TSQLSurveyQuestionAppl = class of TSQLRecord;
+  TSQLSurveyQuestionApplID = type TID;
+  TSQLSurveyQuestionApplToBeDeletedID = type TID;
+
+  TSQLSurveyQuestionCategory = class of TSQLRecord;
+  TSQLSurveyQuestionCategoryID = type TID;
+  TSQLSurveyQuestionCategoryToBeDeletedID = type TID;
+
+  TSQLSurveyQuestionOption = class of TSQLRecord;
+  TSQLSurveyQuestionOptionID = type TID;
+  TSQLSurveyQuestionOptionToBeDeletedID = type TID;
+
+  TSQLSurveyQuestionType = class of TSQLRecord;
+  TSQLSurveyQuestionTypeID = type TID;
+  TSQLSurveyQuestionTypeToBeDeletedID = type TID;
+
+  TSQLSurveyResponse = class of TSQLRecord;
+  TSQLSurveyResponseID = type TID;
+  TSQLSurveyResponseToBeDeletedID = type TID;
+
+  TSQLSurveyResponseAnswer = class of TSQLRecord;
+  TSQLSurveyResponseAnswerID = type TID;
+  TSQLSurveyResponseAnswerToBeDeletedID = type TID;
+
+  TSQLSurveyTrigger = class of TSQLRecord;
+  TSQLSurveyTriggerID = type TID;
+  TSQLSurveyTriggerToBeDeletedID = type TID;
+
+  TSQLWebSiteContent = class of TSQLRecord;
+  TSQLWebSiteContentID = type TID;
+  TSQLWebSiteContentToBeDeletedID = type TID;
+
+  TSQLWebSiteContentType = class of TSQLRecord;
+  TSQLWebSiteContentTypeID = type TID;
+  TSQLWebSiteContentTypeToBeDeletedID = type TID;
+
+  TSQLWebSitePathAlias = class of TSQLRecord;
+  TSQLWebSitePathAliasID = type TID;
+  TSQLWebSitePathAliasToBeDeletedID = type TID;
+
+  TSQLWebSitePublishPoint = class of TSQLRecord;
+  TSQLWebSitePublishPointID = type TID;
+  TSQLWebSitePublishPointToBeDeletedID = type TID;
+
+  TSQLWebSiteRole = class of TSQLRecord;
+  TSQLWebSiteRoleID = type TID;
+  TSQLWebSiteRoleToBeDeletedID = type TID;
+
+  TSQLContentKeyword = class of TSQLRecord;
+  TSQLContentKeywordID = type TID;
+  TSQLContentKeywordToBeDeletedID = type TID;
+
+  TSQLContentSearchConstraint = class of TSQLRecord;
+  TSQLContentSearchConstraintID = type TID;
+  TSQLContentSearchConstraintToBeDeletedID = type TID;
+
+  TSQLContentSearchResult = class of TSQLRecord;
+  TSQLContentSearchResultID = type TID;
+  TSQLContentSearchResultToBeDeletedID = type TID;
+
+  TSQLWebAnalyticsConfig = class of TSQLRecord;
+  TSQLWebAnalyticsConfigID = type TID;
+  TSQLWebAnalyticsConfigToBeDeletedID = type TID;
+
+  TSQLWebAnalyticsType = class of TSQLRecord;
+  TSQLWebAnalyticsTypeID = type TID;
+  TSQLWebAnalyticsTypeToBeDeletedID = type TID;
 
   // apache-ofbiz\framework\common\entitydef\entitymodel.xml
   TSQLDataSource = class of TSQLRecord;
@@ -2966,11 +3131,87 @@ type
   TSQLSystemPropertyID = type TID;
   TSQLSystemPropertyToBeDeletedID = type TID;
 
-
-
   // apache-ofbiz\framework\security\entitydef\entitymodel.xml
+  TSQLX509IssuerProvision = class of TSQLRecord;
+  TSQLX509IssuerProvisionID = type TID;
+  TSQLX509IssuerProvisionToBeDeletedID = type TID;
 
+  TSQLUserLogin = class of TSQLRecord;
+  TSQLUserLoginID = type TID;
+  TSQLUserLoginToBeDeletedID = type TID;
 
+  TSQLUserLoginPasswordHistory = class of TSQLRecord;
+  TSQLUserLoginPasswordHistoryID = type TID;
+  TSQLUserLoginPasswordHistoryToBeDeletedID = type TID;
+
+  TSQLUserLoginHistory = class of TSQLRecord;
+  TSQLUserLoginHistoryID = type TID;
+  TSQLUserLoginHistoryToBeDeletedID = type TID;
+
+  TSQLUserLoginSession = class of TSQLRecord;
+  TSQLUserLoginSessionID = type TID;
+  TSQLUserLoginSessionToBeDeletedID = type TID;
+
+  TSQLSecurityGroup = class of TSQLRecord;
+  TSQLSecurityGroupID = type TID;
+  TSQLSecurityGroupToBeDeletedID = type TID;
+
+  TSQLSecurityGroupPermission = class of TSQLRecord;
+  TSQLSecurityGroupPermissionID = type TID;
+  TSQLSecurityGroupPermissionToBeDeletedID = type TID;
+
+  TSQLSecurityPermission = class of TSQLRecord;
+  TSQLSecurityPermissionID = type TID;
+  TSQLSecurityPermissionToBeDeletedID = type TID;
+
+  TSQLUserLoginSecurityGroup = class of TSQLRecord;
+  TSQLUserLoginSecurityGroupID = type TID;
+  TSQLUserLoginSecurityGroupToBeDeletedID = type TID;
+
+  TSQLProtectedView = class of TSQLRecord;
+  TSQLProtectedViewID = type TID;
+  TSQLProtectedViewToBeDeletedID = type TID;
+
+  TSQLTarpittedLoginView = class of TSQLRecord;
+  TSQLTarpittedLoginViewID = type TID;
+  TSQLTarpittedLoginViewToBeDeletedID = type TID;
+
+  TSQLUserLoginSecurityQuestion = class of TSQLRecord;
+  TSQLUserLoginSecurityQuestionID = type TID;
+  TSQLUserLoginSecurityQuestionToBeDeletedID = type TID;
+
+  // apache-ofbiz-17.12.04\framework\service\entitydef\entitymodel.xml
+  TSQLJobSandbox = class of TSQLRecord;
+  TSQLJobSandboxID = type TID;
+  TSQLJobSandboxToBeDeletedID = type TID;
+
+  TSQLRecurrenceInfo = class of TSQLRecord;
+  TSQLRecurrenceInfoID = type TID;
+  TSQLRecurrenceInfoToBeDeletedID = type TID;
+
+  TSQLRecurrenceRule = class of TSQLRecord;
+  TSQLRecurrenceRuleID = type TID;
+  TSQLRecurrenceRuleToBeDeletedID = type TID;
+
+  TSQLRuntimeData = class of TSQLRecord;
+  TSQLRuntimeDataID = type TID;
+  TSQLRuntimeDataToBeDeletedID = type TID;
+
+  TSQLTemporalExpression = class of TSQLRecord;
+  TSQLTemporalExpressionID = type TID;
+  TSQLTemporalExpressionToBeDeletedID = type TID;
+
+  TSQLTemporalExpressionAssoc = class of TSQLRecord;
+  TSQLTemporalExpressionAssocID = type TID;
+  TSQLTemporalExpressionAssocToBeDeletedID = type TID;
+
+  TSQLJobManagerLock = class of TSQLRecord;
+  TSQLJobManagerLockID = type TID;
+  TSQLJobManagerLockToBeDeletedID = type TID;
+
+  TSQLServiceSemaphore = class of TSQLRecord;
+  TSQLServiceSemaphoreID = type TID;
+  TSQLServiceSemaphoreToBeDeletedID = type TID;
 
 implementation
 

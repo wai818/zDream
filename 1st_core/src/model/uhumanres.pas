@@ -36,12 +36,12 @@ type
       fParent: TSQLPartyQualTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
-      FDescription: RawUTF8;
+      fDescription: RawUTF8;
     published
       property Parent: TSQLPartyQualTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
-      property Description: RawUTF8 read FDescription write FDescription;
+      property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 3

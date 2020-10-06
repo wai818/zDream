@@ -6,7 +6,7 @@ interface
 
 uses
   mORMot, uParty, uProduct, uOrder, uAccounting, uShipment, uMarketing, uWorkEffort,
-  uManufacturing, uHumanres, uCommon;
+  uManufacturing, uHumanres, uCommon, uContent, uSecurity, uService;
   //Classes, SysUtils;
 
 const
@@ -19,7 +19,10 @@ const
   ROOT_NAME_MARKETING = 'marketing';
   ROOT_NAME_MANUFACTURING = 'manufacturing';
   ROOT_NAME_HUMANRES = 'humanres';
+  ROOT_NAME_CONTENT = 'content';
   ROOT_NAME_COMMON = 'common';
+  ROOT_NAME_SECURITY = 'security';
+  ROOT_NAME_SERVICE = 'service';
 
   function CreatePartyModel: TSQLModel;
   function CreateProductModel: TSQLModel;
@@ -30,7 +33,10 @@ const
   function CreateMarketingModel: TSQLModel;
   function CreateManufacturingModel: TSQLModel;
   function CreateHumanresModel: TSQLModel;
+  function CreateContentModel: TSQLModel;
   function CreateCommonModel: TSQLModel;
+  function CreateSecurityModel: TSQLModel;
+  function CreateServiceModel: TSQLModel;
 
 implementation
 
@@ -268,6 +274,28 @@ begin
   ], ROOT_NAME_HUMANRES);
 end;
 
+function CreateContentModel: TSQLModel;
+begin
+  result := TSQLModel.Create([
+    TSQLContent, TSQLContentApproval, TSQLContentAssoc, TSQLContentAssocPredicate,
+    TSQLContentAssocType, TSQLContentAttribute, TSQLContentMetaData, TSQLContentOperation,
+    TSQLContentPurpose, TSQLContentPurposeOperation, TSQLContentPurposeType, TSQLContentRevision,
+    TSQLContentRevisionItem, TSQLContentRole, TSQLContentType, TSQLContentTypeAttr,
+    TSQLAudioDataResource, TSQLCharacterSet, TSQLDataCategory, TSQLDataResource, TSQLDataResourceAttribute,
+    TSQLDataResourceMetaData, TSQLDataResourcePurpose, TSQLDataResourceRole, TSQLDataResourceType,
+    TSQLDataResourceTypeAttr, TSQLDataTemplateType, TSQLElectronicText, TSQLFileExtension,
+    TSQLImageDataResource, TSQLMetaDataPredicate, TSQLMimeType, TSQLMimeTypeHtmlTemplate,
+    TSQLOtherDataResource, TSQLVideoDataResource, TSQLDocument, TSQLDocumentAttribute,
+    TSQLDocumentType, TSQLDocumentTypeAttr, TSQLWebPreferenceType, TSQLWebUserPreference,
+    TSQLSurvey, TSQLSurveyApplType, TSQLSurveyMultiResp, TSQLSurveyMultiRespColumn,
+    TSQLSurveyPage, TSQLSurveyQuestion, TSQLSurveyQuestionAppl, TSQLSurveyQuestionCategory,
+    TSQLSurveyQuestionOption, TSQLSurveyQuestionType, TSQLSurveyResponse, TSQLSurveyResponseAnswer,
+    TSQLSurveyTrigger, TSQLWebSiteContent, TSQLWebSiteContentType, TSQLWebSitePathAlias,
+    TSQLWebSitePublishPoint, TSQLWebSiteRole, TSQLContentKeyword, TSQLContentSearchConstraint,
+    TSQLContentSearchResult, TSQLWebAnalyticsConfig, TSQLWebAnalyticsType
+  ], ROOT_NAME_CONTENT);
+end;
+
 function CreateCommonModel: TSQLModel;
 begin
   result := TSQLModel.Create([
@@ -282,6 +310,23 @@ begin
     TSQLPortalPage, TSQLPortalPageColumn, TSQLPortalPagePortlet, TSQLPortletAttribute,
     TSQLSystemProperty
   ], ROOT_NAME_COMMON);
+end;
+
+function CreateSecurityModel: TSQLModel;
+begin
+  result := TSQLModel.Create([
+    TSQLX509IssuerProvision, TSQLUserLogin, TSQLUserLoginPasswordHistory, TSQLUserLoginHistory,
+    TSQLUserLoginSession, TSQLSecurityGroup, TSQLSecurityGroupPermission, TSQLSecurityPermission,
+    TSQLUserLoginSecurityGroup, TSQLProtectedView, TSQLTarpittedLoginView, TSQLUserLoginSecurityQuestion
+  ], ROOT_NAME_SECURITY);
+end;
+
+function CreateServiceModel: TSQLModel;
+begin
+  result := TSQLModel.Create([
+    TSQLJobSandbox, TSQLRecurrenceInfo, TSQLRecurrenceRule, TSQLRuntimeData, TSQLTemporalExpression,
+    TSQLTemporalExpressionAssoc, TSQLJobManagerLock, TSQLServiceSemaphore
+  ], ROOT_NAME_SERVICE);
 end;
 
 end.

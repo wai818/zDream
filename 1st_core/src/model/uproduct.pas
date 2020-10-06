@@ -187,12 +187,12 @@ type
       fParent: TSQLProductCategoryContentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
-      FDescription: RawUTF8;
+      fDescription: RawUTF8;
     published
       property Parent: TSQLProductCategoryContentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
-      property Description: RawUTF8 read FDescription write FDescription;
+      property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 10 产品分类总账账务

@@ -25,7 +25,7 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <Units Count="13">
+    <Units Count="16">
       <Unit0>
         <Filename Value="zCoreServer.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -90,6 +90,21 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uCommon"/>
       </Unit12>
+      <Unit13>
+        <Filename Value="src\model\ucontent.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uContent"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="src\model\usecurity.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uSecurity"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="src\model\uservice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uService"/>
+      </Unit15>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

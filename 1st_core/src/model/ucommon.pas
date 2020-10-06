@@ -674,24 +674,6 @@ type
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
-
-
-
-
-
-  {
-    //
-    TSQL = class(TSQLRecord)
-      private
-      published
-        property  read  write ;
-        property  read  write ;
-        property  read  write ;
-        property  read  write ;
-        property  read  write ;
-    end;
-  }
-
 implementation
 
 end.
