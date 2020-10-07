@@ -1,8 +1,8 @@
 program zCoreServer;
 
-{$I Synopse.inc}
-
 {$define MAX_SQLFIELDS_128}     //不起作用
+
+{$I Synopse.inc}
 
 uses
   {$I SynDprUses.inc}
@@ -11,14 +11,7 @@ uses
   SynLog,
   SynCrypto,
   SynSQLite3Static,
-  //SynSQLite3,
-  mORMot, mORMotSQLite3, mORMotHttpServer, mORMotHttpClient, uModel,
-  uForwardDeclaration, uAccounting, uWorkEffort, uShipment, uMarketing,
-  uManufacturing, uHumanres, uCommon, uContent, uSecurity, uService;
-
-const
-  MAX_SQLFIELDS = 128;
-  //MAX_SQLTABLES = 256;
+  mORMot, mORMotSQLite3, mORMotHttpServer, mORMotHttpClient, uModel;
 
 type
   { TCoreServer }
