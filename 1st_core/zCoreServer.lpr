@@ -108,6 +108,7 @@ begin
   //sqlite3 := TSQLite3LibraryDynamic.Create;
   //sqlite3 := TSQLite3LibraryDynamic.Create('/usr/local/lib/libsqlite3.so.0.8.6');
 
+  writeln(#10'MAX_SQLFIELDS = ', MAX_SQLFIELDS);
   PartyModel := CreatePartyModel;
   ProductModel := CreateProductModel;
   OrderModel := CreateOrderModel;
@@ -197,6 +198,7 @@ begin
         ContentHTTPServer.AccessControlAllowOrigin := '*';
         SecurityHTTPServer.AccessControlAllowOrigin := '*';
         ServiceHTTPServer.AccessControlAllowOrigin := '*';
+        writeln(#10'MAX_SQLFIELDS = ', MAX_SQLFIELDS);
         writeln(#10'Background server is running.'#10);
         writeln('Press [Enter] to close the server.'#10);
         readln;
