@@ -1,0 +1,10 @@
+{"fieldCount":4,"rowCount":8,"values":[
+"Encode","Name","HasTable","ParentEncode",
+"ACTIVITY_REQUEST","活动请求","False","",
+"CONFERENCE","会议","False","",
+"CUSTOMER_SERVICE_CAL","客户服务电话","False","",
+"INQUIRY","询价","False","",
+"MEETING","会面","False","",
+"SALES_FOLLOW_UP","销售 Follow Up","False","",
+"SEMINAR","研讨会","False","",
+"SUPPORT_CALL","支持电话","False",""]}

@@ -1,0 +1,10 @@
+{"fieldCount":4,"rowCount":8,"values":[
+"Encode","ParentEncode","HasTable","Name",
+"ELECTRONIC_ADDRESS","","False","电子地址",
+"POSTAL_ADDRESS","","True","邮政地址",
+"TELECOM_NUMBER","","True","电话号码",
+"EMAIL_ADDRESS","ELECTRONIC_ADDRESS","False","电子邮件地址",
+"IP_ADDRESS","ELECTRONIC_ADDRESS","False","互联网IP地址",
+"DOMAIN_NAME","ELECTRONIC_ADDRESS","False","互联网域名",
+"WEB_ADDRESS","ELECTRONIC_ADDRESS","False","Web地址",
+"INTERNAL_PARTYID","ELECTRONIC_ADDRESS","False","通过partyId发送内部通知"]}

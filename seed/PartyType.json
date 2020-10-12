@@ -1,0 +1,11 @@
+{"fieldCount":4,"rowCount":9,"values":[
+"Encode","ParentEncode","HasTable","Name",
+"AUTOMATED_AGENT","","False","自动化代理",
+"CORPORATION","LEGAL_ORGANIZATION","False","企业",
+"FAMILY","INFORMAL_GROUP","False","家庭",
+"GOVERNMENT_AGENCY","LEGAL_ORGANIZATION","False","政府机构",
+"INFORMAL_GROUP","PARTY_GROUP","False","非正式组织",
+"LEGAL_ORGANIZATION","PARTY_GROUP","False","法定组织",
+"PARTY_GROUP","","True","组织机构",
+"PERSON","","True","个人",
+"TEAM","INFORMAL_GROUP","False","团队"]}

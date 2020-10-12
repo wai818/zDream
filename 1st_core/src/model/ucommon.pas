@@ -5,65 +5,9 @@ unit uCommon;
 interface
 
 uses
-  SynCommons, mORMot, uForwardDeclaration;//Classes, SysUtils;
+  SynCommons, mORMot, uForwardDeclaration;
 
 type
-  TSQLUserLogin = class(TSQLRecord)
-    private
-    published
-  end;
-  TSQLContent = class(TSQLRecord)
-    private
-    published
-  end;
-  TSQLRecurrenceInfo = class(TSQLRecord)
-    private
-    published
-  end;
-  TSQLSurveyResponse = class(TSQLRecord)
-    private
-    published
-  end;
-  TSQLDataResource = class(TSQLRecord)
-    private
-    published
-  end;
-  TSQLSurvey = class(TSQLRecord)
-    private
-    published
-  end;
-  TSQLSurveyApplType = class(TSQLRecord)
-    private
-    published
-  end;
-  TSQLJobSandbox = class(TSQLRecord)
-    private
-    published
-  end;
-  TSQLPaymentGatewayConfigTyp = class(TSQLRecord)
-    private
-    published
-  end;
-  TSQLDocument = class(TSQLRecord)
-    private
-    published
-  end;
- TSQLRuntimeData = class(TSQLRecord)
-    private
-    published
-  end;
-  TSQLTemporalExpression = class(TSQLRecord)
-    private
-    published
-  end;
-  TSQLSecurityGroup = class(TSQLRecord)
-    private
-    published
-  end;
-
-
-
-
   // 1
   TSQLDataSource = class(TSQLRecord)
     private
@@ -111,12 +55,20 @@ type
   // 4
   TSQLEnumeration = class(TSQLRecord)
     private
+      fName: RawUTF8;
+      fEncode: RawUTF8;
       fEnumType: TSQLEnumerationTypeID;
+      fEnumTypeEncode: RawUTF8;
       fEnumCode: RawUTF8;
       fSequence: Integer;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Name: RawUTF8 read fName write fName;
+      property Encode: RawUTF8 read fEncode write fEncode;
       property EnumType: TSQLEnumerationTypeID read fEnumType write fEnumType;
+      property EnumTypeEncode: RawUTF8 read fEnumTypeEncode write fEnumTypeEncode;
       property EnumCode: RawUTF8 read fEnumCode write fEnumCode;
       property Sequence: Integer read fSequence write fSequence;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -125,12 +77,18 @@ type
   // 5
   TSQLEnumerationType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fParent: TSQLEnumerationTypeID;
+      fParentEncode: RawUTF8;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Parent: TSQLEnumerationTypeID read fParent write fParent;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -675,6 +633,42 @@ type
   end;
 
 implementation
+
+uses
+  Classes, SysUtils;
+
+// 1
+class procedure TSQLEnumeration.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLEnumeration;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLEnumeration.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','Enumeration.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update Enumeration set EnumType=(select c.id from EnumerationType c where c.Encode=EnumTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 2
+class procedure TSQLEnumerationType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLEnumerationType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLEnumerationType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','EnumerationType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update EnumerationType set parent=(select c.id from EnumerationType c where c.Encode=ParentEncode);');
+    Server.Execute('update Enumeration set EnumType=(select c.id from EnumerationType c where c.Encode=EnumTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
 
 end.
 

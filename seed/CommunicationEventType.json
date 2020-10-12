@@ -1,0 +1,10 @@
+{"fieldCount":5,"rowCount":8,"values":[
+"Encode","Name","HasTable","ParentEncode","ContactMechTypeEncode",
+"EMAIL_COMMUNICATION","电子邮件","False","","EMAIL_ADDRESS",
+"FACE_TO_FACE_COMMUNI","当面","False","","",
+"FAX_COMMUNICATION","传真","False","","TELECOM_NUMBER",
+"LETTER_CORRESPONDENC","书信","False","","POSTAL_ADDRESS",
+"PHONE_COMMUNICATION","电话","False","","TELECOM_NUMBER",
+"WEB_SITE_COMMUNICATI","网站","False","","WEB_ADDRESS",
+"COMMENT_NOTE","评论/注释","False","","INTERNAL_PARTYID",
+"AUTO_EMAIL_COMM","自动电邮","False","","EMAIL_ADDRESS"]}

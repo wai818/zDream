@@ -551,6 +551,8 @@ type
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
       property Parent: TSQLCommunicationEventPrpTypID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
@@ -594,12 +596,16 @@ type
       fName: RawUTF8;
       FDescription: RawUTF8;
       fContactMechType: TSQLContactMechTypeID;
+      fContactMechTypeEncode: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
       property Parent: TSQLCommunicationEventPrpTypID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
       property ContactMechType: TSQLContactMechTypeID read fContactMechType write fContactMechType;
+      property ContactMechTypeEncode: RawUTF8 read fContactMechTypeEncode write fContactMechTypeEncode;
   end;
 
   // 32 联系机制
@@ -639,9 +645,13 @@ type
   // 35 联系机制用途类型
   TSQLContactMechPurposeType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -650,11 +660,17 @@ type
   TSQLContactMechType = class(TSQLRecord)
     private
       fParent: TSQLContactMechTypeID;
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
       property Parent: TSQLContactMechTypeID read fParent write fParent;
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -677,9 +693,15 @@ type
     private
       fContactMechType: TSQLContactMechTypeID;
       fContactMechPurposeType: TSQLContactMechPurposeTypeID;
+      fContactMechTypeEncode: RawUTF8;
+      fContactMechPurposeTypeEncode: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
       property ContactMechType: TSQLContactMechTypeID read fContactMechType write fContactMechType;
       property ContactMechPurposeType: TSQLContactMechPurposeTypeID read fContactMechPurposeType write fContactMechPurposeType;
+      property ContactMechTypeEncode: RawUTF8 read fContactMechTypeEncode write fContactMechTypeEncode;
+      property ContactMechPurposeTypeEncode: RawUTF8 read fContactMechPurposeTypeEncode write fContactMechPurposeTypeEncode;
   end;
 
   // 39 电子邮件地址校验
@@ -1088,12 +1110,18 @@ type
   // 60 当事人内容类型
   TSQLPartyContentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fParent: TSQLPartyContentTypeID;
+      fParentEncode: RawUTF8;
       fHasTable: Boolean;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Parent: TSQLPartyContentTypeID read fParent write fParent;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -1341,11 +1369,17 @@ type
   TSQLPartyType = class(TSQLRecord)
     private
       fParent: TSQLPartyTypeID;
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
       property Parent: TSQLPartyTypeID read fParent write fParent;
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -1497,6 +1531,121 @@ implementation
 
 uses
   Classes, SysUtils;
+
+// applications\datamodel\data\seed\PartySeedData.xml
+
+// 1
+class procedure TSQLContactMechPurposeType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLContactMechPurposeType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLContactMechPurposeType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ContactMechPurposeType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 2
+class procedure TSQLContactMechType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLContactMechType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLContactMechType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ContactMechType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ContactMechType set parent=(select c.id from ContactMechType c where c.Encode=ContactMechType.ParentEncode);');
+    Server.Execute('update CommunicationEventType set ContactMechType=(select c.id from ContactMechType c where c.Encode=ContactMechTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 3
+class procedure TSQLContactMechTypePurpose.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLContactMechTypePurpose;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLContactMechTypePurpose.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ContactMechTypePurpose.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ContactMechTypePurpose set ContactMechType=(select c.id from ContactMechType c where c.Encode=ContactMechTypeEncode);');
+    Server.Execute('update ContactMechTypePurpose set ContactMechPurposeType=(select c.id from ContactMechPurposeType c where c.Encode=ContactMechPurposeTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 4
+class procedure TSQLCommunicationEventPrpTyp.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLCommunicationEventPrpTyp;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLCommunicationEventPrpTyp.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','CommunicationEventPrpTyp.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update CommunicationEventPrpTyp set parent=(select c.id from CommunicationEventPrpTyp c where c.Encode=CommunicationEventPrpTyp.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 5
+class procedure TSQLCommunicationEventType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLCommunicationEventType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLCommunicationEventType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','CommunicationEventType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update CommunicationEventType set parent=(select c.id from CommunicationEventType c where c.Encode=CommunicationEventType.ParentEncode);');
+    Server.Execute('update CommunicationEventType set ContactMechType=(select c.id from ContactMechType c where c.Encode=ContactMechTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 6
+class procedure TSQLPartyContentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLPartyContentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLPartyContentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','PartyContentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update PartyContentType set parent=(select c.id from PartyContentType c where c.Encode=ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+class procedure TSQLPartyType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLPartyType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLPartyType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','PartyType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update PartyType set parent=(select c.id from PartyType c where c.Encode=PartyType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
 
 end.
 

@@ -124,7 +124,7 @@ begin
   ServiceModel := CreateServiceModel;
   try
     //PartyServer := TSQLRestServerFullMemory.Create(PartyModel,'test.json',False,True);
-    PartyServer := TSQLRestServerDB.Create(PartyModel,ChangeFileExt(paramstr(0),'Party.db3'), True);
+    PartyServer := TSQLRestServerDB.Create(PartyModel,ChangeFileExt(paramstr(0),'Party.db3'), False);
     ProductServer := TSQLRestServerDB.Create(ProductModel,ChangeFileExt(paramstr(0),'Product.db3'), True);
     OrderServer := TSQLRestServerDB.Create(OrderModel,ChangeFileExt(paramstr(0),'Order.db3'), True);
     AccountingServer := TSQLRestServerDB.Create(AccountingModel,ChangeFileExt(paramstr(0),'Accounting.db3'), True);
