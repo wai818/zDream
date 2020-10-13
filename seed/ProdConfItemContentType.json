@@ -1,0 +1,6 @@
+{"fieldCount":4,"rowCount":4,"values":[
+"Name","HasTable","ParentEncode","Encode",
+"Image","False","","IMAGE_URL",
+"Description","False","","DESCRIPTION",
+"Description - Long","False","","LONG_DESCRIPTION",
+"Instructions","False","","INSTRUCTIONS"]}

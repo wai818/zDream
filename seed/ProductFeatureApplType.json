@@ -1,0 +1,7 @@
+{"fieldCount":4,"rowCount":5,"values":[
+"Name","HasTable","ParentEncode","Encode",
+"Optional","False","","OPTIONAL_FEATURE",
+"Required","False","","REQUIRED_FEATURE",
+"Selectable","False","","SELECTABLE_FEATURE",
+"Standard","False","","STANDARD_FEATURE",
+"Distinguishing","False","","DISTINGUISHING_FEAT"]}

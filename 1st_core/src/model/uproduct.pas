@@ -410,11 +410,17 @@ type
   // 20
   TSQLProdConfItemContentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLProdConfItemContentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+     public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLProdConfItemContentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1048,11 +1054,17 @@ type
   // 58
   TSQLProductFeatureApplType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLProductFeatureApplTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLProductFeatureApplTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1168,11 +1180,17 @@ type
   // 67
   TSQLProductFeatureIactnType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLProductFeatureIactnTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLProductFeatureIactnTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -3532,6 +3550,54 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update ProductContentType set parent=(select c.id from ProductContentType c where c.Encode=ProductContentType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 8
+class procedure TSQLProdConfItemContentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProdConfItemContentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProdConfItemContentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProdConfItemContentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProdConfItemContentType set parent=(select c.id from ProdConfItemContentType c where c.Encode=ProdConfItemContentType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 9
+class procedure TSQLProductFeatureApplType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductFeatureApplType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductFeatureApplType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductFeatureApplType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductFeatureApplType set parent=(select c.id from ProductFeatureApplType c where c.Encode=ProductFeatureApplType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 10
+class procedure TSQLProductFeatureIactnType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductFeatureIactnType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductFeatureIactnType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductFeatureIactnType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductFeatureIactnType set parent=(select c.id from ProductFeatureIactnType c where c.Encode=ProductFeatureIactnType.ParentEncode);');
   finally
     Rec.Free;
   end;
