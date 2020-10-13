@@ -1,0 +1,18 @@
+{"fieldCount":4,"rowCount":16,"values":[
+"Name","HasTable","ParentEncode","Encode",
+"Category Name","False","","CATEGORY_NAME",
+"Description","False","","DESCRIPTION",
+"Description - Long","False","","LONG_DESCRIPTION",
+"Alternative URL","False","","ALTERNATIVE_URL",
+"Category Image","False","","CATEGORY_IMAGE",
+"Category Image URL","False","","CATEGORY_IMAGE_URL",
+"Category Image Alt Text","False","","CATEGORY_IMAGE_ALT",
+"Link 1 Alt Text","False","","LINK1_ALT_TEXT",
+"Link 2 Alt Text","False","","LINK2_ALT_TEXT",
+"Footer","False","","FOOTER",
+"Page Title","False","","PAGE_TITLE",
+"Meta Keyword","False","","META_KEYWORD",
+"Meta Description","False","","META_DESCRIPTION",
+"Related URL","False","","RELATED_URL",
+"Video","False","","VIDEO",
+"Video URL","False","","VIDEO_URL"]}

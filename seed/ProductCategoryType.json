@@ -1,0 +1,15 @@
+{"fieldCount":4,"rowCount":13,"values":[
+"Name","HasTable","ParentEncode","Encode",
+"Catalog","False","","CATALOG_CATEGORY",
+"Industry","False","","INDUSTRY_CATEGORY",
+"Internal","False","","INTERNAL_CATEGORY",
+"Materials","False","","MATERIALS_CATEGORY",
+"Quick Add","False","","QUICKADD_CATEGORY",
+"Search","False","","SEARCH_CATEGORY",
+"Usage","False","","USAGE_CATEGORY",
+"Mix and Match","False","","MIXMATCH_CATEGORY",
+"Cross Sell","False","","CROSS_SELL_CATEGORY",
+"Tax","False","","TAX_CATEGORY",
+"Google Base","False","","GOOGLE_BASE_CATEGORY",
+"Gift Cards","False","","GIFT_CARD_CATEGORY",
+"Best Selling","False","","BEST_SELL_CATEGORY"]}

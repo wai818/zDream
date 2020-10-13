@@ -190,11 +190,17 @@ type
   // 9 产品分类内容类型
   TSQLProductCategoryContentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLProductCategoryContentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLProductCategoryContentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -314,11 +320,17 @@ type
   // 15 产品分类类型
   TSQLProductCategoryType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLProductCategoryTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLProductCategoryTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1965,11 +1977,17 @@ type
   // 102
   TSQLProductAssocType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLProductAssocTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLProductAssocTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -2059,11 +2077,17 @@ type
   // 107
   TSQLProductContentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLProductContentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLProductContentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -3444,6 +3468,70 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update ProdCatalogCategoryType set parent=(select c.id from ProdCatalogCategoryType c where c.Encode=ProdCatalogCategoryType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 4
+class procedure TSQLProductAssocType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductAssocType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductAssocType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductAssocType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductAssocType set parent=(select c.id from ProductAssocType c where c.Encode=ProductAssocType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 5
+class procedure TSQLProductCategoryType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductCategoryType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductCategoryType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductCategoryType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductCategoryType set parent=(select c.id from ProductCategoryType c where c.Encode=ProductCategoryType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 6
+class procedure TSQLProductCategoryContentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductCategoryContentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductCategoryContentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductCategoryContentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductCategoryContentType set parent=(select c.id from ProductCategoryContentType c where c.Encode=ProductCategoryContentType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 7
+class procedure TSQLProductContentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductContentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductContentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductContentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductContentType set parent=(select c.id from ProductContentType c where c.Encode=ProductContentType.ParentEncode);');
   finally
     Rec.Free;
   end;
