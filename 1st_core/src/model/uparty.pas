@@ -401,15 +401,21 @@ type
   // 21 条款类型
   TSQLTermType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLTermTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
-   published
-     property Parent: TSQLTermTypeID read fParent write fParent;
-     property HasTable: Boolean read fHasTable write fHasTable;
-     property Name: RawUTF8 read fName write fName;
-     property Description: RawUTF8 read FDescription write FDescription;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
+    published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
+      property Parent: TSQLTermTypeID read fParent write fParent;
+      property HasTable: Boolean read fHasTable write fHasTable;
+      property Name: RawUTF8 read fName write fName;
+      property Description: RawUTF8 read FDescription write FDescription;
   end;
 
   // 22 条款类型属性
@@ -1078,11 +1084,17 @@ type
   // 58 当事人分类类型
   TSQLPartyClassificationType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLPartyClassificationTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLPartyClassificationTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1326,19 +1338,29 @@ type
   // 71 当事人关系类型
   TSQLPartyRelationshipType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParentType: TSQLPartyRelationshipTypeID;
       fHasTable: Boolean;
-      fPartyRelationshipName: RawUTF8;
+      fName: RawUTF8;
       fDescription: RawUTF8;
-      fRoleTypeIdValidFrom: TSQLRoleTypeID;
-      fRoleTypeIdValidTo: TSQLRoleTypeID;
+      fRoleTypeFromEncode: RawUTF8;
+      fRoleTypeToEncode: RawUTF8;
+      fRoleTypeValidFrom: TSQLRoleTypeID;
+      fRoleTypeValidTo: TSQLRoleTypeID;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property ParentType: TSQLPartyRelationshipTypeID read fParentType write fParentType;
       property HasTable: Boolean read fHasTable write fHasTable;
-      property PartyRelationshipName: RawUTF8 read fPartyRelationshipName write fPartyRelationshipName;
+      property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
-      property RoleTypeIdValidFrom: TSQLRoleTypeID read fRoleTypeIdValidFrom write fRoleTypeIdValidFrom;
-      property RoleTypeIdValidTo: TSQLRoleTypeID read fRoleTypeIdValidTo write fRoleTypeIdValidTo;
+      property RoleTypeFromEncode: RawUTF8 read fRoleTypeFromEncode write fRoleTypeFromEncode;
+      property RoleTypeToEncode: RawUTF8 read fRoleTypeToEncode write fRoleTypeToEncode;
+      property RoleTypeValidFrom: TSQLRoleTypeID read fRoleTypeValidFrom write fRoleTypeValidFrom;
+      property RoleTypeValidTo: TSQLRoleTypeID read fRoleTypeValidTo write fRoleTypeValidTo;
   end;
 
   // 72 当事人角色
@@ -1484,12 +1506,18 @@ type
   // 78 角色类型
   TSQLRoleType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fParent: TSQLRoleTypeID;
+      fParentEncode: RawUTF8;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Parent: TSQLRoleTypeID read fParent write fParent;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -1626,12 +1654,65 @@ begin
   try
     while Rec.FillOne do
       Server.Add(Rec,true);
-    Server.Execute('update PartyContentType set parent=(select c.id from PartyContentType c where c.Encode=ParentEncode);');
+    Server.Execute('update PartyContentType set parent=(select c.id from PartyContentType c where c.Encode=PartyContentType.ParentEncode);');
   finally
     Rec.Free;
   end;
 end;
 
+// 7
+class procedure TSQLRoleType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLRoleType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLRoleType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','RoleType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update RoleType set Parent=(select c.id from RoleType c where c.Encode=RoleType.ParentEncode);');
+    Server.Execute('update PartyRelationshipType set RoleTypeValidFrom=(select c.id from RoleType c where c.Encode=RoleTypeFromEncode);');
+    Server.Execute('update PartyRelationshipType set RoleTypeValidTo=(select c.id from RoleType c where c.Encode=RoleTypeToEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 8
+class procedure TSQLPartyClassificationType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLPartyClassificationType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLPartyClassificationType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','PartyClassificationType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update PartyClassificationType set Parent=(select c.id from PartyClassificationType c where c.Encode=PartyClassificationType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 9
+class procedure TSQLPartyRelationshipType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLPartyRelationshipType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLPartyRelationshipType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','PartyRelationshipType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update PartyRelationshipType set parent=(select c.id from PartyRelationshipType c where c.Encode=PartyRelationshipType.ParentEncode);');
+    Server.Execute('update PartyRelationshipType set RoleTypeValidFrom=(select c.id from RoleType c where c.Encode=RoleTypeFromEncode);');
+    Server.Execute('update PartyRelationshipType set RoleTypeValidTo=(select c.id from RoleType c where c.Encode=RoleTypeToEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 10
 class procedure TSQLPartyType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
 var Rec: TSQLPartyType;
 begin
@@ -1642,6 +1723,22 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update PartyType set parent=(select c.id from PartyType c where c.Encode=PartyType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 11
+class procedure TSQLTermType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLTermType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLTermType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','TermType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update TermType set parent=(select c.id from TermType c where c.Encode=TermType.ParentEncode);');
   finally
     Rec.Free;
   end;

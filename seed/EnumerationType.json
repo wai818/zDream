@@ -1,5 +1,7 @@
-{"fieldCount":4,"rowCount":3,"values":[
+{"fieldCount":4,"rowCount":5,"values":[
 "Name","Encode","HasTable","ParentEncode",
 "雇佣状况","EMPLOY_STTS","False","",
 "居住状况","PTY_RESID_STTS","False","",
-"当事人电邮通知","PARTY_EMAIL","False",""]}
+"当事人电邮通知","PARTY_EMAIL","False","",
+"用户默认参数","USER_PREF_GROUPS","False","",
+"全局默认参数","GLOBAL_PREFERENCES","False","USER_PREF_GROUPS"]}

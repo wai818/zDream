@@ -1,4 +1,4 @@
-{"fieldCount":5,"rowCount":21,"values":[
+{"fieldCount":5,"rowCount":23,"values":[
 "Name","EnumCode","Encode","Sequence","EnumTypeEncode",
 "Full-time Employed","FULLTIME","EMPS_FULLTIME","01","EMPLOY_STTS",
 "Part-time Employed","PARTTIME","EMPS_PARTTIME","02","EMPLOY_STTS",
@@ -20,4 +20,6 @@
 "Unsubscribe Contact List Notification","UNSUB_CONT_EMAIL","UNSUB_CONT_LIST_NOTI","01","PARTY_EMAIL",
 "Subscribe Contact List Notification","SUB_CONT_EMAIL","SUB_CONT_LIST_NOTI","02","PARTY_EMAIL",
 "Unsubscribe Contact List Verify","UNSUB_CONT_VERIFY_EMAIL","UNSUB_CONT_LIST_VERI","03","PARTY_EMAIL",
-"Contact List E-mail Template","CONT_EMAIL_TEMPLATE","CONT_EMAIL_TEMPLATE","04","PARTY_EMAIL"]}
+"Contact List E-mail Template","CONT_EMAIL_TEMPLATE","CONT_EMAIL_TEMPLATE","04","PARTY_EMAIL",
+"Organization party","","ORGANIZATION_PARTY","01","GLOBAL_PREFERENCES",
+"Visual Theme","","VISUAL_THEME","02","GLOBAL_PREFERENCES"]}

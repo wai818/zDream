@@ -1,0 +1,8 @@
+{"fieldCount":4,"rowCount":6,"values":[
+"Name","HasTable","ParentEncode","Encode",
+"Party","False","","PARTY_STATUS",
+"Case","False","","CASE_STATUS",
+"Communication Event","False","","COM_EVENT_STATUS",
+"Communication Event Role","False","COM_EVENT_STATUS","COM_EVENT_ROL_STATUS",
+"Party Relationship","False","","PARTY_REL_STATUS",
+"Party Invitation","False","","PARTY_INV_STATUS"]}

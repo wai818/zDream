@@ -5,7 +5,7 @@ unit uHumanres;
 interface
 
 uses
-  SynCommons, mORMot, uForwardDeclaration;//Classes, SysUtils;
+  SynCommons, mORMot, uForwardDeclaration;
 
 type
   // 1
@@ -33,11 +33,17 @@ type
   // 2
   TSQLPartyQualType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLPartyQualTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLPartyQualTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -713,6 +719,25 @@ type
   end;
 
 implementation
+
+uses
+  Classes, SysUtils;
+
+// 1
+class procedure TSQLPartyQualType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLPartyQualType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLPartyQualType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','PartyQualType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update PartyQualType set Parent=(select c.id from PartyQualType c where c.Encode=PartyQualType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
 
 end.
 

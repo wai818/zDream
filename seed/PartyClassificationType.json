@@ -1,0 +1,17 @@
+{"fieldCount":4,"rowCount":15,"values":[
+"Name","HasTable","ParentEncode","Encode",
+"EEOC (Equal Opportunity)","N","","EEOC_CLASSIFICATION",
+"Minority","N","","MINORITY_CLASSIFICAT",
+"Income","N","","INCOME_CLASSIFICATIO",
+"Industry","N","","INDUSTRY_CLASSIFICAT",
+"Organization","N","","ORGANIZATION_CLASSIF",
+"Person","N","","PERSON_CLASSIFICATIO",
+"Size","N","","SIZE_CLASSIFICATION",
+"Trade","N","","TRADE_CLASSIFICATION",
+"Wholesale","N","TRADE_CLASSIFICATION","TRADE_WHOLE_CLASSIFI",
+"Retail","N","TRADE_CLASSIFICATION","TRADE_RETAIL_CLASSIF",
+"Annual Revenue","N","","ANNUAL_REVENUE",
+"Number of Employees","N","","NUMBER_OF_EMPLOYEES",
+"Value Rating","N","","VALUE_RATING",
+"SIC Code","N","","SIC_CODE",
+"Ownership","N","","OWNERSHIP"]}

@@ -331,25 +331,37 @@ type
   // 22
   TSQLStatusItem = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fStatusTypeEncode: RawUTF8;
       fStatusType: TSQLStatusTypeID;
       fStatusCode: RawUTF8;
-      fSequenceId: Integer;
+      fSequence: Integer;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property StatusTypeEncode: RawUTF8 read fStatusTypeEncode write fStatusTypeEncode;
       property StatusType: TSQLStatusTypeID read fStatusType write fStatusType;
       property StatusCode: RawUTF8 read fStatusCode write fStatusCode;
-      property SequenceId: Integer read fSequenceId write fSequenceId;
+      property Sequence: Integer read fSequence write fSequence;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 23
   TSQLStatusType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLStatusTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLStatusTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -359,11 +371,17 @@ type
   // 24
   TSQLStatusValidChange = class(TSQLRecord)
     private
+      fStatusEncode: RawUTF8;
+      fStatusToEncode: RawUTF8;
       fStatus: TSQLStatusItemID;
       fStatusTo: TSQLStatusItemID;
       fConditionExpression: RawUTF8;
       fTransitionName: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property StatusEncode: RawUTF8 read fStatusEncode write fStatusEncode;
+      property StatusToEncode: RawUTF8 read fStatusToEncode write fStatusToEncode;
       property Status: TSQLStatusItemID read fStatus write fStatus;
       property StatusTo: TSQLStatusItemID read fStatusTo write fStatusTo;
       property ConditionExpression: RawUTF8 read fConditionExpression write fConditionExpression;
@@ -665,6 +683,58 @@ begin
       Server.Add(Rec,true);
     Server.Execute('update EnumerationType set parent=(select c.id from EnumerationType c where c.Encode=ParentEncode);');
     Server.Execute('update Enumeration set EnumType=(select c.id from EnumerationType c where c.Encode=EnumTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 3
+class procedure TSQLStatusType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLStatusType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLStatusType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','StatusType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update StatusType set Parent=(select c.id from StatusType c where c.Encode=StatusType.ParentEncode);');
+    Server.Execute('update StatusItem set StatusType=(select c.id from StatusType c where c.Encode=StatusItem.StatusTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 4
+class procedure TSQLStatusItem.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLStatusItem;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLStatusItem.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','StatusItem.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update StatusItem set StatusType=(select c.id from StatusType c where c.Encode=StatusItem.StatusTypeEncode);');
+    Server.Execute('update StatusValidChange set Status=(select c.id from StatusItem c where c.Encode=StatusValidChange.StatusEncode);');
+    Server.Execute('update StatusValidChange set StatusTo=(select c.id from StatusItem c where c.Encode=StatusValidChange.StatusToEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 5
+class procedure TSQLStatusValidChange.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLStatusValidChange;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLStatusValidChange.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','StatusValidChange.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update StatusValidChange set Status=(select c.id from StatusItem c where c.Encode=StatusValidChange.StatusEncode);');
+    Server.Execute('update StatusValidChange set StatusTo=(select c.id from StatusItem c where c.Encode=StatusValidChange.StatusToEncode);');
   finally
     Rec.Free;
   end;
