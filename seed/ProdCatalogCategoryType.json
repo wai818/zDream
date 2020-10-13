@@ -1,0 +1,14 @@
+{"fieldCount":2,"rowCount":12,"values":[
+"Name","Encode","ParentEncode","HasTable",
+"Browse Root (One)","PCCT_BROWSE_ROOT",
+"Default Search (One)","PCCT_SEARCH",
+"Other Search (Many)","PCCT_OTHER_SEARCH",
+"Quick Add (Many)","PCCT_QUICK_ADD",
+"Promotions (One)","PCCT_PROMOTIONS",
+"Most Popular (One)","PCCT_MOST_POPULAR",
+"What's New (One)","PCCT_WHATS_NEW",
+"View Allow (One)","PCCT_VIEW_ALLW",
+"Purchase Allow (One)","PCCT_PURCH_ALLW",
+"Admin Allow (One)","PCCT_ADMIN_ALLW",
+"Ebay Root (One)","PCCT_EBAY_ROOT",
+"Best Selling (One)","PCCT_BEST_SELL"]}
