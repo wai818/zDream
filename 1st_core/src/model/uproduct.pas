@@ -62,10 +62,16 @@ type
   // 3 产品目录种类类型
   TSQLProdCatalogCategoryType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLProdCatalogCategoryTypeID;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLProdCatalogCategoryTypeID read fParent write fParent;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
@@ -546,11 +552,17 @@ type
   // 29
   TSQLCostComponentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLCostComponentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLCostComponentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1735,11 +1747,17 @@ type
   // 99 商品标识类型
   TSQLGoodIdentificationType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLGoodIdentificationTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+     public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLGoodIdentificationTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -3382,6 +3400,54 @@ implementation
 
 uses
   Classes, SysUtils;
+
+// 1
+class procedure TSQLCostComponentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLCostComponentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLCostComponentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','CostComponentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update CostComponentType set parent=(select c.id from CostComponentType c where c.Encode=CostComponentType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 2
+class procedure TSQLGoodIdentificationType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLGoodIdentificationType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLGoodIdentificationType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','GoodIdentificationType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update GoodIdentificationType set parent=(select c.id from GoodIdentificationType c where c.Encode=GoodIdentificationType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 3
+class procedure TSQLProdCatalogCategoryType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProdCatalogCategoryType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProdCatalogCategoryType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProdCatalogCategoryType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProdCatalogCategoryType set parent=(select c.id from ProdCatalogCategoryType c where c.Encode=ProdCatalogCategoryType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
 
 end.
 
