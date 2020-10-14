@@ -810,14 +810,22 @@ type
   // 43
   TSQLFacilityGroup = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fFacilityGroupTypeEncode: RawUTF8;
+      fPrimaryParentGroupEncode: RawUTF8;
       fFacilityGroupType: TSQLFacilityGroupTypeID;
       fPrimaryParentGroup: TSQLFacilityGroupID;
-      fFacilityGroupName: RawUTF8;
+      fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property FacilityGroupTypeEncode: RawUTF8 read fFacilityGroupTypeEncode write fFacilityGroupTypeEncode;
+      property PrimaryParentGroupEncode: RawUTF8 read fPrimaryParentGroupEncode write fPrimaryParentGroupEncode;
       property FacilityGroupType: TSQLFacilityGroupTypeID read fFacilityGroupType write fFacilityGroupType;
       property PrimaryParentGroup: TSQLFacilityGroupID read fPrimaryParentGroup write fPrimaryParentGroup;
-      property FacilityGroupName: RawUTF8 read fFacilityGroupName write fFacilityGroupName;
+      property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
@@ -868,9 +876,13 @@ type
   // 47
   TSQLFacilityGroupType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -948,11 +960,17 @@ type
   // 52
   TSQLFacilityType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLFacilityTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLFacilityTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1200,11 +1218,17 @@ type
   // 68
   TSQLProductFeatureType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLProductFeatureTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLProductFeatureTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1400,11 +1424,17 @@ type
   // 75
   TSQLInventoryItemType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLInventoryItemTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLInventoryItemTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1537,9 +1567,13 @@ type
   // 84 变化原因
   TSQLVarianceReason = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -1629,9 +1663,13 @@ type
   // 88
   TSQLProductPriceActionType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -1697,9 +1735,13 @@ type
   // 92
   TSQLProductPricePurpose = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -1723,9 +1765,13 @@ type
   // 94
   TSQLProductPriceType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -2173,10 +2219,14 @@ type
   // 112
   TSQLProductMeterType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fDefaultUom: TSQLUomID;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property DefaultUom: TSQLUomID read fDefaultUom write fDefaultUom;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
@@ -2214,11 +2264,17 @@ type
   // 114
   TSQLProductMaintType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLProductMaintTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLProductMaintTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -2300,13 +2356,19 @@ type
   // 118
   TSQLProductType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLProductTypeID;
       fIsPhysical: Boolean;
       fIsDigital: Boolean;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLProductTypeID read fParent write fParent;
       property IsPhysical: Boolean read fIsPhysical write fIsPhysical;
       property IsDigital: Boolean read fIsDigital write fIsDigital;
@@ -2807,14 +2869,22 @@ type
   // 136 产品商店分组
   TSQLProductStoreGroup = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fGroupTypeEncode: RawUTF8;
+      fPrimaryGroupEncode: RawUTF8;
       fProductStoreGroupType: TSQLProductStoreGroupTypeID;
       fPrimaryParentGroup: TSQLProductStoreGroupID;
-      fProductStoreGroupName: RawUTF8;
+      fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property GroupTypeEncode: RawUTF8 read fGroupTypeEncode write fGroupTypeEncode;
+      property PrimaryGroupEncode: RawUTF8 read fPrimaryGroupEncode write fPrimaryGroupEncode;
       property ProductStoreGroupType: TSQLProductStoreGroupTypeID read fProductStoreGroupType write fProductStoreGroupType;
       property PrimaryParentGroup: TSQLProductStoreGroupID read fPrimaryParentGroup write fPrimaryParentGroup;
-      property ProductStoreGroupName: RawUTF8 read fProductStoreGroupName write fProductStoreGroupName;
+      property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
@@ -3598,6 +3668,211 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update ProductFeatureIactnType set parent=(select c.id from ProductFeatureIactnType c where c.Encode=ProductFeatureIactnType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 11
+class procedure TSQLProductFeatureType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductFeatureType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductFeatureType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductFeatureType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductFeatureType set parent=(select c.id from ProductFeatureType c where c.Encode=ProductFeatureType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 12
+class procedure TSQLProductMeterType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductMeterType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductMeterType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductMeterType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 13
+class procedure TSQLProductMaintType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductMaintType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductMaintType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductMaintType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductMaintType set parent=(select c.id from ProductMaintType c where c.Encode=ProductMaintType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 14
+class procedure TSQLProductPriceType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductPriceType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductPriceType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductPriceType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 15
+class procedure TSQLProductPricePurpose.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductPricePurpose;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductPricePurpose.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductPricePurpose.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 16
+class procedure TSQLProductPriceActionType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductPriceActionType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductPriceActionType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductPriceActionType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 17
+class procedure TSQLProductType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductType set parent=(select c.id from ProductType c where c.Encode=ProductType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 18
+class procedure TSQLFacilityType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLFacilityType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLFacilityType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','FacilityType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update FacilityType set parent=(select c.id from FacilityType c where c.Encode=FacilityType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 19
+class procedure TSQLFacilityGroupType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLFacilityGroupType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLFacilityGroupType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','FacilityGroupType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update FacilityGroup set FacilityGroupType=(select c.id from FacilityGroupType c where c.Encode=FacilityGroup.FacilityGroupTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 20
+class procedure TSQLFacilityGroup.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLFacilityGroup;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLFacilityGroup.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','FacilityGroup.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update FacilityGroup set PrimaryParentGroup=(select c.id from FacilityGroup c where c.Encode=FacilityGroup.PrimaryParentGroupEncode);');
+    Server.Execute('update FacilityGroup set FacilityGroupType=(select c.id from FacilityGroupType c where c.Encode=FacilityGroup.FacilityGroupTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 21
+class procedure TSQLInventoryItemType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLInventoryItemType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLInventoryItemType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','InventoryItemType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update InventoryItemType set Parent=(select c.id from InventoryItemType c where c.Encode=InventoryItemType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 22
+class procedure TSQLProductStoreGroup.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductStoreGroup;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductStoreGroup.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductStoreGroup.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductStoreGroup set PrimaryParentGroup=(select c.id from ProductStoreGroup c where c.Encode=ProductStoreGroup.PrimaryGroupEncode);');
+    Server.Execute('update ProductStoreGroup set ProductStoreGroupType=(select c.id from ProductStoreGroupType c where c.Encode=ProductStoreGroup.GroupTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 23
+class procedure TSQLVarianceReason.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLVarianceReason;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLVarianceReason.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','VarianceReason.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
   finally
     Rec.Free;
   end;

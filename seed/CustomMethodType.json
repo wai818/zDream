@@ -1,0 +1,5 @@
+{"fieldCount":2,"rowCount":3,"values":[
+"Encode","Name",
+"COST_FORMULA","Formula for calculating costs for tasks and products",
+"PRICE_FORMULA","Service with formula for calculating the unit price of a product",
+"SHIP_EST","Shipment Gateway rate estimate methods"]}

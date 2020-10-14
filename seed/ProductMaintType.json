@@ -1,0 +1,15 @@
+{"fieldCount":3,"rowCount":13,"values":[
+"Name","Encode","ParentEncode",
+"Vehicle Maintenance","VEHICLE_MAINT","",
+"Oil Change","OIL_CHANGE","VEHICLE_MAINT",
+"Serpentine Belt Replacement","SERP_BELT","VEHICLE_MAINT",
+"Re-Fuel","REFUEL","VEHICLE_MAINT",
+"Replace Battery","REPLACE_BATTERY","VEHICLE_MAINT",
+"Tune Up","TUNE_UP","VEHICLE_MAINT",
+"Check Battery","CHECK_BATTERY","VEHICLE_MAINT",
+"Chassis Lubrication","CHASSIS_LUBE","VEHICLE_MAINT",
+"Rotate Tires","ROTATE_TIRES","VEHICLE_MAINT",
+"HVAC Maintenance","HVAC_MAINT","",
+"Replace Air Filter","HVAC_REPLACE_FILTER","HVAC_MAINT",
+"Check/Recharge Refrigerant","HVAC_CHECK_REFR","HVAC_MAINT",
+"Wash","WASH",""]}

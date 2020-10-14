@@ -1,0 +1,6 @@
+{"fieldCount":2,"rowCount":4,"values":[
+"Name","Encode",
+"Purchase/Initial","PURCHASE",
+"Recurring Charge","RECURRING_CHARGE",
+"Usage Charge","USAGE_CHARGE",
+"Component Price","COMPONENT_PRICE"]}

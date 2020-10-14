@@ -1,0 +1,10 @@
+{"fieldCount":4,"rowCount":8,"values":[
+"Name","Encode","HasTable","ParentEncode",
+"Building","BUILDING","False","",
+"Floor","FLOOR","False","",
+"Office","OFFICE","False","",
+"Call Center","CALL_CENTER","False","",
+"Plant","PLANT","False","",
+"Room","ROOM","False","",
+"Retail Store","RETAIL_STORE","False","",
+"Warehouse","WAREHOUSE","False",""]}

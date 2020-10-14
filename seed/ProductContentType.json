@@ -1,4 +1,4 @@
-{"fieldCount":4,"rowCount":59,"values":[
+{"fieldCount":4,"rowCount":61,"values":[
 "Name","HasTable","ParentEncode","Encode",
 "Online Access","False","","ONLINE_ACCESS",
 "Digital Download","False","","DIGITAL_DOWNLOAD",
@@ -58,4 +58,6 @@
 "Warranty","False","DIGITAL_DOWNLOAD","WARRANTY",
 "Page Title","False","","PAGE_TITLE",
 "Meta Keyword","False","","META_KEYWORD",
-"Meta Description","False","","META_DESCRIPTION"]}
+"Meta Description","False","","META_DESCRIPTION",
+"Image","False","","IMAGE",
+"Default Image","False","","DEFAULT_IMAGE"]}

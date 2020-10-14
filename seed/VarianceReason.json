@@ -1,0 +1,10 @@
+{"fieldCount":2,"rowCount":8,"values":[
+"Encode","Name",
+"VAR_LOST","Lost",
+"VAR_STOLEN","Stolen",
+"VAR_FOUND","Found",
+"VAR_DAMAGED","Damaged",
+"VAR_INTEGR","Integration",
+"VAR_SAMPLE","Sample (Giveaway)",
+"VAR_MISSHIP_ORDERED","Mis-shipped Item Ordered (+)",
+"VAR_MISSHIP_SHIPPED","Mis-shipped Item Shipped (-)"]}

@@ -259,23 +259,33 @@ type
   // 17
   TSQLCustomMethod = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fCustomMethodTypeEncode: RawUTF8;
       fCustomMethodType: TSQLCustomMethodTypeID;
-      fCustomMethodName: RawUTF8;
+      fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property CustomMethodTypeEncode: RawUTF8 read fCustomMethodTypeEncode write fCustomMethodTypeEncode;
       property CustomMethodType: TSQLCustomMethodTypeID read fCustomMethodType write fCustomMethodType;
-      property CustomMethodName: RawUTF8 read fCustomMethodName write fCustomMethodName;
+      property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
   // 18
   TSQLCustomMethodType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fParent: TSQLCustomMethodTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Parent: TSQLCustomMethodTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -681,7 +691,7 @@ begin
   try
     while Rec.FillOne do
       Server.Add(Rec,true);
-    Server.Execute('update EnumerationType set parent=(select c.id from EnumerationType c where c.Encode=ParentEncode);');
+    Server.Execute('update EnumerationType set parent=(select c.id from EnumerationType c where c.Encode=EnumerationType.ParentEncode);');
     Server.Execute('update Enumeration set EnumType=(select c.id from EnumerationType c where c.Encode=EnumTypeEncode);');
   finally
     Rec.Free;
@@ -735,6 +745,38 @@ begin
       Server.Add(Rec,true);
     Server.Execute('update StatusValidChange set Status=(select c.id from StatusItem c where c.Encode=StatusValidChange.StatusEncode);');
     Server.Execute('update StatusValidChange set StatusTo=(select c.id from StatusItem c where c.Encode=StatusValidChange.StatusToEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 6
+class procedure TSQLCustomMethodType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLCustomMethodType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLCustomMethodType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','CustomMethodType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update CustomMethod set CustomMethodType=(select c.id from CustomMethodType c where c.Encode=CustomMethodTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 7
+class procedure TSQLCustomMethod.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLCustomMethod;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLCustomMethod.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','CustomMethod.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update CustomMethod set CustomMethodType=(select c.id from CustomMethodType c where c.Encode=CustomMethodTypeEncode);');
   finally
     Rec.Free;
   end;

@@ -1,0 +1,11 @@
+{"fieldCount":2,"rowCount":9,"values":[
+"Name","Encode",
+"Percent Of List Price","PRICE_POL",
+"Percent Of Default Price","PRICE_POD",
+"Percent Of Average Cost","PRICE_POAC",
+"Percent Of Margin","PRICE_POM",
+"Percent Of Wholesale","PRICE_POWHS",
+"Flat Amount Modify","PRICE_FOL",
+"Flat Amount Override","PRICE_FLAT",
+"Promo Amount Override","PRICE_PFLAT",
+"Wholesale Amount Override","PRICE_WFLAT"]}

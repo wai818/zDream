@@ -1,8 +1,20 @@
-{"fieldCount":4,"rowCount":6,"values":[
+{"fieldCount":4,"rowCount":18,"values":[
 "Name","HasTable","ParentEncode","Encode",
 "Party","False","","PARTY_STATUS",
 "Case","False","","CASE_STATUS",
 "Communication Event","False","","COM_EVENT_STATUS",
 "Communication Event Role","False","COM_EVENT_STATUS","COM_EVENT_ROL_STATUS",
 "Party Relationship","False","","PARTY_REL_STATUS",
-"Party Invitation","False","","PARTY_INV_STATUS"]}
+"Party Invitation","False","","PARTY_INV_STATUS",
+"Inventory Item","False","","INVENTORY_ITEM_STTS",
+"Serialized Inventory Item","False","INVENTORY_ITEM_STTS","INV_SERIALIZED_STTS",
+"Non-Serialized Inventory Item","False","INVENTORY_ITEM_STTS","INV_NON_SER_STTS",
+"Inventory Transfer","False","","INVENTORY_XFER_STTS",
+"Product Review","False","","PRODUCT_REVIEW_STTS",
+"Image Management","False","","IMAGE_MANAGEMENT_ST",
+"Group Order Status","False","","GROUP_ORDER_STATUS",
+"Shipment","False","","SHIPMENT_STATUS",
+"Purchase Shipment","False","","PURCH_SHIP_STATUS",
+"ShipmentRouteSegment:CarrierService","False","","SHPRTSG_CS_STATUS",
+"Picklist","False","","PICKLIST_STATUS",
+"Picklist Item","False","","PICKITEM_STATUS"]}

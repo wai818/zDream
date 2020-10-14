@@ -1,0 +1,14 @@
+{"fieldCount":2,"rowCount":12,"values":[
+"Name","Encode",
+"List Price","LIST_PRICE",
+"Default Price","DEFAULT_PRICE",
+"Average Cost","AVERAGE_COST",
+"Minimum Price","MINIMUM_PRICE",
+"Maximum Price","MAXIMUM_PRICE",
+"Promotional Price","PROMO_PRICE",
+"Competitive Price","COMPETITIVE_PRICE",
+"Wholesale Price","WHOLESALE_PRICE",
+"Special Promo Price","SPECIAL_PROMO_PRICE",
+"Box Price","BOX_PRICE",
+"Minimum Order Price","MINIMUM_ORDER_PRICE",
+"Shipping Allowance Price","SHIPPING_ALLOWANCE"]}

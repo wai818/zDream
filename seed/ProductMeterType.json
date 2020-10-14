@@ -1,0 +1,14 @@
+{"fieldCount":2,"rowCount":12,"values":[
+"Name","Encode",
+"Speedometer","SPEEDOMETER",
+"Tachometer","TACHOMETER",
+"Distance Meter","DISTANCE",
+"Motor Time Meter","MOTOR_TIME",
+"Use Count Meter","USE_COUNT",
+"Copy Count Meter","COPY_COUNT",
+"Trip meter","TRIP_METER",
+"Tachograph","TACHOGRAPH",
+"Taximeter","TAXIMETER",
+"Event Data Recorder","EVENT_DATA_RECORDER",
+"Pedometer","PEDOMETER",
+"Odometer","ODOMETER"]}
