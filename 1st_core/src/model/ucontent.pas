@@ -253,11 +253,17 @@ type
   // 15
   TSQLContentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLContentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLContentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1027,6 +1033,25 @@ type
   end;
 
 implementation
+
+uses
+  Classes, SysUtils;
+
+// 1
+class procedure TSQLContentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLContentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLContentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ContentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ContentType set parent=(select c.id from ContentType c where c.Encode=ContentType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
 
 end.
 

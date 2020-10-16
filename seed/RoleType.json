@@ -1,4 +1,4 @@
-{"fieldCount":4,"rowCount":91,"values":[
+{"fieldCount":4,"rowCount":92,"values":[
 "Name","HasTable","ParentEncode","Encode",
 "Main Role","False","","MAIN_ROLE",
 "Account Lead","False","","ACCOUNT_LEAD",
@@ -90,4 +90,5 @@
 "Stocker","False","EMPLOYEE","STOCKER",
 "Subsidiary","False","ORGANIZATION_UNIT","SUBSIDIARY",
 "Worker","False","EMPLOYEE","WORKER",
-"Email Administrator","False","PERSON_ROLE","EMAIL_ADMIN"]}
+"Email Administrator","False","PERSON_ROLE","EMAIL_ADMIN",
+"Image Approver","False","","IMAGEAPPROVER"]}

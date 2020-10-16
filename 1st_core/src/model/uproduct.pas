@@ -3323,11 +3323,17 @@ type
   // 156
   TSQLSubscriptionType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLSubscriptionTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLSubscriptionTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -3397,9 +3403,13 @@ type
   // 161
   TSQLSupplierPrefOrder = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -3873,6 +3883,37 @@ begin
   try
     while Rec.FillOne do
       Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 24
+class procedure TSQLSupplierPrefOrder.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLSupplierPrefOrder;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLSupplierPrefOrder.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','SupplierPrefOrder.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 25
+class procedure TSQLSubscriptionType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLSubscriptionType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLSubscriptionType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','SubscriptionType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update SubscriptionType set parent=(select c.id from SubscriptionType c where c.Encode=SubscriptionType.ParentEncode);');
   finally
     Rec.Free;
   end;
