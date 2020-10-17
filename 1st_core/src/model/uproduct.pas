@@ -1026,23 +1026,31 @@ type
   // 56
   TSQLProductFeature = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fProductFeatureTypeEncode: RawUTF8;
+      fProductFeatureCategoryEncode: RawUTF8;
       fProductFeatureType: TSQLProductFeatureTypeID;
       fProductFeatureCategory: TSQLProductFeatureCategoryID;
       fDescription: RawUTF8;
       fUom: TSQLUomID;
       fNumberSpecified: Double;
       fDefaultAmount: Double;
-      fDefaultSequenceNum: Double;
+      fDefaultSequenceNum: Integer;
       fAbbrev: RawUTF8;
       fIdCode: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ProductFeatureTypeEncode: RawUTF8 read fProductFeatureTypeEncode write fProductFeatureTypeEncode;
+      property ProductFeatureCategoryEncode: RawUTF8 read fProductFeatureCategoryEncode write fProductFeatureCategoryEncode;
       property ProductFeatureType: TSQLProductFeatureTypeID read fProductFeatureType write fProductFeatureType;
       property ProductFeatureCategory: TSQLProductFeatureCategoryID read fProductFeatureCategory write fProductFeatureCategory;
       property Description: RawUTF8 read fDescription write fDescription;
       property Uom: TSQLUomID read fUom write fUom;
       property NumberSpecified: Double read fNumberSpecified write fNumberSpecified;
       property DefaultAmount: Double read fDefaultAmount write fDefaultAmount;
-      property DefaultSequenceNum: Double read fDefaultSequenceNum write fDefaultSequenceNum;
+      property DefaultSequenceNum: Integer read fDefaultSequenceNum write fDefaultSequenceNum;
       property Abbrev: RawUTF8 read fAbbrev write fAbbrev;
       property IdCode: RawUTF8 read fIdCode write fIdCode;
   end;
@@ -1108,11 +1116,17 @@ type
   // 60
   TSQLProductFeatureCategory = class(TSQLRecord)
     private
-      fParentCategory: TSQLProductFeatureCategoryID;
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
+      fParent: TSQLProductFeatureCategoryID;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
-      property ParentCategory: TSQLProductFeatureCategoryID read fParentCategory write fParentCategory;
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
+      property Parent: TSQLProductFeatureCategoryID read fParent write fParent;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -1791,9 +1805,13 @@ type
   // 96
   TSQLQuantityBreakType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -3694,6 +3712,7 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update ProductFeatureType set parent=(select c.id from ProductFeatureType c where c.Encode=ProductFeatureType.ParentEncode);');
+    Server.Execute('update ProductFeature set ProductFeatureType=(select c.id from ProductFeatureType c where c.Encode=ProductFeature.ProductFeatureTypeEncode);');
   finally
     Rec.Free;
   end;
@@ -3914,6 +3933,55 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update SubscriptionType set parent=(select c.id from SubscriptionType c where c.Encode=SubscriptionType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 26
+class procedure TSQLProductFeatureCategory.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductFeatureCategory;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductFeatureCategory.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductFeatureCategory.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductFeatureCategory set parent=(select c.id from ProductFeatureCategory c where c.Encode=ProductFeatureCategory.ParentEncode);');
+    Server.Execute('update ProductFeature set ProductFeatureCategory=(select c.id from ProductFeatureCategory c where c.Encode=ProductFeature.ProductFeatureCategoryEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 27
+class procedure TSQLProductFeature.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLProductFeature;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLProductFeature.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ProductFeature.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ProductFeature set ProductFeatureType=(select c.id from ProductFeatureType c where c.Encode=ProductFeature.ProductFeatureTypeEncode);');
+    Server.Execute('update ProductFeature set ProductFeatureCategory=(select c.id from ProductFeatureCategory c where c.Encode=ProductFeature.ProductFeatureCategoryEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 28
+class procedure TSQLQuantityBreakType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLQuantityBreakType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLQuantityBreakType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','QuantityBreakType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
   finally
     Rec.Free;
   end;

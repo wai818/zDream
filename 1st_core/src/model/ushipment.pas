@@ -134,8 +134,14 @@ type
   // 8
   TSQLRejectionReason = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
 
@@ -344,9 +350,13 @@ type
   // 18
   TSQLShipmentContactMechType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -408,11 +418,17 @@ type
   // 20
   TSQLShipmentGatewayConfigType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLShipmentGatewayConfigTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLShipmentGatewayConfigTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -422,9 +438,15 @@ type
   // 21
   TSQLShipmentGatewayConfig = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fShipmentGatewayConfTypeEncode: RawUTF8;
       fShipmentGatewayConfigType: TSQLShipmentGatewayConfigTypeID;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ShipmentGatewayConfTypeEncode: RawUTF8 read fShipmentGatewayConfTypeEncode write fShipmentGatewayConfTypeEncode;
       property ShipmentGatewayConfigType: TSQLShipmentGatewayConfigTypeID read fShipmentGatewayConfigType write fShipmentGatewayConfigType;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -432,6 +454,7 @@ type
   // 22
   TSQLShipmentGatewayDhl = class(TSQLRecord)
     private
+      fShipmentGatewayConfigEncode: RawUTF8;
       fShipmentGatewayConfig: TSQLShipmentGatewayConfigID;
       fConnectUrl: RawUTF8;
       fConnectTimeout: Integer;
@@ -443,7 +466,10 @@ type
       fAccessShippingKey: RawUTF8;
       fLabelImageFormat: RawUTF8;
       fRateEstimateTemplate: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property ShipmentGatewayConfigEncode: RawUTF8 read fShipmentGatewayConfigEncode write fShipmentGatewayConfigEncode;
       property ShipmentGatewayConfig: TSQLShipmentGatewayConfigID read fShipmentGatewayConfig write fShipmentGatewayConfig;
       property ConnectUrl: RawUTF8 read fConnectUrl write fConnectUrl;
       property ConnectTimeout: Integer read fConnectTimeout write fConnectTimeout;
@@ -460,6 +486,7 @@ type
   // 23
   TSQLShipmentGatewayFedex = class(TSQLRecord)
     private
+      fShipmentGatewayConfigEncode: RawUTF8;
       fShipmentGatewayConfig: TSQLShipmentGatewayConfigID;
       fConnectUrl: RawUTF8;
       fConnectSoapUrl: RawUTF8;
@@ -474,7 +501,10 @@ type
       fTemplateShipment: RawUTF8;
       fTemplateSubscription: RawUTF8;
       fRateEstimateTemplate: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property ShipmentGatewayConfigEncode: RawUTF8 read fShipmentGatewayConfigEncode write fShipmentGatewayConfigEncode;
       property ShipmentGatewayConfig: TSQLShipmentGatewayConfigID read fShipmentGatewayConfig write fShipmentGatewayConfig;
       property ConnectUrl: RawUTF8 read fConnectUrl write fConnectUrl;
       property ConnectSoapUrl: RawUTF8 read fConnectSoapUrl write fConnectSoapUrl;
@@ -494,6 +524,7 @@ type
   // 24
   TSQLShipmentGatewayUps = class(TSQLRecord)
     private
+      fShipmentGatewayConfigEncode: RawUTF8;
       fShipmentGatewayConfig: TSQLShipmentGatewayConfigID;
       fConnectUrl: RawUTF8;
       fConnectTimeout: Integer;
@@ -515,7 +546,10 @@ type
       fCodFundsCode: RawUTF8;
       fDefaultReturnLabelMemo: RawUTF8;
       fDefaultReturnLabelSubject: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property ShipmentGatewayConfigEncode: RawUTF8 read fShipmentGatewayConfigEncode write fShipmentGatewayConfigEncode;
       property ShipmentGatewayConfig: TSQLShipmentGatewayConfigID read fShipmentGatewayConfig write fShipmentGatewayConfig;
       property ConnectUrl: RawUTF8 read fConnectUrl write fConnectUrl;
       property ConnectTimeout: Integer read fConnectTimeout write fConnectTimeout;
@@ -542,6 +576,7 @@ type
   // 25
   TSQLShipmentGatewayUsps = class(TSQLRecord)
     private
+      fShipmentGatewayConfigEncode: RawUTF8;
       fShipmentGatewayConfig: TSQLShipmentGatewayConfigID;
       fConnectUrl: RawUTF8;
       fConnectUrlLabels: RawUTF8;
@@ -549,7 +584,10 @@ type
       fAccessUser: Integer;
       fAccessPassword: RawUTF8;
       fMaxEstimateWeight: Double;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property ShipmentGatewayConfigEncode: RawUTF8 read fShipmentGatewayConfigEncode write fShipmentGatewayConfigEncode;
       property ShipmentGatewayConfig: TSQLShipmentGatewayConfigID read fShipmentGatewayConfig write fShipmentGatewayConfig;
       property ConnectUrl: RawUTF8 read fConnectUrl write fConnectUrl;
       property ConnectUrlLabels: RawUTF8 read fConnectUrlLabels write fConnectUrlLabels;
@@ -801,11 +839,17 @@ type
   // 36
   TSQLShipmentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLShipmentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLShipmentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -839,6 +883,153 @@ type
   end;
 
 implementation
+
+uses
+  Classes, SysUtils;
+
+// 1
+class procedure TSQLShipmentContactMechType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLShipmentContactMechType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLShipmentContactMechType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ShipmentContactMechType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 2
+class procedure TSQLShipmentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLShipmentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLShipmentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ShipmentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ShipmentType set Parent=(select c.id from ShipmentType c where c.Encode=ShipmentType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 3
+class procedure TSQLRejectionReason.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLRejectionReason;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLRejectionReason.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','RejectionReason.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 4
+class procedure TSQLShipmentGatewayConfigType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLShipmentGatewayConfigType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLShipmentGatewayConfigType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ShipmentGatewayConfigType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ShipmentGatewayConfigType set Parent=(select c.id from ShipmentGatewayConfigType c where c.Encode=ShipmentGatewayConfigType.ParentEncode);');
+    Server.Execute('update ShipmentGatewayConfig set ShipmentGatewayConfigType=(select c.id from ShipmentGatewayConfigType c where c.Encode=ShipmentGatewayConfig.ShipmentGatewayConfTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 5
+class procedure TSQLShipmentGatewayConfig.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLShipmentGatewayConfig;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLShipmentGatewayConfig.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ShipmentGatewayConfig.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ShipmentGatewayConfig set ShipmentGatewayConfigType=(select c.id from ShipmentGatewayConfigType c where c.Encode=ShipmentGatewayConfig.ShipmentGatewayConfTypeEncode);');
+    Server.Execute('update ShipmentGatewayDhl set ShipmentGatewayConfig=(select c.id from ShipmentGatewayConfig c where c.Encode=ShipmentGatewayConfigEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 6
+class procedure TSQLShipmentGatewayDhl.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLShipmentGatewayDhl;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLShipmentGatewayDhl.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ShipmentGatewayDhl.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ShipmentGatewayDhl set ShipmentGatewayConfig=(select c.id from ShipmentGatewayConfig c where c.Encode=ShipmentGatewayConfigEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 7
+class procedure TSQLShipmentGatewayFedex.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLShipmentGatewayFedex;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLShipmentGatewayFedex.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ShipmentGatewayFedex.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ShipmentGatewayFedex set ShipmentGatewayConfig=(select c.id from ShipmentGatewayConfig c where c.Encode=ShipmentGatewayConfigEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 8
+class procedure TSQLShipmentGatewayUps.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLShipmentGatewayUps;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLShipmentGatewayUps.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ShipmentGatewayUps.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ShipmentGatewayUps set ShipmentGatewayConfig=(select c.id from ShipmentGatewayConfig c where c.Encode=ShipmentGatewayConfigEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 9
+class procedure TSQLShipmentGatewayUsps.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLShipmentGatewayUsps;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLShipmentGatewayUsps.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ShipmentGatewayUsps.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update ShipmentGatewayUsps set ShipmentGatewayConfig=(select c.id from ShipmentGatewayConfig c where c.Encode=ShipmentGatewayConfigEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
 
 end.
 

@@ -127,9 +127,13 @@ type
   // 5
   TSQLContentAssocType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -1048,6 +1052,21 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update ContentType set parent=(select c.id from ContentType c where c.Encode=ContentType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 2
+class procedure TSQLContentAssocType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLContentAssocType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLContentAssocType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ContentAssocType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
   finally
     Rec.Free;
   end;

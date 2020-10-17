@@ -1,0 +1,10 @@
+{"fieldCount":4,"rowCount":8,"values":[
+"Name","HasTable","ParentEncode","Encode",
+"Incoming","N","","INCOMING_SHIPMENT",
+"Outgoing","N","","OUTGOING_SHIPMENT",
+"Sales Return","N","INCOMING_SHIPMENT","SALES_RETURN",
+"Sales Shipment","N","OUTGOING_SHIPMENT","SALES_SHIPMENT",
+"Purchase Shipment","N","INCOMING_SHIPMENT","PURCHASE_SHIPMENT",
+"Purchase Return","N","OUTGOING_SHIPMENT","PURCHASE_RETURN",
+"Drop Shipment","N","","DROP_SHIPMENT",
+"Transfer","N","","TRANSFER"]}

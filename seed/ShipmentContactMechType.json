@@ -1,0 +1,8 @@
+{"fieldCount":2,"rowCount":6,"values":[
+"Name","Encode",
+"Ship-To Address","SHIP_TO_ADDRESS",
+"Ship-From Address","SHIP_FROM_ADDRESS",
+"Ship-To Telecom Number","SHIP_TO_TELECOM",
+"Ship-From Telecom Number","SHIP_FROM_TELECOM",
+"Ship-To E-Mail","SHIP_TO_EMAIL",
+"Ship-From E-Mail","SHIP_FROM_EMAIL"]}

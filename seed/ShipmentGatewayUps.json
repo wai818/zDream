@@ -1,0 +1,3 @@
+{"fieldCount":21,"rowCount":1,"values":[
+"ShipmentGatewayConfigEncode","ConnectUrl","ConnectTimeout","ShipperNumber","BillShipperAccountNumber","AccessLicenseNumber","AccessUser","AccessPassword","SaveCertInfo","SaveCertPath","ShipperPickupType","CustomerClassification","MaxEstimateWeight","MinEstimateWeight","CodAllowCod","CodSurchargeAmount","CodSurchargeCurrencyUomEncode","CodSurchargeApplyToPackage","CodFundsCode","DefaultReturnLabelMemo","DefaultReturnLabelSubject",
+"UPS_CONFIG","https://wwwcie.ups.com/ups.app/xml","60","12345E","12345E","TEST262223144CAT","REG111111","REG111111","true","${sys:getProperty('ofbiz.home')}/runtime/output/upscert","06","03","90","0.1","true","9","USD","first","0","UPS Shipment Return Memo","UPS Shipment Return Label"]}

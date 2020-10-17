@@ -1,0 +1,6 @@
+{"fieldCount":3,"rowCount":4,"values":[
+"Encode","ShipmentGatewayConfTypeEncode","Description",
+"DHL_CONFIG","SHIP_GATEWAY_DHL","DHL Config",
+"FEDEX_CONFIG","SHIP_GATEWAY_FEDEX","Fedex Config",
+"UPS_CONFIG","SHIP_GATEWAY_UPS","UPS Config",
+"USPS_CONFIG","SHIP_GATEWAY_USPS","USPS Config"]}

@@ -1,0 +1,7 @@
+{"fieldCount":2,"rowCount":5,"values":[
+"Name","Encode",
+"Shipping Weight Break","SHIP_WEIGHT",
+"Shipping Quantity Break","SHIP_QUANTITY",
+"Shipping Price Break","SHIP_PRICE",
+"Price Component Quantity Break","QUANTITY",
+"Price Component Order Value Break","ORDER_VALUE"]}

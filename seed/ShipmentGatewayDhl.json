@@ -1,0 +1,3 @@
+{"fieldCount":11,"rowCount":1,"values":[
+"ShipmentGatewayConfigEncode","ConnectUrl","ConnectTimeout","HeadVersion","HeadAction","AccessUser","AccessPassword","AccessAccountNbr","AccessShippingKey","LabelImageFormat","RateEstimateTemplate",
+"DHL_CONFIG","https://eCommerce.airborne.com/ApiLandingTest.asp","60","1.1","Request","YOUR DHL ShipIT USER ID","YOUR DHL ShipIT ACCESS PASSWORD","YOUR DHL ShipIT ACCOUNT NUMBER","YOUR DHL ShipIT SHIPPING KEY","PNG","api.schema.DHL"]}

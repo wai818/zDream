@@ -1,0 +1,3 @@
+{"fieldCount":12,"rowCount":1,"values":[
+"ShipmentGatewayConfigEncode","ConnectUrl","ConnectSoapUrl","ConnectTimeout","AccessAccountNbr","AccessMeterNumber","AccessUserKey","LabelImageType","DefaultDropoffType","DefaultPackagingType","TemplateSubscription","RateEstimateTemplate",
+"FEDEX_CONFIG","https://gatewaybeta.fedex.com/GatewayDC","https://gatewaybeta.fedex.com:443/web-services","60","","","","","PNG","REGULARPICKUP","YOURPACKNG","component://product/template/shipment/FedexShipRequestTemplate.xml.ftl","component://product/template/shipment/FedexSubscriptionRequestTemplate.xml.ftl","component://product/template/shipment/FedexRateEstimateRequestTemplate.xml.ftl"]}

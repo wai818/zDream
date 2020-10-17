@@ -1,0 +1,3 @@
+{"fieldCount":8,"rowCount":1,"values":[
+"ShipmentGatewayConfigEncode","ConnectUrl","ConnectUrlLabels","ConnectTimeout","AccessUser","AccessPassword","MaxEstimateWeight","Test",
+"USPS_CONFIG","http://production.shippingapis.com/ShippingAPITest.dll","http://production.shippingapis.com/ShippingAPITest.dll","60","000000000000","999999999999","70","False"]}

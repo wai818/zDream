@@ -1,0 +1,6 @@
+{"fieldCount":3,"rowCount":4,"values":[
+"Encode","HasTable","Name",
+"SHIP_GATEWAY_DHL","True","Shipment Gateway DHL",
+"SHIP_GATEWAY_FEDEX","True","Shipment Gateway Fedex",
+"SHIP_GATEWAY_UPS","True","Shipment Gateway UPS",
+"SHIP_GATEWAY_USPS","True","Shipment Gateway USPS"]}
