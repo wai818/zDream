@@ -1,0 +1,10 @@
+{"fieldCount":4,"rowCount":8,"values":[
+"Name","HasTable","Encode","ParentEncode",
+"Purchase Order Specific","False","PURCHASE_SPECIFIC","",
+"PO: Inventory","False","INVENTORY_ORDER_ITEM","PURCHASE_SPECIFIC",
+"PO: Supplies (to Expense)","False","SUPPLIES_ORDER_ITEM","PURCHASE_SPECIFIC",
+"PO: Fixed Asset","False","ASSET_ORDER_ITEM","PURCHASE_SPECIFIC",
+"Product Item","False","PRODUCT_ORDER_ITEM","",
+"Work Item","False","WORK_ORDER_ITEM","",
+"Rental Item","False","RENTAL_ORDER_ITEM","",
+"Bulk Item","False","BULK_ORDER_ITEM",""]}

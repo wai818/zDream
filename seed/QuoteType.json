@@ -1,0 +1,6 @@
+{"fieldCount":4,"rowCount":4,"values":[
+"Name","HasTable","ParentEncode","Encode",
+"Other","False","","OTHER_QUOTE",
+"Product","False","","PRODUCT_QUOTE",
+"Proposal","False","","PROPOSAL",
+"Product Purchase","False","","PURCHASE_QUOTE"]}

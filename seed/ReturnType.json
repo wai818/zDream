@@ -1,0 +1,11 @@
+{"fieldCount":3,"rowCount":9,"values":[
+"Sequence","Encode","Name",
+"01","RTN_CREDIT","Store Credit",
+"02","RTN_REFUND","Refund",
+"03","RTN_REPLACE","Wait Replacement",
+"04","RTN_CSREPLACE","Cross-Ship Replacement",
+"05","RTN_REPAIR_REPLACE","Repair Replacement",
+"06","RTN_WAIT_REPLACE_RES","Wait Replacement Reserved",
+"07","RTN_REPLACE_IMMEDIAT","Replace Immediately",
+"08","RTN_REFUND_IMMEDIATE","Refund immediately",
+"09","RTN_RENTAL","Rental"]}

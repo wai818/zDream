@@ -1,4 +1,4 @@
-{"fieldCount":4,"rowCount":18,"values":[
+{"fieldCount":4,"rowCount":27,"values":[
 "Name","HasTable","ParentEncode","Encode",
 "Party","False","","PARTY_STATUS",
 "Case","False","","CASE_STATUS",
@@ -17,4 +17,13 @@
 "Purchase Shipment","False","","PURCH_SHIP_STATUS",
 "ShipmentRouteSegment:CarrierService","False","","SHPRTSG_CS_STATUS",
 "Picklist","False","","PICKLIST_STATUS",
-"Picklist Item","False","","PICKITEM_STATUS"]}
+"Picklist Item","False","","PICKITEM_STATUS",
+"Order","N","","ORDER_STATUS",
+"Order Item","N","ORDER_STATUS","ORDER_ITEM_STATUS",
+"Payment Preference","N","","PAYMENT_PREF_STATUS",
+"Order Delivery Schedule","N","","ORDER_DEL_SCH",
+"Order Return Status For Customer Returns","N","","ORDER_RETURN_STTS",
+"Order Return Status For Supplier Returns","N","","PORDER_RETURN_STTS",
+"Custom Request Status","N","","CUSTREQ_STTS",
+"Requirement Status","N","","REQUIREMENT_STATUS",
+"Quote Status","N","","QUOTE_STATUS"]}

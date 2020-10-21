@@ -1,0 +1,8 @@
+{"fieldCount":3,"rowCount":6,"values":[
+"Encode","CustRequestTypeEncode","Name",
+"FIXED","RF_BUGFIX","Fixed",
+"WORKS","RF_BUGFIX","Works For Me",
+"WONTFIX","RF_BUGFIX","Won't Fix",
+"DUPLICATE","RF_FEATURE","Duplicate",
+"REJECTED","RF_FEATURE","Rejected",
+"IMPLEMENTED","RF_FEATURE","Implemented"]}

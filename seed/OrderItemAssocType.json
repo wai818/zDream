@@ -1,0 +1,7 @@
+{"fieldCount":4,"rowCount":5,"values":[
+"Name","HasTable","Encode","ParentEncode",
+"Purchase Order","False","PURCHASE_ORDER","",
+"Drop Shipment","False","DROP_SHIPMENT","",
+"Return Replacement","False","REPLACEMENT","",
+"New Version","False","NEW_VERSION","",
+"Exchange Order","False","EXCHANGE",""]}

@@ -1,0 +1,10 @@
+{"fieldCount":4,"rowCount":8,"values":[
+"Encode","Name","HasTable","ParentEncode",
+"RF_BUGFIX","Request For Bug Fix","False","",
+"RF_CATALOG","Request For Catalog","False","",
+"RF_FEATURE","Request For Feature","False","",
+"RF_INFO","Request For Information","False","",
+"RF_PROPOSAL","Request For Proposal","False","",
+"RF_QUOTE","Request For Quote","False","",
+"RF_SUPPORT","Request For Support","False","",
+"RF_PUR_QUOTE","Request For Purchase Quote","False",""]}

@@ -1,0 +1,16 @@
+{"fieldCount":4,"rowCount":14,"values":[
+"Name","HasTable","Encode","ParentEncode",
+"Return Promotion","N","RET_PROMOTION_ADJ","",
+"Return Replacement","N","RET_REPLACE_ADJ","",
+"Return Discount","N","RET_DISCOUNT_ADJ","",
+"Return Fee","N","RET_FEE_ADJ","",
+"Return Miscellaneous Charges","N","RET_MISC_ADJ","",
+"Return Sales Tax","N","RET_SALES_TAX_ADJ","",
+"Return VAT Tax","N","RET_VAT_TAX_ADJ","",
+"Return VAT Price Correction","N","RET_VAT_PC_ADJ","",
+"Return Shipping and Handling","N","RET_SHIPPING_ADJ","",
+"Return Surcharge","N","RET_SURCHARGE_ADJ","",
+"Return Additional Feature","N","RET_ADD_FEATURE_ADJ","",
+"Return Warranty","N","RET_WARRANTY_ADJ","",
+"Return Marketing Package Adjustment","N","RET_MKTG_PKG_ADJ","",
+"Return Manual Adjustment","N","RET_MAN_ADJ",""]}

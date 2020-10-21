@@ -1,4 +1,4 @@
-{"fieldCount":4,"rowCount":25,"values":[
+{"fieldCount":4,"rowCount":28,"values":[
 "Name","Encode","HasTable","ParentEncode",
 "雇佣状况","EMPLOY_STTS","False","",
 "居住状况","PTY_RESID_STTS","False","",
@@ -24,4 +24,7 @@
 "Product Rating Field Type","PROD_RATING_TYPE","False","",
 "Virtual Variant Method","PROD_VVMETHOD","False","",
 "Product Requirement Method","PROD_REQ_METHOD","False","",
-"Image Reject Reason","IMAGE_REJECT_REASON","False",""]}
+"Image Reject Reason","IMAGE_REJECT_REASON","False","",
+"Order Sales Channel","ORDER_SALES_CHANNEL","False","",
+"Order Item Change Type","ODR_ITM_CHANGE_TYPE","False","",
+"Order Item Change Reason","ODR_ITM_CH_REASON","False",""]}

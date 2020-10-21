@@ -1,0 +1,16 @@
+{"fieldCount":4,"rowCount":14,"values":[
+"Name","HasTable","Encode","ParentEncode",
+"Promotion","False","PROMOTION_ADJUSTMENT","",
+"Replacement","False","REPLACE_ADJUSTMENT","",
+"Discount","False","DISCOUNT_ADJUSTMENT","",
+"Donation","False","DONATION_ADJUSTMENT","",
+"Fee","False","FEE","",
+"Miscellaneous Charges","False","MISCELLANEOUS_CHARGE","",
+"Sales Tax","False","SALES_TAX","",
+"VAT Tax (not added to totals)","False","VAT_TAX","",
+"VAT Price Correction","False","VAT_PRICE_CORRECT","",
+"Shipping and Handling","False","SHIPPING_CHARGES","",
+"Surcharge","False","SURCHARGE_ADJUSTMENT","",
+"Additional Feature","False","ADDITIONAL_FEATURE","",
+"Warranty","False","WARRANTY_ADJUSTMENT","",
+"Marketing Package Adjustment","False","MKTG_PKG_AUTO_ADJUST",""]}

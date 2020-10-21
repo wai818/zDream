@@ -1,0 +1,13 @@
+{"fieldCount":3,"rowCount":11,"values":[
+"Name","Encode","ParentEncode",
+"Return Non-Product Item","RET_NPROD_ITEM","",
+"Return Product Item","RET_PROD_ITEM","",
+"Return Finished Good Item","RET_FPROD_ITEM","RET_PROD_ITEM",
+"Return Digital Good Item","RET_DPROD_ITEM","RET_PROD_ITEM",
+"Return Finished/Digital Good Item","RET_FDPROD_ITEM","RET_PROD_ITEM",
+"Return Raw Material Good Item","RET_RPROD_ITEM","RET_PROD_ITEM",
+"Return Product-Feature Item","RET_PROD_FEATR_ITEM","RET_PROD_ITEM",
+"Return Service Product Item","RET_SPROD_ITEM","RET_PROD_ITEM",
+"Return Work-Effort Item","RET_WE_ITEM","RET_NPROD_ITEM",
+"Return Time-Entry Item","RET_TE_ITEM","RET_NPROD_ITEM",
+"Return Raw Material Item","RET_MPROD_ITEM","RET_PROD_ITEM"]}

@@ -1,0 +1,9 @@
+{"fieldCount":3,"rowCount":7,"values":[
+"Sequence","Encode","Name",
+"01","RTN_NOT_WANT","Did Not Want Item",
+"02","RTN_DEFECTIVE_ITEM","Defective Item",
+"03","RTN_MISSHIP_ITEM","Mis-Shipped Item",
+"04","RTN_DIG_FILL_FAIL","Digital Fulfillment Failed",
+"05","RTN_COD_REJECT","COD Payment Rejected",
+"06","RTN_SIZE_EXCHANGE","Size Exchange",
+"07","RTN_NORMAL_RETURN","Normal Return"]}
