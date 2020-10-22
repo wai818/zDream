@@ -1,0 +1,11 @@
+{"fieldCount":4,"rowCount":9,"values":[
+"Name","Encode","HasTable","ParentEncode",
+"Equipment","EQUIPMENT","False","",
+"The fixed asset used in the operation-routing definition","PRODUCTION_EQUIPMENT","False","",
+"Group of machines, used for task and routing definition","GROUP_EQUIPMENT","False","",
+"Other Fixed Asset","OTHER_FIXED_ASSET","False","",
+"Property","PROPERTY","False","",
+"Vehicle","VEHICLE","False","",
+"Real Estate","REAL_ESTATE","False","",
+"Computer Software","COMPUTER_SOFTWARE","False","",
+"Computer Hardware","COMPUTER_HARDWARE","False",""]}

@@ -1,0 +1,13 @@
+{"fieldCount":4,"rowCount":11,"values":[
+"Name","HasTable","Encode","ParentEncode",
+"Invoice","N","INVOICE","",
+"Purchase Invoice","N","PURCHASE_INVOICE","INVOICE",
+"Sales Invoice","N","SALES_INVOICE","INVOICE",
+"Customer Return","N","CUST_RTN_INVOICE","PURCHASE_INVOICE",
+"Purchase Return","N","PURC_RTN_INVOICE","SALES_INVOICE",
+"Commission","N","COMMISSION_INVOICE","PURCHASE_INVOICE",
+"Interest","N","INTEREST_INVOICE","SALES_INVOICE",
+"Invoice Template","N","TEMPLATE","INVOICE",
+"Sales Invoice Template","N","SALES_INV_TEMPLATE","TEMPLATE",
+"Purchase Invoice Template","N","PUR_INV_TEMPLATE","TEMPLATE",
+"Payrol","N","PAYROL_INVOICE","PURCHASE_INVOICE"]}

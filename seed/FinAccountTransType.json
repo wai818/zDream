@@ -1,0 +1,5 @@
+{"fieldCount":4,"rowCount":3,"values":[
+"Name","Encode","HasTable","ParentEncode",
+"Deposit","DEPOSIT","False","",
+"Withdraw","WITHDRAWAL","False","",
+"Adjustment","ADJUSTMENT","False",""]}

@@ -413,11 +413,17 @@ type
   // 25
   TSQLFinAccountTransType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLFinAccountTransTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLFinAccountTransTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -439,13 +445,21 @@ type
   // 27
   TSQLFinAccountType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
+      fReplenishEnumEncode: RawUTF8;
       fParent: TSQLFinAccountTypeID;
       fReplenishEnum: TSQLEnumerationID;
       fIsRefundable: Boolean;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
+      property ReplenishEnumEncode: RawUTF8 read fReplenishEnumEncode write fReplenishEnumEncode;
       property Parent: TSQLFinAccountTypeID read fParent write fParent;
       property ReplenishEnum: TSQLEnumerationID read fReplenishEnum write fReplenishEnum;
       property IsRefundable: Boolean read fIsRefundable write fIsRefundable;
@@ -591,9 +605,13 @@ type
   // 35
   TSQLFixedAssetIdentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -669,9 +687,13 @@ type
   // 39
   TSQLFixedAssetProductType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -753,11 +775,17 @@ type
   // 44
   TSQLFixedAssetType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLFixedAssetTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLFixedAssetTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -931,11 +959,17 @@ type
   // 55
   TSQLInvoiceContentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLInvoiceContentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLInvoiceContentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1029,11 +1063,17 @@ type
   // 59
   TSQLInvoiceItemAssocType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLInvoiceItemAssocTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLInvoiceItemAssocTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1059,13 +1099,21 @@ type
   // 61
   TSQLInvoiceItemType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
+      fDefaultGlAccountEncode: RawUTF8;
       fInvoiceItemType: TSQLInvoiceItemTypeID;
       fParent: TSQLInvoiceItemTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
       fDefaultGlAccount: TSQLGlAccountID;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
+      property DefaultGlAccountEncode: RawUTF8 read fDefaultGlAccountEncode write fDefaultGlAccountEncode;
       property InvoiceItemType: TSQLInvoiceItemTypeID read fInvoiceItemType write fInvoiceItemType;
       property Parent: TSQLInvoiceItemTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
@@ -1101,9 +1149,17 @@ type
   // 64
   TSQLInvoiceItemTypeMap = class(TSQLRecord)
     private
+      fInvoiceTypeEncode: RawUTF8;
+      fInvoiceItemMapKey: RawUTF8;
+      fInvoiceItemTypeEncode: RawUTF8;
       fInvoiceType: TSQLInvoiceTypeID;
       fInvoiceItemType: TSQLInvoiceItemTypeID;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property InvoiceTypeEncode: RawUTF8 read fInvoiceTypeEncode write fInvoiceTypeEncode;
+      property InvoiceItemMapKey: RawUTF8 read fInvoiceItemMapKey write fInvoiceItemMapKey;
+      property InvoiceItemTypeEncode: RawUTF8 read fInvoiceItemTypeEncode write fInvoiceItemTypeEncode;
       property InvoiceType: TSQLInvoiceTypeID read fInvoiceType write fInvoiceType;
       property InvoiceItemType: TSQLInvoiceItemTypeID read fInvoiceItemType write fInvoiceItemType;
   end;
@@ -1177,11 +1233,17 @@ type
   // 69
   TSQLInvoiceType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLInvoiceTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLInvoiceTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1421,11 +1483,19 @@ type
   // 79
   TSQLGlAccountClass = class(TSQLRecord)
     private
-      fParentClass: TSQLGlAccountClassID;
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
+      fParent: TSQLGlAccountClassID;
+      fName: RawUTF8;
       fDescription: RawUTF8;
       fIsAssetClass: Boolean;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
-      property ParentClass: TSQLGlAccountClassID read fParentClass write fParentClass;
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
+      property Parent: TSQLGlAccountClassID read fParent write fParent;
+      property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
       property IsAssetClass: Boolean read fIsAssetClass write fIsAssetClass;
   end;
@@ -1517,11 +1587,17 @@ type
   // 86
   TSQLGlAccountType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLGlAccountTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLGlAccountTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1559,9 +1635,13 @@ type
   // 89
   TSQLGlFiscalType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -1627,9 +1707,13 @@ type
   // 93
   TSQLGlResourceType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -1637,9 +1721,13 @@ type
   // 94
   TSQLGlXbrlClass = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -2129,10 +2217,14 @@ type
   // 119
   TSQLPaymentMethodType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
       fDefaultGlAccount: TSQLGlAccountID;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
       property DefaultGlAccount: TSQLGlAccountID read fDefaultGlAccount write fDefaultGlAccount;
@@ -2153,11 +2245,17 @@ type
   // 121
   TSQLPaymentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLPaymentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLPaymentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -2650,11 +2748,17 @@ type
   // 140
   TSQLPaymentGroupType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLPaymentGroupTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLPaymentGroupTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -3036,9 +3140,13 @@ type
   // 160
   TSQLGlAccountCategoryType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -3109,6 +3217,308 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update BudgetType set parent=(select c.id from BudgetType c where c.Encode=BudgetType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 5
+class procedure TSQLFinAccountTransType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLFinAccountTransType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLFinAccountTransType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','FinAccountTransType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update FinAccountTransType set parent=(select c.id from FinAccountTransType c where c.Encode=FinAccountTransType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 6
+class procedure TSQLFinAccountType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLFinAccountType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLFinAccountType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','FinAccountType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update FinAccountType set parent=(select c.id from FinAccountType c where c.Encode=FinAccountType.ParentEncode);');
+    Server.Execute('update FinAccountType set ReplenishEnum=(select c.id from Enumeration c where c.Encode=FinAccountType.ReplenishEnumEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 7
+class procedure TSQLFixedAssetType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLFixedAssetType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLFixedAssetType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','FixedAssetType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update FixedAssetType set parent=(select c.id from FixedAssetType c where c.Encode=FixedAssetType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 8
+class procedure TSQLFixedAssetIdentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLFixedAssetIdentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLFixedAssetIdentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','FixedAssetIdentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 9
+class procedure TSQLFixedAssetProductType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLFixedAssetProductType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLFixedAssetProductType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','FixedAssetProductType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 10
+class procedure TSQLGlAccountClass.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLGlAccountClass;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLGlAccountClass.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','GlAccountClass.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update GlAccountClass set parent=(select c.id from GlAccountClass c where c.Encode=GlAccountClass.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 11
+class procedure TSQLGlAccountType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLGlAccountType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLGlAccountType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','GlAccountType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update GlAccountType set parent=(select c.id from GlAccountType c where c.Encode=GlAccountType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 12
+class procedure TSQLGlResourceType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLGlResourceType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLGlResourceType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','GlResourceType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 13
+class procedure TSQLGlXbrlClass.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLGlXbrlClass;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLGlXbrlClass.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','GlXbrlClass.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 14
+class procedure TSQLGlFiscalType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLGlFiscalType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLGlFiscalType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','GlFiscalType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 15
+class procedure TSQLGlAccountCategoryType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLGlAccountCategoryType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLGlAccountCategoryType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','GlAccountCategoryType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 16
+class procedure TSQLInvoiceContentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLInvoiceContentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLInvoiceContentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','InvoiceContentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update InvoiceContentType set parent=(select c.id from InvoiceContentType c where c.Encode=InvoiceContentType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 17
+class procedure TSQLInvoiceItemType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLInvoiceItemType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLInvoiceItemType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','InvoiceItemType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update InvoiceItemType set parent=(select c.id from InvoiceItemType c where c.Encode=InvoiceItemType.ParentEncode);');
+    Server.Execute('update InvoiceItemType set DefaultGlAccount=(select c.id from GlAccount c where c.Encode=InvoiceItemType.DefaultGlAccountEncode);');
+    Server.Execute('update InvoiceItemTypeMap set InvoiceItemType=(select c.id from InvoiceItemType c where c.Encode=InvoiceItemTypeMap.InvoiceItemTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 18
+class procedure TSQLInvoiceType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLInvoiceType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLInvoiceType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','InvoiceType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update InvoiceType set parent=(select c.id from InvoiceType c where c.Encode=InvoiceType.ParentEncode);');
+    Server.Execute('update InvoiceItemTypeMap set InvoiceType=(select c.id from InvoiceType c where c.Encode=InvoiceItemTypeMap.InvoiceTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 19
+class procedure TSQLInvoiceItemAssocType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLInvoiceItemAssocType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLInvoiceItemAssocType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','InvoiceItemAssocType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update InvoiceItemAssocType set parent=(select c.id from InvoiceItemAssocType c where c.Encode=InvoiceItemAssocType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 19
+class procedure TSQLInvoiceItemTypeMap.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLInvoiceItemTypeMap;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLInvoiceItemTypeMap.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','InvoiceItemTypeMap.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update InvoiceItemTypeMap set InvoiceType=(select c.id from InvoiceType c where c.Encode=InvoiceItemTypeMap.InvoiceTypeEncode);');
+    Server.Execute('update InvoiceItemTypeMap set InvoiceItemType=(select c.id from InvoiceItemType c where c.Encode=InvoiceItemTypeMap.InvoiceItemTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 20
+class procedure TSQLPaymentMethodType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLPaymentMethodType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLPaymentMethodType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','PaymentMethodType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 21
+class procedure TSQLPaymentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLPaymentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLPaymentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','PaymentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update PaymentType set parent=(select c.id from PaymentType c where c.Encode=PaymentType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 22
+class procedure TSQLPaymentGroupType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLPaymentGroupType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLPaymentGroupType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','PaymentGroupType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update PaymentGroupType set parent=(select c.id from PaymentGroupType c where c.Encode=PaymentGroupType.ParentEncode);');
   finally
     Rec.Free;
   end;

@@ -278,6 +278,7 @@ type
   TSQLCustomMethodType = class(TSQLRecord)
     private
       fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLCustomMethodTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
@@ -286,6 +287,7 @@ type
       class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
       property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLCustomMethodTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -676,6 +678,7 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update Enumeration set EnumType=(select c.id from EnumerationType c where c.Encode=EnumTypeEncode);');
+    Server.Execute('update FinAccountType set ReplenishEnum=(select c.id from Enumeration c where c.Encode=FinAccountType.ReplenishEnumEncode);');
   finally
     Rec.Free;
   end;
@@ -760,6 +763,7 @@ begin
   try
     while Rec.FillOne do
       Server.Add(Rec,true);
+    Server.Execute('update CustomMethodType set Parent=(select c.id from CustomMethodType c where c.Encode=CustomMethodType.ParentEncode);');
     Server.Execute('update CustomMethod set CustomMethodType=(select c.id from CustomMethodType c where c.Encode=CustomMethodTypeEncode);');
   finally
     Rec.Free;

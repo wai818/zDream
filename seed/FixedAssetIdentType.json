@@ -1,0 +1,9 @@
+{"fieldCount":2,"rowCount":7,"values":[
+"Name","Encode",
+"Mfg Serial Number","MFG_SERIAL",
+"Vendor Tracking/Inventory Number","TRACKING_VENDOR",
+"Internal Tracking Label Number","TRACKING_LABEL",
+"Vehicle Identification Number (VIN)","VIN",
+"Gas Card Number 1","GAS_CARD1",
+"Gas Card Number 2","GAS_CARD2",
+"Gas Card Number 3","GAS_CARD3"]}

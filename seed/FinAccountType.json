@@ -1,0 +1,12 @@
+{"fieldCount":6,"rowCount":10,"values":[
+"Name","Encode","HasTable","ReplenishEnumEncode","IsRefundable","ParentEncode",
+"Gift Certificate","GIFTCERT_ACCOUNT","False","FARP_MANUAL","False","",
+"Deposit Account","DEPOSIT_ACCOUNT","False","FARP_MANUAL","True","",
+"Bank Account","BANK_ACCOUNT","False","FARP_MANUAL","True","DEPOSIT_ACCOUNT",
+"Store Credit Account","STORE_CREDIT_ACCT","False","FARP_MANUAL","True","DEPOSIT_ACCOUNT",
+"Investment Account","INVESTMENT_ACCOUNT","False","FARP_MANUAL","True","DEPOSIT_ACCOUNT",
+"Replenish Account","REPLENISH_ACCOUNT","False","FARP_AUTOMATIC","True","DEPOSIT_ACCOUNT",
+"Service Credit Account","SVCCRED_ACCOUNT","False","FARP_MANUAL","False","",
+"Loan Account","LOAN_ACCOUNT","False","FARP_MANUAL","True","",
+"Credit Card Account","CREDIT_CARD_ACCOUNT","False","FARP_MANUAL","True","LOAN_ACCOUNT",
+"Equity Line Account","EQUITY_LINE_ACCOUNT","False","FARP_MANUAL","True","LOAN_ACCOUNT"]}
