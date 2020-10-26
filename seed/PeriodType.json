@@ -1,0 +1,6 @@
+{"fieldCount":4,"rowCount":4,"values":[
+"Name","Encode","PeriodLength","UomEncode",
+"Rate amount per Hour","RATE_HOUR","1","TF_hr",
+"Rate amount per Week","RATE_WEEK","1","TF_wk",
+"Rate amount per month","RATE_MONTH","1","TF_mon",
+"Rate amount per Quarter","RATE_QUARTER","3","TF_mon"]}

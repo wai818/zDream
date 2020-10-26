@@ -1,0 +1,8 @@
+{"fieldCount":2,"rowCount":6,"values":[
+"Encode","Name",
+"SALES_TAX","Sales Tax",
+"USE_TAX","Use Tax",
+"INCOME_TAX","Income Tax",
+"EXPORT_TAX","Export Tax",
+"IMPORT_TAX","Import Tax",
+"VAT_TAX","Value Added Tax"]}

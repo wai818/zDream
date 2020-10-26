@@ -992,11 +992,17 @@ type
   // 52
   TSQLPartyIdentificationType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLPartyIdentificationTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLPartyIdentificationTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1739,6 +1745,22 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update TermType set parent=(select c.id from TermType c where c.Encode=TermType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 12
+class procedure TSQLPartyIdentificationType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLPartyIdentificationType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLPartyIdentificationType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','PartyIdentificationType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update PartyIdentificationType set parent=(select c.id from PartyIdentificationType c where c.Encode=PartyIdentificationType.ParentEncode);');
   finally
     Rec.Free;
   end;

@@ -1,0 +1,5 @@
+{"fieldCount":3,"rowCount":3,"values":[
+"Encode","HasTable","ParentEncode",
+"SIMPLE_AVG_COST","N","Simple Average Cost",
+"WEIGHTED_AVG_COST","N","Weighted Average Cost",
+"MOVING_AVG_COST","N","Moving Average Cost"]}

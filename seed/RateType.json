@@ -1,0 +1,8 @@
+{"fieldCount":2,"rowCount":6,"values":[
+"Encode","Name",
+"STANDARD","Standard Rate",
+"DISCOUNTED","Discounted Rate",
+"OVERTIME","Overtime Rate",
+"AVERAGE_PAY_RATE","Average Pay Rate",
+"HIGH_PAY_RATE","Highest Pay Rate",
+"LOW_PAY_RATE","Lowest Pay Rate"]}

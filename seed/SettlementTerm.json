@@ -1,0 +1,7 @@
+{"fieldCount":4,"rowCount":5,"values":[
+"Encode","TermName","TermValue","UomEncode",
+"COD","Cash Due on Delivery","0","TF_day",
+"NET_15","Net Due in 15 Days","15","TF_day",
+"NET_30","Net Due in 30 Days","30","TF_day",
+"NET_60","Net Due in 60 Days","60","TF_day",
+"NET_90","Net Due in 90 Days","90","TF_day"]}

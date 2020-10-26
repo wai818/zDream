@@ -329,11 +329,17 @@ type
   // 21
   TSQLPeriodType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fUomEncode: RawUTF8;
       fName: RawUTF8;
       fDescription: RawUTF8;
       fPeriodLength: Integer;
       fUom: TSQLUomID;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property UomEncode: RawUTF8 read fUomEncode write fUomEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
       property PeriodLength: Integer read fPeriodLength write fPeriodLength;
@@ -781,6 +787,22 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update CustomMethod set CustomMethodType=(select c.id from CustomMethodType c where c.Encode=CustomMethodTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 8
+class procedure TSQLPeriodType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLPeriodType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLPeriodType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','PeriodType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update PeriodType set Uom=(select c.id from Uom c where c.Encode=PeriodType.UomEncode);');
   finally
     Rec.Free;
   end;

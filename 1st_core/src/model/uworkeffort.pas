@@ -119,6 +119,7 @@ type
   // 8
   TSQLWorkEffort = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fWorkEffortType: TSQLWorkEffortTypeID;
       fCurrentStatus: TSQLStatusItemID;
       fLastStatusUpdate: TDateTime;
@@ -169,7 +170,10 @@ type
       fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
       fLastModifiedByUserLogin: TSQLUserLoginID;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property WorkEffortType: TSQLWorkEffortTypeID read fWorkEffortType write fWorkEffortType;
       property CurrentStatus: TSQLStatusItemID read fCurrentStatus write fCurrentStatus;
       property LastStatusUpdate: TDateTime read fLastStatusUpdate write fLastStatusUpdate;
@@ -741,6 +745,24 @@ type
   end;
 
 implementation
+
+uses
+  Classes, SysUtils;
+
+// 1
+class procedure TSQLWorkEffort.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLWorkEffort;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLWorkEffort.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','WorkEffort.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
 
 end.
 

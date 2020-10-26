@@ -1,4 +1,4 @@
-{"fieldCount":4,"rowCount":10,"values":[
+{"fieldCount":4,"rowCount":11,"values":[
 "Name","Encode","HasTable","ParentEncode",
 "ISBN","ISBN","False","",
 "Manufacturer (Model) Number","MANUFACTURER_ID_NO","False","",
@@ -9,4 +9,5 @@
 "UPCE","UPCE","False","",
 "EAN","EAN","False","",
 "Library of Congress","LOC","False","",
-"Harmonized System Codes (HS Code)","HS_CODE","False",""]}
+"Harmonized System Codes (HS Code)","HS_CODE","False","",
+"replacement value for partyId in the invoice export function in accounting","INVOICE_EXPORT","False",""]}
