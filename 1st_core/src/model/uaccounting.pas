@@ -121,10 +121,14 @@ type
   // 8
   TSQLBudgetReviewResultType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       fDescription: RawUTF8;
       fComments: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
       property Comments: RawUTF8 read fComments write fComments;
@@ -1509,9 +1513,15 @@ type
   // 80
   TSQLGlAccountGroup = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fGlAccountGroupTypeEncode: RawUTF8;
       fGlAccountGroupType: TSQLGlAccountGroupTypeID;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property GlAccountGroupTypeEncode: RawUTF8 read fGlAccountGroupTypeEncode write fGlAccountGroupTypeEncode;
       property GlAccountGroupType: TSQLGlAccountGroupTypeID read fGlAccountGroupType write fGlAccountGroupType;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -1531,9 +1541,13 @@ type
   // 82
   TSQLGlAccountGroupType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read FDescription write FDescription;
   end;
@@ -2307,11 +2321,17 @@ type
   // 124
   TSQLPaymentGatewayConfigType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLPaymentGatewayConfigTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLPaymentGatewayConfigTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -3642,6 +3662,69 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update ProductAverageCostType set parent=(select c.id from ProductAverageCostType c where c.Encode=ProductAverageCostType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 29
+class procedure TSQLBudgetReviewResultType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLBudgetReviewResultType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLBudgetReviewResultType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','BudgetReviewResultType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 30
+class procedure TSQLPaymentGatewayConfigType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLPaymentGatewayConfigType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLPaymentGatewayConfigType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','PaymentGatewayConfigType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update PaymentGatewayConfigType set parent=(select c.id from PaymentGatewayConfigType c where c.Encode=PaymentGatewayConfigType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 31
+class procedure TSQLGlAccountGroupType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLGlAccountGroupType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLGlAccountGroupType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','GlAccountGroupType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update GlAccountGroup set GlAccountGroupType=(select c.id from GlAccountGroupType c where c.Encode=GlAccountGroup.GlAccountGroupTypeEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 32
+class procedure TSQLGlAccountGroup.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLGlAccountGroup;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLGlAccountGroup.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','GlAccountGroup.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update GlAccountGroup set GlAccountGroupType=(select c.id from GlAccountGroupType c where c.Encode=GlAccountGroup.GlAccountGroupTypeEncode);');
   finally
     Rec.Free;
   end;

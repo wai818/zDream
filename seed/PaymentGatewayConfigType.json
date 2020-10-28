@@ -1,0 +1,13 @@
+{"fieldCount":3,"rowCount":11,"values":[
+"Encode","HasTable","Name",
+"PAY_GATWY_SAGEPAY","True","Payment Gateway SagePay",
+"PAY_GATWY_AUTH_NET","True","Payment Gateway Authorize Dot Net",
+"PAY_GATWY_CYBERSRC","True","Payment Gateway CyberSource",
+"PAY_GATWY_EWAY","True","Payment Gateway eWay",
+"PAY_GATWY_PAYFLOWPRO","True","Payment Gateway Payflow Pro",
+"PAY_GATWY_PAYPAL","True","Payment Gateway PayPal",
+"PAY_GATWY_CLRCOMRC","True","Payment Gateway Clear Commerce",
+"PAY_GATWY_WORLDPAY","True","Payment Gateway RBS WorldPay",
+"PAY_GATWY_ORBITAL","True","Payment Gateway Orbital",
+"PAY_GATWY_SECUREPAY","True","Payment Gateway SecurePay",
+"PAY_GATWY_IDEAL","True","Payment Gateway iDEAL"]}
