@@ -707,11 +707,17 @@ type
   // 38
   TSQLWorkEffortType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLWorkEffortTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLWorkEffortTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -759,6 +765,22 @@ begin
   try
     while Rec.FillOne do
       Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 2
+class procedure TSQLWorkEffortType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLWorkEffortType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLWorkEffortType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','WorkEffortType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update WorkEffortType set Parent=(select c.id from WorkEffortType c where c.Encode=WorkEffortType.ParentEncode);');
   finally
     Rec.Free;
   end;

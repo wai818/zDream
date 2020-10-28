@@ -1,0 +1,5 @@
+{"fieldCount":4,"rowCount":3,"values":[
+"Name","HasTable","ParentEncode","Encode",
+"Health","False","","HEALTH",
+"Vacation","False","","VACATION",
+"Sick Leave","False","","SICK_LEAVE"]}

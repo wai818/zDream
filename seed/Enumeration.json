@@ -1,4 +1,4 @@
-{"fieldCount":5,"rowCount":437,"values":[
+{"fieldCount":5,"rowCount":446,"values":[
 "Name","EnumCode","Encode","Sequence","EnumTypeEncode",
 "Full-time Employed","FULLTIME","EMPS_FULLTIME","01","EMPLOY_STTS",
 "Part-time Employed","PARTTIME","EMPS_PARTTIME","02","EMPLOY_STTS",
@@ -436,4 +436,13 @@
 "Delivered Duty Paid","DDP","POTT_DDP","22","PTSOFTTFR",
 "Delivered Duty Unpaid","DDQ","POTT_DDQ","23","PTSOFTTFR",
 "Financial Account","FINACCOUNT","FIN_ACCOUNT","01","STR_CRDT_ACT",
-"Billing Account","BILLACCOUNT","BILLING_ACCOUNT","02","STR_CRDT_ACT"]}
+"Billing Account","BILLACCOUNT","BILLING_ACCOUNT","02","STR_CRDT_ACT",
+"A (above 75%)","RATING_A","INTR_RATNG_A","01","INTR_RATNG",
+"B (60-75%)","RATING_B","INTR_RATNG_B","02","INTR_RATNG",
+"C (45-60%)","RATING_C","INTR_RATNG_C","03","INTR_RATNG",
+"D (below 40%)","RATING_D","INTR_RATNG_D","04","INTR_RATNG",
+"Internal Job Posting","POSTING_INTR","JOB_POSTING_INTR","01","JOB_POSTING",
+"External Job Posting","POSTING_INTR","JOB_POSTING_EXTR","02","JOB_POSTING",
+"Written Aptitude Exam","WRITTEN_APT","EXAM_WRITTEN_APT","01","EXAM_TYPE",
+"Technical Exam","TECHNICAL","EXAM_TECHNICAL","02","EXAM_TYPE",
+"Group Discussion","GROUP_DISCN","EXAM_GROUP_DISCN","03","EXAM_TYPE"]}

@@ -1,4 +1,4 @@
-{"fieldCount":4,"rowCount":79,"values":[
+{"fieldCount":4,"rowCount":82,"values":[
 "Name","Encode","HasTable","ParentEncode",
 "雇佣状况","EMPLOY_STTS","False","",
 "居住状况","PTY_RESID_STTS","False","",
@@ -78,4 +78,7 @@
 "Quote Sequence Mode","QUOTE_SEQMD","False","",
 "Order Sequence Mode","ORDER_SEQMD","False","",
 "Points of Title Transfer","PTSOFTTFR","False","",
-"Store Credit Account","STR_CRDT_ACT","False",""]}
+"Store Credit Account","STR_CRDT_ACT","False","",
+"Interview Rating","INTR_RATNG","False","",
+"Job Posting Types","JOB_POSTING","False","",
+"Exam Type","EXAM_TYPE","False",""]}

@@ -1,5 +1,9 @@
-{"fieldCount":4,"rowCount":3,"values":[
+{"fieldCount":4,"rowCount":7,"values":[
 "Name","HasTable","ParentEncode","Encode",
 "工作经历","False","","EXPERIENCE",
 "专业认证","False","","CERTIFICATION",
-"学历","False","","DEGREE"]}
+"学历","False","","DEGREE",
+"Bachelor of Technology","False","DEGREE","B.Tech",
+"Masters of business administration","False","DEGREE","MBA",
+"Masters of Science","False","DEGREE","MSC",
+"Bachelor of Science","False","DEGREE","BSC"]}

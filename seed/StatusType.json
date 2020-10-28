@@ -1,4 +1,4 @@
-{"fieldCount":4,"rowCount":39,"values":[
+{"fieldCount":4,"rowCount":49,"values":[
 "Name","HasTable","ParentEncode","Encode",
 "Party","False","","PARTY_STATUS",
 "Case","False","","CASE_STATUS",
@@ -38,4 +38,14 @@
 "Financial Account Status","False","","FINACCT_STATUS",
 "Financial Account Trans Status","False","","FINACT_TRNS_STATUS",
 "Fixed Asset Maintenance","False","","FIXEDAST_MNT_STATUS",
-"Gl Reconciliation Status","False","","GLREC_STATUS"]}
+"Gl Reconciliation Status","False","","GLREC_STATUS",
+"Employment Application","False","","EMPLOYMENT_APP_STTS",
+"Employee Position Status","False","","EMPL_POSITION_STATUS",
+"Unemployment Claim","False","","UNEMPL_CLAIM_STATUS",
+"Degree status","False","","HR_DEGREE_STATUS",
+"Job status","False","","HR_JOB_STATUS",
+"PartyQual verification status","False","","PARTYQUAL_VERIFY",
+"Internal Job Posting Status","False","","IJP_STATUS",
+"Relocation Status","False","","RELOCATION_STATUS",
+"Training Status","False","","TRAINING_STATUS",
+"Employee Leave Status","False","","LEAVE_STATUS"]}

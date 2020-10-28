@@ -1,3 +1,12 @@
-{"fieldCount":4,"rowCount":1,"values":[
+{"fieldCount":4,"rowCount":10,"values":[
 "Name","HasTable","ParentEncode","Encode",
-"","","","_NA_"]}
+"","","","_NA_",
+"Chief Executive Officer","False","","CEO",
+"Chief Financial Officer","False","","CFO",
+"Chief Information Officer","False","","CIO",
+"Chief Marketing Officer","False","","CMO",
+"Chief Compliance Officer","False","","CCO",
+"Chief Security Officer","False","","CSO",
+"Programmer","False","","PROGRAMMER",
+"System Administrator","False","","SYS_ADMIN",
+"Business Analyst","False","","BIZ_ANALYST"]}

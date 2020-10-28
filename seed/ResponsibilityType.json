@@ -1,0 +1,13 @@
+{"fieldCount":4,"rowCount":11,"values":[
+"Name","HasTable","ParentEncode","Encode",
+"Finance Management","N","","FIN_MGMT",
+"Inventory Management","N","","INV_MGMT",
+"Purchase Management","N","","PUR_MGMT",
+"Resource Management","N","","RES_MGMT",
+"Production Management","N","","PROD_MGMT",
+"Sales Management","N","","SALES_MGMT",
+"General Management","N","","GENERAL_MGMT",
+"Information Management","N","","INFO_MGMT",
+"Marketing Management","N","","MKTG_MGMT",
+"Compliance Management","N","","COMPLI_MGMT",
+"Security Management","N","","SECUR_MGMT"]}
