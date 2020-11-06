@@ -1,0 +1,10 @@
+{"fieldCount":4,"rowCount":8,"values":[
+"Encode","Name","HasTable","ParentEncode",
+"BLOG_ROOT","Blog Root","False","",
+"DEFAULT_PAGE","Default Page","False","",
+"FORUM_ROOT","Forum Root","False","",
+"MENU_ROOT","Menu Containers","False","",
+"ERROR_ROOT","Error Page Containers","False","",
+"PUBLISH_POINT","Publish Point","False","",
+"WEB_PAGE","Web Page","False","" ,
+"MAINTENANCE_PAGE","Maintenance Page","False",""]}

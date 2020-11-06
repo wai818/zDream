@@ -1,0 +1,7 @@
+{"fieldCount":3,"rowCount":5,"values":[
+"Encode","Name","Extension",
+"NONE","No Template","",
+"FTL","FreeMarker","ftl",
+"WM","WebMacro","wm",
+"XSLT","XSLT","xsl",
+"SCREEN_COMBINED","Screen widget","xml"]}

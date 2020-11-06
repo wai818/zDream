@@ -1,0 +1,18 @@
+{"fieldCount":4,"rowCount":16,"values":[
+"Encode","Name","HasTable","ParentEncode",
+"LOCAL_FILE","Local File","False","",
+"OFBIZ_FILE","File (rel to OFBIZ_HOME)","False","",
+"CONTEXT_FILE","File (rel to webapp root)","False","",
+"LOCAL_FILE_BIN","Local Binary File","False","",
+"OFBIZ_FILE_BIN","Binary File (rel to OFBIZ_HOME)","False","",
+"CONTEXT_FILE_BIN","Binary File (rel to webapp root)","False","",
+"LINK","HyperLink","False","",
+"URL_RESOURCE","URL Resource","False","",
+"SHORT_TEXT","Short Text","False","",
+"ELECTRONIC_TEXT","Long Text","True","",
+"AUDIO_OBJECT","Audio","True","",
+"IMAGE_OBJECT","Image","True","",
+"OTHER_OBJECT","Other","True","",
+"VIDEO_OBJECT","Video","True","",
+"SURVEY","Survey","False","",
+"SURVEY_RESPONSE","Survey Response","False",""]}

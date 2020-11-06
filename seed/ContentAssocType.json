@@ -1,3 +1,25 @@
-{"fieldCount":2,"rowCount":1,"values":[
+{"fieldCount":2,"rowCount":23,"values":[
 "Encode","Name",
-"IMAGE_THUMBNAIL","Image Thumbnail"]}
+"IMAGE_THUMBNAIL","Image Thumbnail",
+"TEMPLATE_MEMBER","Template Member",
+"STRUCTURE_DEF","Document Structure Definition",
+"TXFORM_DEF","Transformation Definition",
+"LIST_ENTRY","List Entry",
+"TREE_CHILD","Tree Child",
+"GRAPH_LINK","Graph Link",
+"ALTERNATE_LOCALE","Alternate Locale",
+"ALTERNATE_ROLE","Alternate Role",
+"RESPONSE","Response",
+"SUB_CONTENT","Sub-Content",
+"TOPIC","Topic",
+"DESCRIPTION","Description",
+"SUBSITE","SubSite",
+"DEPARTMENT","Department",
+"RELATED_CONTENT","Related content",
+"PUBLISH_LINK","Publish link",
+"ATTRIBUTE","Attribute",
+"AUTHOR","Author",
+"SUMMARY","Summary",
+"COMPDOC_PART","Composite Document Part",
+"INSTANCE","Instance Of",
+"ALTERNATIVE_URL","Alternative URL"]}

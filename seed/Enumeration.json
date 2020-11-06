@@ -1,4 +1,4 @@
-{"fieldCount":5,"rowCount":446,"values":[
+{"fieldCount":5,"rowCount":453,"values":[
 "Name","EnumCode","Encode","Sequence","EnumTypeEncode",
 "Full-time Employed","FULLTIME","EMPS_FULLTIME","01","EMPLOY_STTS",
 "Part-time Employed","PARTTIME","EMPS_PARTTIME","02","EMPLOY_STTS",
@@ -445,4 +445,11 @@
 "External Job Posting","POSTING_INTR","JOB_POSTING_EXTR","02","JOB_POSTING",
 "Written Aptitude Exam","WRITTEN_APT","EXAM_WRITTEN_APT","01","EXAM_TYPE",
 "Technical Exam","TECHNICAL","EXAM_TECHNICAL","02","EXAM_TYPE",
-"Group Discussion","GROUP_DISCN","EXAM_GROUP_DISCN","03","EXAM_TYPE"]}
+"Group Discussion","GROUP_DISCN","EXAM_GROUP_DISCN","03","EXAM_TYPE",
+"Not Applicable","_NA_","CNT_PRV_NA_","00","CONTENT_PRIVILEGE",
+"Bronze Level","BRONZE","CNT_PRV_BRONZE","10","CONTENT_PRIVILEGE",
+"Silver Level","SILVER","CNT_PRV_SILVER","20","CONTENT_PRIVILEGE",
+"Gold Level","GOLD","CNT_PRV_GOLD","30","CONTENT_PRIVILEGE",
+"Bronze Level","BRONZE","SUBSCRIBE_BRONZE","10","SUBSCRIPTION_TYPE",
+"Gold Level","GOLD","SUBSCRIBE_GOLD","30","SUBSCRIPTION_TYPE",
+"Silver Level","SILVER","SUBSCRIBE_SILVER","20","SUBSCRIPTION_TYPE"]}

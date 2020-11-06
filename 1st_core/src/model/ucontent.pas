@@ -11,6 +11,8 @@ type
   // 1
   TSQLContent = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fContentTypeEncode: RawUTF8;
       fContentType: TSQLContentTypeID;
       fOwnerContent: TSQLContentID;
       fDecoratorContent: TSQLContentID;
@@ -33,7 +35,11 @@ type
       fCreatedByUserLogin: TSQLUserLoginID;
       fLastModifiedDate: TDateTime;
       fLastModifiedByUserLogin: TSQLUserLoginID;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ContentTypeEncode: RawUTF8 read fContentTypeEncode write fContentTypeEncode;
       property ContentType: TSQLContentTypeID read fContentType write fContentType;
       property OwnerContent: TSQLContentID read fOwnerContent write fOwnerContent;
       property DecoratorContent: TSQLContentID read fDecoratorContent write fDecoratorContent;
@@ -117,9 +123,13 @@ type
   // 4
   TSQLContentAssocPredicate = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -413,11 +423,17 @@ type
   // 25
   TSQLDataResourceType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLDataResourceTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLDataResourceTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -439,10 +455,14 @@ type
   // 27
   TSQLDataTemplateType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       fDescription: RawUTF8;
       fExtension: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
       property Extension: RawUTF8 read fExtension write fExtension;
@@ -481,9 +501,13 @@ type
   // 31
   TSQLMetaDataPredicate = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
       property Name: RawUTF8 read fName write fName;
       property Description: RawUTF8 read fDescription write fDescription;
   end;
@@ -563,11 +587,17 @@ type
   // 38
   TSQLDocumentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLDocumentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       fDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLDocumentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -879,11 +909,17 @@ type
   // 56
   TSQLWebSiteContentType = class(TSQLRecord)
     private
+      fEncode: RawUTF8;
+      fParentEncode: RawUTF8;
       fParent: TSQLWebSiteContentTypeID;
       fHasTable: Boolean;
       fName: RawUTF8;
       FDescription: RawUTF8;
+    public
+      class procedure InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions); override;
     published
+      property Encode: RawUTF8 read fEncode write fEncode;
+      property ParentEncode: RawUTF8 read fParentEncode write fParentEncode;
       property Parent: TSQLWebSiteContentTypeID read fParent write fParent;
       property HasTable: Boolean read fHasTable write fHasTable;
       property Name: RawUTF8 read fName write fName;
@@ -1052,6 +1088,7 @@ begin
     while Rec.FillOne do
       Server.Add(Rec,true);
     Server.Execute('update ContentType set parent=(select c.id from ContentType c where c.Encode=ContentType.ParentEncode);');
+    Server.Execute('update Content set ContentType=(select c.id from ContentType c where c.Encode=Content.ContentTypeEncode);');
   finally
     Rec.Free;
   end;
@@ -1067,6 +1104,115 @@ begin
   try
     while Rec.FillOne do
       Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 3
+class procedure TSQLContentAssocPredicate.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLContentAssocPredicate;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLContentAssocPredicate.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','ContentAssocPredicate.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 4
+class procedure TSQLMetaDataPredicate.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLMetaDataPredicate;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLMetaDataPredicate.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','MetaDataPredicate.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 5
+class procedure TSQLDataResourceType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLDataResourceType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLDataResourceType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','DataResourceType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update DataResourceType set parent=(select c.id from DataResourceType c where c.Encode=DataResourceType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 6
+class procedure TSQLDataTemplateType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLDataTemplateType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLDataTemplateType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','DataTemplateType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 7
+class procedure TSQLDocumentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLDocumentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLDocumentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','DocumentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update DocumentType set parent=(select c.id from DocumentType c where c.Encode=DocumentType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 8
+class procedure TSQLWebSiteContentType.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLWebSiteContentType;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLWebSiteContentType.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','WebSiteContentType.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update WebSiteContentType set parent=(select c.id from WebSiteContentType c where c.Encode=WebSiteContentType.ParentEncode);');
+  finally
+    Rec.Free;
+  end;
+end;
+
+// 9
+class procedure TSQLContent.InitializeTable(Server: TSQLRestServer; const FieldName: RawUTF8; Options: TSQLInitializeTableOptions);
+var Rec: TSQLContent;
+begin
+  inherited;
+  if FieldName<>'' then exit; // create database only if void
+  Rec := TSQLContent.CreateAndFillPrepare(StringFromFile(ConcatPaths([ExtractFilePath(paramstr(0)),'../seed','Content.json'])));
+  try
+    while Rec.FillOne do
+      Server.Add(Rec,true);
+    Server.Execute('update Content set ContentType=(select c.id from ContentType c where c.Encode=Content.ContentTypeEncode);');
   finally
     Rec.Free;
   end;

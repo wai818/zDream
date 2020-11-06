@@ -1,4 +1,4 @@
-{"fieldCount":3,"rowCount":298,"values":[
+{"fieldCount":3,"rowCount":309,"values":[
 "StatusEncode","StatusToEncode","TransitionName",
 "PARTY_ENABLED","PARTY_DISABLED","Disable",
 "PARTY_DISABLED","PARTY_ENABLED","Re-Enable",
@@ -297,4 +297,15 @@
 "BG_REVIEWED","BG_APPROVED","Approved Budget",
 "BG_REVIEWED","BG_REJECTED","Reject Budget",
 "BG_APPROVED","BG_CREATED","Accept Budget",
-"BG_APPROVED","BG_REJECTED","Reject Budget"]}
+"BG_APPROVED","BG_REJECTED","Reject Budget",
+"CTNT_IN_PROGRESS","CTNT_INITIAL_DRAFT","First draft",
+"CTNT_IN_PROGRESS","CTNT_PUBLISHED","published, not revised",
+"CTNT_IN_PROGRESS","CTNT_AVAILABLE","Available",
+"CTNT_IN_PROGRESS","IM_PENDING","Image Pending",
+"CTNT_INITIAL_DRAFT","CTNT_REVISED_DRAFT","Draft revised",
+"CTNT_INITIAL_DRAFT","CTNT_PUBLISHED","Initial draft published",
+"CTNT_REVISED_DRAFT","CTNT_FINAL_DRAFT","Final draft",
+"CTNT_REVISED_DRAFT","CTNT_PUBLISHED","Revised draft published",
+"CTNT_FINAL_DRAFT","CTNT_PUBLISHED","Final draft Published",
+"CTNT_PUBLISHED","CTNT_DEACTIVATED","Deactivated",
+"CTNT_AVAILABLE","CTNT_DEACTIVATED","Available to Deactivated"]}

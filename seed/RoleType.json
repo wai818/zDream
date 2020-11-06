@@ -1,4 +1,4 @@
-{"fieldCount":4,"rowCount":96,"values":[
+{"fieldCount":4,"rowCount":104,"values":[
 "Name","HasTable","ParentEncode","Encode",
 "Main Role","False","","MAIN_ROLE",
 "Account Lead","False","","ACCOUNT_LEAD",
@@ -92,7 +92,15 @@
 "Worker","False","EMPLOYEE","WORKER",
 "Email Administrator","False","PERSON_ROLE","EMAIL_ADMIN",
 "Image Approver","False","","IMAGEAPPROVER",
-"Fixed Asset Maint Assignee","N","","FAM_ASSIGNEE",
-"Maintenance Supplier or Service","N","FAM_ASSIGNEE","FAM_SUPPLIER",
-"Maintenance Manager or Supervisor","N","FAM_ASSIGNEE","FAM_MANAGER",
-"Maintenance Worker","N","FAM_ASSIGNEE","FAM_WORKER"]}
+"Fixed Asset Maint Assignee","False","","FAM_ASSIGNEE",
+"Maintenance Supplier or Service","False","FAM_ASSIGNEE","FAM_SUPPLIER",
+"Maintenance Manager or Supervisor","False","FAM_ASSIGNEE","FAM_MANAGER",
+"Maintenance Worker","False","FAM_ASSIGNEE","FAM_WORKER",
+"Logged In","False","","LOGGEDIN",
+"Content Member","False","","CONTENT",
+"Content Administrator","False","CONTENT","CONTENT_ADMIN",
+"Content Publisher","False","CONTENT","CONTENT_PUBLISHER",
+"Content Editor","False","CONTENT","CONTENT_EDITOR",
+"Content Author","False","CONTENT","CONTENT_AUTHOR",
+"Content User","False","CONTENT","CONTENT_USER",
+"Content Guest","False","CONTENT","CONTENT_GUEST"]}

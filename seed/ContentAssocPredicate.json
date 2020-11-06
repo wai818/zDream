@@ -1,0 +1,9 @@
+{"fieldCount":2,"rowCount":7,"values":[
+"Encode","Name",
+"member-of","The object is a member of the subject.",
+"defines","The object defines the subject.",
+"extends","The object extends the subject.",
+"related-to","The object is related to the subject.",
+"references","The object references the subject.",
+"topifies","Topifies",
+"categorizes","Categorizes"]}

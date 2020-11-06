@@ -1,4 +1,4 @@
-{"fieldCount":4,"rowCount":49,"values":[
+{"fieldCount":4,"rowCount":53,"values":[
 "Name","HasTable","ParentEncode","Encode",
 "Party","False","","PARTY_STATUS",
 "Case","False","","CASE_STATUS",
@@ -48,4 +48,8 @@
 "Internal Job Posting Status","False","","IJP_STATUS",
 "Relocation Status","False","","RELOCATION_STATUS",
 "Training Status","False","","TRAINING_STATUS",
-"Employee Leave Status","False","","LEAVE_STATUS"]}
+"Employee Leave Status","False","","LEAVE_STATUS",
+"Content Approval Status","N","","CNTNTAPPR_STATUS",
+"Server Hit","N","","SERVER_HIT_STATUS",
+"Web Content","N","","WEB_CONTENT_STATUS",
+"Content","N","","CONTENT_STATUS"]}

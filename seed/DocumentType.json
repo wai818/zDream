@@ -1,0 +1,11 @@
+{"fieldCount":4,"rowCount":9,"values":[
+"Name","Encode","HasTable","ParentEncode",
+"Shipping","SHIPPING_DOCUMENT","True","",
+"Bill Of Lading","BILL_OF_LADING","False","SHIPPING_DOCUMENT",
+"Export","EXPORT_DOCUMENTATION","False","SHIPPING_DOCUMENT",
+"Haz Mat","HAZ_MAT_DOCUMENT","False","SHIPPING_DOCUMENT",
+"Manifest","MANIFEST","False","SHIPPING_DOCUMENT",
+"Other Shipping","OTHER_SHIP_DOCUMENT","False","SHIPPING_DOCUMENT",
+"Packing Slip","PACKAGING_SLIP","False","SHIPPING_DOCUMENT",
+"Port Charge","PORT_CHARGE_DOCUMENT","False","SHIPPING_DOCUMENT",
+"Tax Tariff","TAX_TARIFF_DOCUMENT","False","SHIPPING_DOCUMENT"]}

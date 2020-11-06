@@ -1,0 +1,7 @@
+{"fieldCount":2,"rowCount":5,"values":[
+"Encode","Name",
+"author-name","Name of the author or creator of the subject.",
+"author-email","eMail address of the author or creator of the subject.",
+"event-date","The date and time of the event in format [yyyy-MM-dd hh:mm:ss].",
+"event-location","The location where subject event took place.",
+"event-person-name","The name of a person involved in the subject event."]}

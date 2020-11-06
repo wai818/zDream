@@ -1,4 +1,4 @@
-{"fieldCount":4,"rowCount":82,"values":[
+{"fieldCount":4,"rowCount":84,"values":[
 "Name","Encode","HasTable","ParentEncode",
 "雇佣状况","EMPLOY_STTS","False","",
 "居住状况","PTY_RESID_STTS","False","",
@@ -81,4 +81,6 @@
 "Store Credit Account","STR_CRDT_ACT","False","",
 "Interview Rating","INTR_RATNG","False","",
 "Job Posting Types","JOB_POSTING","False","",
-"Exam Type","EXAM_TYPE","False",""]}
+"Exam Type","EXAM_TYPE","False","",
+"Content Privilege","CONTENT_PRIVILEGE","","",
+"Subscription Level","SUBSCRIPTION_TYPE","",""]}
