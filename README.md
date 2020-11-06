@@ -71,7 +71,7 @@ zDream架构验证系统为四层微服务架构，1st_core是数据核心层，
 
 作为一个老掉牙的Delphi时代的程序员，因为后来更多从事业务工作，所以也就没有跟上Java、Javascript的潮流，但作为一个性能偏执狂，后来自然也就喜欢上了Lazarus，以及基于Pascal的mORMot多层微服务架构。
 
-一直很懒，属于君子动脑不动手的类型，mORMot的学习曲线又很高，但终于在去年还是下定决定，初步完成了部分内容的学习，并形成了[mORMot-Learning](https://github.com/wai818/mORMot-Learning)项目；进入2020，在坚定理想信念的基础上，终于完成了多年来关于数据核心的部分代码落地，形成了现在的[zDream](https://github.com/wai818/zDream)项目。
+一直很懒，属于君子动脑不动手的类型，mORMot的学习曲线又很高，但终于在去年还是下定决定，初步完成了部分内容的学习，并形成了[mORMot-Learning](https://github.com/wai818/mORMot-Learning)项目；进入2020，在坚定理想信念的基础上，终于完成了多年来关于数据核心概念的部分代码落地，形成了现在的[zDream](https://github.com/wai818/zDream)项目。
 
 wai81@foxmail.com，于中国·昆明。
 
