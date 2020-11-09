@@ -1,0 +1,10 @@
+{"fieldCount":2,"rowCount":8,"values":[
+"Encode","Name",
+"CART_ADD","Add-To Cart",
+"CHECK_OUT","Check-Out",
+"GENERAL_POLL","General Poll",
+"RANDOM_POLL","Random Poll",
+"CUSTOMER_PROFILE","Customer Profile",
+"SORDER_PLACE","Sales Order Placement",
+"PORDER_PLACE","Purchase Order Placement",
+"PORDITM_PLACE","Purchase Order Item Placement"]}

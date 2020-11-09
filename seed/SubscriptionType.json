@@ -1,3 +1,6 @@
-{"fieldCount":4,"rowCount":1,"values":[
+{"fieldCount":4,"rowCount":4,"values":[
 "Name","HasTable","ParentEncode","Encode",
-"Product","N","","PRODUCT_SUBSCR"]}
+"Product","N","","PRODUCT_SUBSCR",
+"Newsgroup","N","","NEWSGROUP_SUBSCR",
+"Other","N","","OTHER_SUBSCR",
+"Product Info","N","","PRODUCT_INFO_SUBSCR"]}
