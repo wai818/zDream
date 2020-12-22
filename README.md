@@ -54,10 +54,24 @@ zDream架构验证系统为四层微服务架构，1st_core是数据核心层，
 ### 4th_client
 
 表现层，基于应用层整合的服务能力，提供内部员工或交付客户使用的Web或APP前端产品。
+## 开发环境
+1、使用fpcupdeluxe工具，使用Fixes项构建lazarus开发环境；
+
+2、克隆zDream；
+
+3、克隆mORMot至同一目录；
+
+4、打开zDream子项目，编译并执行即可；
+
+5、程序执行后创建的数据库，可以使用DBEaver工具查看。
 
 ## 数据核心实现
 
 *目前正在实现1st_core数据核心。*
+
+使用mORMot框架能力，数据核心的数据模型切分为13个小型数据库（以Sqlite3为例）：
+
+zCoreServerAccounting.db3、zCoreServerManufacturing.db3、zCoreServerProduct.db3、zCoreServerWorkEffort.db3、zCoreServerCommon.db3、zCoreServerMarketing.db3、zCoreServerSecurity.db3、zCoreServerContent.db3、zCoreServerOrder.db3、zCoreServerService.db3、zCoreServerHumanres.db3、zCoreServerParty.db3、zCoreServerShipment.db3合计818个表。
 
 ## 业务系统实现
 
@@ -73,7 +87,7 @@ zDream架构验证系统为四层微服务架构，1st_core是数据核心层，
 
 ### 内部管理端
 
-### 
+尚未实现。
 
 ## 随笔感言
 
