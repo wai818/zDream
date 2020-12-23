@@ -55,13 +55,13 @@ zDream架构验证系统为四层微服务架构，1st_core是数据核心层，
 
 表现层，基于应用层整合的服务能力，提供内部员工或交付客户使用的Web或APP前端产品。
 ## 开发环境
-1、使用fpcupdeluxe工具，使用Fixes项构建lazarus开发环境；
+1、下载fpcupdeluxe工具，使用Fixes项构建lazarus开发环境；
 
 2、克隆zDream；
 
 3、克隆mORMot至同一目录；
 
-4、打开zDream子项目，编译并执行即可；
+4、打开zDream子项目，编译并执行即可，在Windows、linux、MacOS下均可编译运行；
 
 5、程序执行后创建的数据库，可以使用DBEaver工具查看。
 
