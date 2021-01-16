@@ -1,6 +1,6 @@
 program zCoreServer;
 
-{$define MAX_SQLFIELDS_128}     //不起作用
+{$define MAX_SQLFIELDS_128}     //不起作用，default 64
 
 {$I Synopse.inc}
 

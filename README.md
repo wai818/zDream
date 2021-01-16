@@ -55,15 +55,11 @@ zDream架构验证系统为四层微服务架构，1st_core是数据核心层，
 
 表现层，基于应用层整合的服务能力，提供内部员工或交付客户使用的Web或APP前端产品。
 ## 开发环境
-1、下载fpcupdeluxe工具，使用Fixes项构建lazarus开发环境；
-
-2、克隆zDream；
-
+1、下载fpcupdeluxe工具，使用Fixes项构建lazarus开发环境，具体参见[mORMot手册](https://synopse.info/files/html/Synopse%20mORMot%20Framework%20SAD%201.18.html)26.4.2节；
+2、从https://github.com/synopse/mORMot克隆zDream项目；
 3、克隆mORMot至同一目录；
-
-4、打开zDream子项目，编译并执行即可，在Windows、linux、MacOS下均可编译运行；
-
-5、程序执行后创建的数据库，可以使用DBEaver工具查看。
+4、打开zDream子项目，编译并执行即可，在Windows、linux、MacOS下均编译通过，编译后会在bin目录下生成执行文件；
+5、程序执行后创建的数据库，可以使用DBEaver社区版工具查看。
 
 ## 数据核心实现
 
@@ -72,6 +68,8 @@ zDream架构验证系统为四层微服务架构，1st_core是数据核心层，
 使用mORMot框架能力，数据核心的数据模型切分为13个小型数据库（以Sqlite3为例）：
 
 zCoreServerAccounting.db3、zCoreServerManufacturing.db3、zCoreServerProduct.db3、zCoreServerWorkEffort.db3、zCoreServerCommon.db3、zCoreServerMarketing.db3、zCoreServerSecurity.db3、zCoreServerContent.db3、zCoreServerOrder.db3、zCoreServerService.db3、zCoreServerHumanres.db3、zCoreServerParty.db3、zCoreServerShipment.db3合计818个表。
+
+seed目录下为初始数据，创建数据库时会自动装载，目前完成129个库的初始数据。
 
 ## 业务系统实现
 
