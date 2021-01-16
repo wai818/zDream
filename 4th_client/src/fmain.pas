@@ -180,7 +180,7 @@ begin
   attMain.Align:= alTop;
 
   attMain.OptSpaceSide:= 10;
-  attMain.OptAnimationEnabled:= true;
+  //attMain.OptAnimationEnabled:= true;
   attMain.OptMouseDragEnabled:= true;
   attMain.DragMode:= dmAutomatic;
 

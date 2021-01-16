@@ -4,12 +4,12 @@ object FormMain: TFormMain
   Top = 177
   Width = 962
   Caption = 'FormMain'
-  ClientHeight = 510
+  ClientHeight = 530
   ClientWidth = 962
   Menu = mmMain
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '2.1.0.0'
+  LCLVersion = '2.0.10.0'
   object tbMain: TToolBar
     Left = 0
     Height = 26
@@ -25,27 +25,27 @@ object FormMain: TFormMain
       Action = aParty
     end
     object ToolButton2: TToolButton
-      Left = 57
+      Left = 62
       Top = 2
       Action = aProduct
     end
     object ToolButton3: TToolButton
-      Left = 113
+      Left = 123
       Top = 2
       Action = aOrder
     end
   end
   object sbMain: TStatusBar
     Left = 0
-    Height = 22
-    Top = 488
+    Height = 18
+    Top = 512
     Width = 962
     Panels = <>
     ParentFont = False
   end
   object pMain: TPanel
     Left = 0
-    Height = 462
+    Height = 486
     Top = 26
     Width = 962
     Align = alClient
